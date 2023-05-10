@@ -1,22 +1,22 @@
 {
   "tablePrefix": "CODBEX",
   "brand": "codbex",
-  "brandUrl": "https;//codbex.com",
-  "title": "Employees",
-  "description": "Employees Management Application",
+  "brandUrl": "https://codbex.com",
+  "title": "Employees Management Application",
+  "description": "Manage the employees data",
   "projectName": "codbex-employees-app",
   "workspaceName": "workspace",
   "filePath": "codbex-employees.model",
   "perspectives": {
-    "Entities": {
+    "Employees": {
       "views": [
         "Organisatoin",
         "Employee"
       ],
-      "name": "Entities",
-      "label": "Entities",
+      "name": "Employees",
+      "label": "Employees",
       "order": "100",
-      "icon": "/services/web/resources/unicons/copy.svg"
+      "icon": "/services/web/resources/unicons/users-alt.svg"
     }
   },
   "models": [
@@ -73,8 +73,9 @@
       "menuKey": "organisatoin",
       "menuLabel": "Organisatoin",
       "name": "Organisatoin",
-      "perspectiveIcon": "/services/web/resources/unicons/copy.svg",
-      "perspectiveName": "Entities",
+      "navigationPath": "/Home",
+      "perspectiveIcon": "/services/web/resources/unicons/users-alt.svg",
+      "perspectiveName": "Employees",
       "perspectiveOrder": "100",
       "title": "Organisatoin",
       "tooltip": "Organisatoin",
@@ -232,7 +233,7 @@
           "widgetType": "DROPDOWN",
           "relationshipName": "Employee_Organisatoin",
           "relationshipEntityName": "Organisatoin",
-          "relationshipEntityPerspectiveName": "Entities",
+          "relationshipEntityPerspectiveName": "Employees",
           "dataNotNull": false,
           "widgetLabel": "OrganisatoinId",
           "inputRule": ""
@@ -248,8 +249,9 @@
       "menuKey": "employee",
       "menuLabel": "Employee",
       "name": "Employee",
-      "perspectiveIcon": "/services/web/resources/unicons/copy.svg",
-      "perspectiveName": "Entities",
+      "navigationPath": "/Home",
+      "perspectiveIcon": "/services/web/resources/unicons/users-alt.svg",
+      "perspectiveName": "Employees",
       "perspectiveOrder": "100",
       "title": "Employee",
       "tooltip": "Employee",

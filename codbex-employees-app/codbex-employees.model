@@ -46,8 +46,9 @@
                 "menuKey": "organisatoin",
                 "menuLabel": "Organisatoin",
                 "name": "Organisatoin",
-                "perspectiveIcon": "/services/web/resources/unicons/copy.svg",
-                "perspectiveName": "Entities",
+                "navigationPath": "/Home",
+                "perspectiveIcon": "/services/web/resources/unicons/users-alt.svg",
+                "perspectiveName": "Employees",
                 "perspectiveOrder": "100",
                 "title": "Organisatoin",
                 "tooltip": "Organisatoin",
@@ -173,7 +174,7 @@
                         "widgetType": "DROPDOWN",
                         "relationshipName": "Employee_Organisatoin",
                         "relationshipEntityName": "Organisatoin",
-                        "relationshipEntityPerspectiveName": "Entities"
+                        "relationshipEntityPerspectiveName": "Employees"
                     }
                 ],
                 "caption": "Manage entity Employee",
@@ -186,8 +187,9 @@
                 "menuKey": "employee",
                 "menuLabel": "Employee",
                 "name": "Employee",
-                "perspectiveIcon": "/services/web/resources/unicons/copy.svg",
-                "perspectiveName": "Entities",
+                "navigationPath": "/Home",
+                "perspectiveIcon": "/services/web/resources/unicons/users-alt.svg",
+                "perspectiveName": "Employees",
                 "perspectiveOrder": "100",
                 "title": "Employee",
                 "tooltip": "Employee",
@@ -199,9 +201,9 @@
                 "name": "Employees",
                 "label": "Employees",
                 "icon": "/services/web/resources/unicons/users-alt.svg",
-                "order": "1"
+                "order": "100"
             }
         ],
-        "sidebar": []
+        "navigations": []
     }
 }

@@ -5,12 +5,12 @@
  */
 exports.getTile = function () {
     return {
-        group: "Entities",
-        name: "Organisatoin",
-        caption: "Manage entity Organisatoin",
-        tooltip: "Organisatoin",
+        group: "Employees",
+        name: "Employee",
+        caption: "Manage entity Employee",
+        tooltip: "Employee",
         // icon: "file-o",
-        location: "/services/web/codbex-employees-app/gen/ui/Entities/index.html",
+        location: "/services/web/codbex-employees-app/gen/ui/Employees/index.html",
         order: "100",
         groupOrder: "100"
     };

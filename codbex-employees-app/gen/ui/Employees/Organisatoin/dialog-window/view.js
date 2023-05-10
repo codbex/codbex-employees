@@ -4,9 +4,9 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "Employee-details",
-    label: "Employee",
-    link: "/services/web/codbex-employees-app/gen/ui/Entities/Employee/dialog-window/index.html"
+    id: "Organisatoin-details",
+    label: "Organisatoin",
+    link: "/services/web/codbex-employees-app/gen/ui/Employees/Organisatoin/dialog-window/index.html"
 };
 
 if (typeof exports !== 'undefined') {

@@ -1,11 +1,11 @@
 angular.module('page', ["ideUI", "ideView", "entityApi"])
 	.config(["messageHubProvider", function (messageHubProvider) {
-		messageHubProvider.eventIdPrefix = 'codbex-employees-app.Entities.Organisatoin';
+		messageHubProvider.eventIdPrefix = 'codbex-employees-app.Employees.Employee';
 	}])
 	.config(["entityApiProvider", function (entityApiProvider) {
-		entityApiProvider.baseUrl = "/services/js/codbex-employees-app/gen/api/Entities/Organisatoin.js";
+		entityApiProvider.baseUrl = "/services/js/codbex-employees-app/gen/api/Employees/Employee.js";
 	}])
-	.controller('PageController', ['$scope', 'messageHub', 'entityApi', function ($scope, messageHub, entityApi) {
+	.controller('PageController', ['$scope', '$http', 'messageHub', 'entityApi', function ($scope, $http, messageHub, entityApi) {
 
 		function resetPagination() {
 			$scope.dataPage = 1;
@@ -28,7 +28,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			$scope.dataPage = pageNumber;
 			entityApi.count().then(function (response) {
 				if (response.status != 200) {
-					messageHub.showAlertError("Organisatoin", `Unable to count Organisatoin: '${response.message}'`);
+					messageHub.showAlertError("Employee", `Unable to count Employee: '${response.message}'`);
 					return;
 				}
 				$scope.dataCount = response.data;
@@ -36,7 +36,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				let limit = $scope.dataLimit;
 				entityApi.list(offset, limit).then(function (response) {
 					if (response.status != 200) {
-						messageHub.showAlertError("Organisatoin", `Unable to list Organisatoin: '${response.message}'`);
+						messageHub.showAlertError("Employee", `Unable to list Employee: '${response.message}'`);
 						return;
 					}
 					$scope.data = response.data;
@@ -51,32 +51,35 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 
 		$scope.openDetails = function (entity) {
 			$scope.selectedEntity = entity;
-			messageHub.showDialogWindow("Organisatoin-details", {
+			messageHub.showDialogWindow("Employee-details", {
 				action: "select",
 				entity: entity,
+				optionsOrganisatoinId: $scope.optionsOrganisatoinId,
 			});
 		};
 
 		$scope.createEntity = function () {
 			$scope.selectedEntity = null;
-			messageHub.showDialogWindow("Organisatoin-details", {
+			messageHub.showDialogWindow("Employee-details", {
 				action: "create",
 				entity: {},
+				optionsOrganisatoinId: $scope.optionsOrganisatoinId,
 			}, null, false);
 		};
 
 		$scope.updateEntity = function (entity) {
-			messageHub.showDialogWindow("Organisatoin-details", {
+			messageHub.showDialogWindow("Employee-details", {
 				action: "update",
 				entity: entity,
+				optionsOrganisatoinId: $scope.optionsOrganisatoinId,
 			}, null, false);
 		};
 
 		$scope.deleteEntity = function (entity) {
 			let id = entity.Id;
 			messageHub.showDialogAsync(
-				'Delete Organisatoin?',
-				`Are you sure you want to delete Organisatoin? This action cannot be undone.`,
+				'Delete Employee?',
+				`Are you sure you want to delete Employee? This action cannot be undone.`,
 				[{
 					id: "delete-btn-yes",
 					type: "emphasized",
@@ -91,7 +94,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				if (msg.data === "delete-btn-yes") {
 					entityApi.delete(id).then(function (response) {
 						if (response.status != 204) {
-							messageHub.showAlertError("Organisatoin", `Unable to delete Organisatoin: '${response.message}'`);
+							messageHub.showAlertError("Employee", `Unable to delete Employee: '${response.message}'`);
 							return;
 						}
 						$scope.loadPage($scope.dataPage);
@@ -100,5 +103,26 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				}
 			});
 		};
+
+		//----------------Dropdowns-----------------//
+		$scope.optionsOrganisatoinId = [];
+
+		$http.get("/services/js/codbex-employees-app/gen/api/Employees/Organisatoin.js").then(function (response) {
+			$scope.optionsOrganisatoinId = response.data.map(e => {
+				return {
+					value: e.Id,
+					text: e.Name
+				}
+			});
+		});
+		$scope.optionsOrganisatoinIdValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsOrganisatoinId.length; i++) {
+				if ($scope.optionsOrganisatoinId[i].value === optionKey) {
+					return $scope.optionsOrganisatoinId[i].text;
+				}
+			}
+			return null;
+		};
+		//----------------Dropdowns-----------------//
 
 	}]);
