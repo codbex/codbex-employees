@@ -4,11 +4,11 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "Organisatoin",
-    label: "Organisatoin",
+    id: "Organisation",
+    label: "Organisation",
     factory: "frame",
     region: "center",
-    link: "/services/web/codbex-employees-app/gen/ui/Employees/Organisatoin/index.html",
+    link: "/services/web/codbex-employees-app/gen/ui/Employees/Organisation/index.html",
 };
 
 if (typeof exports !== 'undefined') {

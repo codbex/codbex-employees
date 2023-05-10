@@ -2,28 +2,6 @@
     "schema": {
         "structures": [
             {
-                "name": "CODBEX_ORGANISATOIN",
-                "type": "TABLE",
-                "columns": [
-                    {
-                        "type": "INTEGER",
-                        "length": 0,
-                        "primaryKey": true,
-                        "identity": true,
-                        "nullable": true,
-                        "name": "ORGANISATOIN_ID"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 200,
-                        "precision": "NaN",
-                        "scale": "NaN",
-                        "nullable": true,
-                        "name": "ORGANISATOIN_NAME"
-                    }
-                ]
-            },
-            {
                 "name": "CODBEX_EMPLOYEE",
                 "type": "TABLE",
                 "columns": [
@@ -70,6 +48,8 @@
                     {
                         "type": "VARCHAR",
                         "length": 20,
+                        "precision": "NaN",
+                        "scale": "NaN",
                         "nullable": true,
                         "name": "EMPLOYEE_PHONE"
                     },
@@ -79,18 +59,40 @@
                         "precision": "NaN",
                         "scale": "NaN",
                         "nullable": true,
-                        "name": "EMPLOYEE_ORGANISATOINID"
+                        "name": "EMPLOYEE_ORGANISATIONID"
                     }
                 ]
             },
             {
-                "name": "Employee_Organisatoin",
+                "name": "CODBEX_ORGANISATION",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "ORGANISATION_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 200,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "ORGANISATION_NAME"
+                    }
+                ]
+            },
+            {
+                "name": "Employee_Organisation",
                 "type": "foreignKey",
                 "table": "CODBEX_EMPLOYEE",
-                "constraintName": "Employee_Organisatoin",
-                "columns": "EMPLOYEE_ORGANISATOINID",
-                "referencedTable": "CODBEX_ORGANISATOIN",
-                "referencedColumns": "ORGANISATOIN_ID"
+                "constraintName": "Employee_Organisation",
+                "columns": "EMPLOYEE_ORGANISATIONID",
+                "referencedTable": "CODBEX_ORGANISATION",
+                "referencedColumns": "ORGANISATION_ID"
             }
         ]
     }

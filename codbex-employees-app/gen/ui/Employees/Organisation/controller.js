@@ -1,9 +1,9 @@
 angular.module('page', ["ideUI", "ideView", "entityApi"])
 	.config(["messageHubProvider", function (messageHubProvider) {
-		messageHubProvider.eventIdPrefix = 'codbex-employees-app.Employees.Organisatoin';
+		messageHubProvider.eventIdPrefix = 'codbex-employees-app.Employees.Organisation';
 	}])
 	.config(["entityApiProvider", function (entityApiProvider) {
-		entityApiProvider.baseUrl = "/services/js/codbex-employees-app/gen/api/Employees/Organisatoin.js";
+		entityApiProvider.baseUrl = "/services/js/codbex-employees-app/gen/api/Employees/Organisation.js";
 	}])
 	.controller('PageController', ['$scope', 'messageHub', 'entityApi', function ($scope, messageHub, entityApi) {
 
@@ -28,7 +28,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			$scope.dataPage = pageNumber;
 			entityApi.count().then(function (response) {
 				if (response.status != 200) {
-					messageHub.showAlertError("Organisatoin", `Unable to count Organisatoin: '${response.message}'`);
+					messageHub.showAlertError("Organisation", `Unable to count Organisation: '${response.message}'`);
 					return;
 				}
 				$scope.dataCount = response.data;
@@ -36,7 +36,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				let limit = $scope.dataLimit;
 				entityApi.list(offset, limit).then(function (response) {
 					if (response.status != 200) {
-						messageHub.showAlertError("Organisatoin", `Unable to list Organisatoin: '${response.message}'`);
+						messageHub.showAlertError("Organisation", `Unable to list Organisation: '${response.message}'`);
 						return;
 					}
 					$scope.data = response.data;
@@ -51,7 +51,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 
 		$scope.openDetails = function (entity) {
 			$scope.selectedEntity = entity;
-			messageHub.showDialogWindow("Organisatoin-details", {
+			messageHub.showDialogWindow("Organisation-details", {
 				action: "select",
 				entity: entity,
 			});
@@ -59,14 +59,14 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 
 		$scope.createEntity = function () {
 			$scope.selectedEntity = null;
-			messageHub.showDialogWindow("Organisatoin-details", {
+			messageHub.showDialogWindow("Organisation-details", {
 				action: "create",
 				entity: {},
 			}, null, false);
 		};
 
 		$scope.updateEntity = function (entity) {
-			messageHub.showDialogWindow("Organisatoin-details", {
+			messageHub.showDialogWindow("Organisation-details", {
 				action: "update",
 				entity: entity,
 			}, null, false);
@@ -75,8 +75,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		$scope.deleteEntity = function (entity) {
 			let id = entity.Id;
 			messageHub.showDialogAsync(
-				'Delete Organisatoin?',
-				`Are you sure you want to delete Organisatoin? This action cannot be undone.`,
+				'Delete Organisation?',
+				`Are you sure you want to delete Organisation? This action cannot be undone.`,
 				[{
 					id: "delete-btn-yes",
 					type: "emphasized",
@@ -91,7 +91,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				if (msg.data === "delete-btn-yes") {
 					entityApi.delete(id).then(function (response) {
 						if (response.status != 204) {
-							messageHub.showAlertError("Organisatoin", `Unable to delete Organisatoin: '${response.message}'`);
+							messageHub.showAlertError("Organisation", `Unable to delete Organisation: '${response.message}'`);
 							return;
 						}
 						$scope.loadPage($scope.dataPage);

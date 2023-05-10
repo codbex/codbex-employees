@@ -54,7 +54,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.showDialogWindow("Employee-details", {
 				action: "select",
 				entity: entity,
-				optionsOrganisatoinId: $scope.optionsOrganisatoinId,
+				optionsOrganisationId: $scope.optionsOrganisationId,
 			});
 		};
 
@@ -63,7 +63,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.showDialogWindow("Employee-details", {
 				action: "create",
 				entity: {},
-				optionsOrganisatoinId: $scope.optionsOrganisatoinId,
+				optionsOrganisationId: $scope.optionsOrganisationId,
 			}, null, false);
 		};
 
@@ -71,7 +71,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.showDialogWindow("Employee-details", {
 				action: "update",
 				entity: entity,
-				optionsOrganisatoinId: $scope.optionsOrganisatoinId,
+				optionsOrganisationId: $scope.optionsOrganisationId,
 			}, null, false);
 		};
 
@@ -105,20 +105,20 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		};
 
 		//----------------Dropdowns-----------------//
-		$scope.optionsOrganisatoinId = [];
+		$scope.optionsOrganisationId = [];
 
-		$http.get("/services/js/codbex-employees-app/gen/api/Employees/Organisatoin.js").then(function (response) {
-			$scope.optionsOrganisatoinId = response.data.map(e => {
+		$http.get("/services/js/codbex-employees-app/gen/api/Employees/Organisation.js").then(function (response) {
+			$scope.optionsOrganisationId = response.data.map(e => {
 				return {
 					value: e.Id,
 					text: e.Name
 				}
 			});
 		});
-		$scope.optionsOrganisatoinIdValue = function (optionKey) {
-			for (let i = 0; i < $scope.optionsOrganisatoinId.length; i++) {
-				if ($scope.optionsOrganisatoinId[i].value === optionKey) {
-					return $scope.optionsOrganisatoinId[i].text;
+		$scope.optionsOrganisationIdValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsOrganisationId.length; i++) {
+				if ($scope.optionsOrganisationId[i].value === optionKey) {
+					return $scope.optionsOrganisationId[i].text;
 				}
 			}
 			return null;

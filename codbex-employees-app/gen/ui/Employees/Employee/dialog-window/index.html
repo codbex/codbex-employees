@@ -29,7 +29,7 @@
             <fd-fieldset class="fd-margin--md" ng-form="formFieldset">
                 <fd-form-group dg-header="{{formHeaders[action]}}" name="entityForm">
                     <fd-form-item horizontal="false">
-                        <fd-form-label for="idFirstName" dg-required="false" dg-colon="true">FirstName</fd-form-label>
+                        <fd-form-label for="idFirstName" dg-required="false" dg-colon="true">First Name</fd-form-label>
                         <fd-form-input-message-group dg-inactive="{{ formErrors.FirstName ? false : true }}">
                             <fd-input id="idFirstName"
                                 name="FirstName"
@@ -39,16 +39,16 @@
                                 ng-model="entity.FirstName"
                                 ng-readonly="action === 'select'"
                                 ng-minlength="0.0 || 0"
-                                ng-maxlength="20.0 || -1"
+                                ng-maxlength="100.0 || -1"
                                 dg-input-rules="{ patterns: [''] }"
                                 type="text"
-                                placeholder="Enter FirstName">
+                                placeholder="Enter First Name">
                             </fd-input>
                             <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
                         </fd-form-input-message-group>
                     </fd-form-item>
                     <fd-form-item horizontal="false">
-                        <fd-form-label for="idMiddleName" dg-required="false" dg-colon="true">MiddleName</fd-form-label>
+                        <fd-form-label for="idMiddleName" dg-required="false" dg-colon="true">Middle Name</fd-form-label>
                         <fd-form-input-message-group dg-inactive="{{ formErrors.MiddleName ? false : true }}">
                             <fd-input id="idMiddleName"
                                 name="MiddleName"
@@ -58,16 +58,16 @@
                                 ng-model="entity.MiddleName"
                                 ng-readonly="action === 'select'"
                                 ng-minlength="0.0 || 0"
-                                ng-maxlength="20.0 || -1"
+                                ng-maxlength="100.0 || -1"
                                 dg-input-rules="{ patterns: [''] }"
                                 type="text"
-                                placeholder="Enter MiddleName">
+                                placeholder="Enter Middle Name">
                             </fd-input>
                             <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
                         </fd-form-input-message-group>
                     </fd-form-item>
                     <fd-form-item horizontal="false">
-                        <fd-form-label for="idLastName" dg-required="false" dg-colon="true">LastName</fd-form-label>
+                        <fd-form-label for="idLastName" dg-required="false" dg-colon="true">Last Name</fd-form-label>
                         <fd-form-input-message-group dg-inactive="{{ formErrors.LastName ? false : true }}">
                             <fd-input id="idLastName"
                                 name="LastName"
@@ -77,16 +77,16 @@
                                 ng-model="entity.LastName"
                                 ng-readonly="action === 'select'"
                                 ng-minlength="0.0 || 0"
-                                ng-maxlength="20.0 || -1"
+                                ng-maxlength="100.0 || -1"
                                 dg-input-rules="{ patterns: [''] }"
                                 type="text"
-                                placeholder="Enter LastName">
+                                placeholder="Enter Last Name">
                             </fd-input>
                             <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
                         </fd-form-input-message-group>
                     </fd-form-item>
                     <fd-form-item horizontal="false">
-                        <fd-form-label for="idEmail" dg-required="false" dg-colon="true">Email</fd-form-label>
+                        <fd-form-label for="idEmail" dg-required="false" dg-colon="true">e-mail</fd-form-label>
                         <fd-form-input-message-group dg-inactive="{{ formErrors.Email ? false : true }}">
                             <fd-input id="idEmail"
                                 name="Email"
@@ -96,10 +96,10 @@
                                 ng-model="entity.Email"
                                 ng-readonly="action === 'select'"
                                 ng-minlength="0.0 || 0"
-                                ng-maxlength="20.0 || -1"
+                                ng-maxlength="200.0 || -1"
                                 dg-input-rules="{ patterns: [''] }"
                                 type="email"
-                                placeholder="Enter Email">
+                                placeholder="Enter e-mail">
                             </fd-input>
                             <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
                         </fd-form-input-message-group>
@@ -116,24 +116,24 @@
                                 ng-readonly="action === 'select'"
                                 ng-minlength="0.0 || 0"
                                 ng-maxlength="20.0 || -1"
-                                dg-input-rules="{ patterns: [''] }"
-                                type="text"
+                                dg-input-rules="{ patterns:['^[0-9]{0,14}$'] }"
+                                type="tel"
                                 placeholder="Enter Phone">
                             </fd-input>
                             <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
                         </fd-form-input-message-group>
                     </fd-form-item>
                     <fd-form-item horizontal="false">
-                        <fd-form-label for="idOrganisatoinId" dg-required="false" dg-colon="true">OrganisatoinId</fd-form-label>
-                        <fd-combobox-input id="idOrganisatoinId"
-                            name="OrganisatoinId"
-                            state="{{ formErrors.OrganisatoinId ? 'error' : '' }}"
+                        <fd-form-label for="idOrganisationId" dg-required="false" dg-colon="true">Organisation</fd-form-label>
+                        <fd-combobox-input id="idOrganisationId"
+                            name="OrganisationId"
+                            state="{{ formErrors.OrganisationId ? 'error' : '' }}"
                             ng-required="true"
-                            ng-change="isValid(formFieldset['OrganisatoinId'].$valid, 'OrganisatoinId')"
-                            ng-model="entity.OrganisatoinId"
+                            ng-change="isValid(formFieldset['OrganisationId'].$valid, 'OrganisationId')"
+                            ng-model="entity.OrganisationId"
                             dg-disabled="action === 'select'"
-                            dropdown-items="optionsOrganisatoinId"
-                            dg-placeholder="Search OrganisatoinId ...">
+                            dropdown-items="optionsOrganisationId"
+                            dg-placeholder="Search Organisation ...">
                         </fd-combobox-input>
                     </fd-form-item>
             </fd-fieldset>

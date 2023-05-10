@@ -27,12 +27,12 @@
 			<table fd-table display-mode="compact">
 				<thead fd-table-header sticky="true">
 					<tr fd-table-row>
-						<th fd-table-header-cell>FirstName</th>
-						<th fd-table-header-cell>MiddleName</th>
-						<th fd-table-header-cell>LastName</th>
-						<th fd-table-header-cell>Email</th>
+						<th fd-table-header-cell>First Name</th>
+						<th fd-table-header-cell>Middle Name</th>
+						<th fd-table-header-cell>Last Name</th>
+						<th fd-table-header-cell>e-mail</th>
 						<th fd-table-header-cell>Phone</th>
-						<th fd-table-header-cell>OrganisatoinId</th>
+						<th fd-table-header-cell>Organisation</th>
 						<th fd-table-header-cell></th>
 					</tr>
 				</thead>
@@ -48,9 +48,11 @@
 						<td fd-table-cell>
 							<a href="mailto:{{next.Email}}" class="fd-link">{{next.Email}}</a>
 						</td>
-						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.Phone}}</td>
+						<td fd-table-cell>
+							<a href="tel:{{next.Phone}}" class="fd-link">{{next.Phone}}</a>
+						</td>
 						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">
-							{{optionsOrganisatoinIdValue(next.OrganisatoinId)}}
+							{{optionsOrganisationIdValue(next.OrganisationId)}}
 						</td>
 						<td fd-table-cell fit-content="true">
 							<fd-popover>
