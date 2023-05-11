@@ -4,15 +4,13 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "Organisation",
+    id: "Organisation-details",
     label: "Organisation",
-    factory: "frame",
-    region: "center",
-    link: "/services/web/codbex-employees/gen/ui/Employees/Organisation/index.html",
+    link: "/services/web/codbex-employees/gen/ui/Organisations/Organisation/dialog-window/index.html"
 };
 
 if (typeof exports !== 'undefined') {
-    exports.getView = function () {
+    exports.getDialogWindow = function () {
         return viewData;
     }
 }

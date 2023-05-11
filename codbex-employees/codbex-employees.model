@@ -135,7 +135,7 @@
                         "widgetType": "DROPDOWN",
                         "relationshipName": "Employee_Organisation",
                         "relationshipEntityName": "Organisation",
-                        "relationshipEntityPerspectiveName": "Employees"
+                        "relationshipEntityPerspectiveName": "Organisations"
                     }
                 ],
                 "caption": "Manage entity Employee",
@@ -151,7 +151,7 @@
                 "navigationPath": "/Home",
                 "perspectiveIcon": "/services/web/resources/unicons/users-alt.svg",
                 "perspectiveName": "Employees",
-                "perspectiveOrder": "100",
+                "perspectiveOrder": "101",
                 "title": "Employee",
                 "tooltip": "Employee",
                 "type": "PRIMARY"
@@ -202,8 +202,8 @@
                 "menuLabel": "Organisation",
                 "name": "Organisation",
                 "navigationPath": "/Home",
-                "perspectiveIcon": "/services/web/resources/unicons/users-alt.svg",
-                "perspectiveName": "Employees",
+                "perspectiveIcon": "/services/web/resources/unicons/building.svg",
+                "perspectiveName": "Organisations",
                 "perspectiveOrder": "100",
                 "title": "Organisation",
                 "tooltip": "Organisation",
@@ -215,6 +215,12 @@
                 "name": "Employees",
                 "label": "Employees",
                 "icon": "/services/web/resources/unicons/users-alt.svg",
+                "order": "101"
+            },
+            {
+                "name": "Organisations",
+                "label": "Organisations",
+                "icon": "/services/web/resources/unicons/building.svg",
                 "order": "100"
             }
         ],

@@ -1,5 +1,5 @@
 const rs = require("http/rs");
-const dao = require("codbex-employees/gen/dao/Employees/Organisation");
+const dao = require("codbex-employees/gen/dao/Organisations/Organisation");
 const http = require("codbex-employees/gen/api/utils/http");
 
 rs.service()

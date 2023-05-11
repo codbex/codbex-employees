@@ -1,7 +1,7 @@
 {
   "tablePrefix": "CODBEX",
   "brand": "codbex",
-  "brandUrl": "https://codbex.com",
+  "brandUrl": "https://www.codbex.com/",
   "title": "Employees Management Module",
   "description": "Managing employees and organisations data",
   "projectName": "codbex-employees",
@@ -10,13 +10,21 @@
   "perspectives": {
     "Employees": {
       "views": [
-        "Employee",
-        "Organisation"
+        "Employee"
       ],
       "name": "Employees",
       "label": "Employees",
-      "order": "100",
+      "order": "101",
       "icon": "/services/web/resources/unicons/users-alt.svg"
+    },
+    "Organisations": {
+      "views": [
+        "Organisation"
+      ],
+      "name": "Organisations",
+      "label": "Organisations",
+      "order": "100",
+      "icon": "/services/web/resources/unicons/building.svg"
     }
   },
   "models": [
@@ -177,7 +185,7 @@
           "widgetType": "DROPDOWN",
           "relationshipName": "Employee_Organisation",
           "relationshipEntityName": "Organisation",
-          "relationshipEntityPerspectiveName": "Employees",
+          "relationshipEntityPerspectiveName": "Organisations",
           "dataNotNull": false,
           "inputRule": ""
         }
@@ -195,7 +203,7 @@
       "navigationPath": "/Home",
       "perspectiveIcon": "/services/web/resources/unicons/users-alt.svg",
       "perspectiveName": "Employees",
-      "perspectiveOrder": "100",
+      "perspectiveOrder": "101",
       "title": "Employee",
       "tooltip": "Employee",
       "type": "PRIMARY",
@@ -259,8 +267,8 @@
       "menuLabel": "Organisation",
       "name": "Organisation",
       "navigationPath": "/Home",
-      "perspectiveIcon": "/services/web/resources/unicons/users-alt.svg",
-      "perspectiveName": "Employees",
+      "perspectiveIcon": "/services/web/resources/unicons/building.svg",
+      "perspectiveName": "Organisations",
       "perspectiveOrder": "100",
       "title": "Organisation",
       "tooltip": "Organisation",

@@ -12,6 +12,6 @@ exports.getTile = function () {
         // icon: "file-o",
         location: "/services/web/codbex-employees/gen/ui/Employees/index.html",
         order: "100",
-        groupOrder: "100"
+        groupOrder: "101"
     };
 };

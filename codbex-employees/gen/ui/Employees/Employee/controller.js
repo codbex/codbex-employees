@@ -107,7 +107,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		//----------------Dropdowns-----------------//
 		$scope.optionsOrganisationId = [];
 
-		$http.get("/services/js/codbex-employees/gen/api/Employees/Organisation.js").then(function (response) {
+		$http.get("/services/js/codbex-employees/gen/api/Organisations/Organisation.js").then(function (response) {
 			$scope.optionsOrganisationId = response.data.map(e => {
 				return {
 					value: e.Id,
