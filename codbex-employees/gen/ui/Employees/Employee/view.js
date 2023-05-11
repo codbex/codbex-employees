@@ -8,7 +8,7 @@ const viewData = {
     label: "Employee",
     factory: "frame",
     region: "center",
-    link: "/services/web/codbex-employees-app/gen/ui/Employees/Employee/index.html",
+    link: "/services/web/codbex-employees/gen/ui/Employees/Employee/index.html",
 };
 
 if (typeof exports !== 'undefined') {

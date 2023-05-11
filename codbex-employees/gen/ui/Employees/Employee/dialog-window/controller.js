@@ -1,9 +1,9 @@
 angular.module('page', ["ideUI", "ideView", "entityApi"])
 	.config(["messageHubProvider", function (messageHubProvider) {
-		messageHubProvider.eventIdPrefix = 'codbex-employees-app.Employees.Employee';
+		messageHubProvider.eventIdPrefix = 'codbex-employees.Employees.Employee';
 	}])
 	.config(["entityApiProvider", function (entityApiProvider) {
-		entityApiProvider.baseUrl = "/services/js/codbex-employees-app/gen/api/Employees/Employee.js";
+		entityApiProvider.baseUrl = "/services/js/codbex-employees/gen/api/Employees/Employee.js";
 	}])
 	.controller('PageController', ['$scope', 'messageHub', 'entityApi', function ($scope, messageHub, entityApi) {
 

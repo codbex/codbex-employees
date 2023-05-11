@@ -1,4 +1,4 @@
 {
-    "name": "codbex-employees-app-dialog-window",
-    "description": "codbex-employees-app - Extension Point for the Application Dialog Window Providers"
+    "name": "codbex-employees-dialog-window",
+    "description": "codbex-employees - Extension Point for the Application Dialog Window Providers"
 }

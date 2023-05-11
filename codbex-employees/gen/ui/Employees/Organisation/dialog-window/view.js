@@ -6,7 +6,7 @@
 const viewData = {
     id: "Organisation-details",
     label: "Organisation",
-    link: "/services/web/codbex-employees-app/gen/ui/Employees/Organisation/dialog-window/index.html"
+    link: "/services/web/codbex-employees/gen/ui/Employees/Organisation/dialog-window/index.html"
 };
 
 if (typeof exports !== 'undefined') {

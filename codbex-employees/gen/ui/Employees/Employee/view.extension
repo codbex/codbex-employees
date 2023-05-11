@@ -1,1 +1,1 @@
-{"module":"codbex-employees-app/gen/ui/Employees/Employee/view.js","extensionPoint":"codbex-employees-app-view","description":"codbex-employees-app - Application View"}
+{"module":"codbex-employees/gen/ui/Employees/Employee/view.js","extensionPoint":"codbex-employees-view","description":"codbex-employees - Application View"}

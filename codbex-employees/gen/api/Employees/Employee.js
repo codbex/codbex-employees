@@ -1,6 +1,6 @@
 const rs = require("http/rs");
-const dao = require("codbex-employees-app/gen/dao/Employees/Employee");
-const http = require("codbex-employees-app/gen/api/utils/http");
+const dao = require("codbex-employees/gen/dao/Employees/Employee");
+const http = require("codbex-employees/gen/api/utils/http");
 
 rs.service()
 	.resource("")
@@ -60,7 +60,7 @@ rs.service()
 		.post(function(ctx, request, response) {
 			let entity = request.getJSON();
 			entity.Id = dao.create(entity);
-			response.setHeader("Content-Location", "/services/js/codbex-employees-app/gen/api/Employee.js/" + entity.Id);
+			response.setHeader("Content-Location", "/services/js/codbex-employees/gen/api/Employee.js/" + entity.Id);
 			http.sendResponseCreated(entity);
 		})
 		.produces(["application/json"])

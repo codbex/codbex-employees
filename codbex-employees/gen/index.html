@@ -1,5 +1,5 @@
 <!--
-  The technology platform used for project codbex-employees-app is Eclipse Dirigible (https://www.dirigible.io/).
+  The technology platform used for project codbex-employees is Eclipse Dirigible (https://www.dirigible.io/).
   All the source code is licensed under the Eclipse Public License - v 2.0 (https://www.eclipse.org/legal/epl-v20.html)
   and maintained at GitHub (https://github.com/eclipse/dirigible).
 -->
@@ -22,7 +22,7 @@
     </head>
 
     <body>
-        <ide-header menu-ext-id="codbex-employees-app-menu"></ide-header>
+        <ide-header menu-ext-id="codbex-employees-menu"></ide-header>
 
         <ide-container>
             <view id="home-launchpad"></view>
@@ -34,7 +34,7 @@
         <script type="text/javascript">
             angular.module('app', ['ngResource', 'ideLayout', 'ideUI'])
                 .constant('branding', {
-                    name: 'Employees Management Application',
+                    name: 'Employees Management Module',
                     brand: 'codbex',
                     brandUrl: 'https://codbex.com',
                     icons: {
@@ -45,12 +45,12 @@
                     logo: '/services/web/resources/images/dirigible.svg',
                 })
                 .constant('extensionPoint', {
-                    perspectives: "codbex-employees-app",
-                    views: "codbex-employees-app-view",
-                    dialogWindows: "codbex-employees-app-dialog-window"
+                    perspectives: "codbex-employees",
+                    views: "codbex-employees-view",
+                    dialogWindows: "codbex-employees-dialog-window"
                 })
                 .config(["messageHubProvider", function (messageHubProvider) {
-                    messageHubProvider.eventIdPrefix = 'codbex-employees-app.launchpad.Home';
+                    messageHubProvider.eventIdPrefix = 'codbex-employees.launchpad.Home';
                 }])
                 .controller('ApplicationController', ["$scope", "messageHub", function ($scope, messageHub) {
 

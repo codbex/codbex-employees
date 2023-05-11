@@ -2,9 +2,9 @@
   "tablePrefix": "CODBEX",
   "brand": "codbex",
   "brandUrl": "https://codbex.com",
-  "title": "Employees Management Application",
+  "title": "Employees Management Module",
   "description": "Managing employees and organisations data",
-  "projectName": "codbex-employees-app",
+  "projectName": "codbex-employees",
   "workspaceName": "workspace",
   "filePath": "codbex-employees.model",
   "perspectives": {

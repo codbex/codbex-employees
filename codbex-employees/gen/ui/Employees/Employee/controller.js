@@ -1,9 +1,9 @@
 angular.module('page', ["ideUI", "ideView", "entityApi"])
 	.config(["messageHubProvider", function (messageHubProvider) {
-		messageHubProvider.eventIdPrefix = 'codbex-employees-app.Employees.Employee';
+		messageHubProvider.eventIdPrefix = 'codbex-employees.Employees.Employee';
 	}])
 	.config(["entityApiProvider", function (entityApiProvider) {
-		entityApiProvider.baseUrl = "/services/js/codbex-employees-app/gen/api/Employees/Employee.js";
+		entityApiProvider.baseUrl = "/services/js/codbex-employees/gen/api/Employees/Employee.js";
 	}])
 	.controller('PageController', ['$scope', '$http', 'messageHub', 'entityApi', function ($scope, $http, messageHub, entityApi) {
 
@@ -107,7 +107,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		//----------------Dropdowns-----------------//
 		$scope.optionsOrganisationId = [];
 
-		$http.get("/services/js/codbex-employees-app/gen/api/Employees/Organisation.js").then(function (response) {
+		$http.get("/services/js/codbex-employees/gen/api/Employees/Organisation.js").then(function (response) {
 			$scope.optionsOrganisationId = response.data.map(e => {
 				return {
 					value: e.Id,

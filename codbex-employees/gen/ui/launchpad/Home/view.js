@@ -8,7 +8,7 @@ const viewData = {
     label: "Home Launchpad",
     factory: "frame",
     region: "center",
-    link: "/services/web/codbex-employees-app/gen/ui/launchpad/Home/index.html",
+    link: "/services/web/codbex-employees/gen/ui/launchpad/Home/index.html",
 };
 
 if (typeof exports !== 'undefined') {

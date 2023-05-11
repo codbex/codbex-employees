@@ -1,4 +1,4 @@
 {
-    "name": "codbex-employees-app-tile",
-    "description": "codbex-employees-app - Extension Point for the Application Tile Providers"
+    "name": "codbex-employees-tile",
+    "description": "codbex-employees - Extension Point for the Application Tile Providers"
 }

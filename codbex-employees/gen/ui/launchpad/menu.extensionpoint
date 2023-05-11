@@ -1,4 +1,4 @@
 {
-    "name": "codbex-employees-app-menu",
-    "description": "codbex-employees-app - Extension Point for the Application Main Menu"
+    "name": "codbex-employees-menu",
+    "description": "codbex-employees - Extension Point for the Application Main Menu"
 }

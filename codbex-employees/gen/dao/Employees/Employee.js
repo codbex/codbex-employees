@@ -107,5 +107,5 @@ exports.customDataCount = function() {
 };
 
 function triggerEvent(operation, data) {
-	producer.queue("codbex-employees-app/Employees/Employee/" + operation).send(JSON.stringify(data));
+	producer.queue("codbex-employees/Employees/Employee/" + operation).send(JSON.stringify(data));
 }
