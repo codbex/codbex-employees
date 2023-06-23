@@ -1,8 +1,8 @@
 {
   "tablePrefix": "CODBEX",
   "brand": "codbex",
-  "brandUrl": "https://www.codbex.com/",
-  "title": "Employees Management Module",
+  "brandUrl": "https://codbex.com",
+  "title": "Employees Management Application",
   "description": "Managing employees and organisations data",
   "projectName": "codbex-employees",
   "workspaceName": "workspace",
