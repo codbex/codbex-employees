@@ -60,6 +60,14 @@
                         "scale": "NaN",
                         "nullable": true,
                         "name": "EMPLOYEE_ORGANISATIONID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 200,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "EMPLOYEE_NAME"
                     }
                 ]
             },

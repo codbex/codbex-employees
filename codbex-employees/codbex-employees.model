@@ -136,6 +136,23 @@
                         "relationshipName": "Employee_Organisation",
                         "relationshipEntityName": "Organisation",
                         "relationshipEntityPerspectiveName": "Organisations"
+                    },
+                    {
+                        "calculatedPropertyExpression": "entity['FirstName'] + ' ' + entity['LastName']",
+                        "dataAutoIncrement": "false",
+                        "dataLength": "200",
+                        "dataName": "EMPLOYEE_NAME",
+                        "dataNullable": "true",
+                        "dataPrecision": "NaN",
+                        "dataPrimaryKey": "false",
+                        "dataScale": "NaN",
+                        "dataType": "VARCHAR",
+                        "dataUnique": "false",
+                        "isCalculatedProperty": "true",
+                        "name": "Name",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetType": "TEXTBOX"
                     }
                 ],
                 "caption": "Manage entity Employee",

@@ -7,6 +7,7 @@
   "projectName": "codbex-employees",
   "workspaceName": "workspace",
   "filePath": "codbex-employees.model",
+  "templateId": "template-application-angular/template/template.js",
   "perspectives": {
     "Employees": {
       "views": [
@@ -187,6 +188,28 @@
           "relationshipEntityName": "Organisation",
           "relationshipEntityPerspectiveName": "Organisations",
           "dataNotNull": false,
+          "inputRule": ""
+        },
+        {
+          "calculatedPropertyExpression": "entity['FirstName'] + ' ' + entity['LastName']",
+          "dataAutoIncrement": false,
+          "dataLength": "200",
+          "dataName": "EMPLOYEE_NAME",
+          "dataNullable": true,
+          "dataPrecision": "NaN",
+          "dataPrimaryKey": false,
+          "dataScale": "NaN",
+          "dataType": "VARCHAR",
+          "dataUnique": false,
+          "isCalculatedProperty": true,
+          "name": "Name",
+          "widgetIsMajor": true,
+          "widgetLength": "20",
+          "widgetType": "TEXTBOX",
+          "dataNotNull": false,
+          "widgetLabel": "Name",
+          "minLength": 0,
+          "maxLength": 20,
           "inputRule": ""
         }
       ],
