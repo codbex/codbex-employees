@@ -3,9 +3,38 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		messageHubProvider.eventIdPrefix = 'codbex-employees.Employees.Employee';
 	}])
 	.config(["entityApiProvider", function (entityApiProvider) {
-		entityApiProvider.baseUrl = "/services/js/codbex-employees/gen/api/Employees/Employee.js";
+		entityApiProvider.baseUrl = "/services/ts/codbex-employees/gen/api/Employees/EmployeeService.ts";
 	}])
 	.controller('PageController', ['$scope', '$http', 'messageHub', 'entityApi', function ($scope, $http, messageHub, entityApi) {
+
+		//-----------------Custom Actions-------------------//
+		$http.get("/services/js/resources-core/services/custom-actions.js?extensionPoint=codbex-employees-custom-action").then(function (response) {
+			$scope.pageActions = response.data.filter(e => e.perspective === "Employees" && e.view === "Employee" && (e.type === "page" || e.type === undefined));
+			$scope.entityActions = response.data.filter(e => e.perspective === "Employees" && e.view === "Employee" && e.type === "entity");
+		});
+
+		$scope.triggerPageAction = function (actionId) {
+			for (const next of $scope.pageActions) {
+				if (next.id === actionId) {
+					messageHub.showDialogWindow("codbex-employees-custom-action", {
+						src: next.link,
+					});
+					break;
+				}
+			}
+		};
+
+		$scope.triggerEntityAction = function (actionId, selectedEntity) {
+			for (const next of $scope.entityActions) {
+				if (next.id === actionId) {
+					messageHub.showDialogWindow("codbex-employees-custom-action", {
+						src: `${next.link}?id=${selectedEntity.Id}`,
+					});
+					break;
+				}
+			}
+		};
+		//-----------------Custom Actions-------------------//
 
 		function resetPagination() {
 			$scope.dataPage = 1;
@@ -54,7 +83,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.showDialogWindow("Employee-details", {
 				action: "select",
 				entity: entity,
-				optionsOrganisationId: $scope.optionsOrganisationId,
+				optionsOrganisation: $scope.optionsOrganisation,
 			});
 		};
 
@@ -63,7 +92,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.showDialogWindow("Employee-details", {
 				action: "create",
 				entity: {},
-				optionsOrganisationId: $scope.optionsOrganisationId,
+				optionsOrganisation: $scope.optionsOrganisation,
 			}, null, false);
 		};
 
@@ -71,7 +100,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.showDialogWindow("Employee-details", {
 				action: "update",
 				entity: entity,
-				optionsOrganisationId: $scope.optionsOrganisationId,
+				optionsOrganisation: $scope.optionsOrganisation,
 			}, null, false);
 		};
 
@@ -105,20 +134,20 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		};
 
 		//----------------Dropdowns-----------------//
-		$scope.optionsOrganisationId = [];
+		$scope.optionsOrganisation = [];
 
-		$http.get("/services/js/codbex-employees/gen/api/Organisations/Organisation.js").then(function (response) {
-			$scope.optionsOrganisationId = response.data.map(e => {
+		$http.get("/services/ts/codbex-employees/gen/api/Organisations/OrganisationService.ts").then(function (response) {
+			$scope.optionsOrganisation = response.data.map(e => {
 				return {
 					value: e.Id,
 					text: e.Name
 				}
 			});
 		});
-		$scope.optionsOrganisationIdValue = function (optionKey) {
-			for (let i = 0; i < $scope.optionsOrganisationId.length; i++) {
-				if ($scope.optionsOrganisationId[i].value === optionKey) {
-					return $scope.optionsOrganisationId[i].text;
+		$scope.optionsOrganisationValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsOrganisation.length; i++) {
+				if ($scope.optionsOrganisation[i].value === optionKey) {
+					return $scope.optionsOrganisation[i].text;
 				}
 			}
 			return null;

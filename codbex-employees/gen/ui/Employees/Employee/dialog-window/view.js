@@ -6,7 +6,8 @@
 const viewData = {
     id: "Employee-details",
     label: "Employee",
-    link: "/services/web/codbex-employees/gen/ui/Employees/Employee/dialog-window/index.html"
+    link: "/services/web/codbex-employees/gen/ui/Employees/Employee/dialog-window/index.html",
+    perspectiveName: "Employees"
 };
 
 if (typeof exports !== 'undefined') {

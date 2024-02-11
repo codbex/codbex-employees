@@ -4,10 +4,9 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "Organisation-details",
-    label: "Organisation",
-    link: "/services/web/codbex-employees/gen/ui/Organisations/Organisation/dialog-window/index.html",
-    perspectiveName: "Organisations"
+    id: "codbex-employees-custom-action",
+    label: "Custom Action",
+    link: "/services/web/codbex-employees/gen/ui/custom-action-dialog/index.html"
 };
 
 if (typeof exports !== 'undefined') {

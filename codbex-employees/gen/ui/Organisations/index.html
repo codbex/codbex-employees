@@ -35,11 +35,11 @@
                     brand: 'codbex',
                     brandUrl: 'https://codbex.com',
                     icons: {
-                        faviconIco: '/services/web/resources/images/favicon.ico',
-                        favicon32: '/services/web/resources/images/favicon-32x32.png',
-                        favicon16: '/services/web/resources/images/favicon-16x16.png',
+                        faviconIco: '/services/web/ide-branding/images/favicon.ico',
+                        favicon32: '/services/web/ide-branding/images/favicon-32x32.png',
+                        favicon16: '/services/web/ide-branding/images/favicon-16x16.png',
                     },
-                    logo: '/services/web/resources/images/dirigible.svg',
+                    logo: '/services/web/ide-branding/images/logo.svg',
                 })
                 .constant('extensionPoint', {
                     perspectives: "codbex-employees",
@@ -47,9 +47,12 @@
                     dialogWindows: "codbex-employees-dialog-window"
                 })
                 .controller('ApplicationController', ["$scope", "messageHub", function ($scope, messageHub) {
+                    const httpRequest = new XMLHttpRequest();
+                    httpRequest.open("GET", "/services/js/resources-core/services/views.js?extensionPoint=codbex-employees-view", false);
+                    httpRequest.send();
 
                     $scope.layoutModel = {
-                        views: ['Organisation']
+                        views: JSON.parse(httpRequest.responseText).filter(e => !e.isLaunchpad && e.perspectiveName === "Organisations").map(e => e.id)
                     };
 
                 }]);

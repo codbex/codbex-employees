@@ -9,6 +9,7 @@ const viewData = {
     factory: "frame",
     region: "center",
     link: "/services/web/codbex-employees/gen/ui/Employees/Employee/index.html",
+    perspectiveName: "Employees"
 };
 
 if (typeof exports !== 'undefined') {

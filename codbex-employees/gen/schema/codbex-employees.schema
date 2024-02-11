@@ -59,7 +59,7 @@
                         "precision": "NaN",
                         "scale": "NaN",
                         "nullable": true,
-                        "name": "EMPLOYEE_ORGANISATIONID"
+                        "name": "EMPLOYEE_ORGANISATION"
                     },
                     {
                         "type": "VARCHAR",
@@ -98,10 +98,11 @@
                 "type": "foreignKey",
                 "table": "CODBEX_EMPLOYEE",
                 "constraintName": "Employee_Organisation",
-                "columns": "EMPLOYEE_ORGANISATIONID",
+                "columns": "EMPLOYEE_ORGANISATION",
                 "referencedTable": "CODBEX_ORGANISATION",
                 "referencedColumns": "ORGANISATION_ID"
             }
         ]
-    }
+    },
+    "datasource": "DefaultDB"
 }
