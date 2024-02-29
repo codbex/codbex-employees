@@ -185,7 +185,7 @@ export class EmployeeRepository {
 
     public create(entity: EmployeeCreateEntity): number {
         // @ts-ignore
-        (entity as EmployeeEntity).Name = entity['FirstName'] + ' ' + entity['LastName'];
+        (entity as EmployeeEntity).Name = entity["FirstName"] + " " + entity["LastName"];
         const id = this.dao.insert(entity);
         this.triggerEvent({
             operation: "create",
@@ -202,7 +202,7 @@ export class EmployeeRepository {
 
     public update(entity: EmployeeUpdateEntity): void {
         // @ts-ignore
-        (entity as EmployeeEntity).Name = entity['FirstName'] + ' ' + entity['LastName'];
+        (entity as EmployeeEntity).Name = entity["FirstName"] + " " + entity["LastName"];
         this.dao.update(entity);
         this.triggerEvent({
             operation: "update",
@@ -246,11 +246,11 @@ export class EmployeeRepository {
         });
     }
 
-    public count(): number {
-        return this.dao.count();
+    public count(options?: EmployeeEntityOptions): number {
+        return this.dao.count(options);
     }
 
-    public customDataCount(): number {
+    public customDataCount(options?: EmployeeEntityOptions): number {
         const resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX__EMPLOYEE"');
         if (resultSet !== null && resultSet[0] !== null) {
             if (resultSet[0].COUNT !== undefined && resultSet[0].COUNT !== null) {
@@ -271,6 +271,6 @@ export class EmployeeRepository {
                 console.error(error);
             }            
         });
-        producer.queue("codbex-employees/Employees/Employee").send(JSON.stringify(data));
+        producer.topic("codbex-employees/Employees/Employee").send(JSON.stringify(data));
     }
 }

@@ -15,7 +15,7 @@
                     },
                     {
                         "type": "VARCHAR",
-                        "length": 100,
+                        "length": 50,
                         "precision": "NaN",
                         "scale": "NaN",
                         "nullable": true,
@@ -23,7 +23,7 @@
                     },
                     {
                         "type": "VARCHAR",
-                        "length": 100,
+                        "length": 50,
                         "precision": "NaN",
                         "scale": "NaN",
                         "nullable": true,
@@ -31,7 +31,7 @@
                     },
                     {
                         "type": "VARCHAR",
-                        "length": 100,
+                        "length": 50,
                         "precision": "NaN",
                         "scale": "NaN",
                         "nullable": true,
@@ -39,7 +39,7 @@
                     },
                     {
                         "type": "VARCHAR",
-                        "length": 200,
+                        "length": 100,
                         "precision": "NaN",
                         "scale": "NaN",
                         "nullable": true,
@@ -63,7 +63,7 @@
                     },
                     {
                         "type": "VARCHAR",
-                        "length": 200,
+                        "length": 150,
                         "precision": "NaN",
                         "scale": "NaN",
                         "nullable": true,
@@ -85,11 +85,19 @@
                     },
                     {
                         "type": "VARCHAR",
-                        "length": 200,
+                        "length": 50,
                         "precision": "NaN",
                         "scale": "NaN",
                         "nullable": true,
                         "name": "ORGANISATION_NAME"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 10,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "ORGANISATION_COSTCENTER"
                     }
                 ]
             },

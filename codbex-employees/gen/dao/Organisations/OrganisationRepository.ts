@@ -6,10 +6,12 @@ import { dao as daoApi } from "sdk/db";
 export interface OrganisationEntity {
     readonly Id: number;
     Name?: string;
+    CostCenter?: string;
 }
 
 export interface OrganisationCreateEntity {
     readonly Name?: string;
+    readonly CostCenter?: string;
 }
 
 export interface OrganisationUpdateEntity extends OrganisationCreateEntity {
@@ -21,30 +23,37 @@ export interface OrganisationEntityOptions {
         equals?: {
             Id?: number | number[];
             Name?: string | string[];
+            CostCenter?: string | string[];
         };
         notEquals?: {
             Id?: number | number[];
             Name?: string | string[];
+            CostCenter?: string | string[];
         };
         contains?: {
             Id?: number;
             Name?: string;
+            CostCenter?: string;
         };
         greaterThan?: {
             Id?: number;
             Name?: string;
+            CostCenter?: string;
         };
         greaterThanOrEqual?: {
             Id?: number;
             Name?: string;
+            CostCenter?: string;
         };
         lessThan?: {
             Id?: number;
             Name?: string;
+            CostCenter?: string;
         };
         lessThanOrEqual?: {
             Id?: number;
             Name?: string;
+            CostCenter?: string;
         };
     },
     $select?: (keyof OrganisationEntity)[],
@@ -80,6 +89,11 @@ export class OrganisationRepository {
             {
                 name: "Name",
                 column: "ORGANISATION_NAME",
+                type: "VARCHAR",
+            },
+            {
+                name: "CostCenter",
+                column: "ORGANISATION_COSTCENTER",
                 type: "VARCHAR",
             }
         ]
@@ -159,11 +173,11 @@ export class OrganisationRepository {
         });
     }
 
-    public count(): number {
-        return this.dao.count();
+    public count(options?: OrganisationEntityOptions): number {
+        return this.dao.count(options);
     }
 
-    public customDataCount(): number {
+    public customDataCount(options?: OrganisationEntityOptions): number {
         const resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX__ORGANISATION"');
         if (resultSet !== null && resultSet[0] !== null) {
             if (resultSet[0].COUNT !== undefined && resultSet[0].COUNT !== null) {
@@ -184,6 +198,6 @@ export class OrganisationRepository {
                 console.error(error);
             }            
         });
-        producer.queue("codbex-employees/Organisations/Organisation").send(JSON.stringify(data));
+        producer.topic("codbex-employees/Organisations/Organisation").send(JSON.stringify(data));
     }
 }
