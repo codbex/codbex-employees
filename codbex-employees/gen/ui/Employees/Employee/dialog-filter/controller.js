@@ -64,9 +64,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			if (entity.Organisation) {
 				filter.$filter.equals.Organisation = entity.Organisation;
 			}
-			if (entity.Name) {
-				filter.$filter.contains.Name = entity.Name;
-			}
 			messageHub.postMessage("entitySearch", {
 				entity: entity,
 				filter: filter

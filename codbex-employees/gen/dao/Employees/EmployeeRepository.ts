@@ -5,21 +5,20 @@ import { dao as daoApi } from "sdk/db";
 
 export interface EmployeeEntity {
     readonly Id: number;
-    FirstName?: string;
+    FirstName: string;
     MiddleName?: string;
-    LastName?: string;
-    Email?: string;
-    Phone?: string;
+    LastName: string;
+    Email: string;
+    Phone: string;
     Organisation?: number;
-    Name?: string;
 }
 
 export interface EmployeeCreateEntity {
-    readonly FirstName?: string;
+    readonly FirstName: string;
     readonly MiddleName?: string;
-    readonly LastName?: string;
-    readonly Email?: string;
-    readonly Phone?: string;
+    readonly LastName: string;
+    readonly Email: string;
+    readonly Phone: string;
     readonly Organisation?: number;
 }
 
@@ -37,7 +36,6 @@ export interface EmployeeEntityOptions {
             Email?: string | string[];
             Phone?: string | string[];
             Organisation?: number | number[];
-            Name?: string | string[];
         };
         notEquals?: {
             Id?: number | number[];
@@ -47,7 +45,6 @@ export interface EmployeeEntityOptions {
             Email?: string | string[];
             Phone?: string | string[];
             Organisation?: number | number[];
-            Name?: string | string[];
         };
         contains?: {
             Id?: number;
@@ -57,7 +54,6 @@ export interface EmployeeEntityOptions {
             Email?: string;
             Phone?: string;
             Organisation?: number;
-            Name?: string;
         };
         greaterThan?: {
             Id?: number;
@@ -67,7 +63,6 @@ export interface EmployeeEntityOptions {
             Email?: string;
             Phone?: string;
             Organisation?: number;
-            Name?: string;
         };
         greaterThanOrEqual?: {
             Id?: number;
@@ -77,7 +72,6 @@ export interface EmployeeEntityOptions {
             Email?: string;
             Phone?: string;
             Organisation?: number;
-            Name?: string;
         };
         lessThan?: {
             Id?: number;
@@ -87,7 +81,6 @@ export interface EmployeeEntityOptions {
             Email?: string;
             Phone?: string;
             Organisation?: number;
-            Name?: string;
         };
         lessThanOrEqual?: {
             Id?: number;
@@ -97,7 +90,6 @@ export interface EmployeeEntityOptions {
             Email?: string;
             Phone?: string;
             Organisation?: number;
-            Name?: string;
         };
     },
     $select?: (keyof EmployeeEntity)[],
@@ -134,6 +126,7 @@ export class EmployeeRepository {
                 name: "FirstName",
                 column: "EMPLOYEE_FIRSTNAME",
                 type: "VARCHAR",
+                required: true
             },
             {
                 name: "MiddleName",
@@ -144,26 +137,24 @@ export class EmployeeRepository {
                 name: "LastName",
                 column: "EMPLOYEE_LASTNAME",
                 type: "VARCHAR",
+                required: true
             },
             {
                 name: "Email",
                 column: "EMPLOYEE_EMAIL",
                 type: "VARCHAR",
+                required: true
             },
             {
                 name: "Phone",
                 column: "EMPLOYEE_PHONE",
                 type: "VARCHAR",
+                required: true
             },
             {
                 name: "Organisation",
                 column: "EMPLOYEE_ORGANISATION",
                 type: "INTEGER",
-            },
-            {
-                name: "Name",
-                column: "EMPLOYEE_NAME",
-                type: "VARCHAR",
             }
         ]
     };
@@ -184,8 +175,6 @@ export class EmployeeRepository {
     }
 
     public create(entity: EmployeeCreateEntity): number {
-        // @ts-ignore
-        (entity as EmployeeEntity).Name = entity["FirstName"] + " " + entity["LastName"];
         const id = this.dao.insert(entity);
         this.triggerEvent({
             operation: "create",
@@ -201,8 +190,6 @@ export class EmployeeRepository {
     }
 
     public update(entity: EmployeeUpdateEntity): void {
-        // @ts-ignore
-        (entity as EmployeeEntity).Name = entity["FirstName"] + " " + entity["LastName"];
         this.dao.update(entity);
         this.triggerEvent({
             operation: "update",
@@ -250,7 +237,7 @@ export class EmployeeRepository {
         return this.dao.count(options);
     }
 
-    public customDataCount(options?: EmployeeEntityOptions): number {
+    public customDataCount(): number {
         const resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX__EMPLOYEE"');
         if (resultSet !== null && resultSet[0] !== null) {
             if (resultSet[0].COUNT !== undefined && resultSet[0].COUNT !== null) {
@@ -263,7 +250,7 @@ export class EmployeeRepository {
     }
 
     private async triggerEvent(data: EmployeeEntityEvent) {
-        const triggerExtensions = await extensions.loadExtensionModules("codbex-employees/Employees/Employee", ["trigger"]);
+        const triggerExtensions = await extensions.loadExtensionModules("codbex-employees-Employees-Employee", ["trigger"]);
         triggerExtensions.forEach(triggerExtension => {
             try {
                 triggerExtension.trigger(data);

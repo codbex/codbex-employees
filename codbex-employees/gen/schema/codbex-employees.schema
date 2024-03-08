@@ -18,7 +18,6 @@
                         "length": 50,
                         "precision": "NaN",
                         "scale": "NaN",
-                        "nullable": true,
                         "name": "EMPLOYEE_FIRSTNAME"
                     },
                     {
@@ -34,7 +33,6 @@
                         "length": 50,
                         "precision": "NaN",
                         "scale": "NaN",
-                        "nullable": true,
                         "name": "EMPLOYEE_LASTNAME"
                     },
                     {
@@ -42,7 +40,6 @@
                         "length": 100,
                         "precision": "NaN",
                         "scale": "NaN",
-                        "nullable": true,
                         "name": "EMPLOYEE_EMAIL"
                     },
                     {
@@ -50,7 +47,6 @@
                         "length": 20,
                         "precision": "NaN",
                         "scale": "NaN",
-                        "nullable": true,
                         "name": "EMPLOYEE_PHONE"
                     },
                     {
@@ -60,14 +56,6 @@
                         "scale": "NaN",
                         "nullable": true,
                         "name": "EMPLOYEE_ORGANISATION"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 150,
-                        "precision": "NaN",
-                        "scale": "NaN",
-                        "nullable": true,
-                        "name": "EMPLOYEE_NAME"
                     }
                 ]
             },
@@ -88,7 +76,6 @@
                         "length": 50,
                         "precision": "NaN",
                         "scale": "NaN",
-                        "nullable": true,
                         "name": "ORGANISATION_NAME"
                     },
                     {

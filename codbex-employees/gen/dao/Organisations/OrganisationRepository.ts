@@ -5,12 +5,12 @@ import { dao as daoApi } from "sdk/db";
 
 export interface OrganisationEntity {
     readonly Id: number;
-    Name?: string;
+    Name: string;
     CostCenter?: string;
 }
 
 export interface OrganisationCreateEntity {
-    readonly Name?: string;
+    readonly Name: string;
     readonly CostCenter?: string;
 }
 
@@ -90,6 +90,7 @@ export class OrganisationRepository {
                 name: "Name",
                 column: "ORGANISATION_NAME",
                 type: "VARCHAR",
+                required: true
             },
             {
                 name: "CostCenter",
@@ -177,7 +178,7 @@ export class OrganisationRepository {
         return this.dao.count(options);
     }
 
-    public customDataCount(options?: OrganisationEntityOptions): number {
+    public customDataCount(): number {
         const resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX__ORGANISATION"');
         if (resultSet !== null && resultSet[0] !== null) {
             if (resultSet[0].COUNT !== undefined && resultSet[0].COUNT !== null) {
@@ -190,7 +191,7 @@ export class OrganisationRepository {
     }
 
     private async triggerEvent(data: OrganisationEntityEvent) {
-        const triggerExtensions = await extensions.loadExtensionModules("codbex-employees/Organisations/Organisation", ["trigger"]);
+        const triggerExtensions = await extensions.loadExtensionModules("codbex-employees-Organisations-Organisation", ["trigger"]);
         triggerExtensions.forEach(triggerExtension => {
             try {
                 triggerExtension.trigger(data);
