@@ -102,7 +102,7 @@ export class OrganisationRepository {
 
     private readonly dao;
 
-    constructor(dataSource?: string) {
+    constructor(dataSource = "DefaultDB") {
         this.dao = daoApi.create(OrganisationRepository.DEFINITION, null, dataSource);
     }
 
@@ -199,6 +199,6 @@ export class OrganisationRepository {
                 console.error(error);
             }            
         });
-        producer.topic("codbex-employees/Organisations/Organisation").send(JSON.stringify(data));
+        producer.topic("codbex-employees-Organisations-Organisation").send(JSON.stringify(data));
     }
 }

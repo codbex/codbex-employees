@@ -4,11 +4,11 @@
  * Do not modify the content as it may be re-generated again.
  */
 const perspectiveData = {
-	id: "Employees",
-	name: "Employees",
-	link: "/services/web/codbex-employees/gen/ui/Employees/index.html",
-	order: "101",
-	icon: "/services/web/resources/unicons/users-alt.svg",
+	id: 'Employees',
+	name: 'Employees',
+	link: '/services/web/codbex-employees/gen/ui/Employees/index.html',
+	order: 101,
+	icon: '/services/web/resources/unicons/users-alt.svg',
 };
 
 if (typeof exports !== 'undefined') {

@@ -1,1 +1,5 @@
-{"module":"codbex-employees/gen/ui/launchpad/menu-help.js","extensionPoint":"codbex-employees-menu","description":"codbex-employees - Application Menu"}
+{
+    "module": "codbex-employees/gen/ui/launchpad/menu-help.js",
+    "extensionPoint": "codbex-employees-menu",
+    "description": "codbex-employees - Application Menu"
+}

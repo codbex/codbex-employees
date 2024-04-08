@@ -8,6 +8,7 @@
   "workspaceName": "workspace",
   "filePath": "codbex-employees.model",
   "templateId": "template-application-angular/template/template.js",
+  "dataSource": "DefaultDB",
   "perspectives": {
     "Employees": {
       "views": [
@@ -254,6 +255,7 @@
       "title": "Employee",
       "tooltip": "Employee",
       "type": "PRIMARY",
+      "dataSource": "DefaultDB",
       "referencedProjections": [],
       "primaryKeys": [
         "Id"
@@ -363,6 +365,7 @@
       "title": "Organisation",
       "tooltip": "Organisation",
       "type": "PRIMARY",
+      "dataSource": "DefaultDB",
       "referencedProjections": [],
       "primaryKeys": [
         "Id"

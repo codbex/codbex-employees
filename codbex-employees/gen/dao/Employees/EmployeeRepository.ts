@@ -161,7 +161,7 @@ export class EmployeeRepository {
 
     private readonly dao;
 
-    constructor(dataSource?: string) {
+    constructor(dataSource = "DefaultDB") {
         this.dao = daoApi.create(EmployeeRepository.DEFINITION, null, dataSource);
     }
 
@@ -258,6 +258,6 @@ export class EmployeeRepository {
                 console.error(error);
             }            
         });
-        producer.topic("codbex-employees/Employees/Employee").send(JSON.stringify(data));
+        producer.topic("codbex-employees-Employees-Employee").send(JSON.stringify(data));
     }
 }
