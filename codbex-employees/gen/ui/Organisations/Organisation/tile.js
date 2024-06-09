@@ -5,11 +5,13 @@
  */
 exports.getTile = function () {
     return {
-        group: "Organisations",
+        group: "codbex-employees",
         name: "Organisation",
         caption: "Manage entity Organisation",
         tooltip: "Organisation",
-        // icon: "file-o",
+        type: "PRIMARY",
+        report: "false",
+        icon: "/services/web/resources/unicons/file.svg",
         location: "/services/web/codbex-employees/gen/ui/Organisations/index.html",
         order: "100",
         groupOrder: "100",

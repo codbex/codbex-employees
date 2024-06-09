@@ -74,6 +74,10 @@ interface OrganisationEntityEvent {
     }
 }
 
+interface OrganisationUpdateEntityEvent extends OrganisationEntityEvent {
+    readonly previousEntity: OrganisationEntity;
+}
+
 export class OrganisationRepository {
 
     private static readonly DEFINITION = {
@@ -131,11 +135,13 @@ export class OrganisationRepository {
     }
 
     public update(entity: OrganisationUpdateEntity): void {
+        const previousEntity = this.findById(entity.Id);
         this.dao.update(entity);
         this.triggerEvent({
             operation: "update",
             table: "CODBEX_ORGANISATION",
             entity: entity,
+            previousEntity: previousEntity,
             key: {
                 name: "Id",
                 column: "ORGANISATION_ID",
@@ -190,7 +196,7 @@ export class OrganisationRepository {
         return 0;
     }
 
-    private async triggerEvent(data: OrganisationEntityEvent) {
+    private async triggerEvent(data: OrganisationEntityEvent | OrganisationUpdateEntityEvent) {
         const triggerExtensions = await extensions.loadExtensionModules("codbex-employees-Organisations-Organisation", ["trigger"]);
         triggerExtensions.forEach(triggerExtension => {
             try {

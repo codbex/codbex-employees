@@ -110,6 +110,10 @@ interface EmployeeEntityEvent {
     }
 }
 
+interface EmployeeUpdateEntityEvent extends EmployeeEntityEvent {
+    readonly previousEntity: EmployeeEntity;
+}
+
 export class EmployeeRepository {
 
     private static readonly DEFINITION = {
@@ -190,11 +194,13 @@ export class EmployeeRepository {
     }
 
     public update(entity: EmployeeUpdateEntity): void {
+        const previousEntity = this.findById(entity.Id);
         this.dao.update(entity);
         this.triggerEvent({
             operation: "update",
             table: "CODBEX_EMPLOYEE",
             entity: entity,
+            previousEntity: previousEntity,
             key: {
                 name: "Id",
                 column: "EMPLOYEE_ID",
@@ -249,7 +255,7 @@ export class EmployeeRepository {
         return 0;
     }
 
-    private async triggerEvent(data: EmployeeEntityEvent) {
+    private async triggerEvent(data: EmployeeEntityEvent | EmployeeUpdateEntityEvent) {
         const triggerExtensions = await extensions.loadExtensionModules("codbex-employees-Employees-Employee", ["trigger"]);
         triggerExtensions.forEach(triggerExtension => {
             try {

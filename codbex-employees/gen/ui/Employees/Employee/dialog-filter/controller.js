@@ -37,7 +37,7 @@ angular.module('page', ["ideUI", "ideView"])
 					}
 				},
 			};
-			if (entity.Id) {
+			if (entity.Id !== undefined) {
 				filter.$filter.equals.Id = entity.Id;
 			}
 			if (entity.FirstName) {
@@ -55,7 +55,7 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.Phone) {
 				filter.$filter.contains.Phone = entity.Phone;
 			}
-			if (entity.Organisation) {
+			if (entity.Organisation !== undefined) {
 				filter.$filter.equals.Organisation = entity.Organisation;
 			}
 			messageHub.postMessage("entitySearch", {
