@@ -2,7 +2,7 @@
     "name": "@codbex/codbex-employees",
     "version": "0.1.0",
     "repository": {
-        "url": "https://github.com/codbex/codbex-cities.git",
+        "url": "https://github.com/codbex/codbex-employees.git",
         "type": "git"
     },
     "publishConfig": {
