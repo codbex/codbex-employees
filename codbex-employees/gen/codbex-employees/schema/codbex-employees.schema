@@ -1,0 +1,84 @@
+{
+    "schema": {
+        "structures": [
+            {
+                "name": "CODBEX_EMPLOYEE",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "EMPLOYEE_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 50,
+                        "name": "EMPLOYEE_FIRSTNAME"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 50,
+                        "nullable": true,
+                        "name": "EMPLOYEE_MIDDLENAME"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 50,
+                        "name": "EMPLOYEE_LASTNAME"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 100,
+                        "name": "EMPLOYEE_EMAIL"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "name": "EMPLOYEE_PHONE"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "EMPLOYEE_ORGANISATION"
+                    }
+                ]
+            },
+            {
+                "name": "CODBEX_ORGANISATION",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "ORGANISATION_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 50,
+                        "name": "ORGANISATION_NAME"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 10,
+                        "nullable": true,
+                        "name": "ORGANISATION_COSTCENTER"
+                    }
+                ]
+            },
+            {
+                "name": "Employee_Organisation",
+                "type": "foreignKey",
+                "table": "CODBEX_EMPLOYEE",
+                "constraintName": "Employee_Organisation",
+                "columns": "EMPLOYEE_ORGANISATION",
+                "referencedTable": "CODBEX_ORGANISATION",
+                "referencedColumns": "ORGANISATION_ID"
+            }
+        ]
+    },
+    "datasource": "DefaultDB"
+}
