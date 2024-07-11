@@ -6,11 +6,11 @@
   "description": "Managing employees and organisations data",
   "dataSource": "DefaultDB",
   "fileName": "codbex-employees",
+  "genFolderName": "codbex-employees",
   "projectName": "codbex-employees",
   "workspaceName": "workspace",
   "filePath": "codbex-employees.model",
   "templateId": "template-application-angular/template/template.js",
-  "genFolderName": "codbex-employees",
   "perspectives": {
     "Employees": {
       "views": [
