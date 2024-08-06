@@ -15,6 +15,8 @@ Employees Management Application
 
 ![management](images/employees-management.png)
 
+![organisation-management](images/employees-management.png)
+
 ### Infrastructure
 
 #### Build
