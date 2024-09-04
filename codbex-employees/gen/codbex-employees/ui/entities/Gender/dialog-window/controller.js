@@ -1,9 +1,9 @@
 angular.module('page', ["ideUI", "ideView", "entityApi"])
 	.config(["messageHubProvider", function (messageHubProvider) {
-		messageHubProvider.eventIdPrefix = 'codbex-employees.Employees.Employee';
+		messageHubProvider.eventIdPrefix = 'codbex-employees.entities.Gender';
 	}])
 	.config(["entityApiProvider", function (entityApiProvider) {
-		entityApiProvider.baseUrl = "/services/ts/codbex-employees/gen/codbex-employees/api/Employees/EmployeeService.ts";
+		entityApiProvider.baseUrl = "/services/ts/codbex-employees/gen/codbex-employees/api/entities/GenderService.ts";
 	}])
 	.controller('PageController', ['$scope', 'messageHub', 'ViewParameters', 'entityApi', function ($scope, messageHub, ViewParameters, entityApi) {
 
@@ -12,25 +12,18 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			details: {},
 		};
 		$scope.formHeaders = {
-			select: "Employee Details",
-			create: "Create Employee",
-			update: "Update Employee"
+			select: "Gender Details",
+			create: "Create Gender",
+			update: "Update Gender"
 		};
 		$scope.action = 'select';
 
 		let params = ViewParameters.get();
 		if (Object.keys(params).length) {
 			$scope.action = params.action;
-			if (params.entity.BirthDate) {
-				params.entity.BirthDate = new Date(params.entity.BirthDate);
-			}
 			$scope.entity = params.entity;
 			$scope.selectedMainEntityKey = params.selectedMainEntityKey;
 			$scope.selectedMainEntityId = params.selectedMainEntityId;
-			$scope.optionsGender = params.optionsGender;
-			$scope.optionsNationality = params.optionsNationality;
-			$scope.optionsMartialStatus = params.optionsMartialStatus;
-			$scope.optionsContract = params.optionsContract;
 		}
 
 		$scope.create = function () {
@@ -38,12 +31,12 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			entity[$scope.selectedMainEntityKey] = $scope.selectedMainEntityId;
 			entityApi.create(entity).then(function (response) {
 				if (response.status != 201) {
-					$scope.errorMessage = `Unable to create Employee: '${response.message}'`;
+					$scope.errorMessage = `Unable to create Gender: '${response.message}'`;
 					return;
 				}
 				messageHub.postMessage("entityCreated", response.data);
 				$scope.cancel();
-				messageHub.showAlertSuccess("Employee", "Employee successfully created");
+				messageHub.showAlertSuccess("Gender", "Gender successfully created");
 			});
 		};
 
@@ -53,19 +46,19 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			entity[$scope.selectedMainEntityKey] = $scope.selectedMainEntityId;
 			entityApi.update(id, entity).then(function (response) {
 				if (response.status != 200) {
-					$scope.errorMessage = `Unable to update Employee: '${response.message}'`;
+					$scope.errorMessage = `Unable to update Gender: '${response.message}'`;
 					return;
 				}
 				messageHub.postMessage("entityUpdated", response.data);
 				$scope.cancel();
-				messageHub.showAlertSuccess("Employee", "Employee successfully updated");
+				messageHub.showAlertSuccess("Gender", "Gender successfully updated");
 			});
 		};
 
 		$scope.cancel = function () {
 			$scope.entity = {};
 			$scope.action = 'select';
-			messageHub.closeDialogWindow("Employee-details");
+			messageHub.closeDialogWindow("Gender-details");
 		};
 
 		$scope.clearErrorMessage = function () {

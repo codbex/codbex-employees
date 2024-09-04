@@ -1,20 +1,20 @@
 import { Controller, Get, Post, Put, Delete, response } from "sdk/http"
 import { Extensions } from "sdk/extensions"
-import { EmployeeRepository, EmployeeEntityOptions } from "../../dao/Employees/EmployeeRepository";
+import { ContactRepository, ContactEntityOptions } from "../../dao/entities/ContactRepository";
 import { ValidationError } from "../utils/ValidationError";
 import { HttpUtils } from "../utils/HttpUtils";
 
-const validationModules = await Extensions.loadExtensionModules("codbex-employees-Employees-Employee", ["validate"]);
+const validationModules = await Extensions.loadExtensionModules("codbex-employees-entities-Contact", ["validate"]);
 
 @Controller
-class EmployeeService {
+class ContactService {
 
-    private readonly repository = new EmployeeRepository();
+    private readonly repository = new ContactRepository();
 
     @Get("/")
     public getAll(_: any, ctx: any) {
         try {
-            const options: EmployeeEntityOptions = {
+            const options: ContactEntityOptions = {
                 $limit: ctx.queryParameters["$limit"] ? parseInt(ctx.queryParameters["$limit"]) : undefined,
                 $offset: ctx.queryParameters["$offset"] ? parseInt(ctx.queryParameters["$offset"]) : undefined
             };
@@ -30,7 +30,7 @@ class EmployeeService {
         try {
             this.validateEntity(entity);
             entity.Id = this.repository.create(entity);
-            response.setHeader("Content-Location", "/services/ts/codbex-employees/gen/codbex-employees/api/Employees/EmployeeService.ts/" + entity.Id);
+            response.setHeader("Content-Location", "/services/ts/codbex-employees/gen/codbex-employees/api/entities/ContactService.ts/" + entity.Id);
             response.setStatus(response.CREATED);
             return entity;
         } catch (error: any) {
@@ -73,7 +73,7 @@ class EmployeeService {
             if (entity) {
                 return entity;
             } else {
-                HttpUtils.sendResponseNotFound("Employee not found");
+                HttpUtils.sendResponseNotFound("Contact not found");
             }
         } catch (error: any) {
             this.handleError(error);
@@ -101,7 +101,7 @@ class EmployeeService {
                 this.repository.deleteById(id);
                 HttpUtils.sendResponseNoContent();
             } else {
-                HttpUtils.sendResponseNotFound("Employee not found");
+                HttpUtils.sendResponseNotFound("Contact not found");
             }
         } catch (error: any) {
             this.handleError(error);
@@ -119,35 +119,35 @@ class EmployeeService {
     }
 
     private validateEntity(entity: any): void {
-        if (entity.FirstName === null || entity.FirstName === undefined) {
-            throw new ValidationError(`The 'FirstName' property is required, provide a valid value`);
+        if (entity.Address === null || entity.Address === undefined) {
+            throw new ValidationError(`The 'Address' property is required, provide a valid value`);
         }
-        if (entity.FirstName?.length > 50) {
-            throw new ValidationError(`The 'FirstName' exceeds the maximum length of [50] characters`);
+        if (entity.Address?.length > 20) {
+            throw new ValidationError(`The 'Address' exceeds the maximum length of [20] characters`);
         }
-        if (entity.MiddleName?.length > 50) {
-            throw new ValidationError(`The 'MiddleName' exceeds the maximum length of [50] characters`);
+        if (entity.Country === null || entity.Country === undefined) {
+            throw new ValidationError(`The 'Country' property is required, provide a valid value`);
         }
-        if (entity.LastName === null || entity.LastName === undefined) {
-            throw new ValidationError(`The 'LastName' property is required, provide a valid value`);
+        if (entity.City === null || entity.City === undefined) {
+            throw new ValidationError(`The 'City' property is required, provide a valid value`);
         }
-        if (entity.LastName?.length > 50) {
-            throw new ValidationError(`The 'LastName' exceeds the maximum length of [50] characters`);
+        if (entity.PostalCode === null || entity.PostalCode === undefined) {
+            throw new ValidationError(`The 'PostalCode' property is required, provide a valid value`);
         }
-        if (entity.BirthDate === null || entity.BirthDate === undefined) {
-            throw new ValidationError(`The 'BirthDate' property is required, provide a valid value`);
+        if (entity.PostalCode?.length > 20) {
+            throw new ValidationError(`The 'PostalCode' exceeds the maximum length of [20] characters`);
         }
-        if (entity.Gender === null || entity.Gender === undefined) {
-            throw new ValidationError(`The 'Gender' property is required, provide a valid value`);
+        if (entity.Email === null || entity.Email === undefined) {
+            throw new ValidationError(`The 'Email' property is required, provide a valid value`);
         }
-        if (entity.Nationality === null || entity.Nationality === undefined) {
-            throw new ValidationError(`The 'Nationality' property is required, provide a valid value`);
+        if (entity.Email?.length > 40) {
+            throw new ValidationError(`The 'Email' exceeds the maximum length of [40] characters`);
         }
-        if (entity.MartialStatus === null || entity.MartialStatus === undefined) {
-            throw new ValidationError(`The 'MartialStatus' property is required, provide a valid value`);
+        if (entity.PhoneNumber === null || entity.PhoneNumber === undefined) {
+            throw new ValidationError(`The 'PhoneNumber' property is required, provide a valid value`);
         }
-        if (entity.Contract === null || entity.Contract === undefined) {
-            throw new ValidationError(`The 'Contract' property is required, provide a valid value`);
+        if (entity.PhoneNumber?.length > 15) {
+            throw new ValidationError(`The 'PhoneNumber' exceeds the maximum length of [15] characters`);
         }
         for (const next of validationModules) {
             next.validate(entity);

@@ -1,9 +1,9 @@
 angular.module('page', ["ideUI", "ideView", "entityApi"])
 	.config(["messageHubProvider", function (messageHubProvider) {
-		messageHubProvider.eventIdPrefix = 'codbex-employees.Employees.Employee';
+		messageHubProvider.eventIdPrefix = 'codbex-employees.entities.Contact';
 	}])
 	.config(["entityApiProvider", function (entityApiProvider) {
-		entityApiProvider.baseUrl = "/services/ts/codbex-employees/gen/codbex-employees/api/Employees/EmployeeService.ts";
+		entityApiProvider.baseUrl = "/services/ts/codbex-employees/gen/codbex-employees/api/entities/ContactService.ts";
 	}])
 	.controller('PageController', ['$scope', '$http', 'messageHub', 'entityApi', 'Extensions', function ($scope, $http, messageHub, entityApi, Extensions) {
 
@@ -13,8 +13,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 
 		//-----------------Custom Actions-------------------//
 		Extensions.get('dialogWindow', 'codbex-employees-custom-action').then(function (response) {
-			$scope.pageActions = response.filter(e => e.perspective === "Employees" && e.view === "Employee" && (e.type === "page" || e.type === undefined));
-			$scope.entityActions = response.filter(e => e.perspective === "Employees" && e.view === "Employee" && e.type === "entity");
+			$scope.pageActions = response.filter(e => e.perspective === "entities" && e.view === "Contact" && (e.type === "page" || e.type === undefined));
+			$scope.entityActions = response.filter(e => e.perspective === "entities" && e.view === "Contact" && e.type === "entity");
 		});
 
 		$scope.triggerPageAction = function (action) {
@@ -71,7 +71,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			$scope.dataPage = pageNumber;
 			entityApi.count(filter).then(function (response) {
 				if (response.status != 200) {
-					messageHub.showAlertError("Employee", `Unable to count Employee: '${response.message}'`);
+					messageHub.showAlertError("Contact", `Unable to count Contact: '${response.message}'`);
 					return;
 				}
 				if (response.data) {
@@ -89,16 +89,9 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				}
 				request.then(function (response) {
 					if (response.status != 200) {
-						messageHub.showAlertError("Employee", `Unable to list/filter Employee: '${response.message}'`);
+						messageHub.showAlertError("Contact", `Unable to list/filter Contact: '${response.message}'`);
 						return;
 					}
-
-					response.data.forEach(e => {
-						if (e.BirthDate) {
-							e.BirthDate = new Date(e.BirthDate);
-						}
-					});
-
 					$scope.data = response.data;
 				});
 			});
@@ -111,54 +104,46 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 
 		$scope.openDetails = function (entity) {
 			$scope.selectedEntity = entity;
-			messageHub.showDialogWindow("Employee-details", {
+			messageHub.showDialogWindow("Contact-details", {
 				action: "select",
 				entity: entity,
-				optionsGender: $scope.optionsGender,
-				optionsNationality: $scope.optionsNationality,
-				optionsMartialStatus: $scope.optionsMartialStatus,
-				optionsContract: $scope.optionsContract,
+				optionsCountry: $scope.optionsCountry,
+				optionsCity: $scope.optionsCity,
 			});
 		};
 
 		$scope.openFilter = function (entity) {
-			messageHub.showDialogWindow("Employee-filter", {
+			messageHub.showDialogWindow("Contact-filter", {
 				entity: $scope.filterEntity,
-				optionsGender: $scope.optionsGender,
-				optionsNationality: $scope.optionsNationality,
-				optionsMartialStatus: $scope.optionsMartialStatus,
-				optionsContract: $scope.optionsContract,
+				optionsCountry: $scope.optionsCountry,
+				optionsCity: $scope.optionsCity,
 			});
 		};
 
 		$scope.createEntity = function () {
 			$scope.selectedEntity = null;
-			messageHub.showDialogWindow("Employee-details", {
+			messageHub.showDialogWindow("Contact-details", {
 				action: "create",
 				entity: {},
-				optionsGender: $scope.optionsGender,
-				optionsNationality: $scope.optionsNationality,
-				optionsMartialStatus: $scope.optionsMartialStatus,
-				optionsContract: $scope.optionsContract,
+				optionsCountry: $scope.optionsCountry,
+				optionsCity: $scope.optionsCity,
 			}, null, false);
 		};
 
 		$scope.updateEntity = function (entity) {
-			messageHub.showDialogWindow("Employee-details", {
+			messageHub.showDialogWindow("Contact-details", {
 				action: "update",
 				entity: entity,
-				optionsGender: $scope.optionsGender,
-				optionsNationality: $scope.optionsNationality,
-				optionsMartialStatus: $scope.optionsMartialStatus,
-				optionsContract: $scope.optionsContract,
+				optionsCountry: $scope.optionsCountry,
+				optionsCity: $scope.optionsCity,
 			}, null, false);
 		};
 
 		$scope.deleteEntity = function (entity) {
 			let id = entity.Id;
 			messageHub.showDialogAsync(
-				'Delete Employee?',
-				`Are you sure you want to delete Employee? This action cannot be undone.`,
+				'Delete Contact?',
+				`Are you sure you want to delete Contact? This action cannot be undone.`,
 				[{
 					id: "delete-btn-yes",
 					type: "emphasized",
@@ -173,7 +158,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				if (msg.data === "delete-btn-yes") {
 					entityApi.delete(id).then(function (response) {
 						if (response.status != 204) {
-							messageHub.showAlertError("Employee", `Unable to delete Employee: '${response.message}'`);
+							messageHub.showAlertError("Contact", `Unable to delete Contact: '${response.message}'`);
 							return;
 						}
 						$scope.loadPage($scope.dataPage, $scope.filter);
@@ -184,23 +169,12 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		};
 
 		//----------------Dropdowns-----------------//
-		$scope.optionsGender = [];
-		$scope.optionsNationality = [];
-		$scope.optionsMartialStatus = [];
-		$scope.optionsContract = [];
+		$scope.optionsCountry = [];
+		$scope.optionsCity = [];
 
-
-		$http.get("/services/ts/codbex-employees/gen/codbex-employees/api/entities/GenderService.ts").then(function (response) {
-			$scope.optionsGender = response.data.map(e => {
-				return {
-					value: e.Id,
-					text: e.Name
-				}
-			});
-		});
 
 		$http.get("/services/ts/codbex-countries/gen/codbex-countries/api/Countries/CountryService.ts").then(function (response) {
-			$scope.optionsNationality = response.data.map(e => {
+			$scope.optionsCountry = response.data.map(e => {
 				return {
 					value: e.Id,
 					text: e.Name
@@ -208,8 +182,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		});
 
-		$http.get("/services/ts/codbex-employees/gen/codbex-employees/api/entities/MartialStatusService.ts").then(function (response) {
-			$scope.optionsMartialStatus = response.data.map(e => {
+		$http.get("/services/ts/codbex-cities/gen/codbex-cities/api/Cities/CityService.ts").then(function (response) {
+			$scope.optionsCity = response.data.map(e => {
 				return {
 					value: e.Id,
 					text: e.Name
@@ -217,43 +191,18 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		});
 
-		$http.get("/services/ts/codbex-contracts/gen/codbex-contracts/api/Contract/ContractService.ts").then(function (response) {
-			$scope.optionsContract = response.data.map(e => {
-				return {
-					value: e.Id,
-					text: e.Number
-				}
-			});
-		});
-
-		$scope.optionsGenderValue = function (optionKey) {
-			for (let i = 0; i < $scope.optionsGender.length; i++) {
-				if ($scope.optionsGender[i].value === optionKey) {
-					return $scope.optionsGender[i].text;
+		$scope.optionsCountryValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsCountry.length; i++) {
+				if ($scope.optionsCountry[i].value === optionKey) {
+					return $scope.optionsCountry[i].text;
 				}
 			}
 			return null;
 		};
-		$scope.optionsNationalityValue = function (optionKey) {
-			for (let i = 0; i < $scope.optionsNationality.length; i++) {
-				if ($scope.optionsNationality[i].value === optionKey) {
-					return $scope.optionsNationality[i].text;
-				}
-			}
-			return null;
-		};
-		$scope.optionsMartialStatusValue = function (optionKey) {
-			for (let i = 0; i < $scope.optionsMartialStatus.length; i++) {
-				if ($scope.optionsMartialStatus[i].value === optionKey) {
-					return $scope.optionsMartialStatus[i].text;
-				}
-			}
-			return null;
-		};
-		$scope.optionsContractValue = function (optionKey) {
-			for (let i = 0; i < $scope.optionsContract.length; i++) {
-				if ($scope.optionsContract[i].value === optionKey) {
-					return $scope.optionsContract[i].text;
+		$scope.optionsCityValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsCity.length; i++) {
+				if ($scope.optionsCity[i].value === optionKey) {
+					return $scope.optionsCity[i].text;
 				}
 			}
 			return null;

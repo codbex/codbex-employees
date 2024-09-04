@@ -28,14 +28,7 @@
 			<table fd-table display-mode="compact" inner-borders="top" outer-borders="none">
 				<thead fd-table-header sticky="true">
 					<tr fd-table-row>
-						<th fd-table-header-cell>First Name</th>
-						<th fd-table-header-cell>Middle Name</th>
-						<th fd-table-header-cell>Last Name</th>
-						<th fd-table-header-cell>BirthDate</th>
-						<th fd-table-header-cell>Gender</th>
-						<th fd-table-header-cell>Nationality</th>
-						<th fd-table-header-cell>MartialStatus</th>
-						<th fd-table-header-cell>Contract</th>
+						<th fd-table-header-cell>Name</th>
 						<th fd-table-header-cell></th>
 					</tr>
 				</thead>
@@ -45,24 +38,7 @@
 					</tr>
 					<tr fd-table-row hoverable="true" ng-repeat="next in data"
 						dg-selected="next.Id === selectedEntity.Id" ng-click="selectEntity(next)">
-						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.FirstName}}</td>
-						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.MiddleName}}</td>
-						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.LastName}}</td>
-						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">
-							<fd-input type="date" ng-model="next.BirthDate" ng-readonly="true"></fd-input>
-						</td>
-						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">
-							{{optionsGenderValue(next.Gender)}}
-						</td>
-						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">
-							{{optionsNationalityValue(next.Nationality)}}
-						</td>
-						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">
-							{{optionsMartialStatusValue(next.MartialStatus)}}
-						</td>
-						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">
-							{{optionsContractValue(next.Contract)}}
-						</td>
+						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.Name}}</td>
 						<td fd-table-cell fit-content="true">
 							<fd-popover>
 								<fd-popover-control>

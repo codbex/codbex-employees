@@ -28,14 +28,13 @@
 			<table fd-table display-mode="compact" inner-borders="top" outer-borders="none">
 				<thead fd-table-header sticky="true">
 					<tr fd-table-row>
-						<th fd-table-header-cell>First Name</th>
-						<th fd-table-header-cell>Middle Name</th>
-						<th fd-table-header-cell>Last Name</th>
-						<th fd-table-header-cell>BirthDate</th>
-						<th fd-table-header-cell>Gender</th>
-						<th fd-table-header-cell>Nationality</th>
-						<th fd-table-header-cell>MartialStatus</th>
-						<th fd-table-header-cell>Contract</th>
+						<th fd-table-header-cell>Employee</th>
+						<th fd-table-header-cell>Address</th>
+						<th fd-table-header-cell>Country</th>
+						<th fd-table-header-cell>City</th>
+						<th fd-table-header-cell>PostalCode</th>
+						<th fd-table-header-cell>Email</th>
+						<th fd-table-header-cell>PhoneNumber</th>
 						<th fd-table-header-cell></th>
 					</tr>
 				</thead>
@@ -45,24 +44,19 @@
 					</tr>
 					<tr fd-table-row hoverable="true" ng-repeat="next in data"
 						dg-selected="next.Id === selectedEntity.Id" ng-click="selectEntity(next)">
-						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.FirstName}}</td>
-						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.MiddleName}}</td>
-						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.LastName}}</td>
+						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.Employee}}</td>
+						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.Address}}</td>
 						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">
-							<fd-input type="date" ng-model="next.BirthDate" ng-readonly="true"></fd-input>
+							{{optionsCountryValue(next.Country)}}
 						</td>
 						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">
-							{{optionsGenderValue(next.Gender)}}
+							{{optionsCityValue(next.City)}}
 						</td>
-						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">
-							{{optionsNationalityValue(next.Nationality)}}
+						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.PostalCode}}</td>
+						<td fd-table-cell>
+							<a href="mailto:{{next.Email}}" class="fd-link">{{next.Email}}</a>
 						</td>
-						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">
-							{{optionsMartialStatusValue(next.MartialStatus)}}
-						</td>
-						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">
-							{{optionsContractValue(next.Contract)}}
-						</td>
+						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.PhoneNumber}}</td>
 						<td fd-table-cell fit-content="true">
 							<fd-popover>
 								<fd-popover-control>

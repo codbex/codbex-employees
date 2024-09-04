@@ -1,20 +1,20 @@
 import { Controller, Get, Post, Put, Delete, response } from "sdk/http"
 import { Extensions } from "sdk/extensions"
-import { EmployeeRepository, EmployeeEntityOptions } from "../../dao/Employees/EmployeeRepository";
+import { GenderRepository, GenderEntityOptions } from "../../dao/entities/GenderRepository";
 import { ValidationError } from "../utils/ValidationError";
 import { HttpUtils } from "../utils/HttpUtils";
 
-const validationModules = await Extensions.loadExtensionModules("codbex-employees-Employees-Employee", ["validate"]);
+const validationModules = await Extensions.loadExtensionModules("codbex-employees-entities-Gender", ["validate"]);
 
 @Controller
-class EmployeeService {
+class GenderService {
 
-    private readonly repository = new EmployeeRepository();
+    private readonly repository = new GenderRepository();
 
     @Get("/")
     public getAll(_: any, ctx: any) {
         try {
-            const options: EmployeeEntityOptions = {
+            const options: GenderEntityOptions = {
                 $limit: ctx.queryParameters["$limit"] ? parseInt(ctx.queryParameters["$limit"]) : undefined,
                 $offset: ctx.queryParameters["$offset"] ? parseInt(ctx.queryParameters["$offset"]) : undefined
             };
@@ -30,7 +30,7 @@ class EmployeeService {
         try {
             this.validateEntity(entity);
             entity.Id = this.repository.create(entity);
-            response.setHeader("Content-Location", "/services/ts/codbex-employees/gen/codbex-employees/api/Employees/EmployeeService.ts/" + entity.Id);
+            response.setHeader("Content-Location", "/services/ts/codbex-employees/gen/codbex-employees/api/entities/GenderService.ts/" + entity.Id);
             response.setStatus(response.CREATED);
             return entity;
         } catch (error: any) {
@@ -73,7 +73,7 @@ class EmployeeService {
             if (entity) {
                 return entity;
             } else {
-                HttpUtils.sendResponseNotFound("Employee not found");
+                HttpUtils.sendResponseNotFound("Gender not found");
             }
         } catch (error: any) {
             this.handleError(error);
@@ -101,7 +101,7 @@ class EmployeeService {
                 this.repository.deleteById(id);
                 HttpUtils.sendResponseNoContent();
             } else {
-                HttpUtils.sendResponseNotFound("Employee not found");
+                HttpUtils.sendResponseNotFound("Gender not found");
             }
         } catch (error: any) {
             this.handleError(error);
@@ -119,35 +119,11 @@ class EmployeeService {
     }
 
     private validateEntity(entity: any): void {
-        if (entity.FirstName === null || entity.FirstName === undefined) {
-            throw new ValidationError(`The 'FirstName' property is required, provide a valid value`);
+        if (entity.Name === null || entity.Name === undefined) {
+            throw new ValidationError(`The 'Name' property is required, provide a valid value`);
         }
-        if (entity.FirstName?.length > 50) {
-            throw new ValidationError(`The 'FirstName' exceeds the maximum length of [50] characters`);
-        }
-        if (entity.MiddleName?.length > 50) {
-            throw new ValidationError(`The 'MiddleName' exceeds the maximum length of [50] characters`);
-        }
-        if (entity.LastName === null || entity.LastName === undefined) {
-            throw new ValidationError(`The 'LastName' property is required, provide a valid value`);
-        }
-        if (entity.LastName?.length > 50) {
-            throw new ValidationError(`The 'LastName' exceeds the maximum length of [50] characters`);
-        }
-        if (entity.BirthDate === null || entity.BirthDate === undefined) {
-            throw new ValidationError(`The 'BirthDate' property is required, provide a valid value`);
-        }
-        if (entity.Gender === null || entity.Gender === undefined) {
-            throw new ValidationError(`The 'Gender' property is required, provide a valid value`);
-        }
-        if (entity.Nationality === null || entity.Nationality === undefined) {
-            throw new ValidationError(`The 'Nationality' property is required, provide a valid value`);
-        }
-        if (entity.MartialStatus === null || entity.MartialStatus === undefined) {
-            throw new ValidationError(`The 'MartialStatus' property is required, provide a valid value`);
-        }
-        if (entity.Contract === null || entity.Contract === undefined) {
-            throw new ValidationError(`The 'Contract' property is required, provide a valid value`);
+        if (entity.Name?.length > 7) {
+            throw new ValidationError(`The 'Name' exceeds the maximum length of [7] characters`);
         }
         for (const next of validationModules) {
             next.validate(entity);
