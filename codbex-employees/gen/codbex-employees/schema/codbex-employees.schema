@@ -56,30 +56,6 @@
                 ]
             },
             {
-                "name": "CODBEX_ORGANISATION",
-                "type": "TABLE",
-                "columns": [
-                    {
-                        "type": "INTEGER",
-                        "primaryKey": true,
-                        "identity": true,
-                        "nullable": true,
-                        "name": "ORGANISATION_ID"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 50,
-                        "name": "ORGANISATION_NAME"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 10,
-                        "nullable": true,
-                        "name": "ORGANISATION_COSTCENTER"
-                    }
-                ]
-            },
-            {
                 "name": "CODBEX_GENDER",
                 "type": "TABLE",
                 "columns": [
@@ -170,7 +146,7 @@
                 ]
             },
             {
-                "name": "CODBEX_JOBDETAILS",
+                "name": "CODBEX_EMPLOYEEASSIGNMENT",
                 "type": "TABLE",
                 "columns": [
                     {
@@ -178,33 +154,17 @@
                         "primaryKey": true,
                         "identity": true,
                         "nullable": true,
-                        "name": "JOBDETAILS_ID"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 50,
-                        "nullable": true,
-                        "name": "JOBDETAILS_JOBTITLE"
-                    },
-                    {
-                        "type": "DATE",
-                        "nullable": true,
-                        "name": "JOBDETAILS_HIREDATE"
+                        "name": "EMPLOYEEASSIGNMENT_ID"
                     },
                     {
                         "type": "INTEGER",
                         "nullable": true,
-                        "name": "JOBDETAILS_DEPARTMENT"
+                        "name": "EMPLOYEEASSIGNMENT_EMPLOYEE"
                     },
                     {
                         "type": "INTEGER",
                         "nullable": true,
-                        "name": "JOBDETAILS_JOBSTATUS"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "nullable": true,
-                        "name": "JOBDETAILS_EMPLOYEE"
+                        "name": "EMPLOYEEASSIGNMENT_JOBASSIGNMENT"
                     }
                 ]
             },
@@ -272,13 +232,22 @@
                 "referencedColumns": "CITY_ID"
             },
             {
-                "name": "JobDetails_Employee",
+                "name": "EmployeeAssignment_Employee",
                 "type": "foreignKey",
-                "table": "CODBEX_JOBDETAILS",
-                "constraintName": "JobDetails_Employee",
-                "columns": "JOBDETAILS_EMPLOYEE",
+                "table": "CODBEX_EMPLOYEEASSIGNMENT",
+                "constraintName": "EmployeeAssignment_Employee",
+                "columns": "EMPLOYEEASSIGNMENT_EMPLOYEE",
                 "referencedTable": "CODBEX_EMPLOYEE",
                 "referencedColumns": "EMPLOYEE_ID"
+            },
+            {
+                "name": "EmployeeAssignment_JobAssignment",
+                "type": "foreignKey",
+                "table": "CODBEX_EMPLOYEEASSIGNMENT",
+                "constraintName": "EmployeeAssignment_JobAssignment",
+                "columns": "EMPLOYEEASSIGNMENT_JOBASSIGNMENT",
+                "referencedTable": "CODBEX_JOBASSIGNMENT",
+                "referencedColumns": "JOBDETAILS_ID"
             }
         ]
     },

@@ -4,10 +4,10 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "Organisation-filter",
-    label: "Organisation Filter",
-    link: "/services/web/codbex-employees/gen/codbex-employees/ui/Organisations/Organisation/dialog-filter/index.html",
-    perspectiveName: "Organisations",
+    id: "EmployeeAssignment-details",
+    label: "EmployeeAssignment",
+    link: "/services/web/codbex-employees/gen/codbex-employees/ui/Employees/Employee/EmployeeAssignment/dialog-window/index.html",
+    perspectiveName: "Employees",
 };
 
 if (typeof exports !== 'undefined') {

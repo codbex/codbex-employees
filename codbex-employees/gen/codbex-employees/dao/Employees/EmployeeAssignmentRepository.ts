@@ -3,70 +3,70 @@ import { producer } from "sdk/messaging";
 import { extensions } from "sdk/extensions";
 import { dao as daoApi } from "sdk/db";
 
-export interface OrganisationEntity {
+export interface EmployeeAssignmentEntity {
     readonly Id: number;
-    Name: string;
-    CostCenter?: string;
+    Employee?: number;
+    JobAssignment?: number;
 }
 
-export interface OrganisationCreateEntity {
-    readonly Name: string;
-    readonly CostCenter?: string;
+export interface EmployeeAssignmentCreateEntity {
+    readonly Employee?: number;
+    readonly JobAssignment?: number;
 }
 
-export interface OrganisationUpdateEntity extends OrganisationCreateEntity {
+export interface EmployeeAssignmentUpdateEntity extends EmployeeAssignmentCreateEntity {
     readonly Id: number;
 }
 
-export interface OrganisationEntityOptions {
+export interface EmployeeAssignmentEntityOptions {
     $filter?: {
         equals?: {
             Id?: number | number[];
-            Name?: string | string[];
-            CostCenter?: string | string[];
+            Employee?: number | number[];
+            JobAssignment?: number | number[];
         };
         notEquals?: {
             Id?: number | number[];
-            Name?: string | string[];
-            CostCenter?: string | string[];
+            Employee?: number | number[];
+            JobAssignment?: number | number[];
         };
         contains?: {
             Id?: number;
-            Name?: string;
-            CostCenter?: string;
+            Employee?: number;
+            JobAssignment?: number;
         };
         greaterThan?: {
             Id?: number;
-            Name?: string;
-            CostCenter?: string;
+            Employee?: number;
+            JobAssignment?: number;
         };
         greaterThanOrEqual?: {
             Id?: number;
-            Name?: string;
-            CostCenter?: string;
+            Employee?: number;
+            JobAssignment?: number;
         };
         lessThan?: {
             Id?: number;
-            Name?: string;
-            CostCenter?: string;
+            Employee?: number;
+            JobAssignment?: number;
         };
         lessThanOrEqual?: {
             Id?: number;
-            Name?: string;
-            CostCenter?: string;
+            Employee?: number;
+            JobAssignment?: number;
         };
     },
-    $select?: (keyof OrganisationEntity)[],
-    $sort?: string | (keyof OrganisationEntity)[],
+    $select?: (keyof EmployeeAssignmentEntity)[],
+    $sort?: string | (keyof EmployeeAssignmentEntity)[],
     $order?: 'asc' | 'desc',
     $offset?: number,
     $limit?: number,
 }
 
-interface OrganisationEntityEvent {
+interface EmployeeAssignmentEntityEvent {
     readonly operation: 'create' | 'update' | 'delete';
     readonly table: string;
-    readonly entity: Partial<OrganisationEntity>;
+    readonly entity: Partial<EmployeeAssignmentEntity>;
     readonly key: {
         name: string;
         column: string;
@@ -74,32 +74,31 @@ interface OrganisationEntityEvent {
     }
 }
 
-interface OrganisationUpdateEntityEvent extends OrganisationEntityEvent {
-    readonly previousEntity: OrganisationEntity;
+interface EmployeeAssignmentUpdateEntityEvent extends EmployeeAssignmentEntityEvent {
+    readonly previousEntity: EmployeeAssignmentEntity;
 }
 
-export class OrganisationRepository {
+export class EmployeeAssignmentRepository {
 
     private static readonly DEFINITION = {
-        table: "CODBEX_ORGANISATION",
+        table: "CODBEX_EMPLOYEEASSIGNMENT",
         properties: [
             {
                 name: "Id",
-                column: "ORGANISATION_ID",
+                column: "EMPLOYEEASSIGNMENT_ID",
                 type: "INTEGER",
                 id: true,
                 autoIncrement: true,
             },
             {
-                name: "Name",
-                column: "ORGANISATION_NAME",
-                type: "VARCHAR",
-                required: true
+                name: "Employee",
+                column: "EMPLOYEEASSIGNMENT_EMPLOYEE",
+                type: "INTEGER",
             },
             {
-                name: "CostCenter",
-                column: "ORGANISATION_COSTCENTER",
-                type: "VARCHAR",
+                name: "JobAssignment",
+                column: "EMPLOYEEASSIGNMENT_JOBASSIGNMENT",
+                type: "INTEGER",
             }
         ]
     };
@@ -107,58 +106,58 @@ export class OrganisationRepository {
     private readonly dao;
 
     constructor(dataSource = "DefaultDB") {
-        this.dao = daoApi.create(OrganisationRepository.DEFINITION, null, dataSource);
+        this.dao = daoApi.create(EmployeeAssignmentRepository.DEFINITION, null, dataSource);
     }
 
-    public findAll(options?: OrganisationEntityOptions): OrganisationEntity[] {
+    public findAll(options?: EmployeeAssignmentEntityOptions): EmployeeAssignmentEntity[] {
         return this.dao.list(options);
     }
 
-    public findById(id: number): OrganisationEntity | undefined {
+    public findById(id: number): EmployeeAssignmentEntity | undefined {
         const entity = this.dao.find(id);
         return entity ?? undefined;
     }
 
-    public create(entity: OrganisationCreateEntity): number {
+    public create(entity: EmployeeAssignmentCreateEntity): number {
         const id = this.dao.insert(entity);
         this.triggerEvent({
             operation: "create",
-            table: "CODBEX_ORGANISATION",
+            table: "CODBEX_EMPLOYEEASSIGNMENT",
             entity: entity,
             key: {
                 name: "Id",
-                column: "ORGANISATION_ID",
+                column: "EMPLOYEEASSIGNMENT_ID",
                 value: id
             }
         });
         return id;
     }
 
-    public update(entity: OrganisationUpdateEntity): void {
+    public update(entity: EmployeeAssignmentUpdateEntity): void {
         const previousEntity = this.findById(entity.Id);
         this.dao.update(entity);
         this.triggerEvent({
             operation: "update",
-            table: "CODBEX_ORGANISATION",
+            table: "CODBEX_EMPLOYEEASSIGNMENT",
             entity: entity,
             previousEntity: previousEntity,
             key: {
                 name: "Id",
-                column: "ORGANISATION_ID",
+                column: "EMPLOYEEASSIGNMENT_ID",
                 value: entity.Id
             }
         });
     }
 
-    public upsert(entity: OrganisationCreateEntity | OrganisationUpdateEntity): number {
-        const id = (entity as OrganisationUpdateEntity).Id;
+    public upsert(entity: EmployeeAssignmentCreateEntity | EmployeeAssignmentUpdateEntity): number {
+        const id = (entity as EmployeeAssignmentUpdateEntity).Id;
         if (!id) {
             return this.create(entity);
         }
 
         const existingEntity = this.findById(id);
         if (existingEntity) {
-            this.update(entity as OrganisationUpdateEntity);
+            this.update(entity as EmployeeAssignmentUpdateEntity);
             return id;
         } else {
             return this.create(entity);
@@ -170,22 +169,22 @@ export class OrganisationRepository {
         this.dao.remove(id);
         this.triggerEvent({
             operation: "delete",
-            table: "CODBEX_ORGANISATION",
+            table: "CODBEX_EMPLOYEEASSIGNMENT",
             entity: entity,
             key: {
                 name: "Id",
-                column: "ORGANISATION_ID",
+                column: "EMPLOYEEASSIGNMENT_ID",
                 value: id
             }
         });
     }
 
-    public count(options?: OrganisationEntityOptions): number {
+    public count(options?: EmployeeAssignmentEntityOptions): number {
         return this.dao.count(options);
     }
 
     public customDataCount(): number {
-        const resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX__ORGANISATION"');
+        const resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX_EMPLOYEEASSIGNMENT"');
         if (resultSet !== null && resultSet[0] !== null) {
             if (resultSet[0].COUNT !== undefined && resultSet[0].COUNT !== null) {
                 return resultSet[0].COUNT;
@@ -196,8 +195,8 @@ export class OrganisationRepository {
         return 0;
     }
 
-    private async triggerEvent(data: OrganisationEntityEvent | OrganisationUpdateEntityEvent) {
-        const triggerExtensions = await extensions.loadExtensionModules("codbex-employees-Organisations-Organisation", ["trigger"]);
+    private async triggerEvent(data: EmployeeAssignmentEntityEvent | EmployeeAssignmentUpdateEntityEvent) {
+        const triggerExtensions = await extensions.loadExtensionModules("codbex-employees-Employees-EmployeeAssignment", ["trigger"]);
         triggerExtensions.forEach(triggerExtension => {
             try {
                 triggerExtension.trigger(data);
@@ -205,6 +204,6 @@ export class OrganisationRepository {
                 console.error(error);
             }            
         });
-        producer.topic("codbex-employees-Organisations-Organisation").send(JSON.stringify(data));
+        producer.topic("codbex-employees-Employees-EmployeeAssignment").send(JSON.stringify(data));
     }
 }

@@ -1,20 +1,20 @@
 import { Controller, Get, Post, Put, Delete, response } from "sdk/http"
 import { Extensions } from "sdk/extensions"
-import { JobDetailsRepository, JobDetailsEntityOptions } from "../../dao/Employees/JobDetailsRepository";
+import { EmployeeAssignmentRepository, EmployeeAssignmentEntityOptions } from "../../dao/Employees/EmployeeAssignmentRepository";
 import { ValidationError } from "../utils/ValidationError";
 import { HttpUtils } from "../utils/HttpUtils";
 
-const validationModules = await Extensions.loadExtensionModules("codbex-employees-Employees-JobDetails", ["validate"]);
+const validationModules = await Extensions.loadExtensionModules("codbex-employees-Employees-EmployeeAssignment", ["validate"]);
 
 @Controller
-class JobDetailsService {
+class EmployeeAssignmentService {
 
-    private readonly repository = new JobDetailsRepository();
+    private readonly repository = new EmployeeAssignmentRepository();
 
     @Get("/")
     public getAll(_: any, ctx: any) {
         try {
-            const options: JobDetailsEntityOptions = {
+            const options: EmployeeAssignmentEntityOptions = {
                 $limit: ctx.queryParameters["$limit"] ? parseInt(ctx.queryParameters["$limit"]) : undefined,
                 $offset: ctx.queryParameters["$offset"] ? parseInt(ctx.queryParameters["$offset"]) : undefined
             };
@@ -41,7 +41,7 @@ class JobDetailsService {
         try {
             this.validateEntity(entity);
             entity.Id = this.repository.create(entity);
-            response.setHeader("Content-Location", "/services/ts/codbex-employees/gen/codbex-employees/api/Employees/JobDetailsService.ts/" + entity.Id);
+            response.setHeader("Content-Location", "/services/ts/codbex-employees/gen/codbex-employees/api/Employees/EmployeeAssignmentService.ts/" + entity.Id);
             response.setStatus(response.CREATED);
             return entity;
         } catch (error: any) {
@@ -84,7 +84,7 @@ class JobDetailsService {
             if (entity) {
                 return entity;
             } else {
-                HttpUtils.sendResponseNotFound("JobDetails not found");
+                HttpUtils.sendResponseNotFound("EmployeeAssignment not found");
             }
         } catch (error: any) {
             this.handleError(error);
@@ -112,7 +112,7 @@ class JobDetailsService {
                 this.repository.deleteById(id);
                 HttpUtils.sendResponseNoContent();
             } else {
-                HttpUtils.sendResponseNotFound("JobDetails not found");
+                HttpUtils.sendResponseNotFound("EmployeeAssignment not found");
             }
         } catch (error: any) {
             this.handleError(error);
@@ -130,18 +130,6 @@ class JobDetailsService {
     }
 
     private validateEntity(entity: any): void {
-        if (entity.JobTitle === null || entity.JobTitle === undefined) {
-            throw new ValidationError(`The 'JobTitle' property is required, provide a valid value`);
-        }
-        if (entity.JobTitle?.length > 50) {
-            throw new ValidationError(`The 'JobTitle' exceeds the maximum length of [50] characters`);
-        }
-        if (entity.HireDate === null || entity.HireDate === undefined) {
-            throw new ValidationError(`The 'HireDate' property is required, provide a valid value`);
-        }
-        if (entity.Department === null || entity.Department === undefined) {
-            throw new ValidationError(`The 'Department' property is required, provide a valid value`);
-        }
         for (const next of validationModules) {
             next.validate(entity);
         }
