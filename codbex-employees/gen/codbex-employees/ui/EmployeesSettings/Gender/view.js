@@ -4,12 +4,12 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "Employee",
-    label: "Employee",
+    id: "Gender",
+    label: "Gender",
     factory: "frame",
-    region: "left",
-    link: "/services/web/codbex-employees/gen/codbex-employees/ui/Employees/Employee/index.html",
-    perspectiveName: "Employees",
+    region: "center",
+    link: "/services/web/codbex-employees/gen/codbex-employees/ui/EmployeesSettings/Gender/index.html",
+    perspectiveName: "EmployeesSettings",
 };
 
 if (typeof exports !== 'undefined') {

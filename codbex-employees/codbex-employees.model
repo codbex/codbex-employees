@@ -81,7 +81,7 @@
                         "widgetType": "DROPDOWN",
                         "relationshipName": "Employee_Gender",
                         "relationshipEntityName": "Gender",
-                        "relationshipEntityPerspectiveName": "entities",
+                        "relationshipEntityPerspectiveName": "EmployeesSettings",
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
@@ -115,7 +115,7 @@
                         "widgetType": "DROPDOWN",
                         "relationshipName": "Employee_MartialStatus",
                         "relationshipEntityName": "MartialStatus",
-                        "relationshipEntityPerspectiveName": "entities",
+                        "relationshipEntityPerspectiveName": "EmployeesSettings",
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
@@ -142,7 +142,7 @@
                 "dataQuery": "",
                 "generateReport": "false",
                 "icon": "/services/web/resources/unicons/file.svg",
-                "layoutType": "MANAGE",
+                "layoutType": "MANAGE_MASTER",
                 "menuIndex": "100",
                 "menuKey": "employee",
                 "menuLabel": "Employee",
@@ -534,14 +534,14 @@
                 "menuLabel": "Gender",
                 "name": "Gender",
                 "navigationPath": "/Home",
-                "perspectiveIcon": "/services/web/resources/unicons/copy.svg",
-                "perspectiveLabel": "Entities",
-                "perspectiveName": "entities",
-                "perspectiveOrder": "100",
+                "perspectiveIcon": "/services/web/resources/unicons/setting.svg",
+                "perspectiveLabel": "EmployeesSettings",
+                "perspectiveName": "EmployeesSettings",
+                "perspectiveOrder": "102",
                 "perspectiveRole": "",
                 "title": "Gender",
                 "tooltip": "Gender",
-                "type": "PRIMARY"
+                "type": "SETTING"
             },
             {
                 "properties": [
@@ -582,14 +582,14 @@
                 "menuLabel": "MartialStatus",
                 "name": "MartialStatus",
                 "navigationPath": "/Home",
-                "perspectiveIcon": "/services/web/resources/unicons/copy.svg",
-                "perspectiveLabel": "Entities",
-                "perspectiveName": "entities",
-                "perspectiveOrder": "100",
+                "perspectiveIcon": "/services/web/resources/unicons/setting.svg",
+                "perspectiveLabel": "EmployeesSettings",
+                "perspectiveName": "EmployeesSettings",
+                "perspectiveOrder": "102",
                 "perspectiveRole": "",
                 "title": "MartialStatus",
                 "tooltip": "MartialStatus",
-                "type": "PRIMARY"
+                "type": "SETTING"
             },
             {
                 "properties": [
@@ -708,20 +708,20 @@
                 "dataQuery": "",
                 "generateReport": "false",
                 "icon": "/services/web/resources/unicons/file.svg",
-                "layoutType": "MANAGE",
+                "layoutType": "MANAGE_DETAILS",
                 "menuIndex": "100",
                 "menuKey": "contact",
                 "menuLabel": "Contact",
                 "name": "Contact",
                 "navigationPath": "/Home",
-                "perspectiveIcon": "/services/web/resources/unicons/copy.svg",
-                "perspectiveLabel": "Entities",
-                "perspectiveName": "entities",
-                "perspectiveOrder": "100",
+                "perspectiveIcon": "/services/web/resources/unicons/users-alt.svg",
+                "perspectiveLabel": "Employees",
+                "perspectiveName": "Employees",
+                "perspectiveOrder": "101",
                 "perspectiveRole": "",
                 "title": "Contact",
                 "tooltip": "Contact",
-                "type": "PRIMARY"
+                "type": "DEPENDENT"
             }
         ],
         "perspectives": [
@@ -737,6 +737,13 @@
                 "label": "Organisations",
                 "icon": "/services/web/resources/unicons/building.svg",
                 "order": "100",
+                "role": {}
+            },
+            {
+                "name": "EmployeesSettings",
+                "label": "EmployeesSettings",
+                "icon": "/services/web/resources/unicons/setting.svg",
+                "order": "102",
                 "role": {}
             }
         ],

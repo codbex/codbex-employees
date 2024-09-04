@@ -11,9 +11,9 @@ servers:
 tags:
   - name: Employees
   - name: Organisations
-  - name: entities
-  - name: entities
-  - name: entities
+  - name: EmployeesSettings
+  - name: EmployeesSettings
+  - name: Employees
 paths:
   /codbex-employees/gen/codbex-employees/api/Employees/EmployeeService.ts:
     get:
@@ -827,7 +827,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-employees/gen/codbex-employees/api/entities/GenderService.ts:
+  /codbex-employees/gen/codbex-employees/api/EmployeesSettings/GenderService.ts:
     get:
       summary: List Gender
       parameters:
@@ -848,7 +848,7 @@ paths:
             type: integer
             allowEmptyValue: true
       tags:
-        - entities
+        - EmployeesSettings
       responses:
         200:
           description: Successful Request
@@ -879,7 +879,7 @@ paths:
     post:
       summary: Create Gender
       tags:
-        - entities
+        - EmployeesSettings
       requestBody:
         content:
           application/json:
@@ -911,7 +911,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-employees/gen/codbex-employees/api/entities/GenderService.ts/{id}:
+  /codbex-employees/gen/codbex-employees/api/EmployeesSettings/GenderService.ts/{id}:
     get:
       summary: Get Gender by Id
       parameters:
@@ -922,7 +922,7 @@ paths:
           schema:
             type: string
       tags:
-        - entities
+        - EmployeesSettings
       responses:
         200:
           description: Successful Request
@@ -960,7 +960,7 @@ paths:
           schema:
             type: string
       tags:
-        - entities
+        - EmployeesSettings
       requestBody:
         content:
           application/json:
@@ -1008,7 +1008,7 @@ paths:
           schema:
             type: string
       tags:
-        - entities
+        - EmployeesSettings
       responses:
         204:
           description: Successful Request
@@ -1030,11 +1030,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-employees/gen/codbex-employees/api/entities/GenderService.ts/count:
+  /codbex-employees/gen/codbex-employees/api/EmployeesSettings/GenderService.ts/count:
     get:
       summary: Count the number of Gender
       tags:
-        - entities
+        - EmployeesSettings
       responses:
         200:
           description: Successful Request
@@ -1058,7 +1058,7 @@ paths:
     post:
       summary: Count the number of Gender by GenderFilterOptions
       tags:
-        - entities
+        - EmployeesSettings
       requestBody:
         content:
           application/json:
@@ -1140,11 +1140,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-employees/gen/codbex-employees/api/entities/GenderService.ts/search:
+  /codbex-employees/gen/codbex-employees/api/EmployeesSettings/GenderService.ts/search:
     post:
       summary: Search Gender by GenderFilterOptions
       tags:
-        - entities
+        - EmployeesSettings
       requestBody:
         content:
           application/json:
@@ -1227,7 +1227,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-employees/gen/codbex-employees/api/entities/MartialStatusService.ts:
+  /codbex-employees/gen/codbex-employees/api/EmployeesSettings/MartialStatusService.ts:
     get:
       summary: List MartialStatus
       parameters:
@@ -1248,7 +1248,7 @@ paths:
             type: integer
             allowEmptyValue: true
       tags:
-        - entities
+        - EmployeesSettings
       responses:
         200:
           description: Successful Request
@@ -1279,7 +1279,7 @@ paths:
     post:
       summary: Create MartialStatus
       tags:
-        - entities
+        - EmployeesSettings
       requestBody:
         content:
           application/json:
@@ -1311,7 +1311,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-employees/gen/codbex-employees/api/entities/MartialStatusService.ts/{id}:
+  /codbex-employees/gen/codbex-employees/api/EmployeesSettings/MartialStatusService.ts/{id}:
     get:
       summary: Get MartialStatus by Id
       parameters:
@@ -1322,7 +1322,7 @@ paths:
           schema:
             type: string
       tags:
-        - entities
+        - EmployeesSettings
       responses:
         200:
           description: Successful Request
@@ -1360,7 +1360,7 @@ paths:
           schema:
             type: string
       tags:
-        - entities
+        - EmployeesSettings
       requestBody:
         content:
           application/json:
@@ -1408,7 +1408,7 @@ paths:
           schema:
             type: string
       tags:
-        - entities
+        - EmployeesSettings
       responses:
         204:
           description: Successful Request
@@ -1430,11 +1430,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-employees/gen/codbex-employees/api/entities/MartialStatusService.ts/count:
+  /codbex-employees/gen/codbex-employees/api/EmployeesSettings/MartialStatusService.ts/count:
     get:
       summary: Count the number of MartialStatus
       tags:
-        - entities
+        - EmployeesSettings
       responses:
         200:
           description: Successful Request
@@ -1458,7 +1458,7 @@ paths:
     post:
       summary: Count the number of MartialStatus by MartialStatusFilterOptions
       tags:
-        - entities
+        - EmployeesSettings
       requestBody:
         content:
           application/json:
@@ -1540,11 +1540,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-employees/gen/codbex-employees/api/entities/MartialStatusService.ts/search:
+  /codbex-employees/gen/codbex-employees/api/EmployeesSettings/MartialStatusService.ts/search:
     post:
       summary: Search MartialStatus by MartialStatusFilterOptions
       tags:
-        - entities
+        - EmployeesSettings
       requestBody:
         content:
           application/json:
@@ -1627,7 +1627,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-employees/gen/codbex-employees/api/entities/ContactService.ts:
+  /codbex-employees/gen/codbex-employees/api/Employees/ContactService.ts:
     get:
       summary: List Contact
       parameters:
@@ -1648,7 +1648,7 @@ paths:
             type: integer
             allowEmptyValue: true
       tags:
-        - entities
+        - Employees
       responses:
         200:
           description: Successful Request
@@ -1679,7 +1679,7 @@ paths:
     post:
       summary: Create Contact
       tags:
-        - entities
+        - Employees
       requestBody:
         content:
           application/json:
@@ -1711,7 +1711,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-employees/gen/codbex-employees/api/entities/ContactService.ts/{id}:
+  /codbex-employees/gen/codbex-employees/api/Employees/ContactService.ts/{id}:
     get:
       summary: Get Contact by Id
       parameters:
@@ -1722,7 +1722,7 @@ paths:
           schema:
             type: string
       tags:
-        - entities
+        - Employees
       responses:
         200:
           description: Successful Request
@@ -1760,7 +1760,7 @@ paths:
           schema:
             type: string
       tags:
-        - entities
+        - Employees
       requestBody:
         content:
           application/json:
@@ -1808,7 +1808,7 @@ paths:
           schema:
             type: string
       tags:
-        - entities
+        - Employees
       responses:
         204:
           description: Successful Request
@@ -1830,11 +1830,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-employees/gen/codbex-employees/api/entities/ContactService.ts/count:
+  /codbex-employees/gen/codbex-employees/api/Employees/ContactService.ts/count:
     get:
       summary: Count the number of Contact
       tags:
-        - entities
+        - Employees
       responses:
         200:
           description: Successful Request
@@ -1858,7 +1858,7 @@ paths:
     post:
       summary: Count the number of Contact by ContactFilterOptions
       tags:
-        - entities
+        - Employees
       requestBody:
         content:
           application/json:
@@ -1946,11 +1946,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-employees/gen/codbex-employees/api/entities/ContactService.ts/search:
+  /codbex-employees/gen/codbex-employees/api/Employees/ContactService.ts/search:
     post:
       summary: Search Contact by ContactFilterOptions
       tags:
-        - entities
+        - Employees
       requestBody:
         content:
           application/json:
