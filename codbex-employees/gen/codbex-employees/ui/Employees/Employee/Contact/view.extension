@@ -1,5 +1,5 @@
 {
-    "module": "codbex-employees/gen/codbex-employees/ui/Employees/${masterEntity}/Contact/view.js",
+    "module": "codbex-employees/gen/codbex-employees/ui/Employees/Employee/Contact/view.js",
     "extensionPoint": "codbex-employees-view",
     "description": "codbex-employees - Application View - Details"
 }

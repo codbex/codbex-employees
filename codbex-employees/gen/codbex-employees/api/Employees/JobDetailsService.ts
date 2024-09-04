@@ -1,23 +1,34 @@
 import { Controller, Get, Post, Put, Delete, response } from "sdk/http"
 import { Extensions } from "sdk/extensions"
-import { EmployeeRepository, EmployeeEntityOptions } from "../../dao/Employees/EmployeeRepository";
+import { JobDetailsRepository, JobDetailsEntityOptions } from "../../dao/Employees/JobDetailsRepository";
 import { ValidationError } from "../utils/ValidationError";
 import { HttpUtils } from "../utils/HttpUtils";
 
-const validationModules = await Extensions.loadExtensionModules("codbex-employees-Employees-Employee", ["validate"]);
+const validationModules = await Extensions.loadExtensionModules("codbex-employees-Employees-JobDetails", ["validate"]);
 
 @Controller
-class EmployeeService {
+class JobDetailsService {
 
-    private readonly repository = new EmployeeRepository();
+    private readonly repository = new JobDetailsRepository();
 
     @Get("/")
     public getAll(_: any, ctx: any) {
         try {
-            const options: EmployeeEntityOptions = {
+            const options: JobDetailsEntityOptions = {
                 $limit: ctx.queryParameters["$limit"] ? parseInt(ctx.queryParameters["$limit"]) : undefined,
                 $offset: ctx.queryParameters["$offset"] ? parseInt(ctx.queryParameters["$offset"]) : undefined
             };
+
+            let Employee = parseInt(ctx.queryParameters.Employee);
+            Employee = isNaN(Employee) ? ctx.queryParameters.Employee : Employee;
+
+            if (Employee !== undefined) {
+                options.$filter = {
+                    equals: {
+                        Employee: Employee
+                    }
+                };
+            }
 
             return this.repository.findAll(options);
         } catch (error: any) {
@@ -30,7 +41,7 @@ class EmployeeService {
         try {
             this.validateEntity(entity);
             entity.Id = this.repository.create(entity);
-            response.setHeader("Content-Location", "/services/ts/codbex-employees/gen/codbex-employees/api/Employees/EmployeeService.ts/" + entity.Id);
+            response.setHeader("Content-Location", "/services/ts/codbex-employees/gen/codbex-employees/api/Employees/JobDetailsService.ts/" + entity.Id);
             response.setStatus(response.CREATED);
             return entity;
         } catch (error: any) {
@@ -73,7 +84,7 @@ class EmployeeService {
             if (entity) {
                 return entity;
             } else {
-                HttpUtils.sendResponseNotFound("Employee not found");
+                HttpUtils.sendResponseNotFound("JobDetails not found");
             }
         } catch (error: any) {
             this.handleError(error);
@@ -101,7 +112,7 @@ class EmployeeService {
                 this.repository.deleteById(id);
                 HttpUtils.sendResponseNoContent();
             } else {
-                HttpUtils.sendResponseNotFound("Employee not found");
+                HttpUtils.sendResponseNotFound("JobDetails not found");
             }
         } catch (error: any) {
             this.handleError(error);
@@ -119,32 +130,17 @@ class EmployeeService {
     }
 
     private validateEntity(entity: any): void {
-        if (entity.FirstName === null || entity.FirstName === undefined) {
-            throw new ValidationError(`The 'FirstName' property is required, provide a valid value`);
+        if (entity.JobTitle === null || entity.JobTitle === undefined) {
+            throw new ValidationError(`The 'JobTitle' property is required, provide a valid value`);
         }
-        if (entity.FirstName?.length > 50) {
-            throw new ValidationError(`The 'FirstName' exceeds the maximum length of [50] characters`);
+        if (entity.JobTitle?.length > 50) {
+            throw new ValidationError(`The 'JobTitle' exceeds the maximum length of [50] characters`);
         }
-        if (entity.MiddleName?.length > 50) {
-            throw new ValidationError(`The 'MiddleName' exceeds the maximum length of [50] characters`);
+        if (entity.HireDate === null || entity.HireDate === undefined) {
+            throw new ValidationError(`The 'HireDate' property is required, provide a valid value`);
         }
-        if (entity.LastName === null || entity.LastName === undefined) {
-            throw new ValidationError(`The 'LastName' property is required, provide a valid value`);
-        }
-        if (entity.LastName?.length > 50) {
-            throw new ValidationError(`The 'LastName' exceeds the maximum length of [50] characters`);
-        }
-        if (entity.BirthDate === null || entity.BirthDate === undefined) {
-            throw new ValidationError(`The 'BirthDate' property is required, provide a valid value`);
-        }
-        if (entity.Gender === null || entity.Gender === undefined) {
-            throw new ValidationError(`The 'Gender' property is required, provide a valid value`);
-        }
-        if (entity.Nationality === null || entity.Nationality === undefined) {
-            throw new ValidationError(`The 'Nationality' property is required, provide a valid value`);
-        }
-        if (entity.MartialStatus === null || entity.MartialStatus === undefined) {
-            throw new ValidationError(`The 'MartialStatus' property is required, provide a valid value`);
+        if (entity.Department === null || entity.Department === undefined) {
+            throw new ValidationError(`The 'Department' property is required, provide a valid value`);
         }
         for (const next of validationModules) {
             next.validate(entity);

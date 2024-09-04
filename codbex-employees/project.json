@@ -1,5 +1,31 @@
 {
     "guid": "codbex-employees",
+    "dependencies": [
+        {
+            "guid": "codbex-jobs",
+            "type": "git",
+            "url": "https://github.com/codbex/codbex-jobs.git",
+            "branch": "main"
+        },
+        {
+            "guid": "codbex-contracts",
+            "type": "git",
+            "url": "https://github.com/codbex/codbex-contracts.git",
+            "branch": "main"
+        },
+        {
+            "guid": "codbex-countries",
+            "type": "git",
+            "url": "https://github.com/codbex/codbex-countries.git",
+            "branch": "main"
+        },
+        {
+            "guid": "codbex-cities",
+            "type": "git",
+            "url": "https://github.com/codbex/codbex-cities.git",
+            "branch": "main"
+        }
+    ],
     "actions": [
         {
             "name": "Build TypeScript",

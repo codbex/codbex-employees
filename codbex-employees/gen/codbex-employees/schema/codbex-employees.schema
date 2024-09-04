@@ -170,6 +170,45 @@
                 ]
             },
             {
+                "name": "CODBEX_JOBDETAILS",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "JOBDETAILS_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 50,
+                        "nullable": true,
+                        "name": "JOBDETAILS_JOBTITLE"
+                    },
+                    {
+                        "type": "DATE",
+                        "nullable": true,
+                        "name": "JOBDETAILS_HIREDATE"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "JOBDETAILS_DEPARTMENT"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "JOBDETAILS_JOBSTATUS"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "JOBDETAILS_EMPLOYEE"
+                    }
+                ]
+            },
+            {
                 "name": "Employee_Gender",
                 "type": "foreignKey",
                 "table": "CODBEX_EMPLOYEE",
@@ -231,6 +270,15 @@
                 "columns": "CONTACT_CITY",
                 "referencedTable": "CODBEX_CITY",
                 "referencedColumns": "CITY_ID"
+            },
+            {
+                "name": "JobDetails_Employee",
+                "type": "foreignKey",
+                "table": "CODBEX_JOBDETAILS",
+                "constraintName": "JobDetails_Employee",
+                "columns": "JOBDETAILS_EMPLOYEE",
+                "referencedTable": "CODBEX_EMPLOYEE",
+                "referencedColumns": "EMPLOYEE_ID"
             }
         ]
     },

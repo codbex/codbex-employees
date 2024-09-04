@@ -19,13 +19,13 @@ class ContactService {
                 $offset: ctx.queryParameters["$offset"] ? parseInt(ctx.queryParameters["$offset"]) : undefined
             };
 
-            let ${masterEntityId} = parseInt(ctx.queryParameters.${masterEntityId});
-            ${masterEntityId} = isNaN(${masterEntityId}) ? ctx.queryParameters.${masterEntityId} : ${masterEntityId};
+            let Employee = parseInt(ctx.queryParameters.Employee);
+            Employee = isNaN(Employee) ? ctx.queryParameters.Employee : Employee;
 
-            if (${masterEntityId} !== undefined) {
+            if (Employee !== undefined) {
                 options.$filter = {
                     equals: {
-                        ${masterEntityId}: ${masterEntityId}
+                        Employee: Employee
                     }
                 };
             }

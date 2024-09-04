@@ -8,7 +8,7 @@ const viewData = {
     label: "Contact",
     factory: "frame",
     region: "bottom",
-    link: "/services/web/codbex-employees/gen/codbex-employees/ui/Employees/${masterEntity}/Contact/index.html",
+    link: "/services/web/codbex-employees/gen/codbex-employees/ui/Employees/Employee/Contact/index.html",
     perspectiveName: "Employees",
 };
 
