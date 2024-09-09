@@ -3,7 +3,7 @@ Employees Management Application
 
 ### Model
 
-![model](images/employees-model.png)
+<img width="842" alt="Screenshot 2024-09-09 at 14 29 02" src="https://github.com/user-attachments/assets/cc612704-e7ff-4e4b-a4f1-b1dc6f51821b">
 
 ### Application
 
