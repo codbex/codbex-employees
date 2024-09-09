@@ -47,11 +47,6 @@
                         "type": "INTEGER",
                         "nullable": true,
                         "name": "EMPLOYEE_MARTIALSTATUS"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "nullable": true,
-                        "name": "EMPLOYEE_CONTRACT"
                     }
                 ]
             },
@@ -194,15 +189,6 @@
                 "columns": "EMPLOYEE_MARTIALSTATUS",
                 "referencedTable": "CODBEX_MARTIALSTATUS",
                 "referencedColumns": "MARTIALSTATUS_ID"
-            },
-            {
-                "name": "Employee_Contract",
-                "type": "foreignKey",
-                "table": "CODBEX_EMPLOYEE",
-                "constraintName": "Employee_Contract",
-                "columns": "EMPLOYEE_CONTRACT",
-                "referencedTable": "CODBEX_CONTRACT",
-                "referencedColumns": "CONTRACT_ID"
             },
             {
                 "name": "Contact_Employee",

@@ -13,7 +13,6 @@ export interface EmployeeEntity {
     Gender?: number;
     Nationality?: number;
     MartialStatus?: number;
-    Contract?: number;
 }
 
 export interface EmployeeCreateEntity {
@@ -24,7 +23,6 @@ export interface EmployeeCreateEntity {
     readonly Gender?: number;
     readonly Nationality?: number;
     readonly MartialStatus?: number;
-    readonly Contract?: number;
 }
 
 export interface EmployeeUpdateEntity extends EmployeeCreateEntity {
@@ -42,7 +40,6 @@ export interface EmployeeEntityOptions {
             Gender?: number | number[];
             Nationality?: number | number[];
             MartialStatus?: number | number[];
-            Contract?: number | number[];
         };
         notEquals?: {
             Id?: number | number[];
@@ -53,7 +50,6 @@ export interface EmployeeEntityOptions {
             Gender?: number | number[];
             Nationality?: number | number[];
             MartialStatus?: number | number[];
-            Contract?: number | number[];
         };
         contains?: {
             Id?: number;
@@ -64,7 +60,6 @@ export interface EmployeeEntityOptions {
             Gender?: number;
             Nationality?: number;
             MartialStatus?: number;
-            Contract?: number;
         };
         greaterThan?: {
             Id?: number;
@@ -75,7 +70,6 @@ export interface EmployeeEntityOptions {
             Gender?: number;
             Nationality?: number;
             MartialStatus?: number;
-            Contract?: number;
         };
         greaterThanOrEqual?: {
             Id?: number;
@@ -86,7 +80,6 @@ export interface EmployeeEntityOptions {
             Gender?: number;
             Nationality?: number;
             MartialStatus?: number;
-            Contract?: number;
         };
         lessThan?: {
             Id?: number;
@@ -97,7 +90,6 @@ export interface EmployeeEntityOptions {
             Gender?: number;
             Nationality?: number;
             MartialStatus?: number;
-            Contract?: number;
         };
         lessThanOrEqual?: {
             Id?: number;
@@ -108,7 +100,6 @@ export interface EmployeeEntityOptions {
             Gender?: number;
             Nationality?: number;
             MartialStatus?: number;
-            Contract?: number;
         };
     },
     $select?: (keyof EmployeeEntity)[],
@@ -180,11 +171,6 @@ export class EmployeeRepository {
             {
                 name: "MartialStatus",
                 column: "EMPLOYEE_MARTIALSTATUS",
-                type: "INTEGER",
-            },
-            {
-                name: "Contract",
-                column: "EMPLOYEE_CONTRACT",
                 type: "INTEGER",
             }
         ]

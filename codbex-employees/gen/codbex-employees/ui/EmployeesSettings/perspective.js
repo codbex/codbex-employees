@@ -5,10 +5,10 @@
  */
 const perspectiveData = {
 	id: 'EmployeesSettings',
-	name: 'EmployeesSettings',
+	name: 'Entities',
 	link: '/services/web/codbex-employees/gen/codbex-employees/ui/EmployeesSettings/index.html',
-	order: 102,
-	icon: '/services/web/resources/unicons/setting.svg',
+	order: 100,
+	icon: '/services/web/resources/unicons/copy.svg',
 };
 
 if (typeof exports !== 'undefined') {

@@ -23,7 +23,6 @@ angular.module('page', ["ideUI", "ideView"])
 			$scope.optionsGender = params.optionsGender;
 			$scope.optionsNationality = params.optionsNationality;
 			$scope.optionsMartialStatus = params.optionsMartialStatus;
-			$scope.optionsContract = params.optionsContract;
 		}
 
 		$scope.filter = function () {
@@ -72,9 +71,6 @@ angular.module('page', ["ideUI", "ideView"])
 			}
 			if (entity.MartialStatus !== undefined) {
 				filter.$filter.equals.MartialStatus = entity.MartialStatus;
-			}
-			if (entity.Contract !== undefined) {
-				filter.$filter.equals.Contract = entity.Contract;
 			}
 			messageHub.postMessage("entitySearch", {
 				entity: entity,

@@ -2056,9 +2056,6 @@ components:
         MartialStatus:
           type: integer
           format: int32
-        Contract:
-          type: integer
-          format: int32
     EmployeeFilterOptions:
       type: object
       properties:
@@ -2128,14 +2125,6 @@ components:
                         type: integer
                         format: int32
                 MartialStatus:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
-                Contract:
                   oneOf:
                     - type: integer
                       format: int32
@@ -2213,14 +2202,6 @@ components:
                       items:
                         type: integer
                         format: int32
-                Contract:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
             contains:
               type: object
               properties:
@@ -2241,7 +2222,6 @@ components:
                 Gender:
                 Nationality:
                 MartialStatus:
-                Contract:
             greaterThan:
               type: object
               properties:
@@ -2268,9 +2248,6 @@ components:
                   type: integer
                   format: int32
                 MartialStatus:
-                  type: integer
-                  format: int32
-                Contract:
                   type: integer
                   format: int32
             greaterThanOrEqual:
@@ -2301,9 +2278,6 @@ components:
                 MartialStatus:
                   type: integer
                   format: int32
-                Contract:
-                  type: integer
-                  format: int32
             lessThan:
               type: object
               properties:
@@ -2330,9 +2304,6 @@ components:
                   type: integer
                   format: int32
                 MartialStatus:
-                  type: integer
-                  format: int32
-                Contract:
                   type: integer
                   format: int32
             lessThanOrEqual:
@@ -2363,17 +2334,14 @@ components:
                 MartialStatus:
                   type: integer
                   format: int32
-                Contract:
-                  type: integer
-                  format: int32
         $select:
           type: array
-          example: ["Id", "FirstName", "MiddleName", "LastName", "BirthDate", "Gender", "Nationality", "MartialStatus", "Contract"]
+          example: ["Id", "FirstName", "MiddleName", "LastName", "BirthDate", "Gender", "Nationality", "MartialStatus"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,FirstName,MiddleName,LastName,BirthDate,Gender,Nationality,MartialStatus,Contract"
+            example: "Id,FirstName,MiddleName,LastName,BirthDate,Gender,Nationality,MartialStatus"
         $order:
           type: string
           enum: ["asc", "desc"]

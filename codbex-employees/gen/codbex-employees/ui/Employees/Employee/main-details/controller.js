@@ -43,7 +43,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				$scope.optionsGender = [];
 				$scope.optionsNationality = [];
 				$scope.optionsMartialStatus = [];
-				$scope.optionsContract = [];
 				$scope.action = 'select';
 			});
 		});
@@ -57,7 +56,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				$scope.optionsGender = msg.data.optionsGender;
 				$scope.optionsNationality = msg.data.optionsNationality;
 				$scope.optionsMartialStatus = msg.data.optionsMartialStatus;
-				$scope.optionsContract = msg.data.optionsContract;
 				$scope.action = 'select';
 			});
 		});
@@ -68,7 +66,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				$scope.optionsGender = msg.data.optionsGender;
 				$scope.optionsNationality = msg.data.optionsNationality;
 				$scope.optionsMartialStatus = msg.data.optionsMartialStatus;
-				$scope.optionsContract = msg.data.optionsContract;
 				$scope.action = 'create';
 			});
 		});
@@ -82,7 +79,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				$scope.optionsGender = msg.data.optionsGender;
 				$scope.optionsNationality = msg.data.optionsNationality;
 				$scope.optionsMartialStatus = msg.data.optionsMartialStatus;
-				$scope.optionsContract = msg.data.optionsContract;
 				$scope.action = 'update';
 			});
 		});

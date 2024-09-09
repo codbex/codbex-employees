@@ -122,7 +122,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				optionsGender: $scope.optionsGender,
 				optionsNationality: $scope.optionsNationality,
 				optionsMartialStatus: $scope.optionsMartialStatus,
-				optionsContract: $scope.optionsContract,
 			});
 		};
 
@@ -135,7 +134,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				optionsGender: $scope.optionsGender,
 				optionsNationality: $scope.optionsNationality,
 				optionsMartialStatus: $scope.optionsMartialStatus,
-				optionsContract: $scope.optionsContract,
 			});
 		};
 
@@ -146,7 +144,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				optionsGender: $scope.optionsGender,
 				optionsNationality: $scope.optionsNationality,
 				optionsMartialStatus: $scope.optionsMartialStatus,
-				optionsContract: $scope.optionsContract,
 			});
 		};
 
@@ -186,7 +183,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				optionsGender: $scope.optionsGender,
 				optionsNationality: $scope.optionsNationality,
 				optionsMartialStatus: $scope.optionsMartialStatus,
-				optionsContract: $scope.optionsContract,
 			});
 		};
 
@@ -194,7 +190,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		$scope.optionsGender = [];
 		$scope.optionsNationality = [];
 		$scope.optionsMartialStatus = [];
-		$scope.optionsContract = [];
 
 
 		$http.get("/services/ts/codbex-employees/gen/codbex-employees/api/EmployeesSettings/GenderService.ts").then(function (response) {
@@ -224,15 +219,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		});
 
-		$http.get("/services/ts/codbex-contracts/gen/codbex-contracts/api/Contract/ContractService.ts").then(function (response) {
-			$scope.optionsContract = response.data.map(e => {
-				return {
-					value: e.Id,
-					text: e.Number
-				}
-			});
-		});
-
 		$scope.optionsGenderValue = function (optionKey) {
 			for (let i = 0; i < $scope.optionsGender.length; i++) {
 				if ($scope.optionsGender[i].value === optionKey) {
@@ -253,14 +239,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			for (let i = 0; i < $scope.optionsMartialStatus.length; i++) {
 				if ($scope.optionsMartialStatus[i].value === optionKey) {
 					return $scope.optionsMartialStatus[i].text;
-				}
-			}
-			return null;
-		};
-		$scope.optionsContractValue = function (optionKey) {
-			for (let i = 0; i < $scope.optionsContract.length; i++) {
-				if ($scope.optionsContract[i].value === optionKey) {
-					return $scope.optionsContract[i].text;
 				}
 			}
 			return null;
