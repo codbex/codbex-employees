@@ -39,11 +39,11 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.Id !== undefined) {
 				filter.$filter.equals.Id = entity.Id;
 			}
-			if (entity.Employee !== undefined) {
-				filter.$filter.equals.Employee = entity.Employee;
-			}
 			if (entity.JobAssignment !== undefined) {
 				filter.$filter.equals.JobAssignment = entity.JobAssignment;
+			}
+			if (entity.Employee !== undefined) {
+				filter.$filter.equals.Employee = entity.Employee;
 			}
 			messageHub.postMessage("entitySearch", {
 				entity: entity,

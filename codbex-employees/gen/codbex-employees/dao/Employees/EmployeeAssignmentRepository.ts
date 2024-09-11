@@ -5,13 +5,13 @@ import { dao as daoApi } from "sdk/db";
 
 export interface EmployeeAssignmentEntity {
     readonly Id: number;
-    Employee?: number;
     JobAssignment?: number;
+    Employee?: number;
 }
 
 export interface EmployeeAssignmentCreateEntity {
-    readonly Employee?: number;
     readonly JobAssignment?: number;
+    readonly Employee?: number;
 }
 
 export interface EmployeeAssignmentUpdateEntity extends EmployeeAssignmentCreateEntity {
@@ -22,38 +22,38 @@ export interface EmployeeAssignmentEntityOptions {
     $filter?: {
         equals?: {
             Id?: number | number[];
-            Employee?: number | number[];
             JobAssignment?: number | number[];
+            Employee?: number | number[];
         };
         notEquals?: {
             Id?: number | number[];
-            Employee?: number | number[];
             JobAssignment?: number | number[];
+            Employee?: number | number[];
         };
         contains?: {
             Id?: number;
-            Employee?: number;
             JobAssignment?: number;
+            Employee?: number;
         };
         greaterThan?: {
             Id?: number;
-            Employee?: number;
             JobAssignment?: number;
+            Employee?: number;
         };
         greaterThanOrEqual?: {
             Id?: number;
-            Employee?: number;
             JobAssignment?: number;
+            Employee?: number;
         };
         lessThan?: {
             Id?: number;
-            Employee?: number;
             JobAssignment?: number;
+            Employee?: number;
         };
         lessThanOrEqual?: {
             Id?: number;
-            Employee?: number;
             JobAssignment?: number;
+            Employee?: number;
         };
     },
     $select?: (keyof EmployeeAssignmentEntity)[],
@@ -91,13 +91,13 @@ export class EmployeeAssignmentRepository {
                 autoIncrement: true,
             },
             {
-                name: "Employee",
-                column: "EMPLOYEEASSIGNMENT_EMPLOYEE",
+                name: "JobAssignment",
+                column: "EMPLOYEEASSIGNMENT_JOBASSIGNMENT",
                 type: "INTEGER",
             },
             {
-                name: "JobAssignment",
-                column: "EMPLOYEEASSIGNMENT_JOBASSIGNMENT",
+                name: "Employee",
+                column: "EMPLOYEEASSIGNMENT_EMPLOYEE",
                 type: "INTEGER",
             }
         ]

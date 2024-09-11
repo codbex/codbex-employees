@@ -5,23 +5,23 @@ import { dao as daoApi } from "sdk/db";
 
 export interface ContactEntity {
     readonly Id: number;
-    Employee?: number;
     Address?: string;
     Country?: number;
     City?: number;
     PostalCode?: string;
     Email?: string;
     PhoneNumber?: string;
+    Employee?: number;
 }
 
 export interface ContactCreateEntity {
-    readonly Employee?: number;
     readonly Address?: string;
     readonly Country?: number;
     readonly City?: number;
     readonly PostalCode?: string;
     readonly Email?: string;
     readonly PhoneNumber?: string;
+    readonly Employee?: number;
 }
 
 export interface ContactUpdateEntity extends ContactCreateEntity {
@@ -32,73 +32,73 @@ export interface ContactEntityOptions {
     $filter?: {
         equals?: {
             Id?: number | number[];
-            Employee?: number | number[];
             Address?: string | string[];
             Country?: number | number[];
             City?: number | number[];
             PostalCode?: string | string[];
             Email?: string | string[];
             PhoneNumber?: string | string[];
+            Employee?: number | number[];
         };
         notEquals?: {
             Id?: number | number[];
-            Employee?: number | number[];
             Address?: string | string[];
             Country?: number | number[];
             City?: number | number[];
             PostalCode?: string | string[];
             Email?: string | string[];
             PhoneNumber?: string | string[];
+            Employee?: number | number[];
         };
         contains?: {
             Id?: number;
-            Employee?: number;
             Address?: string;
             Country?: number;
             City?: number;
             PostalCode?: string;
             Email?: string;
             PhoneNumber?: string;
+            Employee?: number;
         };
         greaterThan?: {
             Id?: number;
-            Employee?: number;
             Address?: string;
             Country?: number;
             City?: number;
             PostalCode?: string;
             Email?: string;
             PhoneNumber?: string;
+            Employee?: number;
         };
         greaterThanOrEqual?: {
             Id?: number;
-            Employee?: number;
             Address?: string;
             Country?: number;
             City?: number;
             PostalCode?: string;
             Email?: string;
             PhoneNumber?: string;
+            Employee?: number;
         };
         lessThan?: {
             Id?: number;
-            Employee?: number;
             Address?: string;
             Country?: number;
             City?: number;
             PostalCode?: string;
             Email?: string;
             PhoneNumber?: string;
+            Employee?: number;
         };
         lessThanOrEqual?: {
             Id?: number;
-            Employee?: number;
             Address?: string;
             Country?: number;
             City?: number;
             PostalCode?: string;
             Email?: string;
             PhoneNumber?: string;
+            Employee?: number;
         };
     },
     $select?: (keyof ContactEntity)[],
@@ -136,11 +136,6 @@ export class ContactRepository {
                 autoIncrement: true,
             },
             {
-                name: "Employee",
-                column: "CONTACT_EMPLOYEE",
-                type: "INTEGER",
-            },
-            {
                 name: "Address",
                 column: "CONTACT_ADDRESS",
                 type: "VARCHAR",
@@ -169,6 +164,11 @@ export class ContactRepository {
                 name: "PhoneNumber",
                 column: "CONTACT_PHONENUMBER",
                 type: "VARCHAR",
+            },
+            {
+                name: "Employee",
+                column: "CONTACT_EMPLOYEE",
+                type: "INTEGER",
             }
         ]
     };

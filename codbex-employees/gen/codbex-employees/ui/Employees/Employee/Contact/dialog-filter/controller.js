@@ -41,9 +41,6 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.Id !== undefined) {
 				filter.$filter.equals.Id = entity.Id;
 			}
-			if (entity.Employee !== undefined) {
-				filter.$filter.equals.Employee = entity.Employee;
-			}
 			if (entity.Address) {
 				filter.$filter.contains.Address = entity.Address;
 			}
@@ -61,6 +58,9 @@ angular.module('page', ["ideUI", "ideView"])
 			}
 			if (entity.PhoneNumber) {
 				filter.$filter.contains.PhoneNumber = entity.PhoneNumber;
+			}
+			if (entity.Employee !== undefined) {
+				filter.$filter.equals.Employee = entity.Employee;
 			}
 			messageHub.postMessage("entitySearch", {
 				entity: entity,

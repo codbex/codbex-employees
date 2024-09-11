@@ -403,22 +403,6 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
-                        "dataName": "CONTACT_EMPLOYEE",
-                        "dataNullable": "true",
-                        "dataType": "INTEGER",
-                        "name": "Employee",
-                        "relationshipCardinality": "1_n",
-                        "relationshipName": "Contact_Employee",
-                        "relationshipType": "COMPOSITION",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "20",
-                        "widgetSize": "",
-                        "widgetType": "TEXTBOX",
-                        "relationshipEntityName": "Employee",
-                        "relationshipEntityPerspectiveName": "Employees",
-                        "relationshipEntityPerspectiveLabel": "Entities"
-                    },
-                    {
                         "dataLength": "20",
                         "dataName": "CONTACT_ADDRESS",
                         "dataNullable": "true",
@@ -499,6 +483,22 @@
                         "widgetLength": "20",
                         "widgetSize": "",
                         "widgetType": "TEXTBOX"
+                    },
+                    {
+                        "dataName": "CONTACT_EMPLOYEE",
+                        "dataNullable": "true",
+                        "dataType": "INTEGER",
+                        "name": "Employee",
+                        "relationshipCardinality": "1_n",
+                        "relationshipName": "Contact_Employee",
+                        "relationshipType": "COMPOSITION",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "TEXTBOX",
+                        "relationshipEntityName": "Employee",
+                        "relationshipEntityPerspectiveName": "Employees",
+                        "relationshipEntityPerspectiveLabel": "Entities"
                     }
                 ],
                 "caption": "Manage entity Contact",
@@ -537,6 +537,20 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "dataName": "EMPLOYEEASSIGNMENT_JOBASSIGNMENT",
+                        "dataNullable": "true",
+                        "dataType": "INTEGER",
+                        "name": "JobAssignment",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "TEXTBOX",
+                        "relationshipName": "EmployeeAssignment_JobAssignment",
+                        "relationshipEntityName": "JobAssignment",
+                        "relationshipEntityPerspectiveName": "entities",
+                        "relationshipEntityPerspectiveLabel": "Entities"
+                    },
+                    {
                         "dataName": "EMPLOYEEASSIGNMENT_EMPLOYEE",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
@@ -550,20 +564,6 @@
                         "widgetType": "TEXTBOX",
                         "relationshipEntityName": "Employee",
                         "relationshipEntityPerspectiveName": "Employees",
-                        "relationshipEntityPerspectiveLabel": "Entities"
-                    },
-                    {
-                        "dataName": "EMPLOYEEASSIGNMENT_JOBASSIGNMENT",
-                        "dataNullable": "true",
-                        "dataType": "INTEGER",
-                        "name": "JobAssignment",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "20",
-                        "widgetSize": "",
-                        "widgetType": "TEXTBOX",
-                        "relationshipName": "EmployeeAssignment_JobAssignment",
-                        "relationshipEntityName": "JobAssignment",
-                        "relationshipEntityPerspectiveName": "entities",
                         "relationshipEntityPerspectiveLabel": "Entities"
                     }
                 ],

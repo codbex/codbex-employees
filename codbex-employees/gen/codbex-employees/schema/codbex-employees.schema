@@ -100,11 +100,6 @@
                         "name": "CONTACT_ID"
                     },
                     {
-                        "type": "INTEGER",
-                        "nullable": true,
-                        "name": "CONTACT_EMPLOYEE"
-                    },
-                    {
                         "type": "VARCHAR",
                         "length": 20,
                         "nullable": true,
@@ -137,6 +132,11 @@
                         "length": 15,
                         "nullable": true,
                         "name": "CONTACT_PHONENUMBER"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "CONTACT_EMPLOYEE"
                     }
                 ]
             },
@@ -154,12 +154,12 @@
                     {
                         "type": "INTEGER",
                         "nullable": true,
-                        "name": "EMPLOYEEASSIGNMENT_EMPLOYEE"
+                        "name": "EMPLOYEEASSIGNMENT_JOBASSIGNMENT"
                     },
                     {
                         "type": "INTEGER",
                         "nullable": true,
-                        "name": "EMPLOYEEASSIGNMENT_JOBASSIGNMENT"
+                        "name": "EMPLOYEEASSIGNMENT_EMPLOYEE"
                     }
                 ]
             },
@@ -191,15 +191,6 @@
                 "referencedColumns": "MARTIALSTATUS_ID"
             },
             {
-                "name": "Contact_Employee",
-                "type": "foreignKey",
-                "table": "CODBEX_CONTACT",
-                "constraintName": "Contact_Employee",
-                "columns": "CONTACT_EMPLOYEE",
-                "referencedTable": "CODBEX_EMPLOYEE",
-                "referencedColumns": "EMPLOYEE_ID"
-            },
-            {
                 "name": "Contact_Country",
                 "type": "foreignKey",
                 "table": "CODBEX_CONTACT",
@@ -218,11 +209,11 @@
                 "referencedColumns": "CITY_ID"
             },
             {
-                "name": "EmployeeAssignment_Employee",
+                "name": "Contact_Employee",
                 "type": "foreignKey",
-                "table": "CODBEX_EMPLOYEEASSIGNMENT",
-                "constraintName": "EmployeeAssignment_Employee",
-                "columns": "EMPLOYEEASSIGNMENT_EMPLOYEE",
+                "table": "CODBEX_CONTACT",
+                "constraintName": "Contact_Employee",
+                "columns": "CONTACT_EMPLOYEE",
                 "referencedTable": "CODBEX_EMPLOYEE",
                 "referencedColumns": "EMPLOYEE_ID"
             },
@@ -234,6 +225,15 @@
                 "columns": "EMPLOYEEASSIGNMENT_JOBASSIGNMENT",
                 "referencedTable": "CODBEX_JOBASSIGNMENT",
                 "referencedColumns": "JOBDETAILS_ID"
+            },
+            {
+                "name": "EmployeeAssignment_Employee",
+                "type": "foreignKey",
+                "table": "CODBEX_EMPLOYEEASSIGNMENT",
+                "constraintName": "EmployeeAssignment_Employee",
+                "columns": "EMPLOYEEASSIGNMENT_EMPLOYEE",
+                "referencedTable": "CODBEX_EMPLOYEE",
+                "referencedColumns": "EMPLOYEE_ID"
             }
         ]
     },

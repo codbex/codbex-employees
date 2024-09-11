@@ -2621,9 +2621,6 @@ components:
         Id:
           type: integer
           format: int32
-        Employee:
-          type: integer
-          format: int32
         Address:
           type: string
           minLength: 0
@@ -2646,6 +2643,9 @@ components:
           type: string
           minLength: 0
           maxLength: 15
+        Employee:
+          type: integer
+          format: int32
     ContactFilterOptions:
       type: object
       properties:
@@ -2663,14 +2663,6 @@ components:
                       items:
                         type: integer
                         format: int32
-                Employee:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
                 Address:
                   oneOf:
                     - type: string
@@ -2731,6 +2723,14 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 15
+                Employee:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
             notEquals:
               type: object
               properties:
@@ -2742,14 +2742,6 @@ components:
                       items:
                         type: integer
                         format: int32
-                Employee:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
                 Address:
                   oneOf:
                     - type: string
@@ -2810,11 +2802,18 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 15
+                Employee:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
             contains:
               type: object
               properties:
                 Id:
-                Employee:
                 Address:
                   type: string
                   minLength: 0
@@ -2833,15 +2832,13 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 15
+                Employee:
             greaterThan:
               type: object
               properties:
                 Id:
                   type: integer
                   format: int32
-                Employee:
-                  type: integer
-                  format: int32
                 Address:
                   type: string
                   minLength: 0
@@ -2864,15 +2861,15 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 15
+                Employee:
+                  type: integer
+                  format: int32
             greaterThanOrEqual:
               type: object
               properties:
                 Id:
                   type: integer
                   format: int32
-                Employee:
-                  type: integer
-                  format: int32
                 Address:
                   type: string
                   minLength: 0
@@ -2895,15 +2892,15 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 15
+                Employee:
+                  type: integer
+                  format: int32
             lessThan:
               type: object
               properties:
                 Id:
                   type: integer
                   format: int32
-                Employee:
-                  type: integer
-                  format: int32
                 Address:
                   type: string
                   minLength: 0
@@ -2926,15 +2923,15 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 15
+                Employee:
+                  type: integer
+                  format: int32
             lessThanOrEqual:
               type: object
               properties:
                 Id:
                   type: integer
                   format: int32
-                Employee:
-                  type: integer
-                  format: int32
                 Address:
                   type: string
                   minLength: 0
@@ -2957,14 +2954,17 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 15
+                Employee:
+                  type: integer
+                  format: int32
         $select:
           type: array
-          example: ["Id", "Employee", "Address", "Country", "City", "PostalCode", "Email", "PhoneNumber"]
+          example: ["Id", "Address", "Country", "City", "PostalCode", "Email", "PhoneNumber", "Employee"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,Employee,Address,Country,City,PostalCode,Email,PhoneNumber"
+            example: "Id,Address,Country,City,PostalCode,Email,PhoneNumber,Employee"
         $order:
           type: string
           enum: ["asc", "desc"]
@@ -2982,10 +2982,10 @@ components:
         Id:
           type: integer
           format: int32
-        Employee:
+        JobAssignment:
           type: integer
           format: int32
-        JobAssignment:
+        Employee:
           type: integer
           format: int32
     EmployeeAssignmentFilterOptions:
@@ -3005,7 +3005,7 @@ components:
                       items:
                         type: integer
                         format: int32
-                Employee:
+                JobAssignment:
                   oneOf:
                     - type: integer
                       format: int32
@@ -3013,7 +3013,7 @@ components:
                       items:
                         type: integer
                         format: int32
-                JobAssignment:
+                Employee:
                   oneOf:
                     - type: integer
                       format: int32
@@ -3032,7 +3032,7 @@ components:
                       items:
                         type: integer
                         format: int32
-                Employee:
+                JobAssignment:
                   oneOf:
                     - type: integer
                       format: int32
@@ -3040,7 +3040,7 @@ components:
                       items:
                         type: integer
                         format: int32
-                JobAssignment:
+                Employee:
                   oneOf:
                     - type: integer
                       format: int32
@@ -3052,18 +3052,18 @@ components:
               type: object
               properties:
                 Id:
-                Employee:
                 JobAssignment:
+                Employee:
             greaterThan:
               type: object
               properties:
                 Id:
                   type: integer
                   format: int32
-                Employee:
+                JobAssignment:
                   type: integer
                   format: int32
-                JobAssignment:
+                Employee:
                   type: integer
                   format: int32
             greaterThanOrEqual:
@@ -3072,10 +3072,10 @@ components:
                 Id:
                   type: integer
                   format: int32
-                Employee:
+                JobAssignment:
                   type: integer
                   format: int32
-                JobAssignment:
+                Employee:
                   type: integer
                   format: int32
             lessThan:
@@ -3084,10 +3084,10 @@ components:
                 Id:
                   type: integer
                   format: int32
-                Employee:
+                JobAssignment:
                   type: integer
                   format: int32
-                JobAssignment:
+                Employee:
                   type: integer
                   format: int32
             lessThanOrEqual:
@@ -3096,20 +3096,20 @@ components:
                 Id:
                   type: integer
                   format: int32
-                Employee:
+                JobAssignment:
                   type: integer
                   format: int32
-                JobAssignment:
+                Employee:
                   type: integer
                   format: int32
         $select:
           type: array
-          example: ["Id", "Employee", "JobAssignment"]
+          example: ["Id", "JobAssignment", "Employee"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,Employee,JobAssignment"
+            example: "Id,JobAssignment,Employee"
         $order:
           type: string
           enum: ["asc", "desc"]
