@@ -5,7 +5,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 	.config(["entityApiProvider", function (entityApiProvider) {
 		entityApiProvider.baseUrl = "/services/ts/codbex-employees/gen/codbex-employees/api/Employees/EmployeeAssignmentService.ts";
 	}])
-	.controller('PageController', ['$scope', 'messageHub', 'entityApi', 'Extensions', function ($scope, messageHub, entityApi, Extensions) {
+	.controller('PageController', ['$scope', '$http', 'messageHub', 'entityApi', 'Extensions', function ($scope, $http, messageHub, entityApi, Extensions) {
 		//-----------------Custom Actions-------------------//
 		Extensions.get('dialogWindow', 'codbex-employees-custom-action').then(function (response) {
 			$scope.pageActions = response.filter(e => e.perspective === "Employees" && e.view === "EmployeeAssignment" && (e.type === "page" || e.type === undefined));
@@ -125,12 +125,14 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.showDialogWindow("EmployeeAssignment-details", {
 				action: "select",
 				entity: entity,
+				optionsJobAssignment: $scope.optionsJobAssignment,
 			});
 		};
 
 		$scope.openFilter = function (entity) {
 			messageHub.showDialogWindow("EmployeeAssignment-filter", {
 				entity: $scope.filterEntity,
+				optionsJobAssignment: $scope.optionsJobAssignment,
 			});
 		};
 
@@ -141,6 +143,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				entity: {},
 				selectedMainEntityKey: "Employee",
 				selectedMainEntityId: $scope.selectedMainEntityId,
+				optionsJobAssignment: $scope.optionsJobAssignment,
 			}, null, false);
 		};
 
@@ -150,6 +153,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				entity: entity,
 				selectedMainEntityKey: "Employee",
 				selectedMainEntityId: $scope.selectedMainEntityId,
+				optionsJobAssignment: $scope.optionsJobAssignment,
 			}, null, false);
 		};
 
@@ -181,5 +185,28 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				}
 			});
 		};
+
+		//----------------Dropdowns-----------------//
+		$scope.optionsJobAssignment = [];
+
+
+		$http.get("/services/ts/codbex-jobs/gen/codbex-jobs/api/entities/JobAssignmentService.ts").then(function (response) {
+			$scope.optionsJobAssignment = response.data.map(e => {
+				return {
+					value: e.Id,
+					text: e.Number
+				}
+			});
+		});
+
+		$scope.optionsJobAssignmentValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsJobAssignment.length; i++) {
+				if ($scope.optionsJobAssignment[i].value === optionKey) {
+					return $scope.optionsJobAssignment[i].text;
+				}
+			}
+			return null;
+		};
+		//----------------Dropdowns-----------------//
 
 	}]);

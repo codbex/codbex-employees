@@ -2978,6 +2978,7 @@ components:
     EmployeeAssignment:
       type: object
       required:
+        - JobAssignment
       properties:
         Id:
           type: integer

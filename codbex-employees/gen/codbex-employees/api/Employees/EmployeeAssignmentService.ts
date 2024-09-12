@@ -130,6 +130,9 @@ class EmployeeAssignmentService {
     }
 
     private validateEntity(entity: any): void {
+        if (entity.JobAssignment === null || entity.JobAssignment === undefined) {
+            throw new ValidationError(`The 'JobAssignment' property is required, provide a valid value`);
+        }
         for (const next of validationModules) {
             next.validate(entity);
         }
