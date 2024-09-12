@@ -190,7 +190,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		$scope.optionsJobAssignment = [];
 
 
-		$http.get("/services/ts/codbex-jobs/gen/codbex-jobs/api/entities/JobAssignmentService.ts").then(function (response) {
+		$http.get("/services/ts/codbex-jobs/gen/codbex-jobs/api/JobAssignment/JobAssignmentService.ts").then(function (response) {
 			$scope.optionsJobAssignment = response.data.map(e => {
 				return {
 					value: e.Id,
