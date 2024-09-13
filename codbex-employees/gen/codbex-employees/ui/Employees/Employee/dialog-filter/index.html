@@ -86,18 +86,29 @@
                     </fd-form-item>
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idEmail" dg-colon="true">e-mail</fd-form-label>
+                        	<fd-form-label for="idBirthDateFrom" dg-colon="true">From BirthDate</fd-form-label>
                         </div>
-                        <div class="fd-col fd-col-md--4">
-	                        <fd-form-input-message-group dg-inactive="{{ forms.details['Email'].$valid }}">
-	                            <fd-input id="idEmail"
-	                                name="Email"
-	                                state="{{ forms.details['Email'].$valid ? '' : 'error' }}"
-	                                ng-model="entity.Email"
-	                                ng-minlength="0.0 || 0"
-	                                ng-maxlength="100.0 || -1"
-	                                type="email"
-	                                placeholder="Enter e-mail">
+                        <div class="fd-col fd-col-md--2">
+	                        <fd-form-input-message-group dg-inactive="{{ forms.details['BirthDate'].$valid }}">
+	                            <fd-input id="idBirthDateFrom"
+	                                name="BirthDate"
+	                                state="{{ forms.details['BirthDate'].$valid ? '' : 'error' }}"
+	                                ng-model="entity.BirthDateFrom"
+	                                type="date">
+	                            </fd-input>
+	                            <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
+	                        </fd-form-input-message-group>
+	                    </div>
+                    	<div class="fd-col fd-col-md--2">
+                        	<fd-form-label for="idBirthDateTo" dg-colon="true">To BirthDate</fd-form-label>
+                        </div>
+                        <div class="fd-col fd-col-md--2">
+	                        <fd-form-input-message-group dg-inactive="{{ forms.details['BirthDate'].$valid }}">
+	                            <fd-input id="idBirthDateTo"
+	                                name="BirthDate"
+	                                state="{{ forms.details['BirthDate'].$valid ? '' : 'error' }}"
+	                                ng-model="entity.BirthDateTo"
+	                                type="date">
 	                            </fd-input>
 	                            <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
 	                        </fd-form-input-message-group>
@@ -105,34 +116,43 @@
                     </fd-form-item>
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idPhone" dg-colon="true">Phone</fd-form-label>
-                        </div>
-                        <div class="fd-col fd-col-md--4">
-	                        <fd-form-input-message-group dg-inactive="{{ forms.details['Phone'].$valid }}">
-	                            <fd-input id="idPhone"
-	                                name="Phone"
-	                                state="{{ forms.details['Phone'].$valid ? '' : 'error' }}"
-	                                ng-model="entity.Phone"
-	                                ng-minlength="0.0 || 0"
-	                                ng-maxlength="20.0 || -1"
-	                                type="tel"
-	                                placeholder="Enter Phone">
-	                            </fd-input>
-	                            <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
-	                        </fd-form-input-message-group>
-	                    </div>
-                    </fd-form-item>
-                    <fd-form-item class="fd-row">
-                    	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idOrganisation" dg-colon="true">Organisation</fd-form-label>
+                        	<fd-form-label for="idGender" dg-colon="true">Gender</fd-form-label>
                         </div>
                         <div class="fd-col fd-col-md--8">
-	                        <fd-combobox-input id="idOrganisation"
-	                            name="Organisation"
-	                            state="{{ forms.details['Organisation'].$valid ? '' : 'error' }}"
-	                            ng-model="entity.Organisation"
-	                            dropdown-items="optionsOrganisation"
-	                            dg-placeholder="Search Organisation ...">
+	                        <fd-combobox-input id="idGender"
+	                            name="Gender"
+	                            state="{{ forms.details['Gender'].$valid ? '' : 'error' }}"
+	                            ng-model="entity.Gender"
+	                            dropdown-items="optionsGender"
+	                            dg-placeholder="Search Gender ...">
+	                        </fd-combobox-input>
+	                    </div>
+                    </fd-form-item>
+                    <fd-form-item class="fd-row">
+                    	<div class="fd-col fd-col-md--2">
+                        	<fd-form-label for="idNationality" dg-colon="true">Nationality</fd-form-label>
+                        </div>
+                        <div class="fd-col fd-col-md--8">
+	                        <fd-combobox-input id="idNationality"
+	                            name="Nationality"
+	                            state="{{ forms.details['Nationality'].$valid ? '' : 'error' }}"
+	                            ng-model="entity.Nationality"
+	                            dropdown-items="optionsNationality"
+	                            dg-placeholder="Search Nationality ...">
+	                        </fd-combobox-input>
+	                    </div>
+                    </fd-form-item>
+                    <fd-form-item class="fd-row">
+                    	<div class="fd-col fd-col-md--2">
+                        	<fd-form-label for="idMartialStatus" dg-colon="true">MartialStatus</fd-form-label>
+                        </div>
+                        <div class="fd-col fd-col-md--8">
+	                        <fd-combobox-input id="idMartialStatus"
+	                            name="MartialStatus"
+	                            state="{{ forms.details['MartialStatus'].$valid ? '' : 'error' }}"
+	                            ng-model="entity.MartialStatus"
+	                            dropdown-items="optionsMartialStatus"
+	                            dg-placeholder="Search MartialStatus ...">
 	                        </fd-combobox-input>
 	                    </div>
                     </fd-form-item>
@@ -140,7 +160,7 @@
             </fd-fieldset>
         </fd-scrollbar>
 
-		<fd-bar bar-design="footer" compact="true" ng-show="action !== 'select'">
+        <fd-bar bar-design="footer" compact="true" ng-show="action !== 'select'">
 			<fd-bar-right>
 				<fd-bar-element>
 					<fd-button dg-label="Filter" dg-type="emphasized" ng-click="filter()"></fd-button>

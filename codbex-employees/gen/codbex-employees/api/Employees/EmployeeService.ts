@@ -134,17 +134,17 @@ class EmployeeService {
         if (entity.LastName?.length > 50) {
             throw new ValidationError(`The 'LastName' exceeds the maximum length of [50] characters`);
         }
-        if (entity.Email === null || entity.Email === undefined) {
-            throw new ValidationError(`The 'Email' property is required, provide a valid value`);
+        if (entity.BirthDate === null || entity.BirthDate === undefined) {
+            throw new ValidationError(`The 'BirthDate' property is required, provide a valid value`);
         }
-        if (entity.Email?.length > 100) {
-            throw new ValidationError(`The 'Email' exceeds the maximum length of [100] characters`);
+        if (entity.Gender === null || entity.Gender === undefined) {
+            throw new ValidationError(`The 'Gender' property is required, provide a valid value`);
         }
-        if (entity.Phone === null || entity.Phone === undefined) {
-            throw new ValidationError(`The 'Phone' property is required, provide a valid value`);
+        if (entity.Nationality === null || entity.Nationality === undefined) {
+            throw new ValidationError(`The 'Nationality' property is required, provide a valid value`);
         }
-        if (entity.Phone?.length > 20) {
-            throw new ValidationError(`The 'Phone' exceeds the maximum length of [20] characters`);
+        if (entity.MartialStatus === null || entity.MartialStatus === undefined) {
+            throw new ValidationError(`The 'MartialStatus' property is required, provide a valid value`);
         }
         for (const next of validationModules) {
             next.validate(entity);

@@ -10,7 +10,10 @@ servers:
   - url: /services/ts
 tags:
   - name: Employees
-  - name: Organisations
+  - name: EmployeesSettings
+  - name: EmployeesSettings
+  - name: Employees
+  - name: Employees
 paths:
   /codbex-employees/gen/codbex-employees/api/Employees/EmployeeService.ts:
     get:
@@ -260,8 +263,6 @@ paths:
                       FirstName: "abcd"
                       MiddleName: "abcd"
                       LastName: "abcd"
-                      Email: "abcd"
-                      Phone: "abcd"
                     greaterThan:
                       Id: 0
                     lessThanOrEqual:
@@ -286,8 +287,6 @@ paths:
                       FirstName: "abcd"
                       MiddleName: "abcd"
                       LastName: "abcd"
-                      Email: "abcd"
-                      Phone: "abcd"
               countWithGreaterThan:
                 summary: Count with Greater Than
                 value:
@@ -354,8 +353,6 @@ paths:
                       FirstName: "abcd"
                       MiddleName: "abcd"
                       LastName: "abcd"
-                      Email: "abcd"
-                      Phone: "abcd"
                     greaterThan:
                       Id: 0
                     lessThanOrEqual:
@@ -380,8 +377,6 @@ paths:
                       FirstName: "abcd"
                       MiddleName: "abcd"
                       LastName: "abcd"
-                      Email: "abcd"
-                      Phone: "abcd"
               searchWithGreaterThan:
                 summary: Search with Greater Than
                 value:
@@ -428,9 +423,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-employees/gen/codbex-employees/api/Organisations/OrganisationService.ts:
+  /codbex-employees/gen/codbex-employees/api/EmployeesSettings/GenderService.ts:
     get:
-      summary: List Organisation
+      summary: List Gender
       parameters:
         - in: query
           name: $limit
@@ -449,7 +444,7 @@ paths:
             type: integer
             allowEmptyValue: true
       tags:
-        - Organisations
+        - EmployeesSettings
       responses:
         200:
           description: Successful Request
@@ -458,7 +453,7 @@ paths:
               schema:
                 type: array
                 items:
-                    $ref: '#/components/schemas/Organisation'
+                    $ref: '#/components/schemas/Gender'
         400:
           description: Bad Request Error
           content:
@@ -478,14 +473,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
     post:
-      summary: Create Organisation
+      summary: Create Gender
       tags:
-        - Organisations
+        - EmployeesSettings
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Organisation'
+              $ref: '#/components/schemas/Gender'
         required: true
       responses:
         201:
@@ -493,7 +488,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Organisation'
+                $ref: '#/components/schemas/Gender'
         400:
           description: Bad Request Error
           content:
@@ -512,9 +507,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-employees/gen/codbex-employees/api/Organisations/OrganisationService.ts/{id}:
+  /codbex-employees/gen/codbex-employees/api/EmployeesSettings/GenderService.ts/{id}:
     get:
-      summary: Get Organisation by Id
+      summary: Get Gender by Id
       parameters:
         - in: path
           name: id
@@ -523,7 +518,7 @@ paths:
           schema:
             type: string
       tags:
-        - Organisations
+        - EmployeesSettings
       responses:
         200:
           description: Successful Request
@@ -532,7 +527,7 @@ paths:
               schema:
                 type: array
                 items:
-                    $ref: '#/components/schemas/Organisation'
+                    $ref: '#/components/schemas/Gender'
         404:
           description: Entity Not Found
           content:
@@ -552,7 +547,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
     put:
-      summary: Update Organisation by Id
+      summary: Update Gender by Id
       parameters:
         - in: path
           name: id
@@ -561,12 +556,12 @@ paths:
           schema:
             type: string
       tags:
-        - Organisations
+        - EmployeesSettings
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Organisation'
+              $ref: '#/components/schemas/Gender'
         required: true
       responses:
         200:
@@ -574,7 +569,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Organisation'
+                $ref: '#/components/schemas/Gender'
         400:
           description: Bad Request Error
           content:
@@ -600,7 +595,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
     delete:
-      summary: Delete Organisation by Id
+      summary: Delete Gender by Id
       parameters:
         - in: path
           name: id
@@ -609,7 +604,7 @@ paths:
           schema:
             type: string
       tags:
-        - Organisations
+        - EmployeesSettings
       responses:
         204:
           description: Successful Request
@@ -631,11 +626,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-employees/gen/codbex-employees/api/Organisations/OrganisationService.ts/count:
+  /codbex-employees/gen/codbex-employees/api/EmployeesSettings/GenderService.ts/count:
     get:
-      summary: Count the number of Organisation
+      summary: Count the number of Gender
       tags:
-        - Organisations
+        - EmployeesSettings
       responses:
         200:
           description: Successful Request
@@ -657,14 +652,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
     post:
-      summary: Count the number of Organisation by OrganisationFilterOptions
+      summary: Count the number of Gender by GenderFilterOptions
       tags:
-        - Organisations
+        - EmployeesSettings
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/OrganisationFilterOptions'
+              $ref: '#/components/schemas/GenderFilterOptions'
             examples:
               countWithMultipleCriteria:
                 summary: Count with multiple criteria
@@ -674,7 +669,6 @@ paths:
                       Id: 33
                     contains:
                       Name: "abcd"
-                      CostCenter: "abcd"
                     greaterThan:
                       Id: 0
                     lessThanOrEqual:
@@ -697,7 +691,6 @@ paths:
                   $filter:
                     contains:
                       Name: "abcd"
-                      CostCenter: "abcd"
               countWithGreaterThan:
                 summary: Count with Greater Than
                 value:
@@ -743,16 +736,16 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-employees/gen/codbex-employees/api/Organisations/OrganisationService.ts/search:
+  /codbex-employees/gen/codbex-employees/api/EmployeesSettings/GenderService.ts/search:
     post:
-      summary: Search Organisation by OrganisationFilterOptions
+      summary: Search Gender by GenderFilterOptions
       tags:
-        - Organisations
+        - EmployeesSettings
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/OrganisationFilterOptions'
+              $ref: '#/components/schemas/GenderFilterOptions'
             examples:
               searchWithMultipleCriteria:
                 summary: Search with multiple criteria
@@ -762,7 +755,6 @@ paths:
                       Id: 33
                     contains:
                       Name: "abcd"
-                      CostCenter: "abcd"
                     greaterThan:
                       Id: 0
                     lessThanOrEqual:
@@ -785,7 +777,6 @@ paths:
                   $filter:
                     contains:
                       Name: "abcd"
-                      CostCenter: "abcd"
               searchWithGreaterThan:
                 summary: Search with Greater Than
                 value:
@@ -819,7 +810,1203 @@ paths:
               schema:
                 type: array
                 items:
-                    $ref: '#/components/schemas/Organisation'
+                    $ref: '#/components/schemas/Gender'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /codbex-employees/gen/codbex-employees/api/EmployeesSettings/MartialStatusService.ts:
+    get:
+      summary: List MartialStatus
+      parameters:
+        - in: query
+          name: $limit
+          description: The number of records to be returned _(both `$limit` and `$offset` should be provided)_.
+          required: false
+          allowReserved: true
+          schema:
+            type: integer
+            allowEmptyValue: true
+        - in: query
+          name: $offset
+          description: The number of records to skip _(both `$limit` and `$offset` should be provided)_.
+          required: false
+          allowReserved: true
+          schema:
+            type: integer
+            allowEmptyValue: true
+      tags:
+        - EmployeesSettings
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                    $ref: '#/components/schemas/MartialStatus'
+        400:
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      summary: Create MartialStatus
+      tags:
+        - EmployeesSettings
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MartialStatus'
+        required: true
+      responses:
+        201:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MartialStatus'
+        400:
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /codbex-employees/gen/codbex-employees/api/EmployeesSettings/MartialStatusService.ts/{id}:
+    get:
+      summary: Get MartialStatus by Id
+      parameters:
+        - in: path
+          name: id
+          description: The Id of the entity.
+          required: true
+          schema:
+            type: string
+      tags:
+        - EmployeesSettings
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                    $ref: '#/components/schemas/MartialStatus'
+        404:
+          description: Entity Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    put:
+      summary: Update MartialStatus by Id
+      parameters:
+        - in: path
+          name: id
+          description: The Id of the entity.
+          required: true
+          schema:
+            type: string
+      tags:
+        - EmployeesSettings
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MartialStatus'
+        required: true
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MartialStatus'
+        400:
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        404:
+          description: Entity Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      summary: Delete MartialStatus by Id
+      parameters:
+        - in: path
+          name: id
+          description: The Id of the entity.
+          required: true
+          schema:
+            type: string
+      tags:
+        - EmployeesSettings
+      responses:
+        204:
+          description: Successful Request
+        404:
+          description: Entity Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /codbex-employees/gen/codbex-employees/api/EmployeesSettings/MartialStatusService.ts/count:
+    get:
+      summary: Count the number of MartialStatus
+      tags:
+        - EmployeesSettings
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: integer
+                example: 100
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      summary: Count the number of MartialStatus by MartialStatusFilterOptions
+      tags:
+        - EmployeesSettings
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MartialStatusFilterOptions'
+            examples:
+              countWithMultipleCriteria:
+                summary: Count with multiple criteria
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 33
+                    contains:
+                      Name: "abcd"
+                    greaterThan:
+                      Id: 0
+                    lessThanOrEqual:
+                      Id: 100
+              countWithEquals:
+                summary: Count with Equals
+                value:
+                  $filter:
+                    equals:
+                      Id: 0
+              countWithNotEquals:
+                summary: Count with Not Equals
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 0
+              countWithContains:
+                summary: Count with Contains
+                value:
+                  $filter:
+                    contains:
+                      Name: "abcd"
+              countWithGreaterThan:
+                summary: Count with Greater Than
+                value:
+                  $filter:
+                    greaterThan:
+                      Id: 0
+              countWithGreaterThanOrEqual:
+                summary: Count with Greater Than Or Equal
+                value:
+                  $filter:
+                    greaterThanOrEqual:
+                      Id: 0
+              countWithLessThan:
+                summary: Count with Less Than
+                value:
+                  $filter:
+                    lessThan:
+                      Id: 0
+              countWithLessThanOrEqual:
+                summary: Count with Less Than Or Equal
+                value:
+                  $filter:
+                    lessThanOrEqual:
+                      Id: 0
+        required: true
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: integer
+                example: 100
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /codbex-employees/gen/codbex-employees/api/EmployeesSettings/MartialStatusService.ts/search:
+    post:
+      summary: Search MartialStatus by MartialStatusFilterOptions
+      tags:
+        - EmployeesSettings
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MartialStatusFilterOptions'
+            examples:
+              searchWithMultipleCriteria:
+                summary: Search with multiple criteria
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 33
+                    contains:
+                      Name: "abcd"
+                    greaterThan:
+                      Id: 0
+                    lessThanOrEqual:
+                      Id: 100
+              searchWithEquals:
+                summary: Search with Equals
+                value:
+                  $filter:
+                    equals:
+                      Id: 0
+              searchWithNotEquals:
+                summary: Search with Not Equals
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 0
+              searchWithContains:
+                summary: Search with Contains
+                value:
+                  $filter:
+                    contains:
+                      Name: "abcd"
+              searchWithGreaterThan:
+                summary: Search with Greater Than
+                value:
+                  $filter:
+                    greaterThan:
+                      Id: 0
+              searchWithGreaterThanOrEqual:
+                summary: Search with Greater Than Or Equal
+                value:
+                  $filter:
+                    greaterThanOrEqual:
+                      Id: 0
+              searchWithLessThan:
+                summary: Search with Less Than
+                value:
+                  $filter:
+                    lessThan:
+                      Id: 0
+              searchWithLessThanOrEqual:
+                summary: Search with Less Than Or Equal
+                value:
+                  $filter:
+                    lessThanOrEqual:
+                      Id: 0
+        required: true
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                    $ref: '#/components/schemas/MartialStatus'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /codbex-employees/gen/codbex-employees/api/Employees/ContactService.ts:
+    get:
+      summary: List Contact
+      parameters:
+        - in: query
+          name: $limit
+          description: The number of records to be returned _(both `$limit` and `$offset` should be provided)_.
+          required: false
+          allowReserved: true
+          schema:
+            type: integer
+            allowEmptyValue: true
+        - in: query
+          name: $offset
+          description: The number of records to skip _(both `$limit` and `$offset` should be provided)_.
+          required: false
+          allowReserved: true
+          schema:
+            type: integer
+            allowEmptyValue: true
+      tags:
+        - Employees
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                    $ref: '#/components/schemas/Contact'
+        400:
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      summary: Create Contact
+      tags:
+        - Employees
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Contact'
+        required: true
+      responses:
+        201:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Contact'
+        400:
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /codbex-employees/gen/codbex-employees/api/Employees/ContactService.ts/{id}:
+    get:
+      summary: Get Contact by Id
+      parameters:
+        - in: path
+          name: id
+          description: The Id of the entity.
+          required: true
+          schema:
+            type: string
+      tags:
+        - Employees
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                    $ref: '#/components/schemas/Contact'
+        404:
+          description: Entity Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    put:
+      summary: Update Contact by Id
+      parameters:
+        - in: path
+          name: id
+          description: The Id of the entity.
+          required: true
+          schema:
+            type: string
+      tags:
+        - Employees
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Contact'
+        required: true
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Contact'
+        400:
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        404:
+          description: Entity Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      summary: Delete Contact by Id
+      parameters:
+        - in: path
+          name: id
+          description: The Id of the entity.
+          required: true
+          schema:
+            type: string
+      tags:
+        - Employees
+      responses:
+        204:
+          description: Successful Request
+        404:
+          description: Entity Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /codbex-employees/gen/codbex-employees/api/Employees/ContactService.ts/count:
+    get:
+      summary: Count the number of Contact
+      tags:
+        - Employees
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: integer
+                example: 100
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      summary: Count the number of Contact by ContactFilterOptions
+      tags:
+        - Employees
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContactFilterOptions'
+            examples:
+              countWithMultipleCriteria:
+                summary: Count with multiple criteria
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 33
+                    contains:
+                      Address: "abcd"
+                      PostalCode: "abcd"
+                      Email: "abcd"
+                      PhoneNumber: "abcd"
+                    greaterThan:
+                      Id: 0
+                    lessThanOrEqual:
+                      Id: 100
+              countWithEquals:
+                summary: Count with Equals
+                value:
+                  $filter:
+                    equals:
+                      Id: 0
+              countWithNotEquals:
+                summary: Count with Not Equals
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 0
+              countWithContains:
+                summary: Count with Contains
+                value:
+                  $filter:
+                    contains:
+                      Address: "abcd"
+                      PostalCode: "abcd"
+                      Email: "abcd"
+                      PhoneNumber: "abcd"
+              countWithGreaterThan:
+                summary: Count with Greater Than
+                value:
+                  $filter:
+                    greaterThan:
+                      Id: 0
+              countWithGreaterThanOrEqual:
+                summary: Count with Greater Than Or Equal
+                value:
+                  $filter:
+                    greaterThanOrEqual:
+                      Id: 0
+              countWithLessThan:
+                summary: Count with Less Than
+                value:
+                  $filter:
+                    lessThan:
+                      Id: 0
+              countWithLessThanOrEqual:
+                summary: Count with Less Than Or Equal
+                value:
+                  $filter:
+                    lessThanOrEqual:
+                      Id: 0
+        required: true
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: integer
+                example: 100
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /codbex-employees/gen/codbex-employees/api/Employees/ContactService.ts/search:
+    post:
+      summary: Search Contact by ContactFilterOptions
+      tags:
+        - Employees
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContactFilterOptions'
+            examples:
+              searchWithMultipleCriteria:
+                summary: Search with multiple criteria
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 33
+                    contains:
+                      Address: "abcd"
+                      PostalCode: "abcd"
+                      Email: "abcd"
+                      PhoneNumber: "abcd"
+                    greaterThan:
+                      Id: 0
+                    lessThanOrEqual:
+                      Id: 100
+              searchWithEquals:
+                summary: Search with Equals
+                value:
+                  $filter:
+                    equals:
+                      Id: 0
+              searchWithNotEquals:
+                summary: Search with Not Equals
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 0
+              searchWithContains:
+                summary: Search with Contains
+                value:
+                  $filter:
+                    contains:
+                      Address: "abcd"
+                      PostalCode: "abcd"
+                      Email: "abcd"
+                      PhoneNumber: "abcd"
+              searchWithGreaterThan:
+                summary: Search with Greater Than
+                value:
+                  $filter:
+                    greaterThan:
+                      Id: 0
+              searchWithGreaterThanOrEqual:
+                summary: Search with Greater Than Or Equal
+                value:
+                  $filter:
+                    greaterThanOrEqual:
+                      Id: 0
+              searchWithLessThan:
+                summary: Search with Less Than
+                value:
+                  $filter:
+                    lessThan:
+                      Id: 0
+              searchWithLessThanOrEqual:
+                summary: Search with Less Than Or Equal
+                value:
+                  $filter:
+                    lessThanOrEqual:
+                      Id: 0
+        required: true
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                    $ref: '#/components/schemas/Contact'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /codbex-employees/gen/codbex-employees/api/Employees/EmployeeAssignmentService.ts:
+    get:
+      summary: List EmployeeAssignment
+      parameters:
+        - in: query
+          name: $limit
+          description: The number of records to be returned _(both `$limit` and `$offset` should be provided)_.
+          required: false
+          allowReserved: true
+          schema:
+            type: integer
+            allowEmptyValue: true
+        - in: query
+          name: $offset
+          description: The number of records to skip _(both `$limit` and `$offset` should be provided)_.
+          required: false
+          allowReserved: true
+          schema:
+            type: integer
+            allowEmptyValue: true
+      tags:
+        - Employees
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                    $ref: '#/components/schemas/EmployeeAssignment'
+        400:
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      summary: Create EmployeeAssignment
+      tags:
+        - Employees
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmployeeAssignment'
+        required: true
+      responses:
+        201:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmployeeAssignment'
+        400:
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /codbex-employees/gen/codbex-employees/api/Employees/EmployeeAssignmentService.ts/{id}:
+    get:
+      summary: Get EmployeeAssignment by Id
+      parameters:
+        - in: path
+          name: id
+          description: The Id of the entity.
+          required: true
+          schema:
+            type: string
+      tags:
+        - Employees
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                    $ref: '#/components/schemas/EmployeeAssignment'
+        404:
+          description: Entity Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    put:
+      summary: Update EmployeeAssignment by Id
+      parameters:
+        - in: path
+          name: id
+          description: The Id of the entity.
+          required: true
+          schema:
+            type: string
+      tags:
+        - Employees
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmployeeAssignment'
+        required: true
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmployeeAssignment'
+        400:
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        404:
+          description: Entity Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      summary: Delete EmployeeAssignment by Id
+      parameters:
+        - in: path
+          name: id
+          description: The Id of the entity.
+          required: true
+          schema:
+            type: string
+      tags:
+        - Employees
+      responses:
+        204:
+          description: Successful Request
+        404:
+          description: Entity Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /codbex-employees/gen/codbex-employees/api/Employees/EmployeeAssignmentService.ts/count:
+    get:
+      summary: Count the number of EmployeeAssignment
+      tags:
+        - Employees
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: integer
+                example: 100
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      summary: Count the number of EmployeeAssignment by EmployeeAssignmentFilterOptions
+      tags:
+        - Employees
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmployeeAssignmentFilterOptions'
+            examples:
+              countWithMultipleCriteria:
+                summary: Count with multiple criteria
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 33
+                    greaterThan:
+                      Id: 0
+                    lessThanOrEqual:
+                      Id: 100
+              countWithEquals:
+                summary: Count with Equals
+                value:
+                  $filter:
+                    equals:
+                      Id: 0
+              countWithNotEquals:
+                summary: Count with Not Equals
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 0
+              countWithGreaterThan:
+                summary: Count with Greater Than
+                value:
+                  $filter:
+                    greaterThan:
+                      Id: 0
+              countWithGreaterThanOrEqual:
+                summary: Count with Greater Than Or Equal
+                value:
+                  $filter:
+                    greaterThanOrEqual:
+                      Id: 0
+              countWithLessThan:
+                summary: Count with Less Than
+                value:
+                  $filter:
+                    lessThan:
+                      Id: 0
+              countWithLessThanOrEqual:
+                summary: Count with Less Than Or Equal
+                value:
+                  $filter:
+                    lessThanOrEqual:
+                      Id: 0
+        required: true
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: integer
+                example: 100
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /codbex-employees/gen/codbex-employees/api/Employees/EmployeeAssignmentService.ts/search:
+    post:
+      summary: Search EmployeeAssignment by EmployeeAssignmentFilterOptions
+      tags:
+        - Employees
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmployeeAssignmentFilterOptions'
+            examples:
+              searchWithMultipleCriteria:
+                summary: Search with multiple criteria
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 33
+                    greaterThan:
+                      Id: 0
+                    lessThanOrEqual:
+                      Id: 100
+              searchWithEquals:
+                summary: Search with Equals
+                value:
+                  $filter:
+                    equals:
+                      Id: 0
+              searchWithNotEquals:
+                summary: Search with Not Equals
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 0
+              searchWithGreaterThan:
+                summary: Search with Greater Than
+                value:
+                  $filter:
+                    greaterThan:
+                      Id: 0
+              searchWithGreaterThanOrEqual:
+                summary: Search with Greater Than Or Equal
+                value:
+                  $filter:
+                    greaterThanOrEqual:
+                      Id: 0
+              searchWithLessThan:
+                summary: Search with Less Than
+                value:
+                  $filter:
+                    lessThan:
+                      Id: 0
+              searchWithLessThanOrEqual:
+                summary: Search with Less Than Or Equal
+                value:
+                  $filter:
+                    lessThanOrEqual:
+                      Id: 0
+        required: true
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                    $ref: '#/components/schemas/EmployeeAssignment'
         403:
           description: Forbidden Error
           content:
@@ -839,8 +2026,10 @@ components:
       required:
         - FirstName
         - LastName
-        - Email
-        - Phone
+        - BirthDate
+        - Gender
+        - Nationality
+        - MartialStatus
       properties:
         Id:
           type: integer
@@ -857,15 +2046,14 @@ components:
           type: string
           minLength: 0
           maxLength: 50
-        Email:
-          type: string
-          minLength: 0
-          maxLength: 100
-        Phone:
-          type: string
-          minLength: 0
-          maxLength: 20
-        Organisation:
+        BirthDate:
+        Gender:
+          type: integer
+          format: int32
+        Nationality:
+          type: integer
+          format: int32
+        MartialStatus:
           type: integer
           format: int32
     EmployeeFilterOptions:
@@ -918,29 +2106,25 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 50
-                Email:
+                BirthDate:
                   oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 100
+                Gender:
+                  oneOf:
+                    - type: integer
+                      format: int32
                     - type: array
                       items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 100
-                Phone:
+                        type: integer
+                        format: int32
+                Nationality:
                   oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 20
+                    - type: integer
+                      format: int32
                     - type: array
                       items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 20
-                Organisation:
+                        type: integer
+                        format: int32
+                MartialStatus:
                   oneOf:
                     - type: integer
                       format: int32
@@ -992,29 +2176,25 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 50
-                Email:
+                BirthDate:
                   oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 100
+                Gender:
+                  oneOf:
+                    - type: integer
+                      format: int32
                     - type: array
                       items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 100
-                Phone:
+                        type: integer
+                        format: int32
+                Nationality:
                   oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 20
+                    - type: integer
+                      format: int32
                     - type: array
                       items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 20
-                Organisation:
+                        type: integer
+                        format: int32
+                MartialStatus:
                   oneOf:
                     - type: integer
                       format: int32
@@ -1038,15 +2218,10 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 50
-                Email:
-                  type: string
-                  minLength: 0
-                  maxLength: 100
-                Phone:
-                  type: string
-                  minLength: 0
-                  maxLength: 20
-                Organisation:
+                BirthDate:
+                Gender:
+                Nationality:
+                MartialStatus:
             greaterThan:
               type: object
               properties:
@@ -1065,15 +2240,14 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 50
-                Email:
-                  type: string
-                  minLength: 0
-                  maxLength: 100
-                Phone:
-                  type: string
-                  minLength: 0
-                  maxLength: 20
-                Organisation:
+                BirthDate:
+                Gender:
+                  type: integer
+                  format: int32
+                Nationality:
+                  type: integer
+                  format: int32
+                MartialStatus:
                   type: integer
                   format: int32
             greaterThanOrEqual:
@@ -1094,15 +2268,14 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 50
-                Email:
-                  type: string
-                  minLength: 0
-                  maxLength: 100
-                Phone:
-                  type: string
-                  minLength: 0
-                  maxLength: 20
-                Organisation:
+                BirthDate:
+                Gender:
+                  type: integer
+                  format: int32
+                Nationality:
+                  type: integer
+                  format: int32
+                MartialStatus:
                   type: integer
                   format: int32
             lessThan:
@@ -1123,15 +2296,14 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 50
-                Email:
-                  type: string
-                  minLength: 0
-                  maxLength: 100
-                Phone:
-                  type: string
-                  minLength: 0
-                  maxLength: 20
-                Organisation:
+                BirthDate:
+                Gender:
+                  type: integer
+                  format: int32
+                Nationality:
+                  type: integer
+                  format: int32
+                MartialStatus:
                   type: integer
                   format: int32
             lessThanOrEqual:
@@ -1152,25 +2324,24 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 50
-                Email:
-                  type: string
-                  minLength: 0
-                  maxLength: 100
-                Phone:
-                  type: string
-                  minLength: 0
-                  maxLength: 20
-                Organisation:
+                BirthDate:
+                Gender:
+                  type: integer
+                  format: int32
+                Nationality:
+                  type: integer
+                  format: int32
+                MartialStatus:
                   type: integer
                   format: int32
         $select:
           type: array
-          example: ["Id", "FirstName", "MiddleName", "LastName", "Email", "Phone", "Organisation"]
+          example: ["Id", "FirstName", "MiddleName", "LastName", "BirthDate", "Gender", "Nationality", "MartialStatus"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,FirstName,MiddleName,LastName,Email,Phone,Organisation"
+            example: "Id,FirstName,MiddleName,LastName,BirthDate,Gender,Nationality,MartialStatus"
         $order:
           type: string
           enum: ["asc", "desc"]
@@ -1181,7 +2352,7 @@ components:
         $limit:
           type: integer
           example: 10
-    Organisation:
+    Gender:
       type: object
       required:
         - Name
@@ -1192,12 +2363,8 @@ components:
         Name:
           type: string
           minLength: 0
-          maxLength: 50
-        CostCenter:
-          type: string
-          minLength: 0
-          maxLength: 10
-    OrganisationFilterOptions:
+          maxLength: 7
+    GenderFilterOptions:
       type: object
       properties:
         $filter:
@@ -1218,24 +2385,13 @@ components:
                   oneOf:
                     - type: string
                       minLength: 0
-                      maxLength: 50
+                      maxLength: 7
                     - type: array
                       items:
                         type: string
                         format: double
                         minLength: 0
-                        maxLength: 50
-                CostCenter:
-                  oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 10
-                    - type: array
-                      items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 10
+                        maxLength: 7
             notEquals:
               type: object
               properties:
@@ -1251,24 +2407,13 @@ components:
                   oneOf:
                     - type: string
                       minLength: 0
-                      maxLength: 50
+                      maxLength: 7
                     - type: array
                       items:
                         type: string
                         format: double
                         minLength: 0
-                        maxLength: 50
-                CostCenter:
-                  oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 10
-                    - type: array
-                      items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 10
+                        maxLength: 7
             contains:
               type: object
               properties:
@@ -1276,11 +2421,7 @@ components:
                 Name:
                   type: string
                   minLength: 0
-                  maxLength: 50
-                CostCenter:
-                  type: string
-                  minLength: 0
-                  maxLength: 10
+                  maxLength: 7
             greaterThan:
               type: object
               properties:
@@ -1290,11 +2431,7 @@ components:
                 Name:
                   type: string
                   minLength: 0
-                  maxLength: 50
-                CostCenter:
-                  type: string
-                  minLength: 0
-                  maxLength: 10
+                  maxLength: 7
             greaterThanOrEqual:
               type: object
               properties:
@@ -1304,11 +2441,7 @@ components:
                 Name:
                   type: string
                   minLength: 0
-                  maxLength: 50
-                CostCenter:
-                  type: string
-                  minLength: 0
-                  maxLength: 10
+                  maxLength: 7
             lessThan:
               type: object
               properties:
@@ -1318,11 +2451,7 @@ components:
                 Name:
                   type: string
                   minLength: 0
-                  maxLength: 50
-                CostCenter:
-                  type: string
-                  minLength: 0
-                  maxLength: 10
+                  maxLength: 7
             lessThanOrEqual:
               type: object
               properties:
@@ -1332,19 +2461,656 @@ components:
                 Name:
                   type: string
                   minLength: 0
-                  maxLength: 50
-                CostCenter:
-                  type: string
-                  minLength: 0
-                  maxLength: 10
+                  maxLength: 7
         $select:
           type: array
-          example: ["Id", "Name", "CostCenter"]
+          example: ["Id", "Name"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,Name,CostCenter"
+            example: "Id,Name"
+        $order:
+          type: string
+          enum: ["asc", "desc"]
+          example: "asc"
+        $offset:
+          type: integer
+          example: 0
+        $limit:
+          type: integer
+          example: 10
+    MartialStatus:
+      type: object
+      required:
+        - Name
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type: string
+          minLength: 0
+          maxLength: 20
+    MartialStatusFilterOptions:
+      type: object
+      properties:
+        $filter:
+          type: object
+          properties:
+            equals:
+              type: object
+              properties:
+                Id:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Name:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 20
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 20
+            notEquals:
+              type: object
+              properties:
+                Id:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Name:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 20
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 20
+            contains:
+              type: object
+              properties:
+                Id:
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+            greaterThan:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+            greaterThanOrEqual:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+            lessThan:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+            lessThanOrEqual:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+        $select:
+          type: array
+          example: ["Id", "Name"]
+          items:
+            type: string
+        $sort:
+          - type: string
+            example: "Id,Name"
+        $order:
+          type: string
+          enum: ["asc", "desc"]
+          example: "asc"
+        $offset:
+          type: integer
+          example: 0
+        $limit:
+          type: integer
+          example: 10
+    Contact:
+      type: object
+      required:
+        - Address
+        - Country
+        - City
+        - PostalCode
+        - Email
+        - PhoneNumber
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Address:
+          type: string
+          minLength: 0
+          maxLength: 20
+        Country:
+          type: integer
+          format: int32
+        City:
+          type: integer
+          format: int32
+        PostalCode:
+          type: string
+          minLength: 0
+          maxLength: 20
+        Email:
+          type: string
+          minLength: 0
+          maxLength: 40
+        PhoneNumber:
+          type: string
+          minLength: 0
+          maxLength: 15
+        Employee:
+          type: integer
+          format: int32
+    ContactFilterOptions:
+      type: object
+      properties:
+        $filter:
+          type: object
+          properties:
+            equals:
+              type: object
+              properties:
+                Id:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Address:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 20
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 20
+                Country:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                City:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                PostalCode:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 20
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 20
+                Email:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 40
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 40
+                PhoneNumber:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 15
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 15
+                Employee:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+            notEquals:
+              type: object
+              properties:
+                Id:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Address:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 20
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 20
+                Country:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                City:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                PostalCode:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 20
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 20
+                Email:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 40
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 40
+                PhoneNumber:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 15
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 15
+                Employee:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+            contains:
+              type: object
+              properties:
+                Id:
+                Address:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                Country:
+                City:
+                PostalCode:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                Email:
+                  type: string
+                  minLength: 0
+                  maxLength: 40
+                PhoneNumber:
+                  type: string
+                  minLength: 0
+                  maxLength: 15
+                Employee:
+            greaterThan:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                Address:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                Country:
+                  type: integer
+                  format: int32
+                City:
+                  type: integer
+                  format: int32
+                PostalCode:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                Email:
+                  type: string
+                  minLength: 0
+                  maxLength: 40
+                PhoneNumber:
+                  type: string
+                  minLength: 0
+                  maxLength: 15
+                Employee:
+                  type: integer
+                  format: int32
+            greaterThanOrEqual:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                Address:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                Country:
+                  type: integer
+                  format: int32
+                City:
+                  type: integer
+                  format: int32
+                PostalCode:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                Email:
+                  type: string
+                  minLength: 0
+                  maxLength: 40
+                PhoneNumber:
+                  type: string
+                  minLength: 0
+                  maxLength: 15
+                Employee:
+                  type: integer
+                  format: int32
+            lessThan:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                Address:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                Country:
+                  type: integer
+                  format: int32
+                City:
+                  type: integer
+                  format: int32
+                PostalCode:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                Email:
+                  type: string
+                  minLength: 0
+                  maxLength: 40
+                PhoneNumber:
+                  type: string
+                  minLength: 0
+                  maxLength: 15
+                Employee:
+                  type: integer
+                  format: int32
+            lessThanOrEqual:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                Address:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                Country:
+                  type: integer
+                  format: int32
+                City:
+                  type: integer
+                  format: int32
+                PostalCode:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                Email:
+                  type: string
+                  minLength: 0
+                  maxLength: 40
+                PhoneNumber:
+                  type: string
+                  minLength: 0
+                  maxLength: 15
+                Employee:
+                  type: integer
+                  format: int32
+        $select:
+          type: array
+          example: ["Id", "Address", "Country", "City", "PostalCode", "Email", "PhoneNumber", "Employee"]
+          items:
+            type: string
+        $sort:
+          - type: string
+            example: "Id,Address,Country,City,PostalCode,Email,PhoneNumber,Employee"
+        $order:
+          type: string
+          enum: ["asc", "desc"]
+          example: "asc"
+        $offset:
+          type: integer
+          example: 0
+        $limit:
+          type: integer
+          example: 10
+    EmployeeAssignment:
+      type: object
+      required:
+        - JobAssignment
+      properties:
+        Id:
+          type: integer
+          format: int32
+        JobAssignment:
+          type: integer
+          format: int32
+        Employee:
+          type: integer
+          format: int32
+    EmployeeAssignmentFilterOptions:
+      type: object
+      properties:
+        $filter:
+          type: object
+          properties:
+            equals:
+              type: object
+              properties:
+                Id:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                JobAssignment:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Employee:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+            notEquals:
+              type: object
+              properties:
+                Id:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                JobAssignment:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Employee:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+            contains:
+              type: object
+              properties:
+                Id:
+                JobAssignment:
+                Employee:
+            greaterThan:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                JobAssignment:
+                  type: integer
+                  format: int32
+                Employee:
+                  type: integer
+                  format: int32
+            greaterThanOrEqual:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                JobAssignment:
+                  type: integer
+                  format: int32
+                Employee:
+                  type: integer
+                  format: int32
+            lessThan:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                JobAssignment:
+                  type: integer
+                  format: int32
+                Employee:
+                  type: integer
+                  format: int32
+            lessThanOrEqual:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                JobAssignment:
+                  type: integer
+                  format: int32
+                Employee:
+                  type: integer
+                  format: int32
+        $select:
+          type: array
+          example: ["Id", "JobAssignment", "Employee"]
+          items:
+            type: string
+        $sort:
+          - type: string
+            example: "Id,JobAssignment,Employee"
         $order:
           type: string
           enum: ["asc", "desc"]

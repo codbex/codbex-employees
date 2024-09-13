@@ -11,10 +11,18 @@ angular.module('page', ["ideUI", "ideView"])
 
 		let params = ViewParameters.get();
 		if (Object.keys(params).length) {
+			if (params?.entity?.BirthDateFrom) {
+				params.entity.BirthDateFrom = new Date(params.entity.BirthDateFrom);
+			}
+			if (params?.entity?.BirthDateTo) {
+				params.entity.BirthDateTo = new Date(params.entity.BirthDateTo);
+			}
 			$scope.entity = params.entity ?? {};
 			$scope.selectedMainEntityKey = params.selectedMainEntityKey;
 			$scope.selectedMainEntityId = params.selectedMainEntityId;
-			$scope.optionsOrganisation = params.optionsOrganisation;
+			$scope.optionsGender = params.optionsGender;
+			$scope.optionsNationality = params.optionsNationality;
+			$scope.optionsMartialStatus = params.optionsMartialStatus;
 		}
 
 		$scope.filter = function () {
@@ -49,19 +57,26 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.LastName) {
 				filter.$filter.contains.LastName = entity.LastName;
 			}
-			if (entity.Email) {
-				filter.$filter.contains.Email = entity.Email;
+			if (entity.BirthDateFrom) {
+				filter.$filter.greaterThanOrEqual.BirthDate = entity.BirthDateFrom;
 			}
-			if (entity.Phone) {
-				filter.$filter.contains.Phone = entity.Phone;
+			if (entity.BirthDateTo) {
+				filter.$filter.lessThanOrEqual.BirthDate = entity.BirthDateTo;
 			}
-			if (entity.Organisation !== undefined) {
-				filter.$filter.equals.Organisation = entity.Organisation;
+			if (entity.Gender !== undefined) {
+				filter.$filter.equals.Gender = entity.Gender;
+			}
+			if (entity.Nationality !== undefined) {
+				filter.$filter.equals.Nationality = entity.Nationality;
+			}
+			if (entity.MartialStatus !== undefined) {
+				filter.$filter.equals.MartialStatus = entity.MartialStatus;
 			}
 			messageHub.postMessage("entitySearch", {
 				entity: entity,
 				filter: filter
 			});
+			messageHub.postMessage("clearDetails");
 			$scope.cancel();
 		};
 
