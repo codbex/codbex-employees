@@ -63,6 +63,9 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.BirthDateTo) {
 				filter.$filter.lessThanOrEqual.BirthDate = entity.BirthDateTo;
 			}
+			if (entity.EGN) {
+				filter.$filter.contains.EGN = entity.EGN;
+			}
 			if (entity.Gender !== undefined) {
 				filter.$filter.equals.Gender = entity.Gender;
 			}

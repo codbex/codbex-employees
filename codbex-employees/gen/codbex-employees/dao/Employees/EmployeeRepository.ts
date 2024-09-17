@@ -10,6 +10,7 @@ export interface EmployeeEntity {
     MiddleName?: string;
     LastName: string;
     BirthDate?: Date;
+    EGN?: string;
     Gender?: number;
     Nationality?: number;
     MartialStatus?: number;
@@ -20,6 +21,7 @@ export interface EmployeeCreateEntity {
     readonly MiddleName?: string;
     readonly LastName: string;
     readonly BirthDate?: Date;
+    readonly EGN?: string;
     readonly Gender?: number;
     readonly Nationality?: number;
     readonly MartialStatus?: number;
@@ -37,6 +39,7 @@ export interface EmployeeEntityOptions {
             MiddleName?: string | string[];
             LastName?: string | string[];
             BirthDate?: Date | Date[];
+            EGN?: string | string[];
             Gender?: number | number[];
             Nationality?: number | number[];
             MartialStatus?: number | number[];
@@ -47,6 +50,7 @@ export interface EmployeeEntityOptions {
             MiddleName?: string | string[];
             LastName?: string | string[];
             BirthDate?: Date | Date[];
+            EGN?: string | string[];
             Gender?: number | number[];
             Nationality?: number | number[];
             MartialStatus?: number | number[];
@@ -57,6 +61,7 @@ export interface EmployeeEntityOptions {
             MiddleName?: string;
             LastName?: string;
             BirthDate?: Date;
+            EGN?: string;
             Gender?: number;
             Nationality?: number;
             MartialStatus?: number;
@@ -67,6 +72,7 @@ export interface EmployeeEntityOptions {
             MiddleName?: string;
             LastName?: string;
             BirthDate?: Date;
+            EGN?: string;
             Gender?: number;
             Nationality?: number;
             MartialStatus?: number;
@@ -77,6 +83,7 @@ export interface EmployeeEntityOptions {
             MiddleName?: string;
             LastName?: string;
             BirthDate?: Date;
+            EGN?: string;
             Gender?: number;
             Nationality?: number;
             MartialStatus?: number;
@@ -87,6 +94,7 @@ export interface EmployeeEntityOptions {
             MiddleName?: string;
             LastName?: string;
             BirthDate?: Date;
+            EGN?: string;
             Gender?: number;
             Nationality?: number;
             MartialStatus?: number;
@@ -97,6 +105,7 @@ export interface EmployeeEntityOptions {
             MiddleName?: string;
             LastName?: string;
             BirthDate?: Date;
+            EGN?: string;
             Gender?: number;
             Nationality?: number;
             MartialStatus?: number;
@@ -157,6 +166,11 @@ export class EmployeeRepository {
                 name: "BirthDate",
                 column: "EMPLOYEE_BIRTHDATE",
                 type: "DATE",
+            },
+            {
+                name: "EGN",
+                column: "EMPLOYEE_EGN",
+                type: "VARCHAR",
             },
             {
                 name: "Gender",
