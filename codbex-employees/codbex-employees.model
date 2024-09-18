@@ -68,6 +68,18 @@
                         "widgetType": "DATE"
                     },
                     {
+                        "dataLength": "10",
+                        "dataName": "EMPLOYEE_EGN",
+                        "dataNullable": "true",
+                        "dataType": "VARCHAR",
+                        "isRequiredProperty": "true",
+                        "name": "EGN",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "10",
+                        "widgetSize": "",
+                        "widgetType": "TEXTBOX"
+                    },
+                    {
                         "dataName": "EMPLOYEE_GENDER",
                         "dataNullable": "true",
                         "dataType": "INTEGER",

@@ -263,6 +263,7 @@ paths:
                       FirstName: "abcd"
                       MiddleName: "abcd"
                       LastName: "abcd"
+                      EGN: "abcd"
                     greaterThan:
                       Id: 0
                     lessThanOrEqual:
@@ -287,6 +288,7 @@ paths:
                       FirstName: "abcd"
                       MiddleName: "abcd"
                       LastName: "abcd"
+                      EGN: "abcd"
               countWithGreaterThan:
                 summary: Count with Greater Than
                 value:
@@ -353,6 +355,7 @@ paths:
                       FirstName: "abcd"
                       MiddleName: "abcd"
                       LastName: "abcd"
+                      EGN: "abcd"
                     greaterThan:
                       Id: 0
                     lessThanOrEqual:
@@ -377,6 +380,7 @@ paths:
                       FirstName: "abcd"
                       MiddleName: "abcd"
                       LastName: "abcd"
+                      EGN: "abcd"
               searchWithGreaterThan:
                 summary: Search with Greater Than
                 value:
@@ -2027,6 +2031,7 @@ components:
         - FirstName
         - LastName
         - BirthDate
+        - EGN
         - Gender
         - Nationality
         - MartialStatus
@@ -2047,6 +2052,10 @@ components:
           minLength: 0
           maxLength: 50
         BirthDate:
+        EGN:
+          type: string
+          minLength: 0
+          maxLength: 10
         Gender:
           type: integer
           format: int32
@@ -2108,6 +2117,17 @@ components:
                         maxLength: 50
                 BirthDate:
                   oneOf:
+                EGN:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 10
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 10
                 Gender:
                   oneOf:
                     - type: integer
@@ -2178,6 +2198,17 @@ components:
                         maxLength: 50
                 BirthDate:
                   oneOf:
+                EGN:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 10
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 10
                 Gender:
                   oneOf:
                     - type: integer
@@ -2219,6 +2250,10 @@ components:
                   minLength: 0
                   maxLength: 50
                 BirthDate:
+                EGN:
+                  type: string
+                  minLength: 0
+                  maxLength: 10
                 Gender:
                 Nationality:
                 MartialStatus:
@@ -2241,6 +2276,10 @@ components:
                   minLength: 0
                   maxLength: 50
                 BirthDate:
+                EGN:
+                  type: string
+                  minLength: 0
+                  maxLength: 10
                 Gender:
                   type: integer
                   format: int32
@@ -2269,6 +2308,10 @@ components:
                   minLength: 0
                   maxLength: 50
                 BirthDate:
+                EGN:
+                  type: string
+                  minLength: 0
+                  maxLength: 10
                 Gender:
                   type: integer
                   format: int32
@@ -2297,6 +2340,10 @@ components:
                   minLength: 0
                   maxLength: 50
                 BirthDate:
+                EGN:
+                  type: string
+                  minLength: 0
+                  maxLength: 10
                 Gender:
                   type: integer
                   format: int32
@@ -2325,6 +2372,10 @@ components:
                   minLength: 0
                   maxLength: 50
                 BirthDate:
+                EGN:
+                  type: string
+                  minLength: 0
+                  maxLength: 10
                 Gender:
                   type: integer
                   format: int32
@@ -2336,12 +2387,12 @@ components:
                   format: int32
         $select:
           type: array
-          example: ["Id", "FirstName", "MiddleName", "LastName", "BirthDate", "Gender", "Nationality", "MartialStatus"]
+          example: ["Id", "FirstName", "MiddleName", "LastName", "BirthDate", "EGN", "Gender", "Nationality", "MartialStatus"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,FirstName,MiddleName,LastName,BirthDate,Gender,Nationality,MartialStatus"
+            example: "Id,FirstName,MiddleName,LastName,BirthDate,EGN,Gender,Nationality,MartialStatus"
         $order:
           type: string
           enum: ["asc", "desc"]

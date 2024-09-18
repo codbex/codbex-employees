@@ -34,6 +34,12 @@
                         "name": "EMPLOYEE_BIRTHDATE"
                     },
                     {
+                        "type": "VARCHAR",
+                        "length": 10,
+                        "nullable": true,
+                        "name": "EMPLOYEE_EGN"
+                    },
+                    {
                         "type": "INTEGER",
                         "nullable": true,
                         "name": "EMPLOYEE_GENDER"
