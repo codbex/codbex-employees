@@ -3,7 +3,7 @@
     {
       "table": "CODBEX_GENDER",
       "schema": "PUBLIC",
-      "file": "/codbex-employees-data/genders.csv",
+      "file": "/codbex-employees/data/genders.csv",
       "header": true,
       "useHeaderNames": true,
       "delimField": ",",
@@ -14,7 +14,7 @@
     {
       "table": "CODBEX_MARTIALSTATUS",
       "schema": "PUBLIC",
-      "file": "/codbex-employees-data/martial-statuses.csv",
+      "file": "/codbex-employees/data/martial-statuses.csv",
       "header": true,
       "useHeaderNames": true,
       "delimField": ",",
