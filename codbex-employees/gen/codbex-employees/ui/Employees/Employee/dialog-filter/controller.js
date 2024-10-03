@@ -57,6 +57,9 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.LastName) {
 				filter.$filter.contains.LastName = entity.LastName;
 			}
+			if (entity.Name) {
+				filter.$filter.contains.Name = entity.Name;
+			}
 			if (entity.BirthDateFrom) {
 				filter.$filter.greaterThanOrEqual.BirthDate = entity.BirthDateFrom;
 			}

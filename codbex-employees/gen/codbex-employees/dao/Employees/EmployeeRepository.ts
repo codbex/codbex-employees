@@ -9,6 +9,7 @@ export interface EmployeeEntity {
     FirstName: string;
     MiddleName?: string;
     LastName: string;
+    Name?: string;
     BirthDate?: Date;
     EGN?: string;
     Gender?: number;
@@ -38,6 +39,7 @@ export interface EmployeeEntityOptions {
             FirstName?: string | string[];
             MiddleName?: string | string[];
             LastName?: string | string[];
+            Name?: string | string[];
             BirthDate?: Date | Date[];
             EGN?: string | string[];
             Gender?: number | number[];
@@ -49,6 +51,7 @@ export interface EmployeeEntityOptions {
             FirstName?: string | string[];
             MiddleName?: string | string[];
             LastName?: string | string[];
+            Name?: string | string[];
             BirthDate?: Date | Date[];
             EGN?: string | string[];
             Gender?: number | number[];
@@ -60,6 +63,7 @@ export interface EmployeeEntityOptions {
             FirstName?: string;
             MiddleName?: string;
             LastName?: string;
+            Name?: string;
             BirthDate?: Date;
             EGN?: string;
             Gender?: number;
@@ -71,6 +75,7 @@ export interface EmployeeEntityOptions {
             FirstName?: string;
             MiddleName?: string;
             LastName?: string;
+            Name?: string;
             BirthDate?: Date;
             EGN?: string;
             Gender?: number;
@@ -82,6 +87,7 @@ export interface EmployeeEntityOptions {
             FirstName?: string;
             MiddleName?: string;
             LastName?: string;
+            Name?: string;
             BirthDate?: Date;
             EGN?: string;
             Gender?: number;
@@ -93,6 +99,7 @@ export interface EmployeeEntityOptions {
             FirstName?: string;
             MiddleName?: string;
             LastName?: string;
+            Name?: string;
             BirthDate?: Date;
             EGN?: string;
             Gender?: number;
@@ -104,6 +111,7 @@ export interface EmployeeEntityOptions {
             FirstName?: string;
             MiddleName?: string;
             LastName?: string;
+            Name?: string;
             BirthDate?: Date;
             EGN?: string;
             Gender?: number;
@@ -163,6 +171,11 @@ export class EmployeeRepository {
                 required: true
             },
             {
+                name: "Name",
+                column: "EMPLOYEE_NAME",
+                type: "VARCHAR",
+            },
+            {
                 name: "BirthDate",
                 column: "EMPLOYEE_BIRTHDATE",
                 type: "DATE",
@@ -211,6 +224,8 @@ export class EmployeeRepository {
 
     public create(entity: EmployeeCreateEntity): number {
         EntityUtils.setLocalDate(entity, "BirthDate");
+        // @ts-ignore
+        (entity as EmployeeEntity).Name = entity["FirstName"] + " " + entity["LastName"];
         const id = this.dao.insert(entity);
         this.triggerEvent({
             operation: "create",

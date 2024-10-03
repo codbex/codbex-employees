@@ -263,6 +263,7 @@ paths:
                       FirstName: "abcd"
                       MiddleName: "abcd"
                       LastName: "abcd"
+                      Name: "abcd"
                       EGN: "abcd"
                     greaterThan:
                       Id: 0
@@ -288,6 +289,7 @@ paths:
                       FirstName: "abcd"
                       MiddleName: "abcd"
                       LastName: "abcd"
+                      Name: "abcd"
                       EGN: "abcd"
               countWithGreaterThan:
                 summary: Count with Greater Than
@@ -355,6 +357,7 @@ paths:
                       FirstName: "abcd"
                       MiddleName: "abcd"
                       LastName: "abcd"
+                      Name: "abcd"
                       EGN: "abcd"
                     greaterThan:
                       Id: 0
@@ -380,6 +383,7 @@ paths:
                       FirstName: "abcd"
                       MiddleName: "abcd"
                       LastName: "abcd"
+                      Name: "abcd"
                       EGN: "abcd"
               searchWithGreaterThan:
                 summary: Search with Greater Than
@@ -2051,6 +2055,11 @@ components:
           type: string
           minLength: 0
           maxLength: 50
+        Name:
+          type: string
+          minLength: 0
+          maxLength: 70
+          readOnly: true
         BirthDate:
         EGN:
           type: string
@@ -2115,6 +2124,17 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 50
+                Name:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 70
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 70
                 BirthDate:
                   oneOf:
                 EGN:
@@ -2196,6 +2216,17 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 50
+                Name:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 70
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 70
                 BirthDate:
                   oneOf:
                 EGN:
@@ -2249,6 +2280,10 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 50
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 70
                 BirthDate:
                 EGN:
                   type: string
@@ -2275,6 +2310,10 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 50
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 70
                 BirthDate:
                 EGN:
                   type: string
@@ -2307,6 +2346,10 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 50
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 70
                 BirthDate:
                 EGN:
                   type: string
@@ -2339,6 +2382,10 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 50
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 70
                 BirthDate:
                 EGN:
                   type: string
@@ -2371,6 +2418,10 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 50
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 70
                 BirthDate:
                 EGN:
                   type: string
@@ -2387,12 +2438,12 @@ components:
                   format: int32
         $select:
           type: array
-          example: ["Id", "FirstName", "MiddleName", "LastName", "BirthDate", "EGN", "Gender", "Nationality", "MartialStatus"]
+          example: ["Id", "FirstName", "MiddleName", "LastName", "Name", "BirthDate", "EGN", "Gender", "Nationality", "MartialStatus"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,FirstName,MiddleName,LastName,BirthDate,EGN,Gender,Nationality,MartialStatus"
+            example: "Id,FirstName,MiddleName,LastName,Name,BirthDate,EGN,Gender,Nationality,MartialStatus"
         $order:
           type: string
           enum: ["asc", "desc"]
