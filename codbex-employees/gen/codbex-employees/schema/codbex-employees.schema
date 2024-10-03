@@ -29,6 +29,12 @@
                         "name": "EMPLOYEE_LASTNAME"
                     },
                     {
+                        "type": "VARCHAR",
+                        "length": 70,
+                        "nullable": true,
+                        "name": "EMPLOYEE_NAME"
+                    },
+                    {
                         "type": "DATE",
                         "nullable": true,
                         "name": "EMPLOYEE_BIRTHDATE"
