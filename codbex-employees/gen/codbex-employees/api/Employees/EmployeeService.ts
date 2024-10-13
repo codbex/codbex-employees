@@ -140,11 +140,11 @@ class EmployeeService {
         if (entity.BirthDate === null || entity.BirthDate === undefined) {
             throw new ValidationError(`The 'BirthDate' property is required, provide a valid value`);
         }
-        if (entity.EGN === null || entity.EGN === undefined) {
-            throw new ValidationError(`The 'EGN' property is required, provide a valid value`);
+        if (entity.PersonalNumber === null || entity.PersonalNumber === undefined) {
+            throw new ValidationError(`The 'PersonalNumber' property is required, provide a valid value`);
         }
-        if (entity.EGN?.length > 10) {
-            throw new ValidationError(`The 'EGN' exceeds the maximum length of [10] characters`);
+        if (entity.PersonalNumber?.length > 10) {
+            throw new ValidationError(`The 'PersonalNumber' exceeds the maximum length of [10] characters`);
         }
         if (entity.Gender === null || entity.Gender === undefined) {
             throw new ValidationError(`The 'Gender' property is required, provide a valid value`);

@@ -135,18 +135,18 @@
                     </fd-form-item>
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idEGN" dg-colon="true">EGN</fd-form-label>
+                        	<fd-form-label for="idPersonalNumber" dg-colon="true">PersonalNumber</fd-form-label>
                         </div>
                         <div class="fd-col fd-col-md--8">
-	                        <fd-form-input-message-group dg-inactive="{{ forms.details['EGN'].$valid }}">
-	                            <fd-input id="idEGN"
-	                                name="EGN"
-	                                state="{{ forms.details['EGN'].$valid ? '' : 'error' }}"
-	                                ng-model="entity.EGN"
+	                        <fd-form-input-message-group dg-inactive="{{ forms.details['PersonalNumber'].$valid }}">
+	                            <fd-input id="idPersonalNumber"
+	                                name="PersonalNumber"
+	                                state="{{ forms.details['PersonalNumber'].$valid ? '' : 'error' }}"
+	                                ng-model="entity.PersonalNumber"
 	                                ng-minlength="0.0 || 0"
 	                                ng-maxlength="10.0 || -1"
 	                                type="text"
-	                                placeholder="Enter EGN">
+	                                placeholder="Enter PersonalNumber">
 	                            </fd-input>
 	                            <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
 	                        </fd-form-input-message-group>

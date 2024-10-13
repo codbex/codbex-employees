@@ -43,7 +43,7 @@
                         "type": "VARCHAR",
                         "length": 10,
                         "nullable": true,
-                        "name": "EMPLOYEE_EGN"
+                        "name": "EMPLOYEE_PERSONALNUMBER"
                     },
                     {
                         "type": "INTEGER",

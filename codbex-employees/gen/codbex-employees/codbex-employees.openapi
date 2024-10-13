@@ -264,7 +264,7 @@ paths:
                       MiddleName: "abcd"
                       LastName: "abcd"
                       Name: "abcd"
-                      EGN: "abcd"
+                      PersonalNumber: "abcd"
                     greaterThan:
                       Id: 0
                     lessThanOrEqual:
@@ -290,7 +290,7 @@ paths:
                       MiddleName: "abcd"
                       LastName: "abcd"
                       Name: "abcd"
-                      EGN: "abcd"
+                      PersonalNumber: "abcd"
               countWithGreaterThan:
                 summary: Count with Greater Than
                 value:
@@ -358,7 +358,7 @@ paths:
                       MiddleName: "abcd"
                       LastName: "abcd"
                       Name: "abcd"
-                      EGN: "abcd"
+                      PersonalNumber: "abcd"
                     greaterThan:
                       Id: 0
                     lessThanOrEqual:
@@ -384,7 +384,7 @@ paths:
                       MiddleName: "abcd"
                       LastName: "abcd"
                       Name: "abcd"
-                      EGN: "abcd"
+                      PersonalNumber: "abcd"
               searchWithGreaterThan:
                 summary: Search with Greater Than
                 value:
@@ -2035,7 +2035,7 @@ components:
         - FirstName
         - LastName
         - BirthDate
-        - EGN
+        - PersonalNumber
         - Gender
         - Nationality
         - MartialStatus
@@ -2061,7 +2061,7 @@ components:
           maxLength: 70
           readOnly: true
         BirthDate:
-        EGN:
+        PersonalNumber:
           type: string
           minLength: 0
           maxLength: 10
@@ -2137,7 +2137,7 @@ components:
                         maxLength: 70
                 BirthDate:
                   oneOf:
-                EGN:
+                PersonalNumber:
                   oneOf:
                     - type: string
                       minLength: 0
@@ -2229,7 +2229,7 @@ components:
                         maxLength: 70
                 BirthDate:
                   oneOf:
-                EGN:
+                PersonalNumber:
                   oneOf:
                     - type: string
                       minLength: 0
@@ -2285,7 +2285,7 @@ components:
                   minLength: 0
                   maxLength: 70
                 BirthDate:
-                EGN:
+                PersonalNumber:
                   type: string
                   minLength: 0
                   maxLength: 10
@@ -2315,7 +2315,7 @@ components:
                   minLength: 0
                   maxLength: 70
                 BirthDate:
-                EGN:
+                PersonalNumber:
                   type: string
                   minLength: 0
                   maxLength: 10
@@ -2351,7 +2351,7 @@ components:
                   minLength: 0
                   maxLength: 70
                 BirthDate:
-                EGN:
+                PersonalNumber:
                   type: string
                   minLength: 0
                   maxLength: 10
@@ -2387,7 +2387,7 @@ components:
                   minLength: 0
                   maxLength: 70
                 BirthDate:
-                EGN:
+                PersonalNumber:
                   type: string
                   minLength: 0
                   maxLength: 10
@@ -2423,7 +2423,7 @@ components:
                   minLength: 0
                   maxLength: 70
                 BirthDate:
-                EGN:
+                PersonalNumber:
                   type: string
                   minLength: 0
                   maxLength: 10
@@ -2438,12 +2438,12 @@ components:
                   format: int32
         $select:
           type: array
-          example: ["Id", "FirstName", "MiddleName", "LastName", "Name", "BirthDate", "EGN", "Gender", "Nationality", "MartialStatus"]
+          example: ["Id", "FirstName", "MiddleName", "LastName", "Name", "BirthDate", "PersonalNumber", "Gender", "Nationality", "MartialStatus"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,FirstName,MiddleName,LastName,Name,BirthDate,EGN,Gender,Nationality,MartialStatus"
+            example: "Id,FirstName,MiddleName,LastName,Name,BirthDate,PersonalNumber,Gender,Nationality,MartialStatus"
         $order:
           type: string
           enum: ["asc", "desc"]
