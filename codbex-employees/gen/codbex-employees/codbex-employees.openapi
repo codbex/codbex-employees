@@ -265,6 +265,7 @@ paths:
                       LastName: "abcd"
                       Name: "abcd"
                       PersonalNumber: "abcd"
+                      IBAN: "abcd"
                     greaterThan:
                       Id: 0
                     lessThanOrEqual:
@@ -291,6 +292,7 @@ paths:
                       LastName: "abcd"
                       Name: "abcd"
                       PersonalNumber: "abcd"
+                      IBAN: "abcd"
               countWithGreaterThan:
                 summary: Count with Greater Than
                 value:
@@ -359,6 +361,7 @@ paths:
                       LastName: "abcd"
                       Name: "abcd"
                       PersonalNumber: "abcd"
+                      IBAN: "abcd"
                     greaterThan:
                       Id: 0
                     lessThanOrEqual:
@@ -385,6 +388,7 @@ paths:
                       LastName: "abcd"
                       Name: "abcd"
                       PersonalNumber: "abcd"
+                      IBAN: "abcd"
               searchWithGreaterThan:
                 summary: Search with Greater Than
                 value:
@@ -2039,6 +2043,7 @@ components:
         - Gender
         - Nationality
         - MartialStatus
+        - IBAN
       properties:
         Id:
           type: integer
@@ -2074,6 +2079,10 @@ components:
         MartialStatus:
           type: integer
           format: int32
+        IBAN:
+          type: string
+          minLength: 0
+          maxLength: 50
     EmployeeFilterOptions:
       type: object
       properties:
@@ -2172,6 +2181,17 @@ components:
                       items:
                         type: integer
                         format: int32
+                IBAN:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 50
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 50
             notEquals:
               type: object
               properties:
@@ -2264,6 +2284,17 @@ components:
                       items:
                         type: integer
                         format: int32
+                IBAN:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 50
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 50
             contains:
               type: object
               properties:
@@ -2292,6 +2323,10 @@ components:
                 Gender:
                 Nationality:
                 MartialStatus:
+                IBAN:
+                  type: string
+                  minLength: 0
+                  maxLength: 50
             greaterThan:
               type: object
               properties:
@@ -2328,6 +2363,10 @@ components:
                 MartialStatus:
                   type: integer
                   format: int32
+                IBAN:
+                  type: string
+                  minLength: 0
+                  maxLength: 50
             greaterThanOrEqual:
               type: object
               properties:
@@ -2364,6 +2403,10 @@ components:
                 MartialStatus:
                   type: integer
                   format: int32
+                IBAN:
+                  type: string
+                  minLength: 0
+                  maxLength: 50
             lessThan:
               type: object
               properties:
@@ -2400,6 +2443,10 @@ components:
                 MartialStatus:
                   type: integer
                   format: int32
+                IBAN:
+                  type: string
+                  minLength: 0
+                  maxLength: 50
             lessThanOrEqual:
               type: object
               properties:
@@ -2436,14 +2483,18 @@ components:
                 MartialStatus:
                   type: integer
                   format: int32
+                IBAN:
+                  type: string
+                  minLength: 0
+                  maxLength: 50
         $select:
           type: array
-          example: ["Id", "FirstName", "MiddleName", "LastName", "Name", "BirthDate", "PersonalNumber", "Gender", "Nationality", "MartialStatus"]
+          example: ["Id", "FirstName", "MiddleName", "LastName", "Name", "BirthDate", "PersonalNumber", "Gender", "Nationality", "MartialStatus", "IBAN"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,FirstName,MiddleName,LastName,Name,BirthDate,PersonalNumber,Gender,Nationality,MartialStatus"
+            example: "Id,FirstName,MiddleName,LastName,Name,BirthDate,PersonalNumber,Gender,Nationality,MartialStatus,IBAN"
         $order:
           type: string
           enum: ["asc", "desc"]

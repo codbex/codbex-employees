@@ -78,6 +78,9 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.MartialStatus !== undefined) {
 				filter.$filter.equals.MartialStatus = entity.MartialStatus;
 			}
+			if (entity.IBAN) {
+				filter.$filter.contains.IBAN = entity.IBAN;
+			}
 			messageHub.postMessage("entitySearch", {
 				entity: entity,
 				filter: filter

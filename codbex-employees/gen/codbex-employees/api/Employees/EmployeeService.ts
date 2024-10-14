@@ -155,6 +155,12 @@ class EmployeeService {
         if (entity.MartialStatus === null || entity.MartialStatus === undefined) {
             throw new ValidationError(`The 'MartialStatus' property is required, provide a valid value`);
         }
+        if (entity.IBAN === null || entity.IBAN === undefined) {
+            throw new ValidationError(`The 'IBAN' property is required, provide a valid value`);
+        }
+        if (entity.IBAN?.length > 50) {
+            throw new ValidationError(`The 'IBAN' exceeds the maximum length of [50] characters`);
+        }
         for (const next of validationModules) {
             next.validate(entity);
         }

@@ -59,6 +59,12 @@
                         "type": "INTEGER",
                         "nullable": true,
                         "name": "EMPLOYEE_MARTIALSTATUS"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 50,
+                        "nullable": true,
+                        "name": "EMPLOYEE_IBAN"
                     }
                 ]
             },

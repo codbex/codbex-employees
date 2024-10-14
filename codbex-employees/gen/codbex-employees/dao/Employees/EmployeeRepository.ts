@@ -15,6 +15,7 @@ export interface EmployeeEntity {
     Gender?: number;
     Nationality?: number;
     MartialStatus?: number;
+    IBAN?: string;
 }
 
 export interface EmployeeCreateEntity {
@@ -26,6 +27,7 @@ export interface EmployeeCreateEntity {
     readonly Gender?: number;
     readonly Nationality?: number;
     readonly MartialStatus?: number;
+    readonly IBAN?: string;
 }
 
 export interface EmployeeUpdateEntity extends EmployeeCreateEntity {
@@ -45,6 +47,7 @@ export interface EmployeeEntityOptions {
             Gender?: number | number[];
             Nationality?: number | number[];
             MartialStatus?: number | number[];
+            IBAN?: string | string[];
         };
         notEquals?: {
             Id?: number | number[];
@@ -57,6 +60,7 @@ export interface EmployeeEntityOptions {
             Gender?: number | number[];
             Nationality?: number | number[];
             MartialStatus?: number | number[];
+            IBAN?: string | string[];
         };
         contains?: {
             Id?: number;
@@ -69,6 +73,7 @@ export interface EmployeeEntityOptions {
             Gender?: number;
             Nationality?: number;
             MartialStatus?: number;
+            IBAN?: string;
         };
         greaterThan?: {
             Id?: number;
@@ -81,6 +86,7 @@ export interface EmployeeEntityOptions {
             Gender?: number;
             Nationality?: number;
             MartialStatus?: number;
+            IBAN?: string;
         };
         greaterThanOrEqual?: {
             Id?: number;
@@ -93,6 +99,7 @@ export interface EmployeeEntityOptions {
             Gender?: number;
             Nationality?: number;
             MartialStatus?: number;
+            IBAN?: string;
         };
         lessThan?: {
             Id?: number;
@@ -105,6 +112,7 @@ export interface EmployeeEntityOptions {
             Gender?: number;
             Nationality?: number;
             MartialStatus?: number;
+            IBAN?: string;
         };
         lessThanOrEqual?: {
             Id?: number;
@@ -117,6 +125,7 @@ export interface EmployeeEntityOptions {
             Gender?: number;
             Nationality?: number;
             MartialStatus?: number;
+            IBAN?: string;
         };
     },
     $select?: (keyof EmployeeEntity)[],
@@ -199,6 +208,11 @@ export class EmployeeRepository {
                 name: "MartialStatus",
                 column: "EMPLOYEE_MARTIALSTATUS",
                 type: "INTEGER",
+            },
+            {
+                name: "IBAN",
+                column: "EMPLOYEE_IBAN",
+                type: "VARCHAR",
             }
         ]
     };
