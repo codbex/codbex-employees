@@ -162,6 +162,20 @@
                         "relationshipEntityName": "MartialStatus",
                         "relationshipEntityPerspectiveName": "EmployeesSettings",
                         "relationshipEntityPerspectiveLabel": "Entities"
+                    },
+                    {
+                        "dataLength": "50",
+                        "dataName": "EMPLOYEE_IBAN",
+                        "dataNullable": "true",
+                        "dataType": "VARCHAR",
+                        "description": "",
+                        "isRequiredProperty": "true",
+                        "name": "IBAN",
+                        "tooltip": "",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "50",
+                        "widgetSize": "",
+                        "widgetType": "TEXTBOX"
                     }
                 ],
                 "caption": "Manage entity Employee",
