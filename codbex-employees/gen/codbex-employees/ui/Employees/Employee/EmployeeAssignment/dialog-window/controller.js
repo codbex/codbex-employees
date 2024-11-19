@@ -56,6 +56,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		};
 
+		$scope.serviceJobAssignment = "/services/ts/codbex-jobs/gen/codbex-jobs/api/JobAssignment/JobAssignmentService.ts";
+
 		$scope.cancel = function () {
 			$scope.entity = {};
 			$scope.action = 'select';
