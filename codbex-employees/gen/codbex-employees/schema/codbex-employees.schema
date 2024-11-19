@@ -182,6 +182,34 @@
                 ]
             },
             {
+                "name": "CODBEX_ANNUALLEAVE",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "ANNUALLEAVE_ID"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "ANNUALLEAVE_DAYS"
+                    },
+                    {
+                        "type": "DATE",
+                        "nullable": true,
+                        "name": "ANNUALLEAVE_YEAR"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "ANNUALLEAVE_EMPLOYEE"
+                    }
+                ]
+            },
+            {
                 "name": "Employee_Gender",
                 "type": "foreignKey",
                 "table": "CODBEX_EMPLOYEE",
@@ -250,6 +278,15 @@
                 "table": "CODBEX_EMPLOYEEASSIGNMENT",
                 "constraintName": "EmployeeAssignment_Employee",
                 "columns": "EMPLOYEEASSIGNMENT_EMPLOYEE",
+                "referencedTable": "CODBEX_EMPLOYEE",
+                "referencedColumns": "EMPLOYEE_ID"
+            },
+            {
+                "name": "AnnualLeave_Employee",
+                "type": "foreignKey",
+                "table": "CODBEX_ANNUALLEAVE",
+                "constraintName": "AnnualLeave_Employee",
+                "columns": "ANNUALLEAVE_EMPLOYEE",
                 "referencedTable": "CODBEX_EMPLOYEE",
                 "referencedColumns": "EMPLOYEE_ID"
             }
