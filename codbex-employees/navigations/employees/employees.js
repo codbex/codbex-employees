@@ -3,8 +3,7 @@ const navigationData = {
     label: "Employees",
     view: "employees",
     group: "employees",
-    orderNumber: 1000,
-    lazyLoad: true,
+    orderNumber: 100,
     link: "/services/web/codbex-employees/gen/codbex-employees/ui/Employees/index.html?embedded"
 };
 
