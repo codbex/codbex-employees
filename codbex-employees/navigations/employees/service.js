@@ -1,9 +1,8 @@
 const navigationData = {
     id: 'employees-navigation',
     label: "Employees",
-    view: "employees",
     group: "employees",
-    orderNumber: 100,
+    order: 100,
     link: "/services/web/codbex-employees/gen/codbex-employees/ui/Employees/index.html?embedded"
 };
 
