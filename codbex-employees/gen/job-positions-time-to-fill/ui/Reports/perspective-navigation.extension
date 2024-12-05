@@ -1,0 +1,5 @@
+{
+    "module": "codbex-employees/gen/job-positions-time-to-fill/ui/Reports/perspective-navigation.js",
+    "extensionPoint": "dashboard-navigations",
+    "description": "Job Positions Time-to-fill - Navigation"
+}

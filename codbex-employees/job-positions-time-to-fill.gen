@@ -1,0 +1,14 @@
+{
+  "brand": "codbex",
+  "brandUrl": "https://www.codbex.com/",
+  "title": "Job Positions Time-to-fill",
+  "projectName": "codbex-employees",
+  "workspaceName": "workspace",
+  "filePath": "job-positions-time-to-fill.report",
+  "templateId": "template-application-ui-angular/template/template-report-file.js",
+  "fileName": "job-positions-time-to-fill",
+  "genFolderName": "job-positions-time-to-fill",
+  "extensionPoint": "codbex-employees",
+  "name": "JobPositionsTimeToFill",
+  "perspectiveName": "JobPositionsTimeToFill"
+}

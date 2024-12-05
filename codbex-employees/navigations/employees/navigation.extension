@@ -1,5 +1,5 @@
 {
     "extensionPoint": "dashboard-navigations",
-    "module": "codbex-employees/navigations/services/employees.js",
+    "module": "codbex-employees/navigations/employees/service.js",
     "description": "Employees Navigation"
 }

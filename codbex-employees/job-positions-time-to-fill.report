@@ -1,0 +1,97 @@
+{
+    "name": "JobPositionsTimeToFill",
+    "alias": "JobPosition",
+    "table": "CODBEX_JOBPOSITION",
+    "columns": [
+        {
+            "table": "JobPosition",
+            "alias": "Job Position Number",
+            "name": "JOBPOSITION_NUMBER",
+            "type": "VARCHAR",
+            "aggregate": "NONE",
+            "select": true,
+            "grouping": false
+        },
+        {
+            "table": "Team",
+            "alias": "Team",
+            "name": "TEAM_NAME",
+            "type": "VARCHAR",
+            "aggregate": "NONE",
+            "select": true,
+            "grouping": false
+        },
+        {
+            "table": "Employee",
+            "alias": "Manager",
+            "name": "EMPLOYEE_NAME",
+            "type": "VARCHAR",
+            "aggregate": "NONE",
+            "select": true,
+            "grouping": false
+        },
+        {
+            "table": "JobRole",
+            "alias": "Role",
+            "name": "JOBROLE_NAME",
+            "type": "VARCHAR",
+            "aggregate": "NONE",
+            "select": true,
+            "grouping": false
+        },
+        {
+            "table": "JobStatus",
+            "alias": "Status",
+            "name": "JOBSTATUS_NAME",
+            "type": "VARCHAR",
+            "aggregate": "NONE",
+            "select": true,
+            "grouping": false
+        },
+        {
+            "table": "JobPosition",
+            "alias": "Date opened",
+            "name": "JOBPOSITION_DATEOPENED",
+            "type": "DATE",
+            "aggregate": "NONE",
+            "select": true,
+            "grouping": false
+        },
+        {
+            "table": "JobPosition",
+            "alias": "Date closed",
+            "name": "JOBPOSITION_DATECLOSED",
+            "type": "DATE",
+            "aggregate": "NONE",
+            "select": true,
+            "grouping": false
+        }
+    ],
+    "query": "SELECT JobPosition.JOBPOSITION_NUMBER as \"Job Position Number\", Team.TEAM_NAME as \"Team\", Employee.EMPLOYEE_NAME as \"Manager\", JobRole.JOBROLE_NAME as \"Role\", JobStatus.JOBSTATUS_NAME as \"Status\", JobPosition.JOBPOSITION_DATEOPENED as \"Date opened\", JobPosition.JOBPOSITION_DATECLOSED as \"Date closed\"\nFROM CODBEX_JOBPOSITION as JobPosition\n  INNER JOIN CODBEX_TEAM Team ON Team.TEAM_ID = JobPosition.JOBPOSITION_TEAM\n  INNER JOIN CODBEX_EMPLOYEE Employee ON Employee.EMPLOYEE_ID=Team.TEAM_MANAGER\n  INNER JOIN CODBEX_JOBROLE JobRole ON JobRole.JOBROLE_ID = JobPosition.JOBPOSITION_ROLE\n  INNER JOIN CODBEX_JOBSTATUS JobStatus ON JobStatus.JOBSTATUS_ID = JobPosition.JOBPOSITION_STATUS",
+    "joins": [
+        {
+            "alias": "Team",
+            "name": "CODBEX_TEAM",
+            "type": "INNER",
+            "condition": "Team.TEAM_ID = JobPosition.JOBPOSITION_TEAM"
+        },
+        {
+            "alias": "Employee",
+            "name": "CODBEX_EMPLOYEE",
+            "type": "INNER",
+            "condition": "Employee.EMPLOYEE_ID=Team.TEAM_MANAGER"
+        },
+        {
+            "alias": "JobRole",
+            "name": "CODBEX_JOBROLE",
+            "type": "INNER",
+            "condition": "JobRole.JOBROLE_ID = JobPosition.JOBPOSITION_ROLE"
+        },
+        {
+            "alias": "JobStatus",
+            "name": "CODBEX_JOBSTATUS",
+            "type": "INNER",
+            "condition": "JobStatus.JOBSTATUS_ID = JobPosition.JOBPOSITION_STATUS"
+        }
+    ]
+}

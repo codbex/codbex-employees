@@ -1,0 +1,5 @@
+{
+    "module": "codbex-employees/gen/open-job-positions/ui/Reports/OpenJobPositions/tile.js",
+    "extensionPoint": "portal-tile",
+    "description": "codbex-employees - Application Tile"
+}

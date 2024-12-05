@@ -1,0 +1,5 @@
+{
+    "extensionPoint": "codbex-employees-custom-action",
+    "module": "codbex-employees/gen/open-job-positions/ui/Reports/OpenJobPositions/dialog-print/print.js",
+    "description": "Print OpenJobPositions Report"
+}
