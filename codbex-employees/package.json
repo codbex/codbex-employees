@@ -13,6 +13,7 @@
         "@codbex/codbex-countries": "0.3.0",
         "@codbex/codbex-cities": "0.3.0",
         "@codbex/codbex-cities": "0.1.0",
-        "@codbex/codbex-contracts": "0.3.0"
+        "@codbex/codbex-contracts": "0.3.0",
+        "@codbex/codbex-organizations": "0.1.0"
     }
 }
