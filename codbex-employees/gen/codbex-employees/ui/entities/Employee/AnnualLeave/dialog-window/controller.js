@@ -1,9 +1,9 @@
 angular.module('page', ["ideUI", "ideView", "entityApi"])
 	.config(["messageHubProvider", function (messageHubProvider) {
-		messageHubProvider.eventIdPrefix = 'codbex-employees.Employees.AnnualLeave';
+		messageHubProvider.eventIdPrefix = 'codbex-employees.entities.AnnualLeave';
 	}])
 	.config(["entityApiProvider", function (entityApiProvider) {
-		entityApiProvider.baseUrl = "/services/ts/codbex-employees/gen/codbex-employees/api/Employees/AnnualLeaveService.ts";
+		entityApiProvider.baseUrl = "/services/ts/codbex-employees/gen/codbex-employees/api/entities/AnnualLeaveService.ts";
 	}])
 	.controller('PageController', ['$scope', 'messageHub', 'ViewParameters', 'entityApi', function ($scope, messageHub, ViewParameters, entityApi) {
 

@@ -217,7 +217,7 @@ export class AnnualLeaveRepository {
     }
 
     private async triggerEvent(data: AnnualLeaveEntityEvent | AnnualLeaveUpdateEntityEvent) {
-        const triggerExtensions = await extensions.loadExtensionModules("codbex-employees-Employees-AnnualLeave", ["trigger"]);
+        const triggerExtensions = await extensions.loadExtensionModules("codbex-employees-entities-AnnualLeave", ["trigger"]);
         triggerExtensions.forEach(triggerExtension => {
             try {
                 triggerExtension.trigger(data);
@@ -225,6 +225,6 @@ export class AnnualLeaveRepository {
                 console.error(error);
             }            
         });
-        producer.topic("codbex-employees-Employees-AnnualLeave").send(JSON.stringify(data));
+        producer.topic("codbex-employees-entities-AnnualLeave").send(JSON.stringify(data));
     }
 }

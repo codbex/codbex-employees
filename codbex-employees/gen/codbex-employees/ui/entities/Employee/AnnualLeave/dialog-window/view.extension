@@ -1,5 +1,5 @@
 {
-    "module": "codbex-employees/gen/codbex-employees/ui/Employees/Employee/AnnualLeave/dialog-window/view.js",
+    "module": "codbex-employees/gen/codbex-employees/ui/entities/Employee/AnnualLeave/dialog-window/view.js",
     "extensionPoint": "codbex-employees-dialog-window",
     "description": "codbex-employees - Application Dialog Window"
 }

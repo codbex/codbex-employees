@@ -6,8 +6,8 @@
 const viewData = {
     id: "AnnualLeave-filter",
     label: "AnnualLeave Filter",
-    link: "/services/web/codbex-employees/gen/codbex-employees/ui/Employees/Employee/AnnualLeave/dialog-filter/index.html",
-    perspectiveName: "Employees",
+    link: "/services/web/codbex-employees/gen/codbex-employees/ui/entities/Employee/AnnualLeave/dialog-filter/index.html",
+    perspectiveName: "entities",
 };
 
 if (typeof exports !== 'undefined') {
