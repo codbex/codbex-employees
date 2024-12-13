@@ -17,7 +17,6 @@
         "Employee",
         "Contact",
         "EmployeeAssignment",
-        "AnnualLeave",
         "Employee-details",
         "Employee-details",
         "Employee-details",
@@ -81,6 +80,16 @@
       ],
       "name": "JobAssignment",
       "label": "JobAssignment",
+      "order": "100",
+      "icon": "/services/web/resources/unicons/copy.svg",
+      "role": ""
+    },
+    "entities": {
+      "views": [
+        "AnnualLeave"
+      ],
+      "name": "entities",
+      "label": "entities",
       "order": "100",
       "icon": "/services/web/resources/unicons/copy.svg",
       "role": ""
@@ -1532,7 +1541,7 @@
           "inputRule": ""
         },
         {
-          "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generate(29)",
+          "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generate(27)",
           "dataLength": "20",
           "dataName": "JOBDETAILS_NUMBER",
           "dataNullable": true,
@@ -1900,7 +1909,7 @@
       "navigationPath": "/Home",
       "perspectiveIcon": "/services/web/resources/unicons/copy.svg",
       "perspectiveLabel": "Entities",
-      "perspectiveName": "Employees",
+      "perspectiveName": "entities",
       "perspectiveOrder": "100",
       "perspectiveRole": "",
       "title": "AnnualLeave",

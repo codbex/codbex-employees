@@ -14,7 +14,7 @@ tags:
   - name: EmployeesSettings
   - name: Employees
   - name: Employees
-  - name: Employees
+  - name: entities
 paths:
   /codbex-employees/gen/codbex-employees/api/Employees/EmployeeService.ts:
     get:
@@ -2032,7 +2032,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-employees/gen/codbex-employees/api/Employees/AnnualLeaveService.ts:
+  /codbex-employees/gen/codbex-employees/api/entities/AnnualLeaveService.ts:
     get:
       summary: List AnnualLeave
       parameters:
@@ -2053,7 +2053,7 @@ paths:
             type: integer
             allowEmptyValue: true
       tags:
-        - Employees
+        - entities
       responses:
         200:
           description: Successful Request
@@ -2084,7 +2084,7 @@ paths:
     post:
       summary: Create AnnualLeave
       tags:
-        - Employees
+        - entities
       requestBody:
         content:
           application/json:
@@ -2116,7 +2116,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-employees/gen/codbex-employees/api/Employees/AnnualLeaveService.ts/{id}:
+  /codbex-employees/gen/codbex-employees/api/entities/AnnualLeaveService.ts/{id}:
     get:
       summary: Get AnnualLeave by Id
       parameters:
@@ -2127,7 +2127,7 @@ paths:
           schema:
             type: string
       tags:
-        - Employees
+        - entities
       responses:
         200:
           description: Successful Request
@@ -2165,7 +2165,7 @@ paths:
           schema:
             type: string
       tags:
-        - Employees
+        - entities
       requestBody:
         content:
           application/json:
@@ -2213,7 +2213,7 @@ paths:
           schema:
             type: string
       tags:
-        - Employees
+        - entities
       responses:
         204:
           description: Successful Request
@@ -2235,11 +2235,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-employees/gen/codbex-employees/api/Employees/AnnualLeaveService.ts/count:
+  /codbex-employees/gen/codbex-employees/api/entities/AnnualLeaveService.ts/count:
     get:
       summary: Count the number of AnnualLeave
       tags:
-        - Employees
+        - entities
       responses:
         200:
           description: Successful Request
@@ -2263,7 +2263,7 @@ paths:
     post:
       summary: Count the number of AnnualLeave by AnnualLeaveFilterOptions
       tags:
-        - Employees
+        - entities
       requestBody:
         content:
           application/json:
@@ -2337,11 +2337,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-employees/gen/codbex-employees/api/Employees/AnnualLeaveService.ts/search:
+  /codbex-employees/gen/codbex-employees/api/entities/AnnualLeaveService.ts/search:
     post:
       summary: Search AnnualLeave by AnnualLeaveFilterOptions
       tags:
-        - Employees
+        - entities
       requestBody:
         content:
           application/json:

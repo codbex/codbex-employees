@@ -1,10 +1,10 @@
 import { Controller, Get, Post, Put, Delete, response } from "sdk/http"
 import { Extensions } from "sdk/extensions"
-import { AnnualLeaveRepository, AnnualLeaveEntityOptions } from "../../dao/Employees/AnnualLeaveRepository";
+import { AnnualLeaveRepository, AnnualLeaveEntityOptions } from "../../dao/entities/AnnualLeaveRepository";
 import { ValidationError } from "../utils/ValidationError";
 import { HttpUtils } from "../utils/HttpUtils";
 
-const validationModules = await Extensions.loadExtensionModules("codbex-employees-Employees-AnnualLeave", ["validate"]);
+const validationModules = await Extensions.loadExtensionModules("codbex-employees-entities-AnnualLeave", ["validate"]);
 
 @Controller
 class AnnualLeaveService {
@@ -41,7 +41,7 @@ class AnnualLeaveService {
         try {
             this.validateEntity(entity);
             entity.Id = this.repository.create(entity);
-            response.setHeader("Content-Location", "/services/ts/codbex-employees/gen/codbex-employees/api/Employees/AnnualLeaveService.ts/" + entity.Id);
+            response.setHeader("Content-Location", "/services/ts/codbex-employees/gen/codbex-employees/api/entities/AnnualLeaveService.ts/" + entity.Id);
             response.setStatus(response.CREATED);
             return entity;
         } catch (error: any) {

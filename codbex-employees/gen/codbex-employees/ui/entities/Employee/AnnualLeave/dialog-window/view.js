@@ -4,16 +4,14 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "AnnualLeave",
+    id: "AnnualLeave-details",
     label: "AnnualLeave",
-    factory: "frame",
-    region: "bottom",
-    link: "/services/web/codbex-employees/gen/codbex-employees/ui/Employees/Employee/AnnualLeave/index.html",
-    perspectiveName: "Employees",
+    link: "/services/web/codbex-employees/gen/codbex-employees/ui/entities/Employee/AnnualLeave/dialog-window/index.html",
+    perspectiveName: "entities",
 };
 
 if (typeof exports !== 'undefined') {
-    exports.getView = function () {
+    exports.getDialogWindow = function () {
         return viewData;
     }
 }
