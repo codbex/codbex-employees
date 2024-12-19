@@ -159,29 +159,6 @@
                 ]
             },
             {
-                "name": "CODBEX_EMPLOYEEASSIGNMENT",
-                "type": "TABLE",
-                "columns": [
-                    {
-                        "type": "INTEGER",
-                        "primaryKey": true,
-                        "identity": true,
-                        "nullable": true,
-                        "name": "EMPLOYEEASSIGNMENT_ID"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "nullable": true,
-                        "name": "EMPLOYEEASSIGNMENT_JOBASSIGNMENT"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "nullable": true,
-                        "name": "EMPLOYEEASSIGNMENT_EMPLOYEE"
-                    }
-                ]
-            },
-            {
                 "name": "CODBEX_ANNUALLEAVE",
                 "type": "TABLE",
                 "columns": [
@@ -260,24 +237,6 @@
                 "table": "CODBEX_CONTACT",
                 "constraintName": "Contact_Employee",
                 "columns": "CONTACT_EMPLOYEE",
-                "referencedTable": "CODBEX_EMPLOYEE",
-                "referencedColumns": "EMPLOYEE_ID"
-            },
-            {
-                "name": "EmployeeAssignment_JobAssignment",
-                "type": "foreignKey",
-                "table": "CODBEX_EMPLOYEEASSIGNMENT",
-                "constraintName": "EmployeeAssignment_JobAssignment",
-                "columns": "EMPLOYEEASSIGNMENT_JOBASSIGNMENT",
-                "referencedTable": "CODBEX_JOBASSIGNMENT",
-                "referencedColumns": "JOBDETAILS_ID"
-            },
-            {
-                "name": "EmployeeAssignment_Employee",
-                "type": "foreignKey",
-                "table": "CODBEX_EMPLOYEEASSIGNMENT",
-                "constraintName": "EmployeeAssignment_Employee",
-                "columns": "EMPLOYEEASSIGNMENT_EMPLOYEE",
                 "referencedTable": "CODBEX_EMPLOYEE",
                 "referencedColumns": "EMPLOYEE_ID"
             },
