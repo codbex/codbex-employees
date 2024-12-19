@@ -1,5 +1,0 @@
-{
-    "module": "codbex-employees/gen/codbex-employees/ui/entities/Employee/AnnualLeave/view.js",
-    "extensionPoint": "codbex-employees-view",
-    "description": "codbex-employees - Application View - Details"
-}
