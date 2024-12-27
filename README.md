@@ -2,8 +2,7 @@
 Employees Management Application
 
 ### Model
-
-<img width="856" alt="Screenshot 2024-09-17 at 20 34 47" src="https://github.com/user-attachments/assets/d0a661d9-8672-4881-b4de-d1bafe75ef3c">
+<img width="573" alt="Screenshot 2024-12-27 at 10 11 00" src="https://github.com/user-attachments/assets/855ced7c-a54e-4621-b667-155633bc99a0" />
 
 ### Application
 
