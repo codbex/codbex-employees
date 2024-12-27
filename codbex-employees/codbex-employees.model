@@ -191,8 +191,8 @@
                 "menuLabel": "Employee",
                 "name": "Employee",
                 "navigationPath": "/Home",
-                "perspectiveIcon": "/services/web/resources/unicons/copy.svg",
-                "perspectiveLabel": "Entities",
+                "perspectiveIcon": "/services/web/resources/unicons/user.svg",
+                "perspectiveLabel": "Employees",
                 "perspectiveName": "Employees",
                 "perspectiveOrder": "100",
                 "perspectiveRole": "",
@@ -618,8 +618,8 @@
                 "menuLabel": "Contact",
                 "name": "Contact",
                 "navigationPath": "/Home",
-                "perspectiveIcon": "/services/web/resources/unicons/copy.svg",
-                "perspectiveLabel": "Entities",
+                "perspectiveIcon": "/services/web/resources/unicons/user.svg",
+                "perspectiveLabel": "Employees",
                 "perspectiveName": "Employees",
                 "perspectiveOrder": "100",
                 "perspectiveRole": "",
@@ -630,17 +630,24 @@
         ],
         "perspectives": [
             {
-                "name": "Organizations",
-                "label": "Organizations",
-                "icon": "/services/web/resources/unicons/building.svg",
-                "order": "105",
+                "name": "JobAssignment",
+                "label": "JobAssignment",
+                "icon": "/services/web/resources/unicons/0-plus.svg",
+                "order": "103",
                 "role": {}
             },
             {
                 "name": "Teams",
                 "label": "Teams",
-                "icon": "/services/web/resources/unicons/user-circle.svg",
-                "order": "102",
+                "icon": "/services/web/resources/unicons/user.svg",
+                "order": "106",
+                "role": {}
+            },
+            {
+                "name": "Employees",
+                "label": "Employees",
+                "icon": "/services/web/resources/unicons/user.svg",
+                "order": "100",
                 "role": {}
             }
         ],
