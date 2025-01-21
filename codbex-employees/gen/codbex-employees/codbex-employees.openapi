@@ -263,6 +263,7 @@ paths:
                       MiddleName: "abcd"
                       LastName: "abcd"
                       Name: "abcd"
+                      Email: "abcd"
                       PersonalNumber: "abcd"
                       IBAN: "abcd"
                     greaterThan:
@@ -290,6 +291,7 @@ paths:
                       MiddleName: "abcd"
                       LastName: "abcd"
                       Name: "abcd"
+                      Email: "abcd"
                       PersonalNumber: "abcd"
                       IBAN: "abcd"
               countWithGreaterThan:
@@ -359,6 +361,7 @@ paths:
                       MiddleName: "abcd"
                       LastName: "abcd"
                       Name: "abcd"
+                      Email: "abcd"
                       PersonalNumber: "abcd"
                       IBAN: "abcd"
                     greaterThan:
@@ -386,6 +389,7 @@ paths:
                       MiddleName: "abcd"
                       LastName: "abcd"
                       Name: "abcd"
+                      Email: "abcd"
                       PersonalNumber: "abcd"
                       IBAN: "abcd"
               searchWithGreaterThan:
@@ -1481,7 +1485,6 @@ paths:
                     contains:
                       Address: "abcd"
                       PostalCode: "abcd"
-                      Email: "abcd"
                       PhoneNumber: "abcd"
                     greaterThan:
                       Id: 0
@@ -1506,7 +1509,6 @@ paths:
                     contains:
                       Address: "abcd"
                       PostalCode: "abcd"
-                      Email: "abcd"
                       PhoneNumber: "abcd"
               countWithGreaterThan:
                 summary: Count with Greater Than
@@ -1573,7 +1575,6 @@ paths:
                     contains:
                       Address: "abcd"
                       PostalCode: "abcd"
-                      Email: "abcd"
                       PhoneNumber: "abcd"
                     greaterThan:
                       Id: 0
@@ -1598,7 +1599,6 @@ paths:
                     contains:
                       Address: "abcd"
                       PostalCode: "abcd"
-                      Email: "abcd"
                       PhoneNumber: "abcd"
               searchWithGreaterThan:
                 summary: Search with Greater Than
@@ -1653,6 +1653,7 @@ components:
       required:
         - FirstName
         - LastName
+        - Email
         - BirthDate
         - PersonalNumber
         - Gender
@@ -1680,6 +1681,10 @@ components:
           minLength: 0
           maxLength: 70
           readOnly: true
+        Email:
+          type: string
+          minLength: 0
+          maxLength: 40
         BirthDate:
         PersonalNumber:
           type: string
@@ -1759,6 +1764,17 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 70
+                Email:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 40
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 40
                 BirthDate:
                   oneOf:
                 PersonalNumber:
@@ -1862,6 +1878,17 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 70
+                Email:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 40
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 40
                 BirthDate:
                   oneOf:
                 PersonalNumber:
@@ -1930,6 +1957,10 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 70
+                Email:
+                  type: string
+                  minLength: 0
+                  maxLength: 40
                 BirthDate:
                 PersonalNumber:
                   type: string
@@ -1964,6 +1995,10 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 70
+                Email:
+                  type: string
+                  minLength: 0
+                  maxLength: 40
                 BirthDate:
                 PersonalNumber:
                   type: string
@@ -2004,6 +2039,10 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 70
+                Email:
+                  type: string
+                  minLength: 0
+                  maxLength: 40
                 BirthDate:
                 PersonalNumber:
                   type: string
@@ -2044,6 +2083,10 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 70
+                Email:
+                  type: string
+                  minLength: 0
+                  maxLength: 40
                 BirthDate:
                 PersonalNumber:
                   type: string
@@ -2084,6 +2127,10 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 70
+                Email:
+                  type: string
+                  minLength: 0
+                  maxLength: 40
                 BirthDate:
                 PersonalNumber:
                   type: string
@@ -2104,12 +2151,12 @@ components:
                   maxLength: 50
         $select:
           type: array
-          example: ["Id", "FirstName", "MiddleName", "LastName", "Name", "BirthDate", "PersonalNumber", "Gender", "Nationality", "MartialStatus", "IBAN"]
+          example: ["Id", "FirstName", "MiddleName", "LastName", "Name", "Email", "BirthDate", "PersonalNumber", "Gender", "Nationality", "MartialStatus", "IBAN"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,FirstName,MiddleName,LastName,Name,BirthDate,PersonalNumber,Gender,Nationality,MartialStatus,IBAN"
+            example: "Id,FirstName,MiddleName,LastName,Name,Email,BirthDate,PersonalNumber,Gender,Nationality,MartialStatus,IBAN"
         $order:
           type: string
           enum: ["asc", "desc"]
@@ -2383,7 +2430,6 @@ components:
         - Country
         - City
         - PostalCode
-        - Email
         - PhoneNumber
       properties:
         Id:
@@ -2403,10 +2449,6 @@ components:
           type: string
           minLength: 0
           maxLength: 20
-        Email:
-          type: string
-          minLength: 0
-          maxLength: 40
         PhoneNumber:
           type: string
           minLength: 0
@@ -2469,17 +2511,6 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 20
-                Email:
-                  oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 40
-                    - type: array
-                      items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 40
                 PhoneNumber:
                   oneOf:
                     - type: string
@@ -2548,17 +2579,6 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 20
-                Email:
-                  oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 40
-                    - type: array
-                      items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 40
                 PhoneNumber:
                   oneOf:
                     - type: string
@@ -2592,10 +2612,6 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 20
-                Email:
-                  type: string
-                  minLength: 0
-                  maxLength: 40
                 PhoneNumber:
                   type: string
                   minLength: 0
@@ -2621,10 +2637,6 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 20
-                Email:
-                  type: string
-                  minLength: 0
-                  maxLength: 40
                 PhoneNumber:
                   type: string
                   minLength: 0
@@ -2652,10 +2664,6 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 20
-                Email:
-                  type: string
-                  minLength: 0
-                  maxLength: 40
                 PhoneNumber:
                   type: string
                   minLength: 0
@@ -2683,10 +2691,6 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 20
-                Email:
-                  type: string
-                  minLength: 0
-                  maxLength: 40
                 PhoneNumber:
                   type: string
                   minLength: 0
@@ -2714,10 +2718,6 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 20
-                Email:
-                  type: string
-                  minLength: 0
-                  maxLength: 40
                 PhoneNumber:
                   type: string
                   minLength: 0
@@ -2727,12 +2727,12 @@ components:
                   format: int32
         $select:
           type: array
-          example: ["Id", "Address", "Country", "City", "PostalCode", "Email", "PhoneNumber", "Employee"]
+          example: ["Id", "Address", "Country", "City", "PostalCode", "PhoneNumber", "Employee"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,Address,Country,City,PostalCode,Email,PhoneNumber,Employee"
+            example: "Id,Address,Country,City,PostalCode,PhoneNumber,Employee"
         $order:
           type: string
           enum: ["asc", "desc"]

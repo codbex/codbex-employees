@@ -80,6 +80,20 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "dataLength": "40",
+                        "dataName": "EMPLOYEE_EMAIL",
+                        "dataNullable": "true",
+                        "dataType": "VARCHAR",
+                        "description": "",
+                        "isRequiredProperty": "true",
+                        "name": "Email",
+                        "tooltip": "",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "40",
+                        "widgetSize": "",
+                        "widgetType": "EMAIL"
+                    },
+                    {
                         "dataName": "EMPLOYEE_BIRTHDATE",
                         "dataNullable": "true",
                         "dataType": "DATE",
@@ -557,20 +571,6 @@
                         "widgetLength": "20",
                         "widgetSize": "",
                         "widgetType": "TEXTBOX"
-                    },
-                    {
-                        "dataLength": "40",
-                        "dataName": "CONTACT_EMAIL",
-                        "dataNullable": "true",
-                        "dataType": "VARCHAR",
-                        "description": "",
-                        "isRequiredProperty": "true",
-                        "name": "Email",
-                        "tooltip": "",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "100",
-                        "widgetSize": "",
-                        "widgetType": "EMAIL"
                     },
                     {
                         "dataLength": "15",

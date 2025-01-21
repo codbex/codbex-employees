@@ -53,9 +53,6 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.PostalCode) {
 				filter.$filter.contains.PostalCode = entity.PostalCode;
 			}
-			if (entity.Email) {
-				filter.$filter.contains.Email = entity.Email;
-			}
 			if (entity.PhoneNumber) {
 				filter.$filter.contains.PhoneNumber = entity.PhoneNumber;
 			}
