@@ -148,12 +148,6 @@ class ContactService {
         if (entity.PostalCode?.length > 20) {
             throw new ValidationError(`The 'PostalCode' exceeds the maximum length of [20] characters`);
         }
-        if (entity.Email === null || entity.Email === undefined) {
-            throw new ValidationError(`The 'Email' property is required, provide a valid value`);
-        }
-        if (entity.Email?.length > 40) {
-            throw new ValidationError(`The 'Email' exceeds the maximum length of [40] characters`);
-        }
         if (entity.PhoneNumber === null || entity.PhoneNumber === undefined) {
             throw new ValidationError(`The 'PhoneNumber' property is required, provide a valid value`);
         }

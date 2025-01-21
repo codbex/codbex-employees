@@ -9,7 +9,6 @@ export interface ContactEntity {
     Country?: number;
     City?: number;
     PostalCode?: string;
-    Email?: string;
     PhoneNumber?: string;
     Employee?: number;
 }
@@ -19,7 +18,6 @@ export interface ContactCreateEntity {
     readonly Country?: number;
     readonly City?: number;
     readonly PostalCode?: string;
-    readonly Email?: string;
     readonly PhoneNumber?: string;
     readonly Employee?: number;
 }
@@ -36,7 +34,6 @@ export interface ContactEntityOptions {
             Country?: number | number[];
             City?: number | number[];
             PostalCode?: string | string[];
-            Email?: string | string[];
             PhoneNumber?: string | string[];
             Employee?: number | number[];
         };
@@ -46,7 +43,6 @@ export interface ContactEntityOptions {
             Country?: number | number[];
             City?: number | number[];
             PostalCode?: string | string[];
-            Email?: string | string[];
             PhoneNumber?: string | string[];
             Employee?: number | number[];
         };
@@ -56,7 +52,6 @@ export interface ContactEntityOptions {
             Country?: number;
             City?: number;
             PostalCode?: string;
-            Email?: string;
             PhoneNumber?: string;
             Employee?: number;
         };
@@ -66,7 +61,6 @@ export interface ContactEntityOptions {
             Country?: number;
             City?: number;
             PostalCode?: string;
-            Email?: string;
             PhoneNumber?: string;
             Employee?: number;
         };
@@ -76,7 +70,6 @@ export interface ContactEntityOptions {
             Country?: number;
             City?: number;
             PostalCode?: string;
-            Email?: string;
             PhoneNumber?: string;
             Employee?: number;
         };
@@ -86,7 +79,6 @@ export interface ContactEntityOptions {
             Country?: number;
             City?: number;
             PostalCode?: string;
-            Email?: string;
             PhoneNumber?: string;
             Employee?: number;
         };
@@ -96,7 +88,6 @@ export interface ContactEntityOptions {
             Country?: number;
             City?: number;
             PostalCode?: string;
-            Email?: string;
             PhoneNumber?: string;
             Employee?: number;
         };
@@ -153,11 +144,6 @@ export class ContactRepository {
             {
                 name: "PostalCode",
                 column: "CONTACT_POSTALCODE",
-                type: "VARCHAR",
-            },
-            {
-                name: "Email",
-                column: "CONTACT_EMAIL",
                 type: "VARCHAR",
             },
             {

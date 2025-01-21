@@ -60,6 +60,9 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.Name) {
 				filter.$filter.contains.Name = entity.Name;
 			}
+			if (entity.Email) {
+				filter.$filter.contains.Email = entity.Email;
+			}
 			if (entity.BirthDateFrom) {
 				filter.$filter.greaterThanOrEqual.BirthDate = entity.BirthDateFrom;
 			}

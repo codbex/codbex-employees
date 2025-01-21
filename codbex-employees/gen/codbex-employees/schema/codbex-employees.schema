@@ -35,6 +35,12 @@
                         "name": "EMPLOYEE_NAME"
                     },
                     {
+                        "type": "VARCHAR",
+                        "length": 40,
+                        "nullable": true,
+                        "name": "EMPLOYEE_EMAIL"
+                    },
+                    {
                         "type": "DATE",
                         "nullable": true,
                         "name": "EMPLOYEE_BIRTHDATE"
@@ -138,12 +144,6 @@
                         "length": 20,
                         "nullable": true,
                         "name": "CONTACT_POSTALCODE"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 40,
-                        "nullable": true,
-                        "name": "CONTACT_EMAIL"
                     },
                     {
                         "type": "VARCHAR",

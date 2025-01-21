@@ -10,6 +10,7 @@ export interface EmployeeEntity {
     MiddleName?: string;
     LastName: string;
     Name?: string;
+    Email?: string;
     BirthDate?: Date;
     PersonalNumber?: string;
     Gender?: number;
@@ -22,6 +23,7 @@ export interface EmployeeCreateEntity {
     readonly FirstName: string;
     readonly MiddleName?: string;
     readonly LastName: string;
+    readonly Email?: string;
     readonly BirthDate?: Date;
     readonly PersonalNumber?: string;
     readonly Gender?: number;
@@ -42,6 +44,7 @@ export interface EmployeeEntityOptions {
             MiddleName?: string | string[];
             LastName?: string | string[];
             Name?: string | string[];
+            Email?: string | string[];
             BirthDate?: Date | Date[];
             PersonalNumber?: string | string[];
             Gender?: number | number[];
@@ -55,6 +58,7 @@ export interface EmployeeEntityOptions {
             MiddleName?: string | string[];
             LastName?: string | string[];
             Name?: string | string[];
+            Email?: string | string[];
             BirthDate?: Date | Date[];
             PersonalNumber?: string | string[];
             Gender?: number | number[];
@@ -68,6 +72,7 @@ export interface EmployeeEntityOptions {
             MiddleName?: string;
             LastName?: string;
             Name?: string;
+            Email?: string;
             BirthDate?: Date;
             PersonalNumber?: string;
             Gender?: number;
@@ -81,6 +86,7 @@ export interface EmployeeEntityOptions {
             MiddleName?: string;
             LastName?: string;
             Name?: string;
+            Email?: string;
             BirthDate?: Date;
             PersonalNumber?: string;
             Gender?: number;
@@ -94,6 +100,7 @@ export interface EmployeeEntityOptions {
             MiddleName?: string;
             LastName?: string;
             Name?: string;
+            Email?: string;
             BirthDate?: Date;
             PersonalNumber?: string;
             Gender?: number;
@@ -107,6 +114,7 @@ export interface EmployeeEntityOptions {
             MiddleName?: string;
             LastName?: string;
             Name?: string;
+            Email?: string;
             BirthDate?: Date;
             PersonalNumber?: string;
             Gender?: number;
@@ -120,6 +128,7 @@ export interface EmployeeEntityOptions {
             MiddleName?: string;
             LastName?: string;
             Name?: string;
+            Email?: string;
             BirthDate?: Date;
             PersonalNumber?: string;
             Gender?: number;
@@ -182,6 +191,11 @@ export class EmployeeRepository {
             {
                 name: "Name",
                 column: "EMPLOYEE_NAME",
+                type: "VARCHAR",
+            },
+            {
+                name: "Email",
+                column: "EMPLOYEE_EMAIL",
                 type: "VARCHAR",
             },
             {

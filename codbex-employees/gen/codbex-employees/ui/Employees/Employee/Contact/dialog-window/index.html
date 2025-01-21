@@ -101,32 +101,6 @@
                     </fd-form-item>
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idEmail" dg-required="true" dg-colon="true">Email</fd-form-label>
-                        </div>
-						<div ng-show="action === 'select'" style="margin: 4px 0px; padding: 0px 10px" class="fd-col  fd-col-md--8 ">
-							<a href="mailto:{{entity.Email}}" class="fd-link">{{entity.Email}}</a>
-						</div>
-                        <div ng-show="action !== 'select'" class="fd-col  fd-col-md--4 ">
-	                        <fd-form-input-message-group dg-inactive="{{ forms.details['Email'].$valid }}">
-	                            <fd-input id="idEmail"
-	                                name="Email"
-	                                state="{{ forms.details['Email'].$valid ? '' : 'error' }}"
-									ng-required="true"
-	                                ng-model="entity.Email"
-	                                ng-readonly="action === 'select'"
-	                                ng-minlength="0.0 || 0"
-	                                ng-maxlength="40.0 || -1"
-	                                dg-input-rules="{ patterns: [''] }"
-	                                type="email"
-	                                placeholder="Enter Email">
-	                            </fd-input>
-	                            <fd-form-message dg-type="error">The value doesn't match the required pattern ''</fd-form-message>
-	                        </fd-form-input-message-group>
-	                        <i class="sap-icon--information" role="presentation" onclick="javascript:alert('')"></i>
-	                    </div>
-                    </fd-form-item>
-                    <fd-form-item class="fd-row">
-                    	<div class="fd-col fd-col-md--2">
                         	<fd-form-label for="idPhoneNumber" dg-required="true" dg-colon="true">PhoneNumber</fd-form-label>
                         </div>
                         <div class="fd-col  fd-col-md--8 ">

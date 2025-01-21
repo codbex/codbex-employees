@@ -137,6 +137,12 @@ class EmployeeService {
         if (entity.Name?.length > 70) {
             throw new ValidationError(`The 'Name' exceeds the maximum length of [70] characters`);
         }
+        if (entity.Email === null || entity.Email === undefined) {
+            throw new ValidationError(`The 'Email' property is required, provide a valid value`);
+        }
+        if (entity.Email?.length > 40) {
+            throw new ValidationError(`The 'Email' exceeds the maximum length of [40] characters`);
+        }
         if (entity.BirthDate === null || entity.BirthDate === undefined) {
             throw new ValidationError(`The 'BirthDate' property is required, provide a valid value`);
         }
