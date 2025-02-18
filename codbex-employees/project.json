@@ -2,21 +2,9 @@
     "guid": "codbex-employees",
     "dependencies": [
         {
-            "guid": "codbex-jobs",
-            "type": "git",
-            "url": "https://github.com/codbex/codbex-jobs.git",
-            "branch": "main"
-        },
-        {
             "guid": "codbex-organizations",
             "type": "git",
             "url": "https://github.com/codbex/codbex-organizations.git",
-            "branch": "main"
-        },
-        {
-            "guid": "codbex-contracts",
-            "type": "git",
-            "url": "https://github.com/codbex/codbex-contracts.git",
             "branch": "main"
         },
         {
