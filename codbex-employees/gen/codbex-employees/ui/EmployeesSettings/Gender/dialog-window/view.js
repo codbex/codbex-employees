@@ -7,7 +7,7 @@ const viewData = {
     id: "Gender-details",
     label: "Gender",
     link: "/services/web/codbex-employees/gen/codbex-employees/ui/EmployeesSettings/Gender/dialog-window/index.html",
-    perspectiveName: "EmployeesSettings",
+    perspectiveName: "EmployeesSettings"
 };
 
 if (typeof exports !== 'undefined') {

@@ -9,7 +9,7 @@ const viewData = {
     factory: "frame",
     region: "center",
     link: "/services/web/codbex-employees/gen/codbex-employees/ui/EmployeesSettings/MartialStatus/index.html",
-    perspectiveName: "EmployeesSettings",
+    perspectiveName: "EmployeesSettings"
 };
 
 if (typeof exports !== 'undefined') {

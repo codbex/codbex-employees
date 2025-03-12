@@ -1,1 +1,5 @@
-{"module":"codbex-employees/gen/codbex-employees/ui/Employees/Employee/tile.js","extensionPoint":"portal-tile","description":"codbex-employees - Application Tile"}
+{
+    "module": "codbex-employees/gen/codbex-employees/ui/Employees/Employee/tile.js",
+    "extensionPoint": "portal-tile",
+    "description": "codbex-employees - Application Tile"
+}

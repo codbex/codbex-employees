@@ -7,7 +7,7 @@ const viewData = {
     id: "MartialStatus-details",
     label: "MartialStatus",
     link: "/services/web/codbex-employees/gen/codbex-employees/ui/EmployeesSettings/MartialStatus/dialog-window/index.html",
-    perspectiveName: "EmployeesSettings",
+    perspectiveName: "EmployeesSettings"
 };
 
 if (typeof exports !== 'undefined') {

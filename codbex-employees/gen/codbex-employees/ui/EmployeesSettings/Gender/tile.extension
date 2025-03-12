@@ -1,1 +1,5 @@
-{"module":"codbex-employees/gen/codbex-employees/ui/EmployeesSettings/Gender/tile.js","extensionPoint":"codbex-employees-tile","description":"codbex-employees - Application Tile"}
+{
+    "module": "codbex-employees/gen/codbex-employees/ui/EmployeesSettings/Gender/tile.js",
+    "extensionPoint": "codbex-employees-tile",
+    "description": "codbex-employees - Application Tile"
+}
