@@ -1,1 +1,5 @@
-{"module":"codbex-employees/gen/codbex-employees/ui/EmployeesSettings/MartialStatus/dialog-window/view.js","extensionPoint":"dialog-window","description":"codbex-employees - Application Dialog Window"}
+{
+    "module": "codbex-employees/gen/codbex-employees/ui/EmployeesSettings/MartialStatus/dialog-window/view.js",
+    "extensionPoint": "dialog-window",
+    "description": "codbex-employees - Application Dialog Window"
+}

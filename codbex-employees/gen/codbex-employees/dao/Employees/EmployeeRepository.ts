@@ -270,6 +270,8 @@ export class EmployeeRepository {
 
     public update(entity: EmployeeUpdateEntity): void {
         // EntityUtils.setLocalDate(entity, "BirthDate");
+        // @ts-ignore
+        (entity as EmployeeEntity).Name = entity["FirstName"] + " " + entity["LastName"];
         const previousEntity = this.findById(entity.Id);
         this.dao.update(entity);
         this.triggerEvent({
