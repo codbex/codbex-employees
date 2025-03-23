@@ -2,7 +2,7 @@
 Employees Management Application
 
 ### Model
-<img width="573" alt="Screenshot 2024-12-27 at 10 11 00" src="https://github.com/user-attachments/assets/855ced7c-a54e-4621-b667-155633bc99a0" />
+![model](images/employees-model.png)
 
 ### Application
 
@@ -12,20 +12,9 @@ Employees Management Application
 
 #### Management
 
-![management](images/employees-management.png)
+![employees-management](images/employees-management.png)
 
-![organisation-management](images/employees-management.png)
+![gender-management](images/gender-management.png)
 
-### Infrastructure
+![martial-status-management](images/gender-management.png)
 
-#### Build
-
-	docker build -t codbex-employees:1.0.0 .
-
-#### Run
-
-	docker run --name codbex-employees -d -p 8080:8080 codbex-employees:1.0.0
-
-#### Clean
-
-	docker rm codbex-employees
