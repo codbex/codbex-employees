@@ -93,5 +93,9 @@
             "type": "INNER",
             "condition": "JobStatus.JOBSTATUS_ID = JobPosition.JOBPOSITION_STATUS"
         }
-    ]
+    ],
+    "security": {
+        "generateDefaultRoles": "true",
+        "roleRead": "codbex-employees.Report.JobPositionsTimeToFillReadOnly"
+    }
 }

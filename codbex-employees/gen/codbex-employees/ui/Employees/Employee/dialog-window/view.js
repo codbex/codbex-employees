@@ -8,6 +8,9 @@ const viewData = {
     label: "Employee",
     link: "/services/web/codbex-employees/gen/codbex-employees/ui/Employees/Employee/dialog-window/index.html",
     perspectiveName: "Employees",
+    roles: [
+        "codbex-employees.Employees.EmployeeReadOnly",
+    ]
 };
 
 if (typeof exports !== 'undefined') {

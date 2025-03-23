@@ -1,0 +1,6 @@
+[
+    {
+        "name": "codbex-employees.Report.OpenJobPositionsReadOnly",
+        "description": "A role that grants read only permission for OpenJobPositions."
+    }
+]

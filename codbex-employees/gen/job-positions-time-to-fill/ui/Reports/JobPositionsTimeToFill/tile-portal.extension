@@ -1,5 +1,6 @@
 {
     "module": "codbex-employees/gen/job-positions-time-to-fill/ui/Reports/JobPositionsTimeToFill/tile.js",
     "extensionPoint": "portal-tile",
-    "description": "codbex-employees - Application Tile"
+    "description": "codbex-employees - Application Tile",
+    "role": "codbex-employees.Report.JobPositionsTimeToFillReadOnly"
 }

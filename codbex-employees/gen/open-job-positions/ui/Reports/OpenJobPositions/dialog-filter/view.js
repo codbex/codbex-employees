@@ -7,7 +7,7 @@ const viewData = {
     id: "OpenJobPositions-Report-filter",
     label: "OpenJobPositions Rerport Filter",
     link: "/services/web/codbex-employees/gen/open-job-positions/ui/Reports/OpenJobPositions/dialog-filter/index.html",
-    perspectiveName: "Reports",
+    perspectiveName: "Reports"
 };
 
 if (typeof exports !== 'undefined') {

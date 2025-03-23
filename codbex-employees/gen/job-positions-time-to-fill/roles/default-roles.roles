@@ -1,0 +1,6 @@
+[
+    {
+        "name": "codbex-employees.Report.JobPositionsTimeToFillReadOnly",
+        "description": "A role that grants read only permission for JobPositionsTimeToFill."
+    }
+]

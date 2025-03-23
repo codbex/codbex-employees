@@ -1,6 +1,8 @@
 import { Controller, Get, Post, Put, Delete, response } from "sdk/http"
 import { Extensions } from "sdk/extensions"
 import { MartialStatusRepository, MartialStatusEntityOptions } from "../../dao/EmployeesSettings/MartialStatusRepository";
+import { user } from "sdk/security"
+import { ForbiddenError } from "../utils/ForbiddenError";
 import { ValidationError } from "../utils/ValidationError";
 import { HttpUtils } from "../utils/HttpUtils";
 
@@ -14,6 +16,7 @@ class MartialStatusService {
     @Get("/")
     public getAll(_: any, ctx: any) {
         try {
+            this.checkPermissions("read");
             const options: MartialStatusEntityOptions = {
                 $limit: ctx.queryParameters["$limit"] ? parseInt(ctx.queryParameters["$limit"]) : undefined,
                 $offset: ctx.queryParameters["$offset"] ? parseInt(ctx.queryParameters["$offset"]) : undefined
@@ -28,6 +31,7 @@ class MartialStatusService {
     @Post("/")
     public create(entity: any) {
         try {
+            this.checkPermissions("write");
             this.validateEntity(entity);
             entity.Id = this.repository.create(entity);
             response.setHeader("Content-Location", "/services/ts/codbex-employees/gen/codbex-employees/api/EmployeesSettings/MartialStatusService.ts/" + entity.Id);
@@ -41,6 +45,7 @@ class MartialStatusService {
     @Get("/count")
     public count() {
         try {
+            this.checkPermissions("read");
             return this.repository.count();
         } catch (error: any) {
             this.handleError(error);
@@ -50,6 +55,7 @@ class MartialStatusService {
     @Post("/count")
     public countWithFilter(filter: any) {
         try {
+            this.checkPermissions("read");
             return this.repository.count(filter);
         } catch (error: any) {
             this.handleError(error);
@@ -59,6 +65,7 @@ class MartialStatusService {
     @Post("/search")
     public search(filter: any) {
         try {
+            this.checkPermissions("read");
             return this.repository.findAll(filter);
         } catch (error: any) {
             this.handleError(error);
@@ -68,6 +75,7 @@ class MartialStatusService {
     @Get("/:id")
     public getById(_: any, ctx: any) {
         try {
+            this.checkPermissions("read");
             const id = parseInt(ctx.pathParameters.id);
             const entity = this.repository.findById(id);
             if (entity) {
@@ -83,6 +91,7 @@ class MartialStatusService {
     @Put("/:id")
     public update(entity: any, ctx: any) {
         try {
+            this.checkPermissions("write");
             entity.Id = ctx.pathParameters.id;
             this.validateEntity(entity);
             this.repository.update(entity);
@@ -95,6 +104,7 @@ class MartialStatusService {
     @Delete("/:id")
     public deleteById(_: any, ctx: any) {
         try {
+            this.checkPermissions("write");
             const id = ctx.pathParameters.id;
             const entity = this.repository.findById(id);
             if (entity) {
@@ -115,6 +125,15 @@ class MartialStatusService {
             HttpUtils.sendResponseBadRequest(error.message);
         } else {
             HttpUtils.sendInternalServerError(error.message);
+        }
+    }
+
+    private checkPermissions(operationType: string) {
+        if (operationType === "read" && !(user.isInRole("codbex-employees.EmployeesSettings.MartialStatusReadOnly") || user.isInRole("codbex-employees.EmployeesSettings.MartialStatusFullAccess"))) {
+            throw new ForbiddenError();
+        }
+        if (operationType === "write" && !user.isInRole("codbex-employees.EmployeesSettings.MartialStatusFullAccess")) {
+            throw new ForbiddenError();
         }
     }
 
