@@ -42,7 +42,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				$scope.entity = {};
 				$scope.optionsGender = [];
 				$scope.optionsNationality = [];
-				$scope.optionsMartialStatus = [];
+				$scope.optionsStatus = [];
 				$scope.action = 'select';
 			});
 		});
@@ -55,7 +55,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				$scope.entity = msg.data.entity;
 				$scope.optionsGender = msg.data.optionsGender;
 				$scope.optionsNationality = msg.data.optionsNationality;
-				$scope.optionsMartialStatus = msg.data.optionsMartialStatus;
+				$scope.optionsStatus = msg.data.optionsStatus;
 				$scope.action = 'select';
 			});
 		});
@@ -65,7 +65,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				$scope.entity = {};
 				$scope.optionsGender = msg.data.optionsGender;
 				$scope.optionsNationality = msg.data.optionsNationality;
-				$scope.optionsMartialStatus = msg.data.optionsMartialStatus;
+				$scope.optionsStatus = msg.data.optionsStatus;
 				$scope.action = 'create';
 			});
 		});
@@ -78,14 +78,14 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				$scope.entity = msg.data.entity;
 				$scope.optionsGender = msg.data.optionsGender;
 				$scope.optionsNationality = msg.data.optionsNationality;
-				$scope.optionsMartialStatus = msg.data.optionsMartialStatus;
+				$scope.optionsStatus = msg.data.optionsStatus;
 				$scope.action = 'update';
 			});
 		});
 
 		$scope.serviceGender = "/services/ts/codbex-employees/gen/codbex-employees/api/EmployeesSettings/GenderService.ts";
 		$scope.serviceNationality = "/services/ts/codbex-countries/gen/codbex-countries/api/Countries/CountryService.ts";
-		$scope.serviceMartialStatus = "/services/ts/codbex-employees/gen/codbex-employees/api/EmployeesSettings/MartialStatusService.ts";
+		$scope.serviceStatus = "/services/ts/codbex-employees/gen/codbex-employees/api/EmployeesSettings/MartialStatusService.ts";
 
 		//-----------------Events-------------------//
 
@@ -131,7 +131,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				entity: {},
 			}, null, false);
 		};
-		$scope.createMartialStatus = function () {
+		$scope.createStatus = function () {
 			messageHub.showDialogWindow("MartialStatus-details", {
 				action: "create",
 				entity: {},
@@ -166,10 +166,10 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				});
 			});
 		};
-		$scope.refreshMartialStatus = function () {
-			$scope.optionsMartialStatus = [];
+		$scope.refreshStatus = function () {
+			$scope.optionsStatus = [];
 			$http.get("/services/ts/codbex-employees/gen/codbex-employees/api/EmployeesSettings/MartialStatusService.ts").then(function (response) {
-				$scope.optionsMartialStatus = response.data.map(e => {
+				$scope.optionsStatus = response.data.map(e => {
 					return {
 						value: e.Id,
 						text: e.Name

@@ -160,12 +160,12 @@
                         "relationshipEntityPerspectiveLabel": "Countries"
                     },
                     {
-                        "dataName": "EMPLOYEE_MARTIALSTATUS",
+                        "dataName": "EMPLOYEE_STATUS",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
                         "description": "",
                         "isRequiredProperty": "true",
-                        "name": "MartialStatus",
+                        "name": "Status",
                         "tooltip": "",
                         "widgetDropDownKey": "Id",
                         "widgetDropDownValue": "Name",

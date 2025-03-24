@@ -15,7 +15,7 @@ export interface EmployeeEntity {
     PersonalNumber?: string;
     Gender?: number;
     Nationality?: number;
-    MartialStatus?: number;
+    Status?: number;
     IBAN?: string;
 }
 
@@ -28,7 +28,7 @@ export interface EmployeeCreateEntity {
     readonly PersonalNumber?: string;
     readonly Gender?: number;
     readonly Nationality?: number;
-    readonly MartialStatus?: number;
+    readonly Status?: number;
     readonly IBAN?: string;
 }
 
@@ -49,7 +49,7 @@ export interface EmployeeEntityOptions {
             PersonalNumber?: string | string[];
             Gender?: number | number[];
             Nationality?: number | number[];
-            MartialStatus?: number | number[];
+            Status?: number | number[];
             IBAN?: string | string[];
         };
         notEquals?: {
@@ -63,7 +63,7 @@ export interface EmployeeEntityOptions {
             PersonalNumber?: string | string[];
             Gender?: number | number[];
             Nationality?: number | number[];
-            MartialStatus?: number | number[];
+            Status?: number | number[];
             IBAN?: string | string[];
         };
         contains?: {
@@ -77,7 +77,7 @@ export interface EmployeeEntityOptions {
             PersonalNumber?: string;
             Gender?: number;
             Nationality?: number;
-            MartialStatus?: number;
+            Status?: number;
             IBAN?: string;
         };
         greaterThan?: {
@@ -91,7 +91,7 @@ export interface EmployeeEntityOptions {
             PersonalNumber?: string;
             Gender?: number;
             Nationality?: number;
-            MartialStatus?: number;
+            Status?: number;
             IBAN?: string;
         };
         greaterThanOrEqual?: {
@@ -105,7 +105,7 @@ export interface EmployeeEntityOptions {
             PersonalNumber?: string;
             Gender?: number;
             Nationality?: number;
-            MartialStatus?: number;
+            Status?: number;
             IBAN?: string;
         };
         lessThan?: {
@@ -119,7 +119,7 @@ export interface EmployeeEntityOptions {
             PersonalNumber?: string;
             Gender?: number;
             Nationality?: number;
-            MartialStatus?: number;
+            Status?: number;
             IBAN?: string;
         };
         lessThanOrEqual?: {
@@ -133,7 +133,7 @@ export interface EmployeeEntityOptions {
             PersonalNumber?: string;
             Gender?: number;
             Nationality?: number;
-            MartialStatus?: number;
+            Status?: number;
             IBAN?: string;
         };
     },
@@ -219,8 +219,8 @@ export class EmployeeRepository {
                 type: "INTEGER",
             },
             {
-                name: "MartialStatus",
-                column: "EMPLOYEE_MARTIALSTATUS",
+                name: "Status",
+                column: "EMPLOYEE_STATUS",
                 type: "INTEGER",
             },
             {

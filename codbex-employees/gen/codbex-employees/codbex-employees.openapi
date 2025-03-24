@@ -1658,7 +1658,7 @@ components:
         - PersonalNumber
         - Gender
         - Nationality
-        - MartialStatus
+        - Status
         - IBAN
       properties:
         Id:
@@ -1696,7 +1696,7 @@ components:
         Nationality:
           type: integer
           format: int32
-        MartialStatus:
+        Status:
           type: integer
           format: int32
         IBAN:
@@ -1804,7 +1804,7 @@ components:
                       items:
                         type: integer
                         format: int32
-                MartialStatus:
+                Status:
                   oneOf:
                     - type: integer
                       format: int32
@@ -1918,7 +1918,7 @@ components:
                       items:
                         type: integer
                         format: int32
-                MartialStatus:
+                Status:
                   oneOf:
                     - type: integer
                       format: int32
@@ -1968,7 +1968,7 @@ components:
                   maxLength: 10
                 Gender:
                 Nationality:
-                MartialStatus:
+                Status:
                 IBAN:
                   type: string
                   minLength: 0
@@ -2010,7 +2010,7 @@ components:
                 Nationality:
                   type: integer
                   format: int32
-                MartialStatus:
+                Status:
                   type: integer
                   format: int32
                 IBAN:
@@ -2054,7 +2054,7 @@ components:
                 Nationality:
                   type: integer
                   format: int32
-                MartialStatus:
+                Status:
                   type: integer
                   format: int32
                 IBAN:
@@ -2098,7 +2098,7 @@ components:
                 Nationality:
                   type: integer
                   format: int32
-                MartialStatus:
+                Status:
                   type: integer
                   format: int32
                 IBAN:
@@ -2142,7 +2142,7 @@ components:
                 Nationality:
                   type: integer
                   format: int32
-                MartialStatus:
+                Status:
                   type: integer
                   format: int32
                 IBAN:
@@ -2151,12 +2151,12 @@ components:
                   maxLength: 50
         $select:
           type: array
-          example: ["Id", "FirstName", "MiddleName", "LastName", "Name", "Email", "BirthDate", "PersonalNumber", "Gender", "Nationality", "MartialStatus", "IBAN"]
+          example: ["Id", "FirstName", "MiddleName", "LastName", "Name", "Email", "BirthDate", "PersonalNumber", "Gender", "Nationality", "Status", "IBAN"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,FirstName,MiddleName,LastName,Name,Email,BirthDate,PersonalNumber,Gender,Nationality,MartialStatus,IBAN"
+            example: "Id,FirstName,MiddleName,LastName,Name,Email,BirthDate,PersonalNumber,Gender,Nationality,Status,IBAN"
         $order:
           type: string
           enum: ["asc", "desc"]

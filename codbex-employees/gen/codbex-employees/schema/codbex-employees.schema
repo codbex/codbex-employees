@@ -64,7 +64,7 @@
                     {
                         "type": "INTEGER",
                         "nullable": true,
-                        "name": "EMPLOYEE_MARTIALSTATUS"
+                        "name": "EMPLOYEE_STATUS"
                     },
                     {
                         "type": "VARCHAR",
@@ -181,7 +181,7 @@
                 "type": "foreignKey",
                 "table": "CODBEX_EMPLOYEE",
                 "constraintName": "Employee_MartialStatus",
-                "columns": "EMPLOYEE_MARTIALSTATUS",
+                "columns": "EMPLOYEE_STATUS",
                 "referencedTable": "CODBEX_MARTIALSTATUS",
                 "referencedColumns": "MARTIALSTATUS_ID"
             },
