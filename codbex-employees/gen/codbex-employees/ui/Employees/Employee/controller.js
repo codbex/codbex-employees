@@ -121,7 +121,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				selectedMainEntityId: entity.Id,
 				optionsGender: $scope.optionsGender,
 				optionsNationality: $scope.optionsNationality,
-				optionsStatus: $scope.optionsStatus,
+				optionsMartialStatus: $scope.optionsMartialStatus,
 			});
 		};
 
@@ -133,7 +133,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				entity: {},
 				optionsGender: $scope.optionsGender,
 				optionsNationality: $scope.optionsNationality,
-				optionsStatus: $scope.optionsStatus,
+				optionsMartialStatus: $scope.optionsMartialStatus,
 			});
 		};
 
@@ -143,7 +143,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				entity: $scope.selectedEntity,
 				optionsGender: $scope.optionsGender,
 				optionsNationality: $scope.optionsNationality,
-				optionsStatus: $scope.optionsStatus,
+				optionsMartialStatus: $scope.optionsMartialStatus,
 			});
 		};
 
@@ -182,14 +182,14 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				entity: $scope.filterEntity,
 				optionsGender: $scope.optionsGender,
 				optionsNationality: $scope.optionsNationality,
-				optionsStatus: $scope.optionsStatus,
+				optionsMartialStatus: $scope.optionsMartialStatus,
 			});
 		};
 
 		//----------------Dropdowns-----------------//
 		$scope.optionsGender = [];
 		$scope.optionsNationality = [];
-		$scope.optionsStatus = [];
+		$scope.optionsMartialStatus = [];
 
 
 		$http.get("/services/ts/codbex-employees/gen/codbex-employees/api/EmployeesSettings/GenderService.ts").then(function (response) {
@@ -211,7 +211,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		});
 
 		$http.get("/services/ts/codbex-employees/gen/codbex-employees/api/EmployeesSettings/MartialStatusService.ts").then(function (response) {
-			$scope.optionsStatus = response.data.map(e => {
+			$scope.optionsMartialStatus = response.data.map(e => {
 				return {
 					value: e.Id,
 					text: e.Name
@@ -235,10 +235,10 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			}
 			return null;
 		};
-		$scope.optionsStatusValue = function (optionKey) {
-			for (let i = 0; i < $scope.optionsStatus.length; i++) {
-				if ($scope.optionsStatus[i].value === optionKey) {
-					return $scope.optionsStatus[i].text;
+		$scope.optionsMartialStatusValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsMartialStatus.length; i++) {
+				if ($scope.optionsMartialStatus[i].value === optionKey) {
+					return $scope.optionsMartialStatus[i].text;
 				}
 			}
 			return null;

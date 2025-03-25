@@ -29,7 +29,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			$scope.selectedMainEntityId = params.selectedMainEntityId;
 			$scope.optionsGender = params.optionsGender;
 			$scope.optionsNationality = params.optionsNationality;
-			$scope.optionsStatus = params.optionsStatus;
+			$scope.optionsMartialStatus = params.optionsMartialStatus;
 		}
 
 		$scope.create = function () {
@@ -85,12 +85,12 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				}
 			});
 		});
-		$scope.serviceStatus = "/services/ts/codbex-employees/gen/codbex-employees/api/EmployeesSettings/MartialStatusService.ts";
+		$scope.serviceMartialStatus = "/services/ts/codbex-employees/gen/codbex-employees/api/EmployeesSettings/MartialStatusService.ts";
 		
-		$scope.optionsStatus = [];
+		$scope.optionsMartialStatus = [];
 		
 		$http.get("/services/ts/codbex-employees/gen/codbex-employees/api/EmployeesSettings/MartialStatusService.ts").then(function (response) {
-			$scope.optionsStatus = response.data.map(e => {
+			$scope.optionsMartialStatus = response.data.map(e => {
 				return {
 					value: e.Id,
 					text: e.Name

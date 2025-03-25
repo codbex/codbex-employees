@@ -177,8 +177,8 @@ class EmployeeService {
         if (entity.Nationality === null || entity.Nationality === undefined) {
             throw new ValidationError(`The 'Nationality' property is required, provide a valid value`);
         }
-        if (entity.Status === null || entity.Status === undefined) {
-            throw new ValidationError(`The 'Status' property is required, provide a valid value`);
+        if (entity.MartialStatus === null || entity.MartialStatus === undefined) {
+            throw new ValidationError(`The 'MartialStatus' property is required, provide a valid value`);
         }
         if (entity.IBAN === null || entity.IBAN === undefined) {
             throw new ValidationError(`The 'IBAN' property is required, provide a valid value`);

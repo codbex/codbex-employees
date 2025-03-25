@@ -22,7 +22,7 @@ angular.module('page', ["ideUI", "ideView"])
 			$scope.selectedMainEntityId = params.selectedMainEntityId;
 			$scope.optionsGender = params.optionsGender;
 			$scope.optionsNationality = params.optionsNationality;
-			$scope.optionsStatus = params.optionsStatus;
+			$scope.optionsMartialStatus = params.optionsMartialStatus;
 		}
 
 		$scope.filter = function () {
@@ -78,8 +78,8 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.Nationality !== undefined) {
 				filter.$filter.equals.Nationality = entity.Nationality;
 			}
-			if (entity.Status !== undefined) {
-				filter.$filter.equals.Status = entity.Status;
+			if (entity.MartialStatus !== undefined) {
+				filter.$filter.equals.MartialStatus = entity.MartialStatus;
 			}
 			if (entity.IBAN) {
 				filter.$filter.contains.IBAN = entity.IBAN;
