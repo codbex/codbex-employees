@@ -136,5 +136,9 @@
             "operation": "=",
             "right": "'Open'"
         }
-    ]
+    ],
+    "security": {
+        "generateDefaultRoles": "true",
+        "roleRead": "codbex-employees.Report.OpenJobPositionsReadOnly"
+    }
 }

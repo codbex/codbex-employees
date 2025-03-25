@@ -7,7 +7,7 @@ const viewData = {
     id: "JobPositionsTimeToFill-Report-details",
     label: "JobPositionsTimeToFill Report",
     link: "/services/web/codbex-employees/gen/job-positions-time-to-fill/ui/Reports/JobPositionsTimeToFill/dialog-window/index.html",
-    perspectiveName: "Reports",
+    perspectiveName: "Reports"
 };
 
 if (typeof exports !== 'undefined') {

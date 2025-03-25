@@ -1,5 +1,6 @@
 {
     "module": "codbex-employees/gen/codbex-employees/ui/Employees/Employee/tile.js",
     "extensionPoint": "codbex-employees-tile",
-    "description": "codbex-employees - Application Tile"
+    "description": "codbex-employees - Application Tile",
+    "role": "codbex-employees.Employees.EmployeeReadOnly,codbex-employees.Employees.EmployeeFullAccess"
 }

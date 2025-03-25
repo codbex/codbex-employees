@@ -1,5 +1,6 @@
 {
     "module": "codbex-employees/gen/codbex-employees/ui/Employees/Employee/main-details/view.js",
     "extensionPoint": "codbex-employees-view",
-    "description": "codbex-employees - Application View - Main Details"
+    "description": "codbex-employees - Application View - Main Details",
+    "role": "codbex-employees.Employees.EmployeeReadOnly,codbex-employees.Employees.EmployeeFullAccess"
 }

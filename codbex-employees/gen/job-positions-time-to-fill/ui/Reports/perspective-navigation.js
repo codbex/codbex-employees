@@ -5,10 +5,10 @@
  */
 const navigationData = {
 	id: 'codbex-employees-job-positions-time-to-fill',
-	label: 'Job Positions Time-to-fill',
+	label: 'Job Positions Time-To-Fill',
 	group: 'reports',
 	link: '/services/web/codbex-employees/gen/job-positions-time-to-fill/ui/Reports/JobPositionsTimeToFill/index.html',
-	order: 999,
+	order: $navigationOrder
 };
 
 function getNavigation() {

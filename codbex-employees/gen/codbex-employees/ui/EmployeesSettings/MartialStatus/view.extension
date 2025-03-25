@@ -1,5 +1,6 @@
 {
     "module": "codbex-employees/gen/codbex-employees/ui/EmployeesSettings/MartialStatus/view.js",
     "extensionPoint": "codbex-employees-view",
-    "description": "codbex-employees - Application View"
+    "description": "codbex-employees - Application View",
+    "role": "codbex-employees.EmployeesSettings.MartialStatusReadOnly,codbex-employees.EmployeesSettings.MartialStatusFullAccess"
 }

@@ -1,5 +1,6 @@
 {
     "module": "codbex-employees/gen/open-job-positions/ui/Reports/OpenJobPositions/tile.js",
     "extensionPoint": "codbex-employees-tile",
-    "description": "codbex-employees - Application Tile"
+    "description": "codbex-employees - Application Tile",
+    "role": "codbex-employees.Report.OpenJobPositionsReadOnly"
 }

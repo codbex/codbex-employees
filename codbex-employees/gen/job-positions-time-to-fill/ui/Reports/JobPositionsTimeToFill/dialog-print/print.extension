@@ -1,5 +1,6 @@
 {
     "extensionPoint": "codbex-employees-custom-action",
     "module": "codbex-employees/gen/job-positions-time-to-fill/ui/Reports/JobPositionsTimeToFill/dialog-print/print.js",
-    "description": "Print JobPositionsTimeToFill Report"
+    "description": "Print JobPositionsTimeToFill Report",
+    "role": "codbex-employees.Report.JobPositionsTimeToFillReadOnly"
 }
