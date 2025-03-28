@@ -8,7 +8,7 @@ const navigationData = {
 	label: 'Open Job Positions',
 	group: 'reports',
 	link: '/services/web/codbex-employees/gen/open-job-positions/ui/Reports/OpenJobPositions/index.html',
-	order: $navigationOrder
+	order: 600
 };
 
 function getNavigation() {
