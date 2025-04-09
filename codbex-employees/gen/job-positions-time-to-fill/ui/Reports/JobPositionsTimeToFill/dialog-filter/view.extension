@@ -1,6 +1,6 @@
 {
     "module": "codbex-employees/gen/job-positions-time-to-fill/ui/Reports/JobPositionsTimeToFill/dialog-filter/view.js",
-    "extensionPoint": "dialog-window",
+    "extensionPoint": "application-windows",
     "description": "codbex-employees - Application Dialog Window",
     "role": "codbex-employees.Report.JobPositionsTimeToFillReadOnly"
 }

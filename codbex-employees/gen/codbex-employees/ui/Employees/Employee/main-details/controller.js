@@ -1,141 +1,171 @@
-angular.module('page', ["ideUI", "ideView", "entityApi"])
-	.config(["messageHubProvider", function (messageHubProvider) {
-		messageHubProvider.eventIdPrefix = 'codbex-employees.Employees.Employee';
+angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
+	.config(["EntityServiceProvider", (EntityServiceProvider) => {
+		EntityServiceProvider.baseUrl = '/services/ts/codbex-employees/gen/codbex-employees/api/Employees/EmployeeService.ts';
 	}])
-	.config(["entityApiProvider", function (entityApiProvider) {
-		entityApiProvider.baseUrl = "/services/ts/codbex-employees/gen/codbex-employees/api/Employees/EmployeeService.ts";
-	}])
-	.controller('PageController', ['$scope',  '$http', 'Extensions', 'messageHub', 'entityApi', function ($scope,  $http, Extensions, messageHub, entityApi) {
-
+	.controller('PageController', ($scope, $http, Extensions, EntityService) => {
+		const Dialogs = new DialogHub();
 		$scope.entity = {};
 		$scope.forms = {
 			details: {},
 		};
 		$scope.formHeaders = {
-			select: "Employee Details",
-			create: "Create Employee",
-			update: "Update Employee"
+			select: 'Employee Details',
+			create: 'Create Employee',
+			update: 'Update Employee'
 		};
 		$scope.action = 'select';
 
 		//-----------------Custom Actions-------------------//
-		Extensions.get('dialogWindow', 'codbex-employees-custom-action').then(function (response) {
-			$scope.entityActions = response.filter(e => e.perspective === "Employees" && e.view === "Employee" && e.type === "entity");
+		Extensions.getWindows(['codbex-employees-custom-action']).then((response) => {
+			$scope.entityActions = response.data.filter(e => e.perspective === 'Employees' && e.view === 'Employee' && e.type === 'entity');
 		});
 
-		$scope.triggerEntityAction = function (action) {
-			messageHub.showDialogWindow(
-				action.id,
-				{
+		$scope.triggerEntityAction = (action) => {
+			Dialogs.showWindow({
+				hasHeader: true,
+        		title: action.label,
+				path: action.path,
+				params: {
 					id: $scope.entity.Id
 				},
-				null,
-				true,
-				action
-			);
+				closeButton: true
+			});
 		};
 		//-----------------Custom Actions-------------------//
 
 		//-----------------Events-------------------//
-		messageHub.onDidReceiveMessage("clearDetails", function (msg) {
-			$scope.$apply(function () {
+		Dialogs.addMessageListener({ topic: 'codbex-employees.Employees.Employee.clearDetails', handler: () => {
+			$scope.$evalAsync(() => {
 				$scope.entity = {};
 				$scope.optionsGender = [];
 				$scope.optionsNationality = [];
 				$scope.optionsMartialStatus = [];
 				$scope.action = 'select';
 			});
-		});
-
-		messageHub.onDidReceiveMessage("entitySelected", function (msg) {
-			$scope.$apply(function () {
-				if (msg.data.entity.BirthDate) {
-					msg.data.entity.BirthDate = new Date(msg.data.entity.BirthDate);
+		}});
+		Dialogs.addMessageListener({ topic: 'codbex-employees.Employees.Employee.entitySelected', handler: (data) => {
+			$scope.$evalAsync(() => {
+				if (data.entity.BirthDate) {
+					data.entity.BirthDate = new Date(data.entity.BirthDate);
 				}
-				$scope.entity = msg.data.entity;
-				$scope.optionsGender = msg.data.optionsGender;
-				$scope.optionsNationality = msg.data.optionsNationality;
-				$scope.optionsMartialStatus = msg.data.optionsMartialStatus;
+				$scope.entity = data.entity;
+				$scope.optionsGender = data.optionsGender;
+				$scope.optionsNationality = data.optionsNationality;
+				$scope.optionsMartialStatus = data.optionsMartialStatus;
 				$scope.action = 'select';
 			});
-		});
-
-		messageHub.onDidReceiveMessage("createEntity", function (msg) {
-			$scope.$apply(function () {
+		}});
+		Dialogs.addMessageListener({ topic: 'codbex-employees.Employees.Employee.createEntity', handler: (data) => {
+			$scope.$evalAsync(() => {
 				$scope.entity = {};
-				$scope.optionsGender = msg.data.optionsGender;
-				$scope.optionsNationality = msg.data.optionsNationality;
-				$scope.optionsMartialStatus = msg.data.optionsMartialStatus;
+				$scope.optionsGender = data.optionsGender;
+				$scope.optionsNationality = data.optionsNationality;
+				$scope.optionsMartialStatus = data.optionsMartialStatus;
 				$scope.action = 'create';
 			});
-		});
-
-		messageHub.onDidReceiveMessage("updateEntity", function (msg) {
-			$scope.$apply(function () {
-				if (msg.data.entity.BirthDate) {
-					msg.data.entity.BirthDate = new Date(msg.data.entity.BirthDate);
+		}});
+		Dialogs.addMessageListener({ topic: 'codbex-employees.Employees.Employee.updateEntity', handler: (data) => {
+			$scope.$evalAsync(() => {
+				if (data.entity.BirthDate) {
+					data.entity.BirthDate = new Date(data.entity.BirthDate);
 				}
-				$scope.entity = msg.data.entity;
-				$scope.optionsGender = msg.data.optionsGender;
-				$scope.optionsNationality = msg.data.optionsNationality;
-				$scope.optionsMartialStatus = msg.data.optionsMartialStatus;
+				$scope.entity = data.entity;
+				$scope.optionsGender = data.optionsGender;
+				$scope.optionsNationality = data.optionsNationality;
+				$scope.optionsMartialStatus = data.optionsMartialStatus;
 				$scope.action = 'update';
 			});
-		});
+		}});
 
-		$scope.serviceGender = "/services/ts/codbex-employees/gen/codbex-employees/api/EmployeesSettings/GenderService.ts";
-		$scope.serviceNationality = "/services/ts/codbex-countries/gen/codbex-countries/api/Countries/CountryService.ts";
-		$scope.serviceMartialStatus = "/services/ts/codbex-employees/gen/codbex-employees/api/EmployeesSettings/MartialStatusService.ts";
+		$scope.serviceGender = '/services/ts/codbex-employees/gen/codbex-employees/api/Settings/GenderService.ts';
+		$scope.serviceNationality = '/services/ts/codbex-countries/gen/codbex-countries/api/Settings/CountryService.ts';
+		$scope.serviceMartialStatus = '/services/ts/codbex-employees/gen/codbex-employees/api/Settings/MartialStatusService.ts';
 
 		//-----------------Events-------------------//
 
-		$scope.create = function () {
-			entityApi.create($scope.entity).then(function (response) {
-				if (response.status != 201) {
-					messageHub.showAlertError("Employee", `Unable to create Employee: '${response.message}'`);
-					return;
-				}
-				messageHub.postMessage("entityCreated", response.data);
-				messageHub.postMessage("clearDetails", response.data);
-				messageHub.showAlertSuccess("Employee", "Employee successfully created");
+		$scope.create = () => {
+			EntityService.create($scope.entity).then((response) => {
+				Dialogs.postMessage({ topic: 'codbex-employees.Employees.Employee.entityCreated', data: response.data });
+				Dialogs.postMessage({ topic: 'codbex-employees.Employees.Employee.clearDetails' , data: response.data });
+				Dialogs.showAlert({
+					title: 'Employee',
+					message: 'Employee successfully created',
+					type: AlertTypes.Success
+				});
+			}, (error) => {
+				const message = error.data ? error.data.message : '';
+				Dialogs.showAlert({
+					title: 'Employee',
+					message: `Unable to create Employee: '${message}'`,
+					type: AlertTypes.Error
+				});
+				console.error('EntityService:', error);
 			});
 		};
 
-		$scope.update = function () {
-			entityApi.update($scope.entity.Id, $scope.entity).then(function (response) {
-				if (response.status != 200) {
-					messageHub.showAlertError("Employee", `Unable to update Employee: '${response.message}'`);
-					return;
-				}
-				messageHub.postMessage("entityUpdated", response.data);
-				messageHub.postMessage("clearDetails", response.data);
-				messageHub.showAlertSuccess("Employee", "Employee successfully updated");
+		$scope.update = () => {
+			EntityService.update($scope.entity.Id, $scope.entity).then((response) => {
+				Dialogs.postMessage({ topic: 'codbex-employees.Employees.Employee.entityUpdated', data: response.data });
+				Dialogs.postMessage({ topic: 'codbex-employees.Employees.Employee.clearDetails', data: response.data });
+				Dialogs.showAlert({
+					title: 'Employee',
+					message: 'Employee successfully updated',
+					type: AlertTypes.Success
+				});
+			}, (error) => {
+				const message = error.data ? error.data.message : '';
+				Dialogs.showAlert({
+					title: 'Employee',
+					message: `Unable to create Employee: '${message}'`,
+					type: AlertTypes.Error
+				});
+				console.error('EntityService:', error);
 			});
 		};
 
-		$scope.cancel = function () {
-			messageHub.postMessage("clearDetails");
+		$scope.cancel = () => {
+			Dialogs.triggerEvent('codbex-employees.Employees.Employee.clearDetails');
 		};
 		
 		//-----------------Dialogs-------------------//
+		$scope.alert = (message) => {
+			if (message) Dialogs.showAlert({
+				title: 'Description',
+				message: message,
+				type: AlertTypes.Information,
+				preformatted: true,
+			});
+		};
 		
-		$scope.createGender = function () {
-			messageHub.showDialogWindow("Gender-details", {
-				action: "create",
-				entity: {},
-			}, null, false);
+		$scope.createGender = () => {
+			Dialogs.showWindow({
+				id: 'Gender-details',
+				params: {
+					action: 'create',
+					entity: {},
+				},
+				closeButton: false
+			});
 		};
-		$scope.createNationality = function () {
-			messageHub.showDialogWindow("Country-details", {
-				action: "create",
-				entity: {},
-			}, null, false);
+		$scope.createNationality = () => {
+			Dialogs.showWindow({
+				id: 'Country-details',
+				params: {
+					action: 'create',
+					entity: {},
+				},
+				closeButton: false
+			});
 		};
-		$scope.createMartialStatus = function () {
-			messageHub.showDialogWindow("MartialStatus-details", {
-				action: "create",
-				entity: {},
-			}, null, false);
+		$scope.createMartialStatus = () => {
+			Dialogs.showWindow({
+				id: 'MartialStatus-details',
+				params: {
+					action: 'create',
+					entity: {},
+				},
+				closeButton: false
+			});
 		};
 
 		//-----------------Dialogs-------------------//
@@ -144,41 +174,57 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 
 		//----------------Dropdowns-----------------//
 
-		$scope.refreshGender = function () {
+		$scope.refreshGender = () => {
 			$scope.optionsGender = [];
-			$http.get("/services/ts/codbex-employees/gen/codbex-employees/api/EmployeesSettings/GenderService.ts").then(function (response) {
-				$scope.optionsGender = response.data.map(e => {
-					return {
-						value: e.Id,
-						text: e.Name
-					}
+			$http.get('/services/ts/codbex-employees/gen/codbex-employees/api/Settings/GenderService.ts').then((response) => {
+				$scope.optionsGender = response.data.map(e => ({
+					value: e.Id,
+					text: e.Name
+				}));
+			}, (error) => {
+				console.error(error);
+				const message = error.data ? error.data.message : '';
+				Dialogs.showAlert({
+					title: 'Gender',
+					message: `Unable to load data: '${message}'`,
+					type: AlertTypes.Error
 				});
 			});
 		};
-		$scope.refreshNationality = function () {
+		$scope.refreshNationality = () => {
 			$scope.optionsNationality = [];
-			$http.get("/services/ts/codbex-countries/gen/codbex-countries/api/Countries/CountryService.ts").then(function (response) {
-				$scope.optionsNationality = response.data.map(e => {
-					return {
-						value: e.Id,
-						text: e.Name
-					}
+			$http.get('/services/ts/codbex-countries/gen/codbex-countries/api/Settings/CountryService.ts').then((response) => {
+				$scope.optionsNationality = response.data.map(e => ({
+					value: e.Id,
+					text: e.Name
+				}));
+			}, (error) => {
+				console.error(error);
+				const message = error.data ? error.data.message : '';
+				Dialogs.showAlert({
+					title: 'Nationality',
+					message: `Unable to load data: '${message}'`,
+					type: AlertTypes.Error
 				});
 			});
 		};
-		$scope.refreshMartialStatus = function () {
+		$scope.refreshMartialStatus = () => {
 			$scope.optionsMartialStatus = [];
-			$http.get("/services/ts/codbex-employees/gen/codbex-employees/api/EmployeesSettings/MartialStatusService.ts").then(function (response) {
-				$scope.optionsMartialStatus = response.data.map(e => {
-					return {
-						value: e.Id,
-						text: e.Name
-					}
+			$http.get('/services/ts/codbex-employees/gen/codbex-employees/api/Settings/MartialStatusService.ts').then((response) => {
+				$scope.optionsMartialStatus = response.data.map(e => ({
+					value: e.Id,
+					text: e.Name
+				}));
+			}, (error) => {
+				console.error(error);
+				const message = error.data ? error.data.message : '';
+				Dialogs.showAlert({
+					title: 'MartialStatus',
+					message: `Unable to load data: '${message}'`,
+					type: AlertTypes.Error
 				});
 			});
 		};
 
 		//----------------Dropdowns-----------------//	
-		
-
-	}]);
+	});

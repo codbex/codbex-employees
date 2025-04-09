@@ -1,6 +1,0 @@
-{
-    "module": "codbex-employees/gen/codbex-employees/ui/EmployeesSettings/MartialStatus/tile.js",
-    "extensionPoint": "portal-tile",
-    "description": "codbex-employees - Application Tile",
-    "role": "codbex-employees.EmployeesSettings.MartialStatusReadOnly,codbex-employees.EmployeesSettings.MartialStatusFullAccess"
-}

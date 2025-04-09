@@ -1,5 +1,0 @@
-{
-    "module": "codbex-employees/gen/open-job-positions/ui/Reports/perspective.js",
-    "extensionPoint": "portal",
-    "description": "codbex-employees - Perspective - Reports"
-}

@@ -1,15 +1,12 @@
 const viewData = {
     id: 'codbex-employees-Reports-OpenJobPositions-print',
     label: 'Print',
-    link: '/services/web/codbex-employees/gen/open-job-positions/ui/Reports/OpenJobPositions/dialog-print/index.html',
-    perspective: 'Reports',
+    path: '/services/web/codbex-employees/gen/open-job-positions/ui/${perspectiveName}/OpenJobPositions/dialog-print/index.html',
+    perspective: '${perspectiveName}',
     view: 'OpenJobPositions',
     type: 'page',
     order: 10
 };
-
 if (typeof exports !== 'undefined') {
-    exports.getDialogWindow = function () {
-        return viewData;
-    }
+    exports.getView = () => viewData;
 }

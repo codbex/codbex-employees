@@ -1,6 +1,6 @@
 {
     "module": "codbex-employees/gen/open-job-positions/ui/Reports/OpenJobPositions/dialog-filter/view.js",
-    "extensionPoint": "dialog-window",
+    "extensionPoint": "application-windows",
     "description": "codbex-employees - Application Dialog Window",
     "role": "codbex-employees.Report.OpenJobPositionsReadOnly"
 }

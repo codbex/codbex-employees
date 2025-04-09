@@ -5,13 +5,10 @@
  */
 const viewData = {
     id: "OpenJobPositions-Report-filter",
-    label: "OpenJobPositions Rerport Filter",
-    link: "/services/web/codbex-employees/gen/open-job-positions/ui/Reports/OpenJobPositions/dialog-filter/index.html",
+    label: "OpenJobPositions Report Filter",
+    path: "/services/web/codbex-employees/gen/open-job-positions/ui/Reports/OpenJobPositions/dialog-filter/index.html",
     perspectiveName: "Reports"
 };
-
 if (typeof exports !== 'undefined') {
-    exports.getDialogWindow = function () {
-        return viewData;
-    }
+    exports.getView = () => viewData;
 }

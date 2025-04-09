@@ -1,6 +1,0 @@
-{
-    "module": "codbex-employees/gen/codbex-employees/ui/EmployeesSettings/Gender/tile.js",
-    "extensionPoint": "portal-tile",
-    "description": "codbex-employees - Application Tile",
-    "role": "codbex-employees.EmployeesSettings.GenderReadOnly,codbex-employees.EmployeesSettings.GenderFullAccess"
-}

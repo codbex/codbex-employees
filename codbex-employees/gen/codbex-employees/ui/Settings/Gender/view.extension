@@ -1,0 +1,6 @@
+{
+    "module": "codbex-employees/gen/codbex-employees/ui/Settings/Gender/view.js",
+    "extensionPoint": "application-settings",
+    "description": "codbex-employees - Application View",
+    "role": "codbex-employees.EmployeesSettings.GenderReadOnly,codbex-employees.EmployeesSettings.GenderFullAccess"
+}

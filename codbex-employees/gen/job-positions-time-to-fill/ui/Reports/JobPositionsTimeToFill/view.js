@@ -4,16 +4,14 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "JobPositionsTimeToFillReport",
-    label: "JobPositionsTimeToFill Report",
-    factory: "frame",
-    region: "center",
-    link: "/services/web/codbex-employees/gen/job-positions-time-to-fill/ui/Reports/JobPositionsTimeToFill/index.html",
-    perspectiveName: "Reports"
+    id: 'JobPositionsTimeToFillReport',
+    label: 'JobPositionsTimeToFill Report',
+    region: 'center',
+    lazyLoad: true,
+	autoFocusTab: false,
+    path: '/services/web/codbex-employees/gen/job-positions-time-to-fill/ui/Reports/JobPositionsTimeToFill/index.html',
+    perspectiveName: 'Reports'
 };
-
 if (typeof exports !== 'undefined') {
-    exports.getView = function () {
-        return viewData;
-    }
+	exports.getView = () => viewData;
 }

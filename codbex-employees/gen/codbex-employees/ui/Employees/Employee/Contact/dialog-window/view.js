@@ -4,14 +4,11 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "Contact-details",
-    label: "Contact",
-    link: "/services/web/codbex-employees/gen/codbex-employees/ui/Employees/Employee/Contact/dialog-window/index.html",
-    perspectiveName: "Employees"
+    id: 'Contact-details',
+    label: 'Contact',
+    path: '/services/web/codbex-employees/gen/codbex-employees/ui/Employees/Employee/Contact/dialog-window/index.html',
+    perspectiveName: 'Employees'
 };
-
 if (typeof exports !== 'undefined') {
-    exports.getDialogWindow = function () {
-        return viewData;
-    }
+    exports.getView = () => viewData;
 }

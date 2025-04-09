@@ -6,15 +6,12 @@
 const viewData = {
     id: "Employee-details",
     label: "Employee",
-    link: "/services/web/codbex-employees/gen/codbex-employees/ui/Employees/Employee/dialog-window/index.html",
+    path: "/services/web/codbex-employees/gen/codbex-employees/ui/Employees/Employee/dialog-window/index.html",
     perspectiveName: "Employees",
     roles: [
         "codbex-employees.Employees.EmployeeReadOnly",
     ]
 };
-
 if (typeof exports !== 'undefined') {
-    exports.getDialogWindow = function () {
-        return viewData;
-    }
+    exports.getView = () => viewData;
 }

@@ -1,5 +1,0 @@
-{
-    "module": "codbex-employees/gen/job-positions-time-to-fill/ui/Reports/perspective.js",
-    "extensionPoint": "codbex-employees",
-    "description": "codbex-employees - Perspective - Reports"
-}

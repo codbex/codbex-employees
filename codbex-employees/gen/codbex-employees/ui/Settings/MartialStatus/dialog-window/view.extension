@@ -1,0 +1,6 @@
+{
+    "module": "codbex-employees/gen/codbex-employees/ui/Settings/MartialStatus/dialog-window/view.js",
+    "extensionPoint": "application-windows",
+    "description": "codbex-employees - Application Dialog Window",
+    "role": "codbex-employees.EmployeesSettings.MartialStatusReadOnly,codbex-employees.EmployeesSettings.MartialStatusFullAccess"
+}
