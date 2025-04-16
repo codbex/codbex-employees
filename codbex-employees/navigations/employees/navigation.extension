@@ -1,6 +1,0 @@
-{
-    "extensionPoint": "dashboard-navigations",
-    "module": "codbex-employees/navigations/employees/service.js",
-    "description": "Employees Navigation",
-    "role": "codbex-employees.Employees.EmployeeReadOnly,codbex-employees.Employees.EmployeeFullAccess"
-}

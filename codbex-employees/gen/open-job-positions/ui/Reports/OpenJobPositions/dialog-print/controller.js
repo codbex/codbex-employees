@@ -1,38 +1,27 @@
-angular.module('page', ["ideUI", "ideView", "entityApi"])
-    .config(["messageHubProvider", function (messageHubProvider) {
-        messageHubProvider.eventIdPrefix = 'codbex-employees.Reports.OpenJobPositions';
+angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
+    .config(['EntityServiceProvider', (EntityServiceProvider) => {
+        EntityServiceProvider.baseUrl = '/services/ts/codbex-employees/gen/open-job-positions/api/Reports/OpenJobPositionsService.ts';
     }])
-    .config(["entityApiProvider", function (entityApiProvider) {
-        entityApiProvider.baseUrl = "/services/ts/codbex-employees/gen/open-job-positions/api/OpenJobPositions/OpenJobPositionsService.ts";
-    }])
-    .controller('PageController', ['$scope', 'messageHub', 'entityApi', 'ViewParameters', function ($scope, messageHub, entityApi, ViewParameters) {
-
+    .controller('PageController', ($scope, EntityService, ViewParameters) => {
+        const Dialogs = new DialogHub();
 		let params = ViewParameters.get();
 		if (Object.keys(params).length) {         
             const filterEntity = params.filterEntity ?? {};
 
-			const filter = {
-			};
-
-            $scope.filter = filter;
+			$scope.filter = {};
 		}
 
-        $scope.loadPage = function (filter) {
+        $scope.loadPage = (filter) => {
             if (!filter && $scope.filter) {
                 filter = $scope.filter;
             }
             let request;
             if (filter) {
-                request = entityApi.search(filter);
+                request = EntityService.search(filter);
             } else {
-                request = entityApi.list();
+                request = EntityService.list();
             }
-            request.then(function (response) {
-                if (response.status != 200) {
-                    messageHub.showAlertError("OpenJobPositions", `Unable to list/filter OpenJobPositions: '${response.message}'`);
-                    return;
-                }
-
+            request.then((response) => {
                 response.data.forEach(e => {
                     if (e['Date opened']) {
                         e['Date opened'] = new Date(e['Date opened']);
@@ -42,14 +31,20 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
                 $scope.data = response.data;
                 setTimeout(() => {
                     window.print();
-
                 }, 250);
+            }, (error) => {
+                const message = error.data ? error.data.message : '';
+                Dialogs.showAlert({
+                    title: 'OpenJobPositions',
+                    message: `Unable to list/filter OpenJobPositions: '${message}'`,
+                    type: AlertTypes.Error
+                });
+                console.error('EntityService:', error);
             });
         };
         $scope.loadPage($scope.filter);
 
         window.onafterprint = () => {
-            messageHub.closeDialogWindow("codbex-employees-Reports-OpenJobPositions-print");
+            Dialogs.closeWindow({ path: viewData.path });
         }
-
-    }]);
+    });

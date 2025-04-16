@@ -1,6 +1,6 @@
 {
     "module": "codbex-employees/gen/job-positions-time-to-fill/ui/Reports/JobPositionsTimeToFill/view.js",
-    "extensionPoint": "codbex-employees-view",
+    "extensionPoint": "application-reports",
     "description": "codbex-employees - Application View",
     "role": "codbex-employees.Report.JobPositionsTimeToFillReadOnly"
 }

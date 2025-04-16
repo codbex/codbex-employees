@@ -1,5 +1,0 @@
-{
-    "module": "codbex-employees/gen/codbex-employees/ui/EmployeesSettings/perspective.js",
-    "extensionPoint": "codbex-employees",
-    "description": "codbex-employees - Perspective - EmployeesSettings"
-}

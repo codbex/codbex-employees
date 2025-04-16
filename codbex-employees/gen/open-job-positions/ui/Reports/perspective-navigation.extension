@@ -1,6 +1,0 @@
-{
-    "module": "codbex-employees/gen/open-job-positions/ui/Reports/perspective-navigation.js",
-    "extensionPoint": "dashboard-navigations",
-    "description": "Open Job Positions - Navigation",
-    "role": "codbex-employees.Report.OpenJobPositionsReadOnly"
-}

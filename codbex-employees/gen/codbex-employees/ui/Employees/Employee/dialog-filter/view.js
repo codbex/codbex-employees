@@ -4,14 +4,11 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "Employee-filter",
-    label: "Employee Filter",
-    link: "/services/web/codbex-employees/gen/codbex-employees/ui/Employees/Employee/dialog-filter/index.html",
-    perspectiveName: "Employees"
+    id: 'Employee-filter',
+    label: 'Employee Filter',
+    path: '/services/web/codbex-employees/gen/codbex-employees/ui/Employees/Employee/dialog-filter/index.html',
+    perspectiveName: 'Employees'
 };
-
 if (typeof exports !== 'undefined') {
-    exports.getDialogWindow = function () {
-        return viewData;
-    }
+    exports.getView = () => viewData;
 }
