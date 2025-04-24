@@ -94,7 +94,7 @@ export interface ContactEntityOptions {
     },
     $select?: (keyof ContactEntity)[],
     $sort?: string | (keyof ContactEntity)[],
-    $order?: 'asc' | 'desc',
+    $order?: 'ASC' | 'DESC',
     $offset?: number,
     $limit?: number,
 }
@@ -162,10 +162,10 @@ export class ContactRepository {
     private readonly dao;
 
     constructor(dataSource = "DefaultDB") {
-        this.dao = daoApi.create(ContactRepository.DEFINITION, null, dataSource);
+        this.dao = daoApi.create(ContactRepository.DEFINITION, undefined, dataSource);
     }
 
-    public findAll(options?: ContactEntityOptions): ContactEntity[] {
+    public findAll(options: ContactEntityOptions = {}): ContactEntity[] {
         return this.dao.list(options);
     }
 

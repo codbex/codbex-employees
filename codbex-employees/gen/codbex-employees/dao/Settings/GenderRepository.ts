@@ -49,7 +49,7 @@ export interface GenderEntityOptions {
     },
     $select?: (keyof GenderEntity)[],
     $sort?: string | (keyof GenderEntity)[],
-    $order?: 'asc' | 'desc',
+    $order?: 'ASC' | 'DESC',
     $offset?: number,
     $limit?: number,
 }
@@ -92,10 +92,10 @@ export class GenderRepository {
     private readonly dao;
 
     constructor(dataSource = "DefaultDB") {
-        this.dao = daoApi.create(GenderRepository.DEFINITION, null, dataSource);
+        this.dao = daoApi.create(GenderRepository.DEFINITION, undefined, dataSource);
     }
 
-    public findAll(options?: GenderEntityOptions): GenderEntity[] {
+    public findAll(options: GenderEntityOptions = {}): GenderEntity[] {
         return this.dao.list(options);
     }
 

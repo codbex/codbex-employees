@@ -1,5 +1,6 @@
 {
     "module": "codbex-employees/gen/codbex-employees/ui/Employees/perspective.js",
     "extensionPoint": "application-perspectives",
-    "description": "codbex-employees - Perspective - Employees"
+    "description": "codbex-employees - Perspective - Employees",
+    "role": "codbex-employees.Employees.EmployeeReadOnly,codbex-employees.Employees.EmployeeFullAccess"
 }
