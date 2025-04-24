@@ -139,7 +139,7 @@ export interface EmployeeEntityOptions {
     },
     $select?: (keyof EmployeeEntity)[],
     $sort?: string | (keyof EmployeeEntity)[],
-    $order?: 'asc' | 'desc',
+    $order?: 'ASC' | 'DESC',
     $offset?: number,
     $limit?: number,
 }
@@ -234,10 +234,10 @@ export class EmployeeRepository {
     private readonly dao;
 
     constructor(dataSource = "DefaultDB") {
-        this.dao = daoApi.create(EmployeeRepository.DEFINITION, null, dataSource);
+        this.dao = daoApi.create(EmployeeRepository.DEFINITION, undefined, dataSource);
     }
 
-    public findAll(options?: EmployeeEntityOptions): EmployeeEntity[] {
+    public findAll(options: EmployeeEntityOptions = {}): EmployeeEntity[] {
         return this.dao.list(options).map((e: EmployeeEntity) => {
             EntityUtils.setDate(e, "BirthDate");
             return e;

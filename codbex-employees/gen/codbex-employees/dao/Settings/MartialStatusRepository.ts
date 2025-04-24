@@ -49,7 +49,7 @@ export interface MartialStatusEntityOptions {
     },
     $select?: (keyof MartialStatusEntity)[],
     $sort?: string | (keyof MartialStatusEntity)[],
-    $order?: 'asc' | 'desc',
+    $order?: 'ASC' | 'DESC',
     $offset?: number,
     $limit?: number,
 }
@@ -92,10 +92,10 @@ export class MartialStatusRepository {
     private readonly dao;
 
     constructor(dataSource = "DefaultDB") {
-        this.dao = daoApi.create(MartialStatusRepository.DEFINITION, null, dataSource);
+        this.dao = daoApi.create(MartialStatusRepository.DEFINITION, undefined, dataSource);
     }
 
-    public findAll(options?: MartialStatusEntityOptions): MartialStatusEntity[] {
+    public findAll(options: MartialStatusEntityOptions = {}): MartialStatusEntity[] {
         return this.dao.list(options);
     }
 
