@@ -82,6 +82,7 @@
       "role": ""
     }
   },
+  "tprefix": "codbex-employees-model",
   "models": [
     {
       "properties": [
@@ -419,6 +420,7 @@
       "menuIndex": "100",
       "menuKey": "employee",
       "menuLabel": "Employee",
+      "multilingual": "false",
       "name": "Employee",
       "perspectiveHeader": "",
       "perspectiveIcon": "/services/web/resources/unicons/user.svg",
@@ -891,6 +893,7 @@
       "menuIndex": "100",
       "menuKey": "country",
       "menuLabel": "Country",
+      "multilingual": "false",
       "name": "Country",
       "perspectiveHeader": "",
       "perspectiveIcon": "/services/web/resources/unicons/globe.svg",
@@ -1003,6 +1006,7 @@
       "menuIndex": "100",
       "menuKey": "city",
       "menuLabel": "City",
+      "multilingual": "false",
       "name": "City",
       "perspectiveHeader": "",
       "perspectiveIcon": "/services/web/resources/unicons/building.svg",
@@ -1089,6 +1093,7 @@
       "menuIndex": "100",
       "menuKey": "gender",
       "menuLabel": "Gender",
+      "multilingual": "false",
       "name": "Gender",
       "perspectiveHeader": "",
       "perspectiveIcon": "/services/web/resources/unicons/copy.svg",
@@ -1173,6 +1178,7 @@
       "menuIndex": "100",
       "menuKey": "martialstatus",
       "menuLabel": "MartialStatus",
+      "multilingual": "false",
       "name": "MartialStatus",
       "perspectiveHeader": "",
       "perspectiveIcon": "/services/web/resources/unicons/copy.svg",
@@ -1218,7 +1224,7 @@
           "inputRule": ""
         },
         {
-          "dataLength": "20",
+          "dataLength": "200",
           "dataName": "CONTACT_ADDRESS",
           "dataNullable": true,
           "dataType": "VARCHAR",
@@ -1240,7 +1246,7 @@
           "dataTypeJava": "string",
           "dataTypeTypescript": "string",
           "minLength": 0,
-          "maxLength": 20,
+          "maxLength": 100,
           "inputRule": ""
         },
         {
@@ -1399,6 +1405,7 @@
       "menuIndex": "100",
       "menuKey": "contact",
       "menuLabel": "Contact",
+      "multilingual": "false",
       "name": "Contact",
       "perspectiveHeader": "",
       "perspectiveIcon": "/services/web/resources/unicons/user.svg",

@@ -6,6 +6,9 @@
 const viewData = {
     id: 'Contact',
     label: 'Contact',
+    translation: {
+        key: 'codbex-employees:codbex-employees-model.t.CONTACT',
+    },
     region: 'bottom',
     lazyLoad: false,
 	autoFocusTab: true,

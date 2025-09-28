@@ -1,4 +1,4 @@
-import { query } from "sdk/db";
+import { sql, query } from "sdk/db";
 import { producer } from "sdk/messaging";
 import { extensions } from "sdk/extensions";
 import { dao as daoApi } from "sdk/db";
@@ -52,9 +52,10 @@ export interface GenderEntityOptions {
     $order?: 'ASC' | 'DESC',
     $offset?: number,
     $limit?: number,
+    $language?: string
 }
 
-interface GenderEntityEvent {
+export interface GenderEntityEvent {
     readonly operation: 'create' | 'update' | 'delete';
     readonly table: string;
     readonly entity: Partial<GenderEntity>;
@@ -65,7 +66,7 @@ interface GenderEntityEvent {
     }
 }
 
-interface GenderUpdateEntityEvent extends GenderEntityEvent {
+export interface GenderUpdateEntityEvent extends GenderEntityEvent {
     readonly previousEntity: GenderEntity;
 }
 
@@ -96,10 +97,11 @@ export class GenderRepository {
     }
 
     public findAll(options: GenderEntityOptions = {}): GenderEntity[] {
-        return this.dao.list(options);
+        let list = this.dao.list(options);
+        return list;
     }
 
-    public findById(id: number): GenderEntity | undefined {
+    public findById(id: number, options: GenderEntityOptions = {}): GenderEntity | undefined {
         const entity = this.dao.find(id);
         return entity ?? undefined;
     }

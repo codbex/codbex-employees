@@ -6,6 +6,9 @@
 const viewData = {
     id: 'Gender',
     label: 'Gender',
+    translation: {
+        key: 'codbex-employees:codbex-employees-model.t.GENDER',
+    },
     region: 'center',
     lazyLoad: true,
 	autoFocusTab: false,

@@ -6,6 +6,9 @@
 const viewData = {
     id: 'Employee',
     label: 'Employee',
+    translation: {
+        key: 'codbex-employees:codbex-employees-model.t.EMPLOYEE',
+    },
     region: 'left',
     lazyLoad: false,
 	autoFocusTab: false,

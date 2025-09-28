@@ -6,6 +6,9 @@
 const viewData = {
     id: "Employee-details",
     label: "Employee",
+    translation: {
+        key: 'codbex-employees:codbex-employees-model.t.EMPLOYEE',
+    },
     path: "/services/web/codbex-employees/gen/codbex-employees/ui/Employees/Employee/dialog-window/index.html",
     perspectiveName: "Employees",
     roles: [

@@ -6,6 +6,9 @@
 const perspectiveData = {
 	id: 'Employees',
 	label: 'Employees',
+	translation: {
+        key: 'codbex-employees:codbex-employees-model.t.EMPLOYEE',
+    },
 	path: '/services/web/codbex-employees/gen/codbex-employees/ui/Employees/index.html',
 	groupId: 'employees-navigation-group',
 	order: 100,

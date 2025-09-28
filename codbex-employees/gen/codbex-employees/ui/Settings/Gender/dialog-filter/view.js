@@ -6,6 +6,12 @@
 const viewData = {
     id: 'Gender-filter',
     label: 'Gender Filter',
+    translation: {
+        key: 'codbex-employees:codbex-employees-model.extName',
+        options: {
+            content: '$t(codbex-employees:codbex-employees-model.t.GENDER) $t(codbex-employees:codbex-employees-model.defaults.filter)',
+        }
+    },
     path: '/services/web/codbex-employees/gen/codbex-employees/ui/Settings/Gender/dialog-filter/index.html',
     perspectiveName: 'Settings'
 };

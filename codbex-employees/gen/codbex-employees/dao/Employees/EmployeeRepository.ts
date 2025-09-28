@@ -1,4 +1,4 @@
-import { query } from "sdk/db";
+import { sql, query } from "sdk/db";
 import { producer } from "sdk/messaging";
 import { extensions } from "sdk/extensions";
 import { dao as daoApi } from "sdk/db";
@@ -142,9 +142,10 @@ export interface EmployeeEntityOptions {
     $order?: 'ASC' | 'DESC',
     $offset?: number,
     $limit?: number,
+    $language?: string
 }
 
-interface EmployeeEntityEvent {
+export interface EmployeeEntityEvent {
     readonly operation: 'create' | 'update' | 'delete';
     readonly table: string;
     readonly entity: Partial<EmployeeEntity>;
@@ -155,7 +156,7 @@ interface EmployeeEntityEvent {
     }
 }
 
-interface EmployeeUpdateEntityEvent extends EmployeeEntityEvent {
+export interface EmployeeUpdateEntityEvent extends EmployeeEntityEvent {
     readonly previousEntity: EmployeeEntity;
 }
 
@@ -238,13 +239,14 @@ export class EmployeeRepository {
     }
 
     public findAll(options: EmployeeEntityOptions = {}): EmployeeEntity[] {
-        return this.dao.list(options).map((e: EmployeeEntity) => {
+        let list = this.dao.list(options).map((e: EmployeeEntity) => {
             EntityUtils.setDate(e, "BirthDate");
             return e;
         });
+        return list;
     }
 
-    public findById(id: number): EmployeeEntity | undefined {
+    public findById(id: number, options: EmployeeEntityOptions = {}): EmployeeEntity | undefined {
         const entity = this.dao.find(id);
         EntityUtils.setDate(entity, "BirthDate");
         return entity ?? undefined;

@@ -1,9 +1,14 @@
-angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
+angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntityService'])
 	.config(['EntityServiceProvider', (EntityServiceProvider) => {
 		EntityServiceProvider.baseUrl = '/services/ts/codbex-employees/gen/codbex-employees/api/Settings/MartialStatusService.ts';
 	}])
-	.controller('PageController', ($scope, $http, ViewParameters, EntityService) => {
+	.controller('PageController', ($scope, $http, ViewParameters, LocaleService, EntityService) => {
 		const Dialogs = new DialogHub();
+		const Notifications = new NotificationHub();
+		let description = 'Description';
+		let propertySuccessfullyCreated = 'MartialStatus successfully created';
+		let propertySuccessfullyUpdated = 'MartialStatus successfully updated';
+
 		$scope.entity = {};
 		$scope.forms = {
 			details: {},
@@ -14,6 +19,15 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 			update: 'Update MartialStatus'
 		};
 		$scope.action = 'select';
+
+		LocaleService.onInit(() => {
+			description = LocaleService.t('codbex-employees:codbex-employees-model.defaults.description');
+			$scope.formHeaders.select = LocaleService.t('codbex-employees:codbex-employees-model.defaults.formHeadSelect', { name: '$t(codbex-employees:codbex-employees-model.t.MARTIALSTATUS)' });
+			$scope.formHeaders.create = LocaleService.t('codbex-employees:codbex-employees-model.defaults.formHeadCreate', { name: '$t(codbex-employees:codbex-employees-model.t.MARTIALSTATUS)' });
+			$scope.formHeaders.update = LocaleService.t('codbex-employees:codbex-employees-model.defaults.formHeadUpdate', { name: '$t(codbex-employees:codbex-employees-model.t.MARTIALSTATUS)' });
+			propertySuccessfullyCreated = LocaleService.t('codbex-employees:codbex-employees-model.messages.propertySuccessfullyCreated', { name: '$t(codbex-employees:codbex-employees-model.t.MARTIALSTATUS)' });
+			propertySuccessfullyUpdated = LocaleService.t('codbex-employees:codbex-employees-model.messages.propertySuccessfullyUpdated', { name: '$t(codbex-employees:codbex-employees-model.t.MARTIALSTATUS)' });
+		});
 
 		let params = ViewParameters.get();
 		if (Object.keys(params).length) {
@@ -28,16 +42,16 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 			entity[$scope.selectedMainEntityKey] = $scope.selectedMainEntityId;
 			EntityService.create(entity).then((response) => {
 				Dialogs.postMessage({ topic: 'codbex-employees.Settings.MartialStatus.entityCreated', data: response.data });
-				Dialogs.showAlert({
-					title: 'MartialStatus',
-					message: 'MartialStatus successfully created',
-					type: AlertTypes.Success
+				Notifications.show({
+					title: LocaleService.t('codbex-employees:codbex-employees-model.t.MARTIALSTATUS'),
+					description: propertySuccessfullyCreated,
+					type: 'positive'
 				});
 				$scope.cancel();
 			}, (error) => {
 				const message = error.data ? error.data.message : '';
 				$scope.$evalAsync(() => {
-					$scope.errorMessage = `Unable to create MartialStatus: '${message}'`;
+					$scope.errorMessage = LocaleService.t('codbex-employees:codbex-employees-model.messages.error.unableToCreate', { name: '$t(codbex-employees:codbex-employees-model.t.MARTIALSTATUS)', message: message });
 				});
 				console.error('EntityService:', error);
 			});
@@ -49,16 +63,16 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 			entity[$scope.selectedMainEntityKey] = $scope.selectedMainEntityId;
 			EntityService.update(id, entity).then((response) => {
 				Dialogs.postMessage({ topic: 'codbex-employees.Settings.MartialStatus.entityUpdated', data: response.data });
-				Dialogs.showAlert({
-					title: 'MartialStatus',
-					message: 'MartialStatus successfully updated',
-					type: AlertTypes.Success
+				Notifications.show({
+					title: LocaleService.t('codbex-employees:codbex-employees-model.t.MARTIALSTATUS'),
+					description: propertySuccessfullyUpdated,
+					type: 'positive'
 				});
 				$scope.cancel();
 			}, (error) => {
 				const message = error.data ? error.data.message : '';
 				$scope.$evalAsync(() => {
-					$scope.errorMessage = `Unable to update MartialStatus: '${message}'`;
+					$scope.errorMessage = LocaleService.t('codbex-employees:codbex-employees-model.messages.error.unableToUpdate', { name: '$t(codbex-employees:codbex-employees-model.t.MARTIALSTATUS)', message: message });
 				});
 				console.error('EntityService:', error);
 			});
@@ -67,7 +81,7 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 
 		$scope.alert = (message) => {
 			if (message) Dialogs.showAlert({
-				title: 'Description',
+				title: description,
 				message: message,
 				type: AlertTypes.Information,
 				preformatted: true,

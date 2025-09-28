@@ -1,4 +1,4 @@
-import { query } from "sdk/db";
+import { sql, query } from "sdk/db";
 import { producer } from "sdk/messaging";
 import { extensions } from "sdk/extensions";
 import { dao as daoApi } from "sdk/db";
@@ -52,9 +52,10 @@ export interface MartialStatusEntityOptions {
     $order?: 'ASC' | 'DESC',
     $offset?: number,
     $limit?: number,
+    $language?: string
 }
 
-interface MartialStatusEntityEvent {
+export interface MartialStatusEntityEvent {
     readonly operation: 'create' | 'update' | 'delete';
     readonly table: string;
     readonly entity: Partial<MartialStatusEntity>;
@@ -65,7 +66,7 @@ interface MartialStatusEntityEvent {
     }
 }
 
-interface MartialStatusUpdateEntityEvent extends MartialStatusEntityEvent {
+export interface MartialStatusUpdateEntityEvent extends MartialStatusEntityEvent {
     readonly previousEntity: MartialStatusEntity;
 }
 
@@ -96,10 +97,11 @@ export class MartialStatusRepository {
     }
 
     public findAll(options: MartialStatusEntityOptions = {}): MartialStatusEntity[] {
-        return this.dao.list(options);
+        let list = this.dao.list(options);
+        return list;
     }
 
-    public findById(id: number): MartialStatusEntity | undefined {
+    public findById(id: number, options: MartialStatusEntityOptions = {}): MartialStatusEntity | undefined {
         const entity = this.dao.find(id);
         return entity ?? undefined;
     }

@@ -1,9 +1,22 @@
-angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
+angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntityService'])
 	.config(['EntityServiceProvider', (EntityServiceProvider) => {
 		EntityServiceProvider.baseUrl = '/services/ts/codbex-employees/gen/codbex-employees/api/Employees/ContactService.ts';
 	}])
-	.controller('PageController', ($scope, $http, EntityService, Extensions, ButtonStates) => {
+	.controller('PageController', ($scope, $http, EntityService, Extensions, LocaleService, ButtonStates) => {
 		const Dialogs = new DialogHub();
+		let translated = {
+			yes: 'Yes',
+			no: 'No',
+			deleteConfirm: 'Are you sure you want to delete Contact? This action cannot be undone.',
+			deleteTitle: 'Delete Contact?'
+		};
+
+		LocaleService.onInit(() => {
+			translated.yes = LocaleService.t('codbex-employees:codbex-employees-model.defaults.yes');
+			translated.no = LocaleService.t('codbex-employees:codbex-employees-model.defaults.no');
+			translated.deleteTitle = LocaleService.t('codbex-employees:codbex-employees-model.defaults.deleteTitle', { name: '$t(codbex-employees:codbex-employees-model.t.CONTACT)' });
+			translated.deleteConfirm = LocaleService.t('codbex-employees:codbex-employees-model.messages.deleteConfirm', { name: '$t(codbex-employees:codbex-employees-model.t.CONTACT)' });
+		});
 		//-----------------Custom Actions-------------------//
 		Extensions.getWindows(['codbex-employees-custom-action']).then((response) => {
 			$scope.pageActions = response.data.filter(e => e.perspective === 'Employees' && e.view === 'Contact' && (e.type === 'page' || e.type === undefined));
@@ -13,8 +26,14 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 		$scope.triggerPageAction = (action) => {
 			Dialogs.showWindow({
 				hasHeader: true,
-        		title: action.label,
+        		title: LocaleService.t(action.translation.key, action.translation.options, action.label),
 				path: action.path,
+				params: {
+					selectedMainEntityKey: 'Employee',
+					selectedMainEntityId: $scope.selectedMainEntityId,
+				},
+				maxWidth: action.maxWidth,
+				maxHeight: action.maxHeight,
 				closeButton: true
 			});
 		};
@@ -22,10 +41,12 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 		$scope.triggerEntityAction = (action) => {
 			Dialogs.showWindow({
 				hasHeader: true,
-        		title: action.label,
+        		title: LocaleService.t(action.translation.key, action.translation.options, action.label),
 				path: action.path,
 				params: {
-					id: $scope.entity.Id
+					id: $scope.entity.Id,
+					selectedMainEntityKey: 'Employee',
+					selectedMainEntityId: $scope.selectedMainEntityId,
 				},
 				closeButton: true
 			});
@@ -99,8 +120,8 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 				}, (error) => {
 					const message = error.data ? error.data.message : '';
 					Dialogs.showAlert({
-						title: 'Contact',
-						message: `Unable to list/filter Contact: '${message}'`,
+						title: LocaleService.t('codbex-employees:codbex-employees-model.t.CONTACT'),
+						message: LocaleService.t('codbex-employees:codbex-employees-model.messages.error.unableToLF', { name: '$t(codbex-employees:codbex-employees-model.t.CONTACT)', message: message }),
 						type: AlertTypes.Error
 					});
 					console.error('EntityService:', error);
@@ -108,8 +129,8 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 			}, (error) => {
 				const message = error.data ? error.data.message : '';
 				Dialogs.showAlert({
-					title: 'Contact',
-					message: `Unable to count Contact: '${message}'`,
+					title: LocaleService.t('codbex-employees:codbex-employees-model.t.CONTACT'),
+					message: LocaleService.t('codbex-employees:codbex-employees-model.messages.error.unableToCount', { name: '$t(codbex-employees:codbex-employees-model.t.CONTACT)', message: message }),
 					type: AlertTypes.Error
 				});
 				console.error('EntityService:', error);
@@ -150,7 +171,9 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 				id: 'Contact-details',
 				params: {
 					action: 'create',
-					entity: {},
+					entity: {
+						'Employee': $scope.selectedMainEntityId
+					},
 					selectedMainEntityKey: 'Employee',
 					selectedMainEntityId: $scope.selectedMainEntityId,
 					optionsCountry: $scope.optionsCountry,
@@ -178,15 +201,15 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 		$scope.deleteEntity = (entity) => {
 			let id = entity.Id;
 			Dialogs.showDialog({
-				title: 'Delete Contact?',
-				message: `Are you sure you want to delete Contact? This action cannot be undone.`,
+				title: translated.deleteTitle,
+				message: translated.deleteConfirm,
 				buttons: [{
 					id: 'delete-btn-yes',
 					state: ButtonStates.Emphasized,
-					label: 'Yes',
+					label: translated.yes,
 				}, {
 					id: 'delete-btn-no',
-					label: 'No',
+					label: translated.no,
 				}],
 				closeButton: false
 			}).then((buttonId) => {
@@ -197,8 +220,8 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 					}, (error) => {
 						const message = error.data ? error.data.message : '';
 						Dialogs.showAlert({
-							title: 'Contact',
-							message: `Unable to delete Contact: '${message}'`,
+							title: LocaleService.t('codbex-employees:codbex-employees-model.t.CONTACT'),
+							message: LocaleService.t('codbex-employees:codbex-employees-model.messages.error.unableToDelete', { name: '$t(codbex-employees:codbex-employees-model.t.CONTACT)', message: message }),
 							type: AlertTypes.Error,
 						});
 						console.error('EntityService:', error);
@@ -222,7 +245,7 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 			const message = error.data ? error.data.message : '';
 			Dialogs.showAlert({
 				title: 'Country',
-				message: `Unable to load data: '${message}'`,
+				message: LocaleService.t('codbex-employees:codbex-employees-model.messages.error.unableToLoad', { message: message }),
 				type: AlertTypes.Error
 			});
 		});
@@ -237,7 +260,7 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 			const message = error.data ? error.data.message : '';
 			Dialogs.showAlert({
 				title: 'City',
-				message: `Unable to load data: '${message}'`,
+				message: LocaleService.t('codbex-employees:codbex-employees-model.messages.error.unableToLoad', { message: message }),
 				type: AlertTypes.Error
 			});
 		});

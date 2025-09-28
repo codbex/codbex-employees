@@ -1,4 +1,4 @@
-import { query } from "sdk/db";
+import { sql, query } from "sdk/db";
 import { producer } from "sdk/messaging";
 import { extensions } from "sdk/extensions";
 import { dao as daoApi } from "sdk/db";
@@ -97,9 +97,10 @@ export interface ContactEntityOptions {
     $order?: 'ASC' | 'DESC',
     $offset?: number,
     $limit?: number,
+    $language?: string
 }
 
-interface ContactEntityEvent {
+export interface ContactEntityEvent {
     readonly operation: 'create' | 'update' | 'delete';
     readonly table: string;
     readonly entity: Partial<ContactEntity>;
@@ -110,7 +111,7 @@ interface ContactEntityEvent {
     }
 }
 
-interface ContactUpdateEntityEvent extends ContactEntityEvent {
+export interface ContactUpdateEntityEvent extends ContactEntityEvent {
     readonly previousEntity: ContactEntity;
 }
 
@@ -166,10 +167,11 @@ export class ContactRepository {
     }
 
     public findAll(options: ContactEntityOptions = {}): ContactEntity[] {
-        return this.dao.list(options);
+        let list = this.dao.list(options);
+        return list;
     }
 
-    public findById(id: number): ContactEntity | undefined {
+    public findById(id: number, options: ContactEntityOptions = {}): ContactEntity | undefined {
         const entity = this.dao.find(id);
         return entity ?? undefined;
     }

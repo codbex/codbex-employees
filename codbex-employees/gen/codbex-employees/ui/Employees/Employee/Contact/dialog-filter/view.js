@@ -6,6 +6,12 @@
 const viewData = {
     id: 'Contact-filter',
     label: 'Contact Filter',
+    translation: {
+        key: 'codbex-employees:codbex-employees-model.extName',
+        options: {
+            content: '$t(codbex-employees:codbex-employees-model.t.CONTACT) $t(codbex-employees:codbex-employees-model.defaults.filter)',
+        }
+    },
     path: '/services/web/codbex-employees/gen/codbex-employees/ui/Employees/Employee/Contact/dialog-filter/index.html',
     perspectiveName: 'Employees'
 };

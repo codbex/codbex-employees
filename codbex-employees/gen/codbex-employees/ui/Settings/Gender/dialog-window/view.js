@@ -6,6 +6,9 @@
 const viewData = {
     id: 'Gender-details',
     label: 'Gender',
+    translation: {
+        key: 'codbex-employees:codbex-employees-model.t.GENDER',
+    },
     path: '/services/web/codbex-employees/gen/codbex-employees/ui/Settings/Gender/dialog-window/index.html',
     perspectiveName: 'Settings'
 };

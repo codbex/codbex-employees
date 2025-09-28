@@ -6,6 +6,9 @@
 const viewData = {
     id: 'MartialStatus',
     label: 'MartialStatus',
+    translation: {
+        key: 'codbex-employees:codbex-employees-model.t.MARTIALSTATUS',
+    },
     region: 'center',
     lazyLoad: true,
 	autoFocusTab: false,

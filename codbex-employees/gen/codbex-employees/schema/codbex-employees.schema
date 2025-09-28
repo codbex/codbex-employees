@@ -125,7 +125,7 @@
                     },
                     {
                         "type": "VARCHAR",
-                        "length": 20,
+                        "length": 200,
                         "nullable": true,
                         "name": "CONTACT_ADDRESS"
                     },

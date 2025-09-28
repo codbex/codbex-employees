@@ -2438,7 +2438,7 @@ components:
         Address:
           type: string
           minLength: 0
-          maxLength: 20
+          maxLength: 200
         Country:
           type: integer
           format: int32
@@ -2477,13 +2477,13 @@ components:
                   oneOf:
                     - type: string
                       minLength: 0
-                      maxLength: 20
+                      maxLength: 200
                     - type: array
                       items:
                         type: string
                         format: double
                         minLength: 0
-                        maxLength: 20
+                        maxLength: 200
                 Country:
                   oneOf:
                     - type: integer
@@ -2545,13 +2545,13 @@ components:
                   oneOf:
                     - type: string
                       minLength: 0
-                      maxLength: 20
+                      maxLength: 200
                     - type: array
                       items:
                         type: string
                         format: double
                         minLength: 0
-                        maxLength: 20
+                        maxLength: 200
                 Country:
                   oneOf:
                     - type: integer
@@ -2605,7 +2605,7 @@ components:
                 Address:
                   type: string
                   minLength: 0
-                  maxLength: 20
+                  maxLength: 200
                 Country:
                 City:
                 PostalCode:
@@ -2626,7 +2626,7 @@ components:
                 Address:
                   type: string
                   minLength: 0
-                  maxLength: 20
+                  maxLength: 200
                 Country:
                   type: integer
                   format: int32
@@ -2653,7 +2653,7 @@ components:
                 Address:
                   type: string
                   minLength: 0
-                  maxLength: 20
+                  maxLength: 200
                 Country:
                   type: integer
                   format: int32
@@ -2680,7 +2680,7 @@ components:
                 Address:
                   type: string
                   minLength: 0
-                  maxLength: 20
+                  maxLength: 200
                 Country:
                   type: integer
                   format: int32
@@ -2707,7 +2707,7 @@ components:
                 Address:
                   type: string
                   minLength: 0
-                  maxLength: 20
+                  maxLength: 200
                 Country:
                   type: integer
                   format: int32

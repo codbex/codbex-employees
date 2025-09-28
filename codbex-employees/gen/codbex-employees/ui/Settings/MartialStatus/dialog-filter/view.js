@@ -6,6 +6,12 @@
 const viewData = {
     id: 'MartialStatus-filter',
     label: 'MartialStatus Filter',
+    translation: {
+        key: 'codbex-employees:codbex-employees-model.extName',
+        options: {
+            content: '$t(codbex-employees:codbex-employees-model.t.MARTIALSTATUS) $t(codbex-employees:codbex-employees-model.defaults.filter)',
+        }
+    },
     path: '/services/web/codbex-employees/gen/codbex-employees/ui/Settings/MartialStatus/dialog-filter/index.html',
     perspectiveName: 'Settings'
 };

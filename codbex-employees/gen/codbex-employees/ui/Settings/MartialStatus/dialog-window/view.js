@@ -6,6 +6,9 @@
 const viewData = {
     id: 'MartialStatus-details',
     label: 'MartialStatus',
+    translation: {
+        key: 'codbex-employees:codbex-employees-model.t.MARTIALSTATUS',
+    },
     path: '/services/web/codbex-employees/gen/codbex-employees/ui/Settings/MartialStatus/dialog-window/index.html',
     perspectiveName: 'Settings'
 };
