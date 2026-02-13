@@ -1,121 +1,143 @@
-import { Controller, Get, Post, Put, Delete, request, response } from "@aerokit/sdk/http"
+import { Controller, Get, Post, Put, Delete, Documentation, request, response } from '@aerokit/sdk/http'
+import { HttpUtils } from "@aerokit/sdk/http/utils";
+import { ValidationError } from '@aerokit/sdk/http/errors'
+import { ForbiddenError } from '@aerokit/sdk/http/errors'
+import { user } from '@aerokit/sdk/security'
+import { Options } from '@aerokit/sdk/db'
 import { Extensions } from "@aerokit/sdk/extensions"
-import { EmployeeRepository, EmployeeEntityOptions } from "../../dao/Employees/EmployeeRepository";
-import { user } from "@aerokit/sdk/security"
-import { ForbiddenError } from "../utils/ForbiddenError";
-import { ValidationError } from "../utils/ValidationError";
-import { HttpUtils } from "../utils/HttpUtils";
+import { Injected, Inject } from '@aerokit/sdk/component'
+import { EmployeeRepository } from '../../data/Employees/EmployeeRepository'
+import { EmployeeEntity } from '../../data/Employees/EmployeeEntity'
 
-const validationModules = await Extensions.loadExtensionModules("codbex-employees-Employees-Employee", ["validate"]);
+const validationModules = await Extensions.loadExtensionModules('codbex-employees-Employees-Employee', ['validate']);
 
 @Controller
-class EmployeeService {
+@Documentation('codbex-employees - Employee Controller')
+@Injected()
+class EmployeeController {
 
-    private readonly repository = new EmployeeRepository();
+    @Inject('EmployeeRepository')
+    private readonly repository!: EmployeeRepository;
 
-    @Get("/")
-    public getAll(_: any, ctx: any) {
+    @Get('/')
+    @Documentation('Get All Employee')
+    public getAll(_: any, ctx: any): EmployeeEntity[] {
         try {
-            this.checkPermissions("read");
-            const options: EmployeeEntityOptions = {
-                $limit: ctx.queryParameters["$limit"] ? parseInt(ctx.queryParameters["$limit"]) : undefined,
-                $offset: ctx.queryParameters["$offset"] ? parseInt(ctx.queryParameters["$offset"]) : undefined,
-                $language: request.getLocale().slice(0, 2)
+            this.checkPermissions('read');
+            const options: Options = {
+                limit: ctx.queryParameters["$limit"] ? parseInt(ctx.queryParameters["$limit"]) : 20,
+                offset: ctx.queryParameters["$offset"] ? parseInt(ctx.queryParameters["$offset"]) : 0,
+                language: request.getLocale().slice(0, 2)
             };
 
             return this.repository.findAll(options);
         } catch (error: any) {
             this.handleError(error);
         }
+        return undefined as any;
     }
 
-    @Post("/")
-    public create(entity: any) {
+    @Post('/')
+    @Documentation('Create Employee')
+    public create(entity: EmployeeEntity): EmployeeEntity {
         try {
-            this.checkPermissions("write");
+            this.checkPermissions('write');
             this.validateEntity(entity);
-            entity.Id = this.repository.create(entity);
-            response.setHeader("Content-Location", "/services/ts/codbex-employees/gen/codbex-employees/api/Employees/EmployeeService.ts/" + entity.Id);
+            entity.Id = this.repository.create(entity) as any;
+            response.setHeader('Content-Location', '/services/ts/codbex-employees/gen/codbex-employees/api/Employees/EmployeeService.ts/' + entity.Id);
             response.setStatus(response.CREATED);
             return entity;
         } catch (error: any) {
             this.handleError(error);
         }
+        return undefined as any;
     }
 
-    @Get("/count")
-    public count() {
+    @Get('/count')
+    @Documentation('Count Employee')
+    public count(): { count: number } {
         try {
-            this.checkPermissions("read");
+            this.checkPermissions('read');
             return { count: this.repository.count() };
         } catch (error: any) {
             this.handleError(error);
         }
+        return undefined as any;
     }
 
-    @Post("/count")
-    public countWithFilter(filter: any) {
+    @Post('/count')
+    @Documentation('Count Employee with filter')
+    public countWithFilter(filter: any): { count: number } {
         try {
-            this.checkPermissions("read");
+            this.checkPermissions('read');
             return { count: this.repository.count(filter) };
         } catch (error: any) {
             this.handleError(error);
         }
+        return undefined as any;
     }
 
-    @Post("/search")
-    public search(filter: any) {
+    @Post('/search')
+    @Documentation('Search Employee')
+    public search(filter: any): EmployeeEntity[] {
         try {
-            this.checkPermissions("read");
+            this.checkPermissions('read');
             return this.repository.findAll(filter);
         } catch (error: any) {
             this.handleError(error);
         }
+        return undefined as any;
     }
 
-    @Get("/:id")
-    public getById(_: any, ctx: any) {
+    @Get('/:id')
+    @Documentation('Get Employee by id')
+    public getById(_: any, ctx: any): EmployeeEntity {
         try {
-            this.checkPermissions("read");
+            this.checkPermissions('read');
             const id = parseInt(ctx.pathParameters.id);
-            const options: EmployeeEntityOptions = {
-                $language: request.getLocale().slice(0, 2)
+            const options: Options = {
+                language: request.getLocale().slice(0, 2)
             };
             const entity = this.repository.findById(id, options);
             if (entity) {
                 return entity;
             } else {
-                HttpUtils.sendResponseNotFound("Employee not found");
+                HttpUtils.sendResponseNotFound('Employee not found');
             }
         } catch (error: any) {
             this.handleError(error);
         }
+        return undefined as any;
     }
 
-    @Put("/:id")
-    public update(entity: any, ctx: any) {
+    @Put('/:id')
+    @Documentation('Update Employee by id')
+    public update(entity: EmployeeEntity, ctx: any): EmployeeEntity {
         try {
-            this.checkPermissions("write");
-            entity.Id = ctx.pathParameters.id;
+            this.checkPermissions('write');
+            const id = parseInt(ctx.pathParameters.id);
+            entity.Id = id;
             this.validateEntity(entity);
             this.repository.update(entity);
             return entity;
         } catch (error: any) {
             this.handleError(error);
         }
+        return undefined as any;
     }
 
-    @Delete("/:id")
-    public deleteById(_: any, ctx: any) {
+    @Delete('/:id')
+    @Documentation('Delete Employee by id')
+    public deleteById(_: any, ctx: any): void {
         try {
-            this.checkPermissions("write");
-            const id = ctx.pathParameters.id;
+            this.checkPermissions('write');
+            const id = parseInt(ctx.pathParameters.id);
             const entity = this.repository.findById(id);
             if (entity) {
                 this.repository.deleteById(id);
                 HttpUtils.sendResponseNoContent();
             } else {
-                HttpUtils.sendResponseNotFound("Employee not found");
+                HttpUtils.sendResponseNotFound('Employee not found');
             }
         } catch (error: any) {
             this.handleError(error);
@@ -123,9 +145,9 @@ class EmployeeService {
     }
 
     private handleError(error: any) {
-        if (error.name === "ForbiddenError") {
+        if (error.name === 'ForbiddenError') {
             HttpUtils.sendForbiddenRequest(error.message);
-        } else if (error.name === "ValidationError") {
+        } else if (error.name === 'ValidationError') {
             HttpUtils.sendResponseBadRequest(error.message);
         } else {
             HttpUtils.sendInternalServerError(error.message);
@@ -133,10 +155,10 @@ class EmployeeService {
     }
 
     private checkPermissions(operationType: string) {
-        if (operationType === "read" && !(user.isInRole("codbex-employees.Employees.EmployeeReadOnly") || user.isInRole("codbex-employees.Employees.EmployeeFullAccess"))) {
+        if (operationType === 'read' && !(user.isInRole('codbex-employees.Employees.EmployeeReadOnly') || user.isInRole('codbex-employees.Employees.EmployeeFullAccess'))) {
             throw new ForbiddenError();
         }
-        if (operationType === "write" && !user.isInRole("codbex-employees.Employees.EmployeeFullAccess")) {
+        if (operationType === 'write' && !user.isInRole('codbex-employees.Employees.EmployeeFullAccess')) {
             throw new ForbiddenError();
         }
     }

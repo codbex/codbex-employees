@@ -1,39 +1,16 @@
 {
   "tablePrefix": "CODBEX_",
   "brand": "codbex",
-  "brandUrl": "https://codbex.com",
-  "title": "Employees Management Application",
-  "description": "Managing employees and organisations data",
-  "dataSource": "DefaultDB",
-  "fileName": "codbex-employees",
-  "genFolderName": "codbex-employees",
-  "roles": [
-    {
-      "entityName": "Employee",
-      "roleRead": "codbex-employees.Employees.EmployeeReadOnly",
-      "roleWrite": "codbex-employees.Employees.EmployeeFullAccess"
-    },
-    {
-      "entityName": "Gender",
-      "roleRead": "codbex-employees.EmployeesSettings.GenderReadOnly",
-      "roleWrite": "codbex-employees.EmployeesSettings.GenderFullAccess"
-    },
-    {
-      "entityName": "MartialStatus",
-      "roleRead": "codbex-employees.EmployeesSettings.MartialStatusReadOnly",
-      "roleWrite": "codbex-employees.EmployeesSettings.MartialStatusFullAccess"
-    },
-    {
-      "entityName": "Contact",
-      "roleRead": "codbex-employees.Employees.ContactReadOnly",
-      "roleWrite": "codbex-employees.Employees.ContactFullAccess"
-    }
-  ],
-  "tprefix": "codbex-employees-model",
+  "brandUrl": "https://www.codbex.com/",
+  "title": "Countries management module",
+  "description": "Managing countries data",
   "projectName": "codbex-employees",
   "workspaceName": "workspace",
   "filePath": "codbex-employees.model",
-  "templateId": "template-application-angular/template/template.js",
+  "templateId": "template-application-angular-v2/template/template.js",
+  "fileName": "codbex-employees",
+  "genFolderName": "codbex-employees",
+  "dataSource": "DefaultDB",
   "perspectives": {
     "Employees": {
       "views": [
@@ -83,6 +60,29 @@
       "role": ""
     }
   },
+  "roles": [
+    {
+      "entityName": "Employee",
+      "roleRead": "codbex-employees.Employees.EmployeeReadOnly",
+      "roleWrite": "codbex-employees.Employees.EmployeeFullAccess"
+    },
+    {
+      "entityName": "Gender",
+      "roleRead": "codbex-employees.EmployeesSettings.GenderReadOnly",
+      "roleWrite": "codbex-employees.EmployeesSettings.GenderFullAccess"
+    },
+    {
+      "entityName": "MartialStatus",
+      "roleRead": "codbex-employees.EmployeesSettings.MartialStatusReadOnly",
+      "roleWrite": "codbex-employees.EmployeesSettings.MartialStatusFullAccess"
+    },
+    {
+      "entityName": "Contact",
+      "roleRead": "codbex-employees.Employees.ContactReadOnly",
+      "roleWrite": "codbex-employees.Employees.ContactFullAccess"
+    }
+  ],
+  "tprefix": "codbex-employees-model",
   "models": [
     {
       "properties": [

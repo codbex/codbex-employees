@@ -25,60 +25,63 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale']).controlle
 		let entity = $scope.entity;
 		const filter = {
 			$filter: {
-				equals: {
-				},
-				notEquals: {
-				},
-				contains: {
-				},
-				greaterThan: {
-				},
-				greaterThanOrEqual: {
-				},
-				lessThan: {
-				},
-				lessThanOrEqual: {
-				}
-			},
+				conditions: [],
+				sorts: [],
+				limit: 20,
+				offset: 0
+			}
 		};
 		if (entity.Id !== undefined) {
-			filter.$filter.equals.Id = entity.Id;
+			const condition = { propertyName: 'Id', operator: 'EQ', value: entity.Id };
+			filter.$filter.conditions.push(condition);
 		}
 		if (entity.FirstName) {
-			filter.$filter.contains.FirstName = entity.FirstName;
+			const condition = { propertyName: 'FirstName', operator: 'LIKE', value: `%${entity.FirstName}%` };
+			filter.$filter.conditions.push(condition);
 		}
 		if (entity.MiddleName) {
-			filter.$filter.contains.MiddleName = entity.MiddleName;
+			const condition = { propertyName: 'MiddleName', operator: 'LIKE', value: `%${entity.MiddleName}%` };
+			filter.$filter.conditions.push(condition);
 		}
 		if (entity.LastName) {
-			filter.$filter.contains.LastName = entity.LastName;
+			const condition = { propertyName: 'LastName', operator: 'LIKE', value: `%${entity.LastName}%` };
+			filter.$filter.conditions.push(condition);
 		}
 		if (entity.Name) {
-			filter.$filter.contains.Name = entity.Name;
+			const condition = { propertyName: 'Name', operator: 'LIKE', value: `%${entity.Name}%` };
+			filter.$filter.conditions.push(condition);
 		}
 		if (entity.Email) {
-			filter.$filter.contains.Email = entity.Email;
+			const condition = { propertyName: 'Email', operator: 'LIKE', value: `%${entity.Email}%` };
+			filter.$filter.conditions.push(condition);
 		}
 		if (entity.BirthDateFrom) {
-			filter.$filter.greaterThanOrEqual.BirthDate = entity.BirthDateFrom;
+			const condition = { propertyName: 'BirthDate', operator: 'GE', value: entity.BirthDateFrom };
+			filter.$filter.conditions.push(condition);
 		}
 		if (entity.BirthDateTo) {
-			filter.$filter.lessThanOrEqual.BirthDate = entity.BirthDateTo;
+			const condition = { propertyName: 'BirthDate', operator: 'LE', value: entity.BirthDateTo };
+			filter.$filter.conditions.push(condition);
 		}
 		if (entity.PersonalNumber) {
-			filter.$filter.contains.PersonalNumber = entity.PersonalNumber;
+			const condition = { propertyName: 'PersonalNumber', operator: 'LIKE', value: `%${entity.PersonalNumber}%` };
+			filter.$filter.conditions.push(condition);
 		}
 		if (entity.Gender !== undefined) {
-			filter.$filter.equals.Gender = entity.Gender;
+			const condition = { propertyName: 'Gender', operator: 'EQ', value: entity.Gender };
+			filter.$filter.conditions.push(condition);
 		}
 		if (entity.Nationality !== undefined) {
-			filter.$filter.equals.Nationality = entity.Nationality;
+			const condition = { propertyName: 'Nationality', operator: 'EQ', value: entity.Nationality };
+			filter.$filter.conditions.push(condition);
 		}
 		if (entity.MartialStatus !== undefined) {
-			filter.$filter.equals.MartialStatus = entity.MartialStatus;
+			const condition = { propertyName: 'MartialStatus', operator: 'EQ', value: entity.MartialStatus };
+			filter.$filter.conditions.push(condition);
 		}
 		if (entity.IBAN) {
-			filter.$filter.contains.IBAN = entity.IBAN;
+			const condition = { propertyName: 'IBAN', operator: 'LIKE', value: `%${entity.IBAN}%` };
+			filter.$filter.conditions.push(condition);
 		}
 		Dialogs.postMessage({ topic: 'codbex-employees.Employees.Employee.entitySearch', data: {
 			entity: entity,
