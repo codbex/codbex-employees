@@ -18,42 +18,39 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale']).controlle
 		let entity = $scope.entity;
 		const filter = {
 			$filter: {
-				equals: {
-				},
-				notEquals: {
-				},
-				contains: {
-				},
-				greaterThan: {
-				},
-				greaterThanOrEqual: {
-				},
-				lessThan: {
-				},
-				lessThanOrEqual: {
-				}
-			},
+				conditions: [],
+				sorts: [],
+				limit: 20,
+				offset: 0
+			}
 		};
 		if (entity.Id !== undefined) {
-			filter.$filter.equals.Id = entity.Id;
+			const condition = { propertyName: 'Id', operator: 'EQ', value: entity.Id };
+			filter.$filter.conditions.push(condition);
 		}
 		if (entity.Address) {
-			filter.$filter.contains.Address = entity.Address;
+			const condition = { propertyName: 'Address', operator: 'LIKE', value: `%${entity.Address}%` };
+			filter.$filter.conditions.push(condition);
 		}
 		if (entity.Country !== undefined) {
-			filter.$filter.equals.Country = entity.Country;
+			const condition = { propertyName: 'Country', operator: 'EQ', value: entity.Country };
+			filter.$filter.conditions.push(condition);
 		}
 		if (entity.City !== undefined) {
-			filter.$filter.equals.City = entity.City;
+			const condition = { propertyName: 'City', operator: 'EQ', value: entity.City };
+			filter.$filter.conditions.push(condition);
 		}
 		if (entity.PostalCode) {
-			filter.$filter.contains.PostalCode = entity.PostalCode;
+			const condition = { propertyName: 'PostalCode', operator: 'LIKE', value: `%${entity.PostalCode}%` };
+			filter.$filter.conditions.push(condition);
 		}
 		if (entity.PhoneNumber) {
-			filter.$filter.contains.PhoneNumber = entity.PhoneNumber;
+			const condition = { propertyName: 'PhoneNumber', operator: 'LIKE', value: `%${entity.PhoneNumber}%` };
+			filter.$filter.conditions.push(condition);
 		}
 		if (entity.Employee !== undefined) {
-			filter.$filter.equals.Employee = entity.Employee;
+			const condition = { propertyName: 'Employee', operator: 'EQ', value: entity.Employee };
+			filter.$filter.conditions.push(condition);
 		}
 		Dialogs.postMessage({ topic: 'codbex-employees.Employees.Contact.entitySearch', data: {
 			entity: entity,

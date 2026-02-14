@@ -1,6 +1,6 @@
 angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntityService'])
 	.config(['EntityServiceProvider', (EntityServiceProvider) => {
-		EntityServiceProvider.baseUrl = '/services/ts/codbex-employees/gen/codbex-employees/api/Employees/ContactService.ts';
+		EntityServiceProvider.baseUrl = '/services/ts/codbex-employees/gen/codbex-employees/api/Employees/ContactController.ts';
 	}])
 	.controller('PageController', ($scope, $http, ViewParameters, LocaleService, EntityService) => {
 		const Dialogs = new DialogHub();
@@ -83,19 +83,17 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 			});
 		};
 
-		$scope.serviceCountry = '/services/ts/codbex-countries/gen/codbex-countries/api/Settings/CountryService.ts';
-		$scope.serviceCity = '/services/ts/codbex-cities/gen/codbex-cities/api/Settings/CityService.ts';
+		$scope.serviceCountry = '/services/ts/codbex-countries/gen/codbex-countries/api/Settings/CountryController.ts';
+		$scope.serviceCity = '/services/ts/codbex-cities/gen/codbex-cities/api/Settings/CityController.ts';
 
 		$scope.$watch('entity.Country', function (newValue, oldValue) {
 			if (newValue !== undefined && newValue !== null) {
 				$http.get($scope.serviceCountry + '/' + newValue).then((response) => {
 					let valueFrom = response.data.Id;
-					$http.post('/services/ts/codbex-cities/gen/codbex-cities/api/Settings/CityService.ts/search', {
-						$filter: {
-							equals: {
-								Country: valueFrom
-							}
-						}
+					$http.post('/services/ts/codbex-cities/gen/codbex-cities/api/Settings/CityController.ts/search', {
+						conditions: [
+							{ propertyName: 'Country', operator: 'EQ', value: valueFrom }
+						]
 					}).then((response) => {
 						$scope.optionsCity = response.data.map(e => ({
 							value: e.Id,
