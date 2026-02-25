@@ -156,6 +156,12 @@ class AddressController {
     }
 
     private validateEntity(entity: any): void {
+        if (entity.Country === null || entity.Country === undefined) {
+            throw new ValidationError(`The 'Country' property is required, provide a valid value`);
+        }
+        if (entity.City === null || entity.City === undefined) {
+            throw new ValidationError(`The 'City' property is required, provide a valid value`);
+        }
         if (entity.Address === null || entity.Address === undefined) {
             throw new ValidationError(`The 'Address' property is required, provide a valid value`);
         }

@@ -156,24 +156,20 @@
                     },
                     {
                         "type": "INTEGER",
-                        "nullable": true,
                         "name": "ADDRESS_COUNTRY"
                     },
                     {
                         "type": "INTEGER",
-                        "nullable": true,
                         "name": "ADDRESS_CITY"
                     },
                     {
                         "type": "VARCHAR",
                         "length": 255,
-                        "nullable": true,
                         "name": "ADDRESS_ADDRESS"
                     },
                     {
                         "type": "VARCHAR",
                         "length": 12,
-                        "nullable": true,
                         "name": "ADDRESS_POSTALCODE"
                     },
                     {

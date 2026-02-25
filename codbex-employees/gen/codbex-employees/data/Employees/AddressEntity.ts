@@ -18,24 +18,21 @@ export class AddressEntity {
     @Column({
         name: 'ADDRESS_COUNTRY',
         type: 'integer',
-        nullable: true,
     })
-    public Country?: number;
+    public Country!: number;
 
     @Documentation('City')
     @Column({
         name: 'ADDRESS_CITY',
         type: 'integer',
-        nullable: true,
     })
-    public City?: number;
+    public City!: number;
 
     @Documentation('Address')
     @Column({
         name: 'ADDRESS_ADDRESS',
         type: 'string',
         length: 255,
-        nullable: true,
     })
     public Address!: string;
 
@@ -44,7 +41,6 @@ export class AddressEntity {
         name: 'ADDRESS_POSTALCODE',
         type: 'string',
         length: 12,
-        nullable: true,
     })
     public PostalCode!: string;
 

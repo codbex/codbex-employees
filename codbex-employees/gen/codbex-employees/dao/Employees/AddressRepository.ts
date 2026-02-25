@@ -5,18 +5,18 @@ import { dao as daoApi } from "@aerokit/sdk/db";
 
 export interface AddressEntity {
     readonly Id: number;
-    Country?: number;
-    City?: number;
-    Address?: string;
-    PostalCode?: string;
+    Country: number;
+    City: number;
+    Address: string;
+    PostalCode: string;
     Employee?: number;
 }
 
 export interface AddressCreateEntity {
-    readonly Country?: number;
-    readonly City?: number;
-    readonly Address?: string;
-    readonly PostalCode?: string;
+    readonly Country: number;
+    readonly City: number;
+    readonly Address: string;
+    readonly PostalCode: string;
     readonly Employee?: number;
 }
 
@@ -122,21 +122,25 @@ export class AddressRepository {
                 name: "Country",
                 column: "ADDRESS_COUNTRY",
                 type: "INTEGER",
+                required: true
             },
             {
                 name: "City",
                 column: "ADDRESS_CITY",
                 type: "INTEGER",
+                required: true
             },
             {
                 name: "Address",
                 column: "ADDRESS_ADDRESS",
                 type: "VARCHAR",
+                required: true
             },
             {
                 name: "PostalCode",
                 column: "ADDRESS_POSTALCODE",
                 type: "VARCHAR",
+                required: true
             },
             {
                 name: "Employee",
