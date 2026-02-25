@@ -37,8 +37,8 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 			$scope.entity = params.entity;
 			$scope.selectedMainEntityKey = params.selectedMainEntityKey;
 			$scope.selectedMainEntityId = params.selectedMainEntityId;
-			$scope.optionsGender = params.optionsGender;
 			$scope.optionsNationality = params.optionsNationality;
+			$scope.optionsGender = params.optionsGender;
 			$scope.optionsMartialStatus = params.optionsMartialStatus;
 		}
 
@@ -83,24 +83,6 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 			});
 		};
 
-		$scope.serviceGender = '/services/ts/codbex-employees/gen/codbex-employees/api/Settings/GenderController.ts';
-		
-		$scope.optionsGender = [];
-		
-		$http.get('/services/ts/codbex-employees/gen/codbex-employees/api/Settings/GenderController.ts').then((response) => {
-			$scope.optionsGender = response.data.map(e => ({
-				value: e.Id,
-				text: e.Name
-			}));
-		}, (error) => {
-			console.error(error);
-			const message = error.data ? error.data.message : '';
-			Dialogs.showAlert({
-				title: 'Gender',
-				message: LocaleService.t('codbex-employees:codbex-employees-model.messages.error.unableToLoad', { message: message }),
-				type: AlertTypes.Error
-			});
-		});
 		$scope.serviceNationality = '/services/ts/codbex-countries/gen/codbex-countries/api/Settings/CountryController.ts';
 		
 		$scope.optionsNationality = [];
@@ -115,6 +97,24 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 			const message = error.data ? error.data.message : '';
 			Dialogs.showAlert({
 				title: 'Nationality',
+				message: LocaleService.t('codbex-employees:codbex-employees-model.messages.error.unableToLoad', { message: message }),
+				type: AlertTypes.Error
+			});
+		});
+		$scope.serviceGender = '/services/ts/codbex-employees/gen/codbex-employees/api/Settings/GenderController.ts';
+		
+		$scope.optionsGender = [];
+		
+		$http.get('/services/ts/codbex-employees/gen/codbex-employees/api/Settings/GenderController.ts').then((response) => {
+			$scope.optionsGender = response.data.map(e => ({
+				value: e.Id,
+				text: e.Name
+			}));
+		}, (error) => {
+			console.error(error);
+			const message = error.data ? error.data.message : '';
+			Dialogs.showAlert({
+				title: 'Gender',
 				message: LocaleService.t('codbex-employees:codbex-employees-model.messages.error.unableToLoad', { message: message }),
 				type: AlertTypes.Error
 			});

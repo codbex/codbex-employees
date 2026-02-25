@@ -80,7 +80,7 @@
                     	<div class="fd-col fd-col-md--2">
                         	<bk-form-label for="idName" ng-required="false" colon="true">{{ 'codbex-employees:codbex-employees-model.t.EMPLOYEE_NAME' | t }}</bk-form-label>
                         </div>
-                        <div class="fd-col  fd-col-md--8 ">
+                        <div class="fd-col fd-col-md--4 fd-col--6">
 								<bk-input id="idName"
 	                                name="Name"
 	                                ng-model="entity.Name"
@@ -94,10 +94,10 @@
                     	<div class="fd-col fd-col-md--2">
                         	<bk-form-label for="idEmail" ng-required="true" colon="true">{{ 'codbex-employees:codbex-employees-model.t.EMPLOYEE_EMAIL' | t }}</bk-form-label>
                         </div>
-						<div ng-show="action === 'select'" style="margin: 4px 0px; padding: 0px 10px" class="fd-col  fd-col-md--8 ">
+						<div ng-show="action === 'select'" style="margin: 4px 0px; padding: 0px 10px" class="fd-col fd-col-md--4 fd-col--6">
 							<bk-link href="mailto:{{entity.Email}}">{{entity.Email}}</bk-link>
 						</div>
-                        <div ng-show="action !== 'select'" class="fd-col  fd-col-md--4 ">
+                        <div ng-show="action !== 'select'" class="fd-col fd-col-md--4 fd-col--6">
 							<bk-form-input-message state="{{ forms.details['Email'].$valid ? '' : 'error' }}" text="{{ 'codbex-employees:codbex-employees-model.messages.error.pattern' | t:{'rule':''} }}">
 								<bk-input id="idEmail"
 	                                name="Email"
@@ -115,9 +115,32 @@
                     </bk-form-item>
                     <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
+                        	<bk-form-label for="idPhoneNumber" ng-required="true" colon="true">{{ 'codbex-employees:codbex-employees-model.t.EMPLOYEE_PHONENUMBER' | t }}</bk-form-label>
+                        </div>
+						<div ng-show="action === 'select'" style="margin: 4px 0px; padding: 0px 10px" class="fd-col fd-col-md--4 fd-col--6">
+							<bk-link href="tel:{{entity.PhoneNumber}}">{{entity.PhoneNumber}}</bk-link>
+						</div>
+                        <div ng-show="action !== 'select'" class="fd-col fd-col-md--4 fd-col--6">
+							<bk-form-input-message state="{{ forms.details['PhoneNumber'].$valid ? '' : 'error' }}" text="{{ 'codbex-employees:codbex-employees-model.messages.error.pattern' | t:{'rule':''} }}">
+								<bk-input id="idPhoneNumber"
+	                                name="PhoneNumber"
+	                                state="{{ forms.details['PhoneNumber'].$valid ? '' : 'error' }}"
+									ng-required="true"
+	                                ng-model="entity.PhoneNumber"
+	                                ng-readonly="action === 'select'"
+									ng-maxlength="20.0"
+	                                input-rules="{ patterns:['^[0-9]{0,14}$'] }"
+	                                type="tel"
+	                                placeholder="{{ 'codbex-employees:codbex-employees-model.messages.inputEnter' | t:{'name':'$t(codbex-employees:codbex-employees-model.t.EMPLOYEE_PHONENUMBER)'} }}">
+	                            </bk-input>
+							</bk-form-input-message>
+	                    </div>
+                    </bk-form-item>
+                    <bk-form-item class="fd-row">
+                    	<div class="fd-col fd-col-md--2">
                         	<bk-form-label for="idBirthDate" ng-required="true" colon="true">{{ 'codbex-employees:codbex-employees-model.t.EMPLOYEE_BIRTHDATE' | t }}</bk-form-label>
                         </div>
-                        <div class="fd-col  fd-col-md--2 ">
+                        <div class="fd-col fd-col-md--4 fd-col--6">
 							<bk-form-input-message state="{{ forms.details['BirthDate'].$valid ? '' : 'error' }}" text="{{'codbex-employees:codbex-employees-model.messages.error.incorrectInput' | t}}">
 								<bk-input id="idBirthDate"
 	                                name="BirthDate"
@@ -134,7 +157,7 @@
                     	<div class="fd-col fd-col-md--2">
                         	<bk-form-label for="idPersonalNumber" ng-required="true" colon="true">{{ 'codbex-employees:codbex-employees-model.t.EMPLOYEE_PERSONALNUMBER' | t }}</bk-form-label>
                         </div>
-                        <div class="fd-col  fd-col-md--8 ">
+                        <div class="fd-col fd-col-md--4 fd-col--6">
 							<bk-form-input-message state="{{ forms.details['PersonalNumber'].$valid ? '' : 'error' }}" text="{{ 'codbex-employees:codbex-employees-model.messages.error.pattern' | t:{'rule':''} }}">
 								<bk-input id="idPersonalNumber"
 	                                name="PersonalNumber"
@@ -152,30 +175,9 @@
                     </bk-form-item>
                     <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<bk-form-label for="idGender" ng-required="true" colon="true">{{ 'codbex-employees:codbex-employees-model.t.EMPLOYEE_GENDER' | t }}</bk-form-label>
-                        </div>
-                        <div class="fd-col  fd-col-md--7 ">
-	                        <bk-combobox-input input-id="idGender"
-	                            name="Gender"
-	                            state="{{ forms.details['Gender'].$valid ? '' : 'error' }}"
-	                            ng-required="true"
-	                            ng-model="entity.Gender"
-	                            is-readonly="action === 'select'"
-	                            dropdown-items="optionsGender"
-	                            placeholder="{{ 'codbex-employees:codbex-employees-model.messages.inputSearch' | t:{'name':'$t(codbex-employees:codbex-employees-model.t.EMPLOYEE_GENDER)'} }}"
-								btn-aria-label="{{ 'codbex-employees:codbex-employees-model.aria.showHide' | t:{'name':'Gender'} }}" list-aria-label="{{ 'codbex-employees:codbex-employees-model.aria.options' | t:{'name':'Gender'} }}">
-	                        </bk-combobox-input>
-	                    </div>
-	                    <div class="fd-col fd-col--full">
-							<bk-button glyph="sap-icon--add" aria-label="{{ 'codbex-employees:codbex-employees-model.defaults.add' | t }}" ng-click="createGender()" ng-hide="action === 'select'"></bk-button>
-							<bk-button glyph="sap-icon--refresh" aria-label="{{ 'codbex-employees:codbex-employees-model.defaults.refresh' | t }}" ng-click="refreshGender()" ng-hide="action === 'select'"></bk-button>
-						</div>
-                    </bk-form-item>
-                    <bk-form-item class="fd-row">
-                    	<div class="fd-col fd-col-md--2">
                         	<bk-form-label for="idNationality" ng-required="true" colon="true">{{ 'codbex-employees:codbex-employees-model.t.EMPLOYEE_NATIONALITY' | t }}</bk-form-label>
                         </div>
-                        <div class="fd-col  fd-col-md--7 ">
+                        <div class="fd-col fd-col-md--4 fd-col--6">
 	                        <bk-combobox-input input-id="idNationality"
 	                            name="Nationality"
 	                            state="{{ forms.details['Nationality'].$valid ? '' : 'error' }}"
@@ -194,9 +196,30 @@
                     </bk-form-item>
                     <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
+                        	<bk-form-label for="idGender" ng-required="true" colon="true">{{ 'codbex-employees:codbex-employees-model.t.EMPLOYEE_GENDER' | t }}</bk-form-label>
+                        </div>
+                        <div class="fd-col fd-col-md--4 fd-col--6">
+	                        <bk-combobox-input input-id="idGender"
+	                            name="Gender"
+	                            state="{{ forms.details['Gender'].$valid ? '' : 'error' }}"
+	                            ng-required="true"
+	                            ng-model="entity.Gender"
+	                            is-readonly="action === 'select'"
+	                            dropdown-items="optionsGender"
+	                            placeholder="{{ 'codbex-employees:codbex-employees-model.messages.inputSearch' | t:{'name':'$t(codbex-employees:codbex-employees-model.t.EMPLOYEE_GENDER)'} }}"
+								btn-aria-label="{{ 'codbex-employees:codbex-employees-model.aria.showHide' | t:{'name':'Gender'} }}" list-aria-label="{{ 'codbex-employees:codbex-employees-model.aria.options' | t:{'name':'Gender'} }}">
+	                        </bk-combobox-input>
+	                    </div>
+	                    <div class="fd-col fd-col--full">
+							<bk-button glyph="sap-icon--add" aria-label="{{ 'codbex-employees:codbex-employees-model.defaults.add' | t }}" ng-click="createGender()" ng-hide="action === 'select'"></bk-button>
+							<bk-button glyph="sap-icon--refresh" aria-label="{{ 'codbex-employees:codbex-employees-model.defaults.refresh' | t }}" ng-click="refreshGender()" ng-hide="action === 'select'"></bk-button>
+						</div>
+                    </bk-form-item>
+                    <bk-form-item class="fd-row">
+                    	<div class="fd-col fd-col-md--2">
                         	<bk-form-label for="idMartialStatus" ng-required="true" colon="true">{{ 'codbex-employees:codbex-employees-model.t.EMPLOYEE_MARTIALSTATUS' | t }}</bk-form-label>
                         </div>
-                        <div class="fd-col  fd-col-md--7 ">
+                        <div class="fd-col fd-col-md--4 fd-col--6">
 	                        <bk-combobox-input input-id="idMartialStatus"
 	                            name="MartialStatus"
 	                            state="{{ forms.details['MartialStatus'].$valid ? '' : 'error' }}"
@@ -217,7 +240,7 @@
                     	<div class="fd-col fd-col-md--2">
                         	<bk-form-label for="idIBAN" ng-required="true" colon="true">{{ 'codbex-employees:codbex-employees-model.t.EMPLOYEE_IBAN' | t }}</bk-form-label>
                         </div>
-                        <div class="fd-col  fd-col-md--8 ">
+                        <div class="fd-col fd-col-md--4 fd-col--6">
 							<bk-form-input-message state="{{ forms.details['IBAN'].$valid ? '' : 'error' }}" text="{{ 'codbex-employees:codbex-employees-model.messages.error.pattern' | t:{'rule':''} }}">
 								<bk-input id="idIBAN"
 	                                name="IBAN"
@@ -225,7 +248,7 @@
 									ng-required="true"
 	                                ng-model="entity.IBAN"
 	                                ng-readonly="action === 'select'"
-									ng-maxlength="50.0"
+									ng-maxlength="34.0"
 	                                input-rules="{ patterns: [''] }"
 	                                type="text"
 	                                placeholder="{{ 'codbex-employees:codbex-employees-model.messages.inputEnter' | t:{'name':'$t(codbex-employees:codbex-employees-model.t.EMPLOYEE_IBAN)'} }}">

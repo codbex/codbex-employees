@@ -1,29 +1,26 @@
 import { Controller, Get, Post, Put, Delete, Documentation, request, response } from '@aerokit/sdk/http'
 import { HttpUtils } from "@aerokit/sdk/http/utils";
 import { ValidationError } from '@aerokit/sdk/http/errors'
-import { ForbiddenError } from '@aerokit/sdk/http/errors'
-import { user } from '@aerokit/sdk/security'
 import { Options } from '@aerokit/sdk/db'
 import { Extensions } from "@aerokit/sdk/extensions"
 import { Injected, Inject } from '@aerokit/sdk/component'
-import { ContactRepository } from '../../data/Employees/ContactRepository'
-import { ContactEntity } from '../../data/Employees/ContactEntity'
+import { AddressRepository } from '../../data/Employees/AddressRepository'
+import { AddressEntity } from '../../data/Employees/AddressEntity'
 
-const validationModules = await Extensions.loadExtensionModules('codbex-employees-Employees-Contact', ['validate']);
+const validationModules = await Extensions.loadExtensionModules('codbex-employees-Employees-Address', ['validate']);
 
 @Controller
-@Documentation('codbex-employees - Contact Controller')
+@Documentation('codbex-employees - Address Controller')
 @Injected()
-class ContactController {
+class AddressController {
 
-    @Inject('ContactRepository')
-    private readonly repository!: ContactRepository;
+    @Inject('AddressRepository')
+    private readonly repository!: AddressRepository;
 
     @Get('/')
-    @Documentation('Get All Contact')
-    public getAll(_: any, ctx: any): ContactEntity[] {
+    @Documentation('Get All Address')
+    public getAll(_: any, ctx: any): AddressEntity[] {
         try {
-            this.checkPermissions('read');
             const options: Options = {
                 limit: ctx.queryParameters["$limit"] ? parseInt(ctx.queryParameters["$limit"]) : 20,
                 offset: ctx.queryParameters["$offset"] ? parseInt(ctx.queryParameters["$offset"]) : 0,
@@ -49,13 +46,12 @@ class ContactController {
     }
 
     @Post('/')
-    @Documentation('Create Contact')
-    public create(entity: ContactEntity): ContactEntity {
+    @Documentation('Create Address')
+    public create(entity: AddressEntity): AddressEntity {
         try {
-            this.checkPermissions('write');
             this.validateEntity(entity);
             entity.Id = this.repository.create(entity) as any;
-            response.setHeader('Content-Location', '/services/ts/codbex-employees/gen/codbex-employees/api/Employees/ContactService.ts/' + entity.Id);
+            response.setHeader('Content-Location', '/services/ts/codbex-employees/gen/codbex-employees/api/Employees/AddressService.ts/' + entity.Id);
             response.setStatus(response.CREATED);
             return entity;
         } catch (error: any) {
@@ -65,10 +61,9 @@ class ContactController {
     }
 
     @Get('/count')
-    @Documentation('Count Contact')
+    @Documentation('Count Address')
     public count(): { count: number } {
         try {
-            this.checkPermissions('read');
             return { count: this.repository.count() };
         } catch (error: any) {
             this.handleError(error);
@@ -77,10 +72,9 @@ class ContactController {
     }
 
     @Post('/count')
-    @Documentation('Count Contact with filter')
+    @Documentation('Count Address with filter')
     public countWithFilter(filter: any): { count: number } {
         try {
-            this.checkPermissions('read');
             return { count: this.repository.count(filter) };
         } catch (error: any) {
             this.handleError(error);
@@ -89,10 +83,9 @@ class ContactController {
     }
 
     @Post('/search')
-    @Documentation('Search Contact')
-    public search(filter: any): ContactEntity[] {
+    @Documentation('Search Address')
+    public search(filter: any): AddressEntity[] {
         try {
-            this.checkPermissions('read');
             return this.repository.findAll(filter);
         } catch (error: any) {
             this.handleError(error);
@@ -101,10 +94,9 @@ class ContactController {
     }
 
     @Get('/:id')
-    @Documentation('Get Contact by id')
-    public getById(_: any, ctx: any): ContactEntity {
+    @Documentation('Get Address by id')
+    public getById(_: any, ctx: any): AddressEntity {
         try {
-            this.checkPermissions('read');
             const id = parseInt(ctx.pathParameters.id);
             const options: Options = {
                 language: request.getLocale().slice(0, 2)
@@ -113,7 +105,7 @@ class ContactController {
             if (entity) {
                 return entity;
             } else {
-                HttpUtils.sendResponseNotFound('Contact not found');
+                HttpUtils.sendResponseNotFound('Address not found');
             }
         } catch (error: any) {
             this.handleError(error);
@@ -122,10 +114,9 @@ class ContactController {
     }
 
     @Put('/:id')
-    @Documentation('Update Contact by id')
-    public update(entity: ContactEntity, ctx: any): ContactEntity {
+    @Documentation('Update Address by id')
+    public update(entity: AddressEntity, ctx: any): AddressEntity {
         try {
-            this.checkPermissions('write');
             const id = parseInt(ctx.pathParameters.id);
             entity.Id = id;
             this.validateEntity(entity);
@@ -138,17 +129,16 @@ class ContactController {
     }
 
     @Delete('/:id')
-    @Documentation('Delete Contact by id')
+    @Documentation('Delete Address by id')
     public deleteById(_: any, ctx: any): void {
         try {
-            this.checkPermissions('write');
             const id = parseInt(ctx.pathParameters.id);
             const entity = this.repository.findById(id);
             if (entity) {
                 this.repository.deleteById(id);
                 HttpUtils.sendResponseNoContent();
             } else {
-                HttpUtils.sendResponseNotFound('Contact not found');
+                HttpUtils.sendResponseNotFound('Address not found');
             }
         } catch (error: any) {
             this.handleError(error);
@@ -165,27 +155,18 @@ class ContactController {
         }
     }
 
-    private checkPermissions(operationType: string) {
-        if (operationType === 'read' && !(user.isInRole('codbex-employees.Employees.ContactReadOnly') || user.isInRole('codbex-employees.Employees.ContactFullAccess'))) {
-            throw new ForbiddenError();
-        }
-        if (operationType === 'write' && !user.isInRole('codbex-employees.Employees.ContactFullAccess')) {
-            throw new ForbiddenError();
-        }
-    }
-
     private validateEntity(entity: any): void {
-        if (entity.PhoneNumber === null || entity.PhoneNumber === undefined) {
-            throw new ValidationError(`The 'PhoneNumber' property is required, provide a valid value`);
+        if (entity.Address === null || entity.Address === undefined) {
+            throw new ValidationError(`The 'Address' property is required, provide a valid value`);
         }
-        if (entity.PhoneNumber?.length > 20) {
-            throw new ValidationError(`The 'PhoneNumber' exceeds the maximum length of [20] characters`);
+        if (entity.Address?.length > 255) {
+            throw new ValidationError(`The 'Address' exceeds the maximum length of [255] characters`);
         }
-        if (entity.Email === null || entity.Email === undefined) {
-            throw new ValidationError(`The 'Email' property is required, provide a valid value`);
+        if (entity.PostalCode === null || entity.PostalCode === undefined) {
+            throw new ValidationError(`The 'PostalCode' property is required, provide a valid value`);
         }
-        if (entity.Email?.length > 255) {
-            throw new ValidationError(`The 'Email' exceeds the maximum length of [255] characters`);
+        if (entity.PostalCode?.length > 12) {
+            throw new ValidationError(`The 'PostalCode' exceeds the maximum length of [12] characters`);
         }
         for (const next of validationModules) {
             next.validate(entity);

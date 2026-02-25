@@ -10,26 +10,28 @@ export interface EmployeeEntity {
     MiddleName?: string;
     LastName: string;
     Name?: string;
-    Email?: string;
-    BirthDate?: Date;
-    PersonalNumber?: string;
-    Gender?: number;
-    Nationality?: number;
-    MartialStatus?: number;
-    IBAN?: string;
+    Email: string;
+    PhoneNumber: string;
+    BirthDate: Date;
+    PersonalNumber: string;
+    Nationality: number;
+    Gender: number;
+    MartialStatus: number;
+    IBAN: string;
 }
 
 export interface EmployeeCreateEntity {
     readonly FirstName: string;
     readonly MiddleName?: string;
     readonly LastName: string;
-    readonly Email?: string;
-    readonly BirthDate?: Date;
-    readonly PersonalNumber?: string;
-    readonly Gender?: number;
-    readonly Nationality?: number;
-    readonly MartialStatus?: number;
-    readonly IBAN?: string;
+    readonly Email: string;
+    readonly PhoneNumber: string;
+    readonly BirthDate: Date;
+    readonly PersonalNumber: string;
+    readonly Nationality: number;
+    readonly Gender: number;
+    readonly MartialStatus: number;
+    readonly IBAN: string;
 }
 
 export interface EmployeeUpdateEntity extends EmployeeCreateEntity {
@@ -45,10 +47,11 @@ export interface EmployeeEntityOptions {
             LastName?: string | string[];
             Name?: string | string[];
             Email?: string | string[];
+            PhoneNumber?: string | string[];
             BirthDate?: Date | Date[];
             PersonalNumber?: string | string[];
-            Gender?: number | number[];
             Nationality?: number | number[];
+            Gender?: number | number[];
             MartialStatus?: number | number[];
             IBAN?: string | string[];
         };
@@ -59,10 +62,11 @@ export interface EmployeeEntityOptions {
             LastName?: string | string[];
             Name?: string | string[];
             Email?: string | string[];
+            PhoneNumber?: string | string[];
             BirthDate?: Date | Date[];
             PersonalNumber?: string | string[];
-            Gender?: number | number[];
             Nationality?: number | number[];
+            Gender?: number | number[];
             MartialStatus?: number | number[];
             IBAN?: string | string[];
         };
@@ -73,10 +77,11 @@ export interface EmployeeEntityOptions {
             LastName?: string;
             Name?: string;
             Email?: string;
+            PhoneNumber?: string;
             BirthDate?: Date;
             PersonalNumber?: string;
-            Gender?: number;
             Nationality?: number;
+            Gender?: number;
             MartialStatus?: number;
             IBAN?: string;
         };
@@ -87,10 +92,11 @@ export interface EmployeeEntityOptions {
             LastName?: string;
             Name?: string;
             Email?: string;
+            PhoneNumber?: string;
             BirthDate?: Date;
             PersonalNumber?: string;
-            Gender?: number;
             Nationality?: number;
+            Gender?: number;
             MartialStatus?: number;
             IBAN?: string;
         };
@@ -101,10 +107,11 @@ export interface EmployeeEntityOptions {
             LastName?: string;
             Name?: string;
             Email?: string;
+            PhoneNumber?: string;
             BirthDate?: Date;
             PersonalNumber?: string;
-            Gender?: number;
             Nationality?: number;
+            Gender?: number;
             MartialStatus?: number;
             IBAN?: string;
         };
@@ -115,10 +122,11 @@ export interface EmployeeEntityOptions {
             LastName?: string;
             Name?: string;
             Email?: string;
+            PhoneNumber?: string;
             BirthDate?: Date;
             PersonalNumber?: string;
-            Gender?: number;
             Nationality?: number;
+            Gender?: number;
             MartialStatus?: number;
             IBAN?: string;
         };
@@ -129,10 +137,11 @@ export interface EmployeeEntityOptions {
             LastName?: string;
             Name?: string;
             Email?: string;
+            PhoneNumber?: string;
             BirthDate?: Date;
             PersonalNumber?: string;
-            Gender?: number;
             Nationality?: number;
+            Gender?: number;
             MartialStatus?: number;
             IBAN?: string;
         };
@@ -198,36 +207,49 @@ export class EmployeeRepository {
                 name: "Email",
                 column: "EMPLOYEE_EMAIL",
                 type: "VARCHAR",
+                required: true
+            },
+            {
+                name: "PhoneNumber",
+                column: "EMPLOYEE_PHONENUMBER",
+                type: "VARCHAR",
+                required: true
             },
             {
                 name: "BirthDate",
                 column: "EMPLOYEE_BIRTHDATE",
                 type: "DATE",
+                required: true
             },
             {
                 name: "PersonalNumber",
                 column: "EMPLOYEE_PERSONALNUMBER",
                 type: "VARCHAR",
-            },
-            {
-                name: "Gender",
-                column: "EMPLOYEE_GENDER",
-                type: "INTEGER",
+                required: true
             },
             {
                 name: "Nationality",
                 column: "EMPLOYEE_NATIONALITY",
                 type: "INTEGER",
+                required: true
+            },
+            {
+                name: "Gender",
+                column: "EMPLOYEE_GENDER",
+                type: "INTEGER",
+                required: true
             },
             {
                 name: "MartialStatus",
                 column: "EMPLOYEE_MARTIALSTATUS",
                 type: "INTEGER",
+                required: true
             },
             {
                 name: "IBAN",
                 column: "EMPLOYEE_IBAN",
                 type: "VARCHAR",
+                required: true
             }
         ]
     };

@@ -37,39 +37,41 @@
                     {
                         "type": "VARCHAR",
                         "length": 40,
-                        "nullable": true,
+                        "unique": true,
                         "name": "EMPLOYEE_EMAIL"
                     },
                     {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "unique": true,
+                        "name": "EMPLOYEE_PHONENUMBER"
+                    },
+                    {
                         "type": "DATE",
-                        "nullable": true,
                         "name": "EMPLOYEE_BIRTHDATE"
                     },
                     {
                         "type": "VARCHAR",
                         "length": 10,
-                        "nullable": true,
+                        "unique": true,
                         "name": "EMPLOYEE_PERSONALNUMBER"
                     },
                     {
                         "type": "INTEGER",
-                        "nullable": true,
-                        "name": "EMPLOYEE_GENDER"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "nullable": true,
                         "name": "EMPLOYEE_NATIONALITY"
                     },
                     {
                         "type": "INTEGER",
-                        "nullable": true,
+                        "name": "EMPLOYEE_GENDER"
+                    },
+                    {
+                        "type": "INTEGER",
                         "name": "EMPLOYEE_MARTIALSTATUS"
                     },
                     {
                         "type": "VARCHAR",
-                        "length": 50,
-                        "nullable": true,
+                        "length": 34,
+                        "unique": true,
                         "name": "EMPLOYEE_IBAN"
                     }
                 ]
@@ -125,31 +127,14 @@
                     },
                     {
                         "type": "VARCHAR",
-                        "length": 200,
-                        "nullable": true,
-                        "name": "CONTACT_ADDRESS"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "nullable": true,
-                        "name": "CONTACT_COUNTRY"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "nullable": true,
-                        "name": "CONTACT_CITY"
-                    },
-                    {
-                        "type": "VARCHAR",
                         "length": 20,
-                        "nullable": true,
-                        "name": "CONTACT_POSTALCODE"
+                        "name": "CONTACT_PHONENUMBER"
                     },
                     {
                         "type": "VARCHAR",
-                        "length": 15,
-                        "nullable": true,
-                        "name": "CONTACT_PHONENUMBER"
+                        "length": 255,
+                        "unique": true,
+                        "name": "CONTACT_EMAIL"
                     },
                     {
                         "type": "INTEGER",
@@ -159,13 +144,44 @@
                 ]
             },
             {
-                "name": "Employee_Gender",
-                "type": "foreignKey",
-                "table": "CODBEX_EMPLOYEE",
-                "constraintName": "Employee_Gender",
-                "columns": "EMPLOYEE_GENDER",
-                "referencedTable": "CODBEX_GENDER",
-                "referencedColumns": "GENDER_ID"
+                "name": "CODBEX_ADDRESS",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "ADDRESS_ID"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "ADDRESS_COUNTRY"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "ADDRESS_CITY"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 255,
+                        "nullable": true,
+                        "name": "ADDRESS_ADDRESS"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 12,
+                        "nullable": true,
+                        "name": "ADDRESS_POSTALCODE"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "ADDRESS_EMPLOYEE"
+                    }
+                ]
             },
             {
                 "name": "Employee_Country",
@@ -177,6 +193,15 @@
                 "referencedColumns": "COUNTRY_ID"
             },
             {
+                "name": "Employee_Gender",
+                "type": "foreignKey",
+                "table": "CODBEX_EMPLOYEE",
+                "constraintName": "Employee_Gender",
+                "columns": "EMPLOYEE_GENDER",
+                "referencedTable": "CODBEX_GENDER",
+                "referencedColumns": "GENDER_ID"
+            },
+            {
                 "name": "Employee_MartialStatus",
                 "type": "foreignKey",
                 "table": "CODBEX_EMPLOYEE",
@@ -186,29 +211,38 @@
                 "referencedColumns": "MARTIALSTATUS_ID"
             },
             {
-                "name": "Contact_Country",
-                "type": "foreignKey",
-                "table": "CODBEX_CONTACT",
-                "constraintName": "Contact_Country",
-                "columns": "CONTACT_COUNTRY",
-                "referencedTable": "CODBEX_COUNTRY",
-                "referencedColumns": "COUNTRY_ID"
-            },
-            {
-                "name": "Contact_City",
-                "type": "foreignKey",
-                "table": "CODBEX_CONTACT",
-                "constraintName": "Contact_City",
-                "columns": "CONTACT_CITY",
-                "referencedTable": "CODBEX_CITY",
-                "referencedColumns": "CITY_ID"
-            },
-            {
                 "name": "Contact_Employee",
                 "type": "foreignKey",
                 "table": "CODBEX_CONTACT",
                 "constraintName": "Contact_Employee",
                 "columns": "CONTACT_EMPLOYEE",
+                "referencedTable": "CODBEX_EMPLOYEE",
+                "referencedColumns": "EMPLOYEE_ID"
+            },
+            {
+                "name": "Address_Country",
+                "type": "foreignKey",
+                "table": "CODBEX_ADDRESS",
+                "constraintName": "Address_Country",
+                "columns": "ADDRESS_COUNTRY",
+                "referencedTable": "CODBEX_COUNTRY",
+                "referencedColumns": "COUNTRY_ID"
+            },
+            {
+                "name": "Address_City",
+                "type": "foreignKey",
+                "table": "CODBEX_ADDRESS",
+                "constraintName": "Address_City",
+                "columns": "ADDRESS_CITY",
+                "referencedTable": "CODBEX_CITY",
+                "referencedColumns": "CITY_ID"
+            },
+            {
+                "name": "Address_Employee",
+                "type": "foreignKey",
+                "table": "CODBEX_ADDRESS",
+                "constraintName": "Address_Employee",
+                "columns": "ADDRESS_EMPLOYEE",
                 "referencedTable": "CODBEX_EMPLOYEE",
                 "referencedColumns": "EMPLOYEE_ID"
             }

@@ -1,4 +1,4 @@
-import { Entity, Table, Id, Generated, Column, Documentation } from '@aerokit/sdk/db'
+import { Entity, Table, Id, Generated, Column, Documentation, CreatedAt, CreatedBy, UpdatedAt, UpdatedBy} from '@aerokit/sdk/db'
 
 @Entity('EmployeeEntity')
 @Table('CODBEX_EMPLOYEE')
@@ -53,15 +53,21 @@ export class EmployeeEntity {
         name: 'EMPLOYEE_EMAIL',
         type: 'string',
         length: 40,
-        nullable: true,
     })
     public Email!: string;
+
+    @Documentation('PhoneNumber')
+    @Column({
+        name: 'EMPLOYEE_PHONENUMBER',
+        type: 'string',
+        length: 20,
+    })
+    public PhoneNumber!: string;
 
     @Documentation('BirthDate')
     @Column({
         name: 'EMPLOYEE_BIRTHDATE',
         type: 'date',
-        nullable: true,
     })
     public BirthDate!: Date;
 
@@ -70,31 +76,27 @@ export class EmployeeEntity {
         name: 'EMPLOYEE_PERSONALNUMBER',
         type: 'string',
         length: 10,
-        nullable: true,
     })
     public PersonalNumber!: string;
-
-    @Documentation('Gender')
-    @Column({
-        name: 'EMPLOYEE_GENDER',
-        type: 'integer',
-        nullable: true,
-    })
-    public Gender!: number;
 
     @Documentation('Nationality')
     @Column({
         name: 'EMPLOYEE_NATIONALITY',
         type: 'integer',
-        nullable: true,
     })
     public Nationality!: number;
+
+    @Documentation('Gender')
+    @Column({
+        name: 'EMPLOYEE_GENDER',
+        type: 'integer',
+    })
+    public Gender!: number;
 
     @Documentation('MartialStatus')
     @Column({
         name: 'EMPLOYEE_MARTIALSTATUS',
         type: 'integer',
-        nullable: true,
     })
     public MartialStatus!: number;
 
@@ -102,8 +104,7 @@ export class EmployeeEntity {
     @Column({
         name: 'EMPLOYEE_IBAN',
         type: 'string',
-        length: 50,
-        nullable: true,
+        length: 34,
     })
     public IBAN!: string;
 

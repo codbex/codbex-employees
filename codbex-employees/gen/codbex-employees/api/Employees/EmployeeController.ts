@@ -188,6 +188,12 @@ class EmployeeController {
         if (entity.Email?.length > 40) {
             throw new ValidationError(`The 'Email' exceeds the maximum length of [40] characters`);
         }
+        if (entity.PhoneNumber === null || entity.PhoneNumber === undefined) {
+            throw new ValidationError(`The 'PhoneNumber' property is required, provide a valid value`);
+        }
+        if (entity.PhoneNumber?.length > 20) {
+            throw new ValidationError(`The 'PhoneNumber' exceeds the maximum length of [20] characters`);
+        }
         if (entity.BirthDate === null || entity.BirthDate === undefined) {
             throw new ValidationError(`The 'BirthDate' property is required, provide a valid value`);
         }
@@ -197,11 +203,11 @@ class EmployeeController {
         if (entity.PersonalNumber?.length > 10) {
             throw new ValidationError(`The 'PersonalNumber' exceeds the maximum length of [10] characters`);
         }
-        if (entity.Gender === null || entity.Gender === undefined) {
-            throw new ValidationError(`The 'Gender' property is required, provide a valid value`);
-        }
         if (entity.Nationality === null || entity.Nationality === undefined) {
             throw new ValidationError(`The 'Nationality' property is required, provide a valid value`);
+        }
+        if (entity.Gender === null || entity.Gender === undefined) {
+            throw new ValidationError(`The 'Gender' property is required, provide a valid value`);
         }
         if (entity.MartialStatus === null || entity.MartialStatus === undefined) {
             throw new ValidationError(`The 'MartialStatus' property is required, provide a valid value`);
@@ -209,8 +215,8 @@ class EmployeeController {
         if (entity.IBAN === null || entity.IBAN === undefined) {
             throw new ValidationError(`The 'IBAN' property is required, provide a valid value`);
         }
-        if (entity.IBAN?.length > 50) {
-            throw new ValidationError(`The 'IBAN' exceeds the maximum length of [50] characters`);
+        if (entity.IBAN?.length > 34) {
+            throw new ValidationError(`The 'IBAN' exceeds the maximum length of [34] characters`);
         }
         for (const next of validationModules) {
             next.validate(entity);

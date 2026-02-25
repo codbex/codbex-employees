@@ -3,80 +3,98 @@ import { producer } from "@aerokit/sdk/messaging";
 import { extensions } from "@aerokit/sdk/extensions";
 import { dao as daoApi } from "@aerokit/sdk/db";
 
-export interface ContactEntity {
+export interface AddressEntity {
     readonly Id: number;
-    PhoneNumber: string;
-    Email: string;
+    Country?: number;
+    City?: number;
+    Address?: string;
+    PostalCode?: string;
     Employee?: number;
 }
 
-export interface ContactCreateEntity {
-    readonly PhoneNumber: string;
-    readonly Email: string;
+export interface AddressCreateEntity {
+    readonly Country?: number;
+    readonly City?: number;
+    readonly Address?: string;
+    readonly PostalCode?: string;
     readonly Employee?: number;
 }
 
-export interface ContactUpdateEntity extends ContactCreateEntity {
+export interface AddressUpdateEntity extends AddressCreateEntity {
     readonly Id: number;
 }
 
-export interface ContactEntityOptions {
+export interface AddressEntityOptions {
     $filter?: {
         equals?: {
             Id?: number | number[];
-            PhoneNumber?: string | string[];
-            Email?: string | string[];
+            Country?: number | number[];
+            City?: number | number[];
+            Address?: string | string[];
+            PostalCode?: string | string[];
             Employee?: number | number[];
         };
         notEquals?: {
             Id?: number | number[];
-            PhoneNumber?: string | string[];
-            Email?: string | string[];
+            Country?: number | number[];
+            City?: number | number[];
+            Address?: string | string[];
+            PostalCode?: string | string[];
             Employee?: number | number[];
         };
         contains?: {
             Id?: number;
-            PhoneNumber?: string;
-            Email?: string;
+            Country?: number;
+            City?: number;
+            Address?: string;
+            PostalCode?: string;
             Employee?: number;
         };
         greaterThan?: {
             Id?: number;
-            PhoneNumber?: string;
-            Email?: string;
+            Country?: number;
+            City?: number;
+            Address?: string;
+            PostalCode?: string;
             Employee?: number;
         };
         greaterThanOrEqual?: {
             Id?: number;
-            PhoneNumber?: string;
-            Email?: string;
+            Country?: number;
+            City?: number;
+            Address?: string;
+            PostalCode?: string;
             Employee?: number;
         };
         lessThan?: {
             Id?: number;
-            PhoneNumber?: string;
-            Email?: string;
+            Country?: number;
+            City?: number;
+            Address?: string;
+            PostalCode?: string;
             Employee?: number;
         };
         lessThanOrEqual?: {
             Id?: number;
-            PhoneNumber?: string;
-            Email?: string;
+            Country?: number;
+            City?: number;
+            Address?: string;
+            PostalCode?: string;
             Employee?: number;
         };
     },
-    $select?: (keyof ContactEntity)[],
-    $sort?: string | (keyof ContactEntity)[],
+    $select?: (keyof AddressEntity)[],
+    $sort?: string | (keyof AddressEntity)[],
     $order?: 'ASC' | 'DESC',
     $offset?: number,
     $limit?: number,
     $language?: string
 }
 
-export interface ContactEntityEvent {
+export interface AddressEntityEvent {
     readonly operation: 'create' | 'update' | 'delete';
     readonly table: string;
-    readonly entity: Partial<ContactEntity>;
+    readonly entity: Partial<AddressEntity>;
     readonly key: {
         name: string;
         column: string;
@@ -84,37 +102,45 @@ export interface ContactEntityEvent {
     }
 }
 
-export interface ContactUpdateEntityEvent extends ContactEntityEvent {
-    readonly previousEntity: ContactEntity;
+export interface AddressUpdateEntityEvent extends AddressEntityEvent {
+    readonly previousEntity: AddressEntity;
 }
 
-export class ContactRepository {
+export class AddressRepository {
 
     private static readonly DEFINITION = {
-        table: "CODBEX_CONTACT",
+        table: "CODBEX_ADDRESS",
         properties: [
             {
                 name: "Id",
-                column: "CONTACT_ID",
+                column: "ADDRESS_ID",
                 type: "INTEGER",
                 id: true,
                 autoIncrement: true,
             },
             {
-                name: "PhoneNumber",
-                column: "CONTACT_PHONENUMBER",
-                type: "VARCHAR",
-                required: true
+                name: "Country",
+                column: "ADDRESS_COUNTRY",
+                type: "INTEGER",
             },
             {
-                name: "Email",
-                column: "CONTACT_EMAIL",
+                name: "City",
+                column: "ADDRESS_CITY",
+                type: "INTEGER",
+            },
+            {
+                name: "Address",
+                column: "ADDRESS_ADDRESS",
                 type: "VARCHAR",
-                required: true
+            },
+            {
+                name: "PostalCode",
+                column: "ADDRESS_POSTALCODE",
+                type: "VARCHAR",
             },
             {
                 name: "Employee",
-                column: "CONTACT_EMPLOYEE",
+                column: "ADDRESS_EMPLOYEE",
                 type: "INTEGER",
             }
         ]
@@ -123,59 +149,59 @@ export class ContactRepository {
     private readonly dao;
 
     constructor(dataSource = "DefaultDB") {
-        this.dao = daoApi.create(ContactRepository.DEFINITION, undefined, dataSource);
+        this.dao = daoApi.create(AddressRepository.DEFINITION, undefined, dataSource);
     }
 
-    public findAll(options: ContactEntityOptions = {}): ContactEntity[] {
+    public findAll(options: AddressEntityOptions = {}): AddressEntity[] {
         let list = this.dao.list(options);
         return list;
     }
 
-    public findById(id: number, options: ContactEntityOptions = {}): ContactEntity | undefined {
+    public findById(id: number, options: AddressEntityOptions = {}): AddressEntity | undefined {
         const entity = this.dao.find(id);
         return entity ?? undefined;
     }
 
-    public create(entity: ContactCreateEntity): number {
+    public create(entity: AddressCreateEntity): number {
         const id = this.dao.insert(entity);
         this.triggerEvent({
             operation: "create",
-            table: "CODBEX_CONTACT",
+            table: "CODBEX_ADDRESS",
             entity: entity,
             key: {
                 name: "Id",
-                column: "CONTACT_ID",
+                column: "ADDRESS_ID",
                 value: id
             }
         });
         return id;
     }
 
-    public update(entity: ContactUpdateEntity): void {
+    public update(entity: AddressUpdateEntity): void {
         const previousEntity = this.findById(entity.Id);
         this.dao.update(entity);
         this.triggerEvent({
             operation: "update",
-            table: "CODBEX_CONTACT",
+            table: "CODBEX_ADDRESS",
             entity: entity,
             previousEntity: previousEntity,
             key: {
                 name: "Id",
-                column: "CONTACT_ID",
+                column: "ADDRESS_ID",
                 value: entity.Id
             }
         });
     }
 
-    public upsert(entity: ContactCreateEntity | ContactUpdateEntity): number {
-        const id = (entity as ContactUpdateEntity).Id;
+    public upsert(entity: AddressCreateEntity | AddressUpdateEntity): number {
+        const id = (entity as AddressUpdateEntity).Id;
         if (!id) {
             return this.create(entity);
         }
 
         const existingEntity = this.findById(id);
         if (existingEntity) {
-            this.update(entity as ContactUpdateEntity);
+            this.update(entity as AddressUpdateEntity);
             return id;
         } else {
             return this.create(entity);
@@ -187,22 +213,22 @@ export class ContactRepository {
         this.dao.remove(id);
         this.triggerEvent({
             operation: "delete",
-            table: "CODBEX_CONTACT",
+            table: "CODBEX_ADDRESS",
             entity: entity,
             key: {
                 name: "Id",
-                column: "CONTACT_ID",
+                column: "ADDRESS_ID",
                 value: id
             }
         });
     }
 
-    public count(options?: ContactEntityOptions): number {
+    public count(options?: AddressEntityOptions): number {
         return this.dao.count(options);
     }
 
     public customDataCount(): number {
-        const resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX_CONTACT"');
+        const resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX_ADDRESS"');
         if (resultSet !== null && resultSet[0] !== null) {
             if (resultSet[0].COUNT !== undefined && resultSet[0].COUNT !== null) {
                 return resultSet[0].COUNT;
@@ -213,8 +239,8 @@ export class ContactRepository {
         return 0;
     }
 
-    private async triggerEvent(data: ContactEntityEvent | ContactUpdateEntityEvent) {
-        const triggerExtensions = await extensions.loadExtensionModules("codbex-employees-Employees-Contact", ["trigger"]);
+    private async triggerEvent(data: AddressEntityEvent | AddressUpdateEntityEvent) {
+        const triggerExtensions = await extensions.loadExtensionModules("codbex-employees-Employees-Address", ["trigger"]);
         triggerExtensions.forEach(triggerExtension => {
             try {
                 triggerExtension.trigger(data);
@@ -222,6 +248,6 @@ export class ContactRepository {
                 console.error(error);
             }            
         });
-        producer.topic("codbex-employees-Employees-Contact").send(JSON.stringify(data));
+        producer.topic("codbex-employees-Employees-Address").send(JSON.stringify(data));
     }
 }

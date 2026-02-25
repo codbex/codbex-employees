@@ -4,6 +4,7 @@
             {
                 "properties": [
                     {
+                        "auditType": "NONE",
                         "dataAutoIncrement": "true",
                         "dataName": "EMPLOYEE_ID",
                         "dataNullable": "true",
@@ -18,6 +19,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "50",
                         "dataName": "EMPLOYEE_FIRSTNAME",
                         "dataNullable": "false",
@@ -34,6 +36,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "50",
                         "dataName": "EMPLOYEE_MIDDLENAME",
                         "dataNullable": "true",
@@ -49,6 +52,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "50",
                         "dataName": "EMPLOYEE_LASTNAME",
                         "dataNullable": "false",
@@ -65,6 +69,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "entity[\"FirstName\"] + \" \" + entity[\"LastName\"]",
                         "calculatedPropertyExpressionUpdate": "entity[\"FirstName\"] + \" \" + entity[\"LastName\"]",
                         "dataLength": "70",
@@ -77,26 +82,45 @@
                         "tooltip": "",
                         "widgetIsMajor": "true",
                         "widgetLength": "70",
-                        "widgetSize": "",
+                        "widgetSize": "fd-col-md--4 fd-col--6",
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "40",
                         "dataName": "EMPLOYEE_EMAIL",
-                        "dataNullable": "true",
+                        "dataNullable": "false",
                         "dataType": "VARCHAR",
+                        "dataUnique": "true",
                         "description": "",
                         "isRequiredProperty": "true",
                         "name": "Email",
                         "tooltip": "",
                         "widgetIsMajor": "true",
                         "widgetLength": "40",
-                        "widgetSize": "",
+                        "widgetSize": "fd-col-md--4 fd-col--6",
                         "widgetType": "EMAIL"
                     },
                     {
+                        "auditType": "NONE",
+                        "dataLength": "20",
+                        "dataName": "EMPLOYEE_PHONENUMBER",
+                        "dataNullable": "false",
+                        "dataType": "VARCHAR",
+                        "dataUnique": "true",
+                        "description": "",
+                        "isRequiredProperty": "true",
+                        "name": "PhoneNumber",
+                        "tooltip": "",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "fd-col-md--4 fd-col--6",
+                        "widgetType": "TEL"
+                    },
+                    {
+                        "auditType": "NONE",
                         "dataName": "EMPLOYEE_BIRTHDATE",
-                        "dataNullable": "true",
+                        "dataNullable": "false",
                         "dataType": "DATE",
                         "description": "",
                         "isRequiredProperty": "true",
@@ -104,45 +128,29 @@
                         "tooltip": "",
                         "widgetIsMajor": "true",
                         "widgetLength": "20",
-                        "widgetSize": "",
+                        "widgetSize": "fd-col-md--4 fd-col--6",
                         "widgetType": "DATE"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "10",
                         "dataName": "EMPLOYEE_PERSONALNUMBER",
-                        "dataNullable": "true",
+                        "dataNullable": "false",
                         "dataType": "VARCHAR",
+                        "dataUnique": "true",
                         "description": "",
                         "isRequiredProperty": "true",
                         "name": "PersonalNumber",
                         "tooltip": "",
                         "widgetIsMajor": "true",
                         "widgetLength": "10",
-                        "widgetSize": "",
+                        "widgetSize": "fd-col-md--4 fd-col--6",
                         "widgetType": "TEXTBOX"
                     },
                     {
-                        "dataName": "EMPLOYEE_GENDER",
-                        "dataNullable": "true",
-                        "dataType": "INTEGER",
-                        "description": "",
-                        "isRequiredProperty": "true",
-                        "name": "Gender",
-                        "tooltip": "",
-                        "widgetDropDownKey": "Id",
-                        "widgetDropDownValue": "Name",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "20",
-                        "widgetSize": "",
-                        "widgetType": "DROPDOWN",
-                        "relationshipName": "Employee_Gender",
-                        "relationshipEntityName": "Gender",
-                        "relationshipEntityPerspectiveName": "Settings",
-                        "relationshipEntityPerspectiveLabel": "Entities"
-                    },
-                    {
+                        "auditType": "NONE",
                         "dataName": "EMPLOYEE_NATIONALITY",
-                        "dataNullable": "true",
+                        "dataNullable": "false",
                         "dataType": "INTEGER",
                         "description": "",
                         "isRequiredProperty": "true",
@@ -152,7 +160,7 @@
                         "widgetDropDownValue": "Name",
                         "widgetIsMajor": "true",
                         "widgetLength": "20",
-                        "widgetSize": "",
+                        "widgetSize": "fd-col-md--4 fd-col--6",
                         "widgetType": "DROPDOWN",
                         "relationshipName": "Employee_Country",
                         "relationshipEntityName": "Country",
@@ -160,8 +168,29 @@
                         "relationshipEntityPerspectiveLabel": "Settings"
                     },
                     {
+                        "auditType": "NONE",
+                        "dataName": "EMPLOYEE_GENDER",
+                        "dataNullable": "false",
+                        "dataType": "INTEGER",
+                        "description": "",
+                        "isRequiredProperty": "true",
+                        "name": "Gender",
+                        "tooltip": "",
+                        "widgetDropDownKey": "Id",
+                        "widgetDropDownValue": "Name",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "fd-col-md--4 fd-col--6",
+                        "widgetType": "DROPDOWN",
+                        "relationshipName": "Employee_Gender",
+                        "relationshipEntityName": "Gender",
+                        "relationshipEntityPerspectiveName": "Settings",
+                        "relationshipEntityPerspectiveLabel": "Entities"
+                    },
+                    {
+                        "auditType": "NONE",
                         "dataName": "EMPLOYEE_MARTIALSTATUS",
-                        "dataNullable": "true",
+                        "dataNullable": "false",
                         "dataType": "INTEGER",
                         "description": "",
                         "isRequiredProperty": "true",
@@ -171,25 +200,27 @@
                         "widgetDropDownValue": "Name",
                         "widgetIsMajor": "true",
                         "widgetLength": "20",
-                        "widgetSize": "",
+                        "widgetSize": "fd-col-md--4 fd-col--6",
                         "widgetType": "DROPDOWN",
                         "relationshipName": "Employee_MartialStatus",
                         "relationshipEntityName": "MartialStatus",
                         "relationshipEntityPerspectiveName": "Settings",
-                        "relationshipEntityPerspectiveLabel": "Entities"
+                        "relationshipEntityPerspectiveLabel": ""
                     },
                     {
-                        "dataLength": "50",
+                        "auditType": "NONE",
+                        "dataLength": "34",
                         "dataName": "EMPLOYEE_IBAN",
-                        "dataNullable": "true",
+                        "dataNullable": "false",
                         "dataType": "VARCHAR",
+                        "dataUnique": "true",
                         "description": "",
                         "isRequiredProperty": "true",
                         "name": "IBAN",
                         "tooltip": "",
                         "widgetIsMajor": "true",
-                        "widgetLength": "50",
-                        "widgetSize": "",
+                        "widgetLength": "34",
+                        "widgetSize": "fd-col-md--4 fd-col--6",
                         "widgetType": "TEXTBOX"
                     }
                 ],
@@ -223,6 +254,7 @@
             {
                 "properties": [
                     {
+                        "auditType": "NONE",
                         "dataAutoIncrement": "true",
                         "dataName": "COUNTRY_ID",
                         "dataNullable": "true",
@@ -237,6 +269,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "255",
                         "dataName": "COUNTRY_NAME",
                         "dataNullable": "true",
@@ -251,6 +284,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "2",
                         "dataName": "COUNTRY_CODE2",
                         "dataNullable": "true",
@@ -265,6 +299,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "3",
                         "dataName": "COUNTRY_CODE3",
                         "dataNullable": "true",
@@ -279,6 +314,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "3",
                         "dataName": "COUNTRY_NUMERIC",
                         "dataNullable": "true",
@@ -323,6 +359,7 @@
             {
                 "properties": [
                     {
+                        "auditType": "NONE",
                         "dataAutoIncrement": "true",
                         "dataName": "CITY_ID",
                         "dataNullable": "true",
@@ -337,6 +374,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "100",
                         "dataName": "CITY_NAME",
                         "dataNullable": "true",
@@ -351,6 +389,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "CITY_COUNTRY",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
@@ -399,6 +438,7 @@
             {
                 "properties": [
                     {
+                        "auditType": "NONE",
                         "dataAutoIncrement": "true",
                         "dataName": "GENDER_ID",
                         "dataNullable": "true",
@@ -413,6 +453,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "7",
                         "dataName": "GENDER_NAME",
                         "dataNullable": "true",
@@ -459,6 +500,7 @@
             {
                 "properties": [
                     {
+                        "auditType": "NONE",
                         "dataAutoIncrement": "true",
                         "dataName": "MARTIALSTATUS_ID",
                         "dataNullable": "true",
@@ -473,6 +515,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "20",
                         "dataName": "MARTIALSTATUS_NAME",
                         "dataNullable": "true",
@@ -497,7 +540,7 @@
                 "generateDefaultRoles": "true",
                 "generateReport": "false",
                 "icon": "/services/web/resources/unicons/file.svg",
-                "layoutType": "MANAGE",
+                "layoutType": "",
                 "menuIndex": "100",
                 "menuKey": "martialstatus",
                 "menuLabel": "MartialStatus",
@@ -505,7 +548,7 @@
                 "name": "MartialStatus",
                 "perspectiveHeader": "",
                 "perspectiveIcon": "/services/web/resources/unicons/copy.svg",
-                "perspectiveLabel": "Entities",
+                "perspectiveLabel": "",
                 "perspectiveName": "Settings",
                 "perspectiveNavId": "",
                 "perspectiveOrder": "100",
@@ -519,6 +562,7 @@
             {
                 "properties": [
                     {
+                        "auditType": "NONE",
                         "dataAutoIncrement": "true",
                         "dataName": "CONTACT_ID",
                         "dataNullable": "true",
@@ -533,79 +577,10 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
-                        "dataLength": "200",
-                        "dataName": "CONTACT_ADDRESS",
-                        "dataNullable": "true",
-                        "dataType": "VARCHAR",
-                        "description": "",
-                        "isRequiredProperty": "true",
-                        "name": "Address",
-                        "tooltip": "",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "100",
-                        "widgetSize": "",
-                        "widgetType": "TEXTBOX"
-                    },
-                    {
-                        "dataName": "CONTACT_COUNTRY",
-                        "dataNullable": "true",
-                        "dataType": "INTEGER",
-                        "description": "",
-                        "isRequiredProperty": "true",
-                        "name": "Country",
-                        "tooltip": "",
-                        "widgetDropDownKey": "Id",
-                        "widgetDropDownValue": "Name",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "20",
-                        "widgetSize": "",
-                        "widgetType": "DROPDOWN",
-                        "relationshipName": "Contact_Country",
-                        "relationshipEntityName": "Country",
-                        "relationshipEntityPerspectiveName": "Settings",
-                        "relationshipEntityPerspectiveLabel": "Settings"
-                    },
-                    {
-                        "dataName": "CONTACT_CITY",
-                        "dataNullable": "true",
-                        "dataType": "INTEGER",
-                        "description": "",
-                        "isRequiredProperty": "true",
-                        "name": "City",
-                        "tooltip": "",
-                        "widgetDependsOnEntity": "Country",
-                        "widgetDependsOnFilterBy": "Country",
-                        "widgetDependsOnProperty": "Country",
-                        "widgetDependsOnValueFrom": "Id",
-                        "widgetDropDownKey": "Id",
-                        "widgetDropDownValue": "Name",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "20",
-                        "widgetSize": "",
-                        "widgetType": "DROPDOWN",
-                        "relationshipName": "Contact_City",
-                        "relationshipEntityName": "City",
-                        "relationshipEntityPerspectiveName": "Settings",
-                        "relationshipEntityPerspectiveLabel": "Settings"
-                    },
-                    {
+                        "auditType": "NONE",
                         "dataLength": "20",
-                        "dataName": "CONTACT_POSTALCODE",
-                        "dataNullable": "true",
-                        "dataType": "VARCHAR",
-                        "description": "",
-                        "isRequiredProperty": "true",
-                        "name": "PostalCode",
-                        "tooltip": "",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "20",
-                        "widgetSize": "",
-                        "widgetType": "TEXTBOX"
-                    },
-                    {
-                        "dataLength": "15",
                         "dataName": "CONTACT_PHONENUMBER",
-                        "dataNullable": "true",
+                        "dataNullable": "false",
                         "dataType": "VARCHAR",
                         "description": "",
                         "isRequiredProperty": "true",
@@ -613,10 +588,27 @@
                         "tooltip": "",
                         "widgetIsMajor": "true",
                         "widgetLength": "20",
-                        "widgetSize": "",
-                        "widgetType": "TEXTBOX"
+                        "widgetSize": "fd-col-md--4 fd-col--6",
+                        "widgetType": "TEL"
                     },
                     {
+                        "auditType": "NONE",
+                        "dataLength": "255",
+                        "dataName": "CONTACT_EMAIL",
+                        "dataNullable": "false",
+                        "dataType": "VARCHAR",
+                        "dataUnique": "true",
+                        "description": "",
+                        "isRequiredProperty": "true",
+                        "name": "Email",
+                        "tooltip": "",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "255",
+                        "widgetSize": "fd-col-md--4 fd-col--6",
+                        "widgetType": "EMAIL"
+                    },
+                    {
+                        "auditType": "NONE",
                         "dataName": "CONTACT_EMPLOYEE",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
@@ -660,6 +652,140 @@
                 "roleWrite": "codbex-employees.Employees.ContactFullAccess",
                 "title": "Contact",
                 "tooltip": "Contact",
+                "type": "DEPENDENT"
+            },
+            {
+                "properties": [
+                    {
+                        "auditType": "NONE",
+                        "dataAutoIncrement": "true",
+                        "dataName": "ADDRESS_ID",
+                        "dataNullable": "true",
+                        "dataPrimaryKey": "true",
+                        "dataType": "INTEGER",
+                        "description": "",
+                        "name": "Id",
+                        "tooltip": "",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "TEXTBOX"
+                    },
+                    {
+                        "auditType": "NONE",
+                        "dataName": "ADDRESS_COUNTRY",
+                        "dataNullable": "true",
+                        "dataType": "INTEGER",
+                        "description": "",
+                        "name": "Country",
+                        "tooltip": "",
+                        "widgetDropDownKey": "Id",
+                        "widgetDropDownValue": "Name",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "fd-col-md--4 fd-col--6",
+                        "widgetType": "DROPDOWN",
+                        "relationshipName": "Address_Country",
+                        "relationshipEntityName": "Country",
+                        "relationshipEntityPerspectiveName": "Settings",
+                        "relationshipEntityPerspectiveLabel": "Settings"
+                    },
+                    {
+                        "auditType": "NONE",
+                        "dataName": "ADDRESS_CITY",
+                        "dataNullable": "true",
+                        "dataType": "INTEGER",
+                        "description": "",
+                        "name": "City",
+                        "tooltip": "",
+                        "widgetDependsOnEntity": "Country",
+                        "widgetDependsOnFilterBy": "Country",
+                        "widgetDependsOnProperty": "Country",
+                        "widgetDependsOnValueFrom": "Id",
+                        "widgetDropDownKey": "Id",
+                        "widgetDropDownValue": "Name",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "fd-col-md--4 fd-col--6",
+                        "widgetType": "DROPDOWN",
+                        "relationshipName": "Address_City",
+                        "relationshipEntityName": "City",
+                        "relationshipEntityPerspectiveName": "Settings",
+                        "relationshipEntityPerspectiveLabel": "Settings"
+                    },
+                    {
+                        "auditType": "NONE",
+                        "dataLength": "255",
+                        "dataName": "ADDRESS_ADDRESS",
+                        "dataNullable": "true",
+                        "dataType": "VARCHAR",
+                        "description": "",
+                        "isRequiredProperty": "true",
+                        "name": "Address",
+                        "tooltip": "",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "255",
+                        "widgetSize": "fd-col-md--4 fd-col--6",
+                        "widgetType": "TEXTBOX"
+                    },
+                    {
+                        "auditType": "NONE",
+                        "dataLength": "12",
+                        "dataName": "ADDRESS_POSTALCODE",
+                        "dataNullable": "true",
+                        "dataType": "VARCHAR",
+                        "description": "",
+                        "isRequiredProperty": "true",
+                        "name": "PostalCode",
+                        "tooltip": "",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "12",
+                        "widgetSize": "fd-col-md--4 fd-col--6",
+                        "widgetType": "TEXTBOX"
+                    },
+                    {
+                        "auditType": "NONE",
+                        "dataName": "ADDRESS_EMPLOYEE",
+                        "dataNullable": "true",
+                        "dataType": "INTEGER",
+                        "description": "",
+                        "name": "Employee",
+                        "relationshipCardinality": "1_n",
+                        "relationshipName": "Address_Employee",
+                        "relationshipType": "COMPOSITION",
+                        "tooltip": "",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "TEXTBOX",
+                        "relationshipEntityName": "Employee",
+                        "relationshipEntityPerspectiveName": "Employees",
+                        "relationshipEntityPerspectiveLabel": "Entities"
+                    }
+                ],
+                "caption": "Manage entity Address",
+                "dataCount": "SELECT COUNT(*) AS COUNT FROM \"${tablePrefix}ADDRESS\"",
+                "dataName": "ADDRESS",
+                "dataQuery": "",
+                "description": "Manage entity Address",
+                "generateDefaultRoles": "false",
+                "generateReport": "false",
+                "icon": "/services/web/resources/unicons/file.svg",
+                "layoutType": "MANAGE_DETAILS",
+                "menuIndex": "100",
+                "menuKey": "address",
+                "menuLabel": "Address",
+                "multilingual": "false",
+                "name": "Address",
+                "perspectiveHeader": "",
+                "perspectiveIcon": "/services/web/resources/unicons/user.svg",
+                "perspectiveLabel": "Employees",
+                "perspectiveName": "Employees",
+                "perspectiveNavId": "employees-navigation-group",
+                "perspectiveOrder": "100",
+                "perspectiveRole": "",
+                "title": "Address",
+                "tooltip": "Address",
                 "type": "DEPENDENT"
             }
         ],

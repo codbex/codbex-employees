@@ -44,10 +44,11 @@
 								{{next.LastName}} |
 								{{next.Name}} |
 								<bk-link href="mailto:{{next.Email}}">{{next.Email}}</bk-link> |
+								<bk-link href="tel:{{next.PhoneNumber}}">{{next.PhoneNumber}}</bk-link> |
 								{{next.BirthDate | date: "dd/MMM/yyyy"}} |
 								{{next.PersonalNumber}} |
-								{{optionsGenderValue(next.Gender)}} |
 								{{optionsNationalityValue(next.Nationality)}} |
+								{{optionsGenderValue(next.Gender)}} |
 								{{optionsMartialStatusValue(next.MartialStatus)}} |
 								{{next.IBAN}}
 							</bk-list-byline>

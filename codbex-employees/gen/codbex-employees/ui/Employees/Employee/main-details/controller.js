@@ -50,8 +50,8 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 		Dialogs.addMessageListener({ topic: 'codbex-employees.Employees.Employee.clearDetails', handler: () => {
 			$scope.$evalAsync(() => {
 				$scope.entity = {};
-				$scope.optionsGender = [];
 				$scope.optionsNationality = [];
+				$scope.optionsGender = [];
 				$scope.optionsMartialStatus = [];
 				$scope.action = 'select';
 			});
@@ -62,8 +62,8 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 					data.entity.BirthDate = new Date(data.entity.BirthDate);
 				}
 				$scope.entity = data.entity;
-				$scope.optionsGender = data.optionsGender;
 				$scope.optionsNationality = data.optionsNationality;
+				$scope.optionsGender = data.optionsGender;
 				$scope.optionsMartialStatus = data.optionsMartialStatus;
 				$scope.action = 'select';
 			});
@@ -71,8 +71,8 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 		Dialogs.addMessageListener({ topic: 'codbex-employees.Employees.Employee.createEntity', handler: (data) => {
 			$scope.$evalAsync(() => {
 				$scope.entity = {};
-				$scope.optionsGender = data.optionsGender;
 				$scope.optionsNationality = data.optionsNationality;
+				$scope.optionsGender = data.optionsGender;
 				$scope.optionsMartialStatus = data.optionsMartialStatus;
 				$scope.action = 'create';
 			});
@@ -83,15 +83,15 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 					data.entity.BirthDate = new Date(data.entity.BirthDate);
 				}
 				$scope.entity = data.entity;
-				$scope.optionsGender = data.optionsGender;
 				$scope.optionsNationality = data.optionsNationality;
+				$scope.optionsGender = data.optionsGender;
 				$scope.optionsMartialStatus = data.optionsMartialStatus;
 				$scope.action = 'update';
 			});
 		}});
 
-		$scope.serviceGender = '/services/ts/codbex-employees/gen/codbex-employees/api/Settings/GenderController.ts';
 		$scope.serviceNationality = '/services/ts/codbex-countries/gen/codbex-countries/api/Settings/CountryController.ts';
+		$scope.serviceGender = '/services/ts/codbex-employees/gen/codbex-employees/api/Settings/GenderController.ts';
 		$scope.serviceMartialStatus = '/services/ts/codbex-employees/gen/codbex-employees/api/Settings/MartialStatusController.ts';
 
 		//-----------------Events-------------------//
@@ -150,9 +150,9 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 			});
 		};
 		
-		$scope.createGender = () => {
+		$scope.createNationality = () => {
 			Dialogs.showWindow({
-				id: 'Gender-details',
+				id: 'Country-details',
 				params: {
 					action: 'create',
 					entity: {},
@@ -160,9 +160,9 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 				closeButton: false
 			});
 		};
-		$scope.createNationality = () => {
+		$scope.createGender = () => {
 			Dialogs.showWindow({
-				id: 'Country-details',
+				id: 'Gender-details',
 				params: {
 					action: 'create',
 					entity: {},
@@ -187,23 +187,6 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 
 		//----------------Dropdowns-----------------//
 
-		$scope.refreshGender = () => {
-			$scope.optionsGender = [];
-			$http.get('/services/ts/codbex-employees/gen/codbex-employees/api/Settings/GenderController.ts').then((response) => {
-				$scope.optionsGender = response.data.map(e => ({
-					value: e.Id,
-					text: e.Name
-				}));
-			}, (error) => {
-				console.error(error);
-				const message = error.data ? error.data.message : '';
-				Dialogs.showAlert({
-					title: 'Gender',
-					message: LocaleService.t('codbex-employees:codbex-employees-model.messages.error.unableToLoad', { message: message }),
-					type: AlertTypes.Error
-				});
-			});
-		};
 		$scope.refreshNationality = () => {
 			$scope.optionsNationality = [];
 			$http.get('/services/ts/codbex-countries/gen/codbex-countries/api/Settings/CountryController.ts').then((response) => {
@@ -216,6 +199,23 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 				const message = error.data ? error.data.message : '';
 				Dialogs.showAlert({
 					title: 'Nationality',
+					message: LocaleService.t('codbex-employees:codbex-employees-model.messages.error.unableToLoad', { message: message }),
+					type: AlertTypes.Error
+				});
+			});
+		};
+		$scope.refreshGender = () => {
+			$scope.optionsGender = [];
+			$http.get('/services/ts/codbex-employees/gen/codbex-employees/api/Settings/GenderController.ts').then((response) => {
+				$scope.optionsGender = response.data.map(e => ({
+					value: e.Id,
+					text: e.Name
+				}));
+			}, (error) => {
+				console.error(error);
+				const message = error.data ? error.data.message : '';
+				Dialogs.showAlert({
+					title: 'Gender',
 					message: LocaleService.t('codbex-employees:codbex-employees-model.messages.error.unableToLoad', { message: message }),
 					type: AlertTypes.Error
 				});

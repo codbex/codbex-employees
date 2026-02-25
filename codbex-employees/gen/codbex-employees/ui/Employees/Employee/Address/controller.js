@@ -1,26 +1,26 @@
 angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntityService'])
 	.config(['EntityServiceProvider', (EntityServiceProvider) => {
-		EntityServiceProvider.baseUrl = '/services/ts/codbex-employees/gen/codbex-employees/api/Employees/ContactController.ts';
+		EntityServiceProvider.baseUrl = '/services/ts/codbex-employees/gen/codbex-employees/api/Employees/AddressController.ts';
 	}])
-	.controller('PageController', ($scope, EntityService, Extensions, LocaleService, ButtonStates) => {
+	.controller('PageController', ($scope, $http, EntityService, Extensions, LocaleService, ButtonStates) => {
 		const Dialogs = new DialogHub();
 		let translated = {
 			yes: 'Yes',
 			no: 'No',
-			deleteConfirm: 'Are you sure you want to delete Contact? This action cannot be undone.',
-			deleteTitle: 'Delete Contact?'
+			deleteConfirm: 'Are you sure you want to delete Address? This action cannot be undone.',
+			deleteTitle: 'Delete Address?'
 		};
 
 		LocaleService.onInit(() => {
 			translated.yes = LocaleService.t('codbex-employees:codbex-employees-model.defaults.yes');
 			translated.no = LocaleService.t('codbex-employees:codbex-employees-model.defaults.no');
-			translated.deleteTitle = LocaleService.t('codbex-employees:codbex-employees-model.defaults.deleteTitle', { name: '$t(codbex-employees:codbex-employees-model.t.CONTACT)' });
-			translated.deleteConfirm = LocaleService.t('codbex-employees:codbex-employees-model.messages.deleteConfirm', { name: '$t(codbex-employees:codbex-employees-model.t.CONTACT)' });
+			translated.deleteTitle = LocaleService.t('codbex-employees:codbex-employees-model.defaults.deleteTitle', { name: '$t(codbex-employees:codbex-employees-model.t.ADDRESS)' });
+			translated.deleteConfirm = LocaleService.t('codbex-employees:codbex-employees-model.messages.deleteConfirm', { name: '$t(codbex-employees:codbex-employees-model.t.ADDRESS)' });
 		});
 		//-----------------Custom Actions-------------------//
 		Extensions.getWindows(['codbex-employees-custom-action']).then((response) => {
-			$scope.pageActions = response.data.filter(e => e.perspective === 'Employees' && e.view === 'Contact' && (e.type === 'page' || e.type === undefined));
-			$scope.entityActions = response.data.filter(e => e.perspective === 'Employees' && e.view === 'Contact' && e.type === 'entity');
+			$scope.pageActions = response.data.filter(e => e.perspective === 'Employees' && e.view === 'Address' && (e.type === 'page' || e.type === undefined));
+			$scope.entityActions = response.data.filter(e => e.perspective === 'Employees' && e.view === 'Address' && e.type === 'entity');
 		});
 
 		$scope.triggerPageAction = (action) => {
@@ -73,19 +73,19 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 				$scope.data = null;
 			});
 		}});
-		Dialogs.addMessageListener({ topic: 'codbex-employees.Employees.Contact.clearDetails', handler: () => {
+		Dialogs.addMessageListener({ topic: 'codbex-employees.Employees.Address.clearDetails', handler: () => {
 			$scope.$evalAsync(() => {
 				$scope.entity = {};
 				$scope.action = 'select';
 			});
 		}});
-		Dialogs.addMessageListener({ topic: 'codbex-employees.Employees.Contact.entityCreated', handler: () => {
+		Dialogs.addMessageListener({ topic: 'codbex-employees.Employees.Address.entityCreated', handler: () => {
 			$scope.loadPage($scope.dataPage, $scope.filter);
 		}});
-		Dialogs.addMessageListener({ topic: 'codbex-employees.Employees.Contact.entityUpdated', handler: () => {
+		Dialogs.addMessageListener({ topic: 'codbex-employees.Employees.Address.entityUpdated', handler: () => {
 			$scope.loadPage($scope.dataPage, $scope.filter);
 		}});
-		Dialogs.addMessageListener({ topic: 'codbex-employees.Employees.Contact.entitySearch', handler: (data) => {
+		Dialogs.addMessageListener({ topic: 'codbex-employees.Employees.Address.entitySearch', handler: (data) => {
 			resetPagination();
 			$scope.filter = data.filter;
 			$scope.filterEntity = data.entity;
@@ -118,8 +118,8 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 				}, (error) => {
 					const message = error.data ? error.data.message : '';
 					Dialogs.showAlert({
-						title: LocaleService.t('codbex-employees:codbex-employees-model.t.CONTACT'),
-						message: LocaleService.t('codbex-employees:codbex-employees-model.messages.error.unableToLF', { name: '$t(codbex-employees:codbex-employees-model.t.CONTACT)', message: message }),
+						title: LocaleService.t('codbex-employees:codbex-employees-model.t.ADDRESS'),
+						message: LocaleService.t('codbex-employees:codbex-employees-model.messages.error.unableToLF', { name: '$t(codbex-employees:codbex-employees-model.t.ADDRESS)', message: message }),
 						type: AlertTypes.Error
 					});
 					console.error('EntityService:', error);
@@ -127,8 +127,8 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 			}, (error) => {
 				const message = error.data ? error.data.message : '';
 				Dialogs.showAlert({
-					title: LocaleService.t('codbex-employees:codbex-employees-model.t.CONTACT'),
-					message: LocaleService.t('codbex-employees:codbex-employees-model.messages.error.unableToCount', { name: '$t(codbex-employees:codbex-employees-model.t.CONTACT)', message: message }),
+					title: LocaleService.t('codbex-employees:codbex-employees-model.t.ADDRESS'),
+					message: LocaleService.t('codbex-employees:codbex-employees-model.messages.error.unableToCount', { name: '$t(codbex-employees:codbex-employees-model.t.ADDRESS)', message: message }),
 					type: AlertTypes.Error
 				});
 				console.error('EntityService:', error);
@@ -142,19 +142,23 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 		$scope.openDetails = (entity) => {
 			$scope.selectedEntity = entity;
 			Dialogs.showWindow({
-				id: 'Contact-details',
+				id: 'Address-details',
 				params: {
 					action: 'select',
 					entity: entity,
+					optionsCountry: $scope.optionsCountry,
+					optionsCity: $scope.optionsCity,
 				},
 			});
 		};
 
 		$scope.openFilter = () => {
 			Dialogs.showWindow({
-				id: 'Contact-filter',
+				id: 'Address-filter',
 				params: {
 					entity: $scope.filterEntity,
+					optionsCountry: $scope.optionsCountry,
+					optionsCity: $scope.optionsCity,
 				},
 			});
 		};
@@ -162,7 +166,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 		$scope.createEntity = () => {
 			$scope.selectedEntity = null;
 			Dialogs.showWindow({
-				id: 'Contact-details',
+				id: 'Address-details',
 				params: {
 					action: 'create',
 					entity: {
@@ -170,6 +174,8 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 					},
 					selectedMainEntityKey: 'Employee',
 					selectedMainEntityId: $scope.selectedMainEntityId,
+					optionsCountry: $scope.optionsCountry,
+					optionsCity: $scope.optionsCity,
 				},
 				closeButton: false
 			});
@@ -177,12 +183,14 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 
 		$scope.updateEntity = (entity) => {
 			Dialogs.showWindow({
-				id: 'Contact-details',
+				id: 'Address-details',
 				params: {
 					action: 'update',
 					entity: entity,
 					selectedMainEntityKey: 'Employee',
 					selectedMainEntityId: $scope.selectedMainEntityId,
+					optionsCountry: $scope.optionsCountry,
+					optionsCity: $scope.optionsCity,
 			},
 				closeButton: false
 			});
@@ -206,12 +214,12 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 				if (buttonId === 'delete-btn-yes') {
 					EntityService.delete(id).then(() => {
 						$scope.loadPage($scope.dataPage, $scope.filter);
-						Dialogs.triggerEvent('codbex-employees.Employees.Contact.clearDetails');
+						Dialogs.triggerEvent('codbex-employees.Employees.Address.clearDetails');
 					}, (error) => {
 						const message = error.data ? error.data.message : '';
 						Dialogs.showAlert({
-							title: LocaleService.t('codbex-employees:codbex-employees-model.t.CONTACT'),
-							message: LocaleService.t('codbex-employees:codbex-employees-model.messages.error.unableToDelete', { name: '$t(codbex-employees:codbex-employees-model.t.CONTACT)', message: message }),
+							title: LocaleService.t('codbex-employees:codbex-employees-model.t.ADDRESS'),
+							message: LocaleService.t('codbex-employees:codbex-employees-model.messages.error.unableToDelete', { name: '$t(codbex-employees:codbex-employees-model.t.ADDRESS)', message: message }),
 							type: AlertTypes.Error,
 						});
 						console.error('EntityService:', error);
@@ -219,4 +227,57 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 				}
 			});
 		};
+
+		//----------------Dropdowns-----------------//
+		$scope.optionsCountry = [];
+		$scope.optionsCity = [];
+
+
+		$http.get('/services/ts/codbex-countries/gen/codbex-countries/api/Settings/CountryController.ts').then((response) => {
+			$scope.optionsCountry = response.data.map(e => ({
+				value: e.Id,
+				text: e.Name
+			}));
+		}, (error) => {
+			console.error(error);
+			const message = error.data ? error.data.message : '';
+			Dialogs.showAlert({
+				title: 'Country',
+				message: LocaleService.t('codbex-employees:codbex-employees-model.messages.error.unableToLoad', { message: message }),
+				type: AlertTypes.Error
+			});
+		});
+
+		$http.get('/services/ts/codbex-cities/gen/codbex-cities/api/Settings/CityController.ts').then((response) => {
+			$scope.optionsCity = response.data.map(e => ({
+				value: e.Id,
+				text: e.Name
+			}));
+		}, (error) => {
+			console.error(error);
+			const message = error.data ? error.data.message : '';
+			Dialogs.showAlert({
+				title: 'City',
+				message: LocaleService.t('codbex-employees:codbex-employees-model.messages.error.unableToLoad', { message: message }),
+				type: AlertTypes.Error
+			});
+		});
+
+		$scope.optionsCountryValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsCountry.length; i++) {
+				if ($scope.optionsCountry[i].value === optionKey) {
+					return $scope.optionsCountry[i].text;
+				}
+			}
+			return null;
+		};
+		$scope.optionsCityValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsCity.length; i++) {
+				if ($scope.optionsCity[i].value === optionKey) {
+					return $scope.optionsCity[i].text;
+				}
+			}
+			return null;
+		};
+		//----------------Dropdowns-----------------//
 	});
