@@ -16,8 +16,8 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale']).controlle
 		$scope.entity = params.entity ?? {};
 		$scope.selectedMainEntityKey = params.selectedMainEntityKey;
 		$scope.selectedMainEntityId = params.selectedMainEntityId;
-		$scope.optionsGender = params.optionsGender;
 		$scope.optionsNationality = params.optionsNationality;
+		$scope.optionsGender = params.optionsGender;
 		$scope.optionsMartialStatus = params.optionsMartialStatus;
 	}
 
@@ -55,6 +55,10 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale']).controlle
 			const condition = { propertyName: 'Email', operator: 'LIKE', value: `%${entity.Email}%` };
 			filter.$filter.conditions.push(condition);
 		}
+		if (entity.PhoneNumber) {
+			const condition = { propertyName: 'PhoneNumber', operator: 'LIKE', value: `%${entity.PhoneNumber}%` };
+			filter.$filter.conditions.push(condition);
+		}
 		if (entity.BirthDateFrom) {
 			const condition = { propertyName: 'BirthDate', operator: 'GE', value: entity.BirthDateFrom };
 			filter.$filter.conditions.push(condition);
@@ -67,12 +71,12 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale']).controlle
 			const condition = { propertyName: 'PersonalNumber', operator: 'LIKE', value: `%${entity.PersonalNumber}%` };
 			filter.$filter.conditions.push(condition);
 		}
-		if (entity.Gender !== undefined) {
-			const condition = { propertyName: 'Gender', operator: 'EQ', value: entity.Gender };
-			filter.$filter.conditions.push(condition);
-		}
 		if (entity.Nationality !== undefined) {
 			const condition = { propertyName: 'Nationality', operator: 'EQ', value: entity.Nationality };
+			filter.$filter.conditions.push(condition);
+		}
+		if (entity.Gender !== undefined) {
+			const condition = { propertyName: 'Gender', operator: 'EQ', value: entity.Gender };
 			filter.$filter.conditions.push(condition);
 		}
 		if (entity.MartialStatus !== undefined) {

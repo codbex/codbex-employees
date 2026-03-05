@@ -28,8 +28,10 @@
 			<table bk-table display-mode="compact" inner-borders="top" outer-borders="none">
 				<thead bk-table-header sticky="true">
 					<tr bk-table-row>
-						<th bk-table-header-cell>{{ 'codbex-employees:codbex-employees-model.t.CONTACT_PHONENUMBER' | t:'PhoneNumber' }}</th>
-						<th bk-table-header-cell>{{ 'codbex-employees:codbex-employees-model.t.CONTACT_EMAIL' | t:'Email' }}</th>
+						<th bk-table-header-cell>{{ 'codbex-employees:codbex-employees-model.t.ADDRESS_COUNTRY' | t:'Country' }}</th>
+						<th bk-table-header-cell>{{ 'codbex-employees:codbex-employees-model.t.ADDRESS_CITY' | t:'City' }}</th>
+						<th bk-table-header-cell>{{ 'codbex-employees:codbex-employees-model.t.ADDRESS_ADDRESS' | t:'Address' }}</th>
+						<th bk-table-header-cell>{{ 'codbex-employees:codbex-employees-model.t.ADDRESS_POSTALCODE' | t:'PostalCode' }}</th>
 						<th bk-table-header-cell></th>
 					</tr>
 				</thead>
@@ -38,12 +40,14 @@
 						<td bk-table-cell no-data="true">{{'codbex-employees:codbex-employees-model.messages.noData' | t}}</td>
 					</tr>
 					<tr bk-table-row hoverable="true" ng-repeat="next in data track by $index" selected="next.Id === selectedEntity.Id" ng-click="selectEntity(next)">
-						<td bk-table-cell>
-							<bk-link href="tel:{{next.PhoneNumber}}">{{next.PhoneNumber}}</bk-link>
+						<td bk-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">
+							{{optionsCountryValue(next.Country)}}
 						</td>
-						<td bk-table-cell>
-							<bk-link href="mailto:{{next.Email}}">{{next.Email}}</bk-link>
+						<td bk-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">
+							{{optionsCityValue(next.City)}}
 						</td>
+						<td bk-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.Address}}</td>
+						<td bk-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.PostalCode}}</td>
 						<td bk-table-cell fit-content="true">
 							<bk-popover>
 								<bk-popover-control>

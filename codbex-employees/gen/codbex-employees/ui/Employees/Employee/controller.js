@@ -136,8 +136,8 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 			Dialogs.postMessage({ topic: 'codbex-employees.Employees.Employee.entitySelected', data: {
 				entity: entity,
 				selectedMainEntityId: entity.Id,
-				optionsGender: $scope.optionsGender,
 				optionsNationality: $scope.optionsNationality,
+				optionsGender: $scope.optionsGender,
 				optionsMartialStatus: $scope.optionsMartialStatus,
 			}});
 		};
@@ -148,8 +148,8 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 
 			Dialogs.postMessage({ topic: 'codbex-employees.Employees.Employee.createEntity', data: {
 				entity: {},
-				optionsGender: $scope.optionsGender,
 				optionsNationality: $scope.optionsNationality,
+				optionsGender: $scope.optionsGender,
 				optionsMartialStatus: $scope.optionsMartialStatus,
 			}});
 		};
@@ -158,8 +158,8 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 			$scope.action = 'update';
 			Dialogs.postMessage({ topic: 'codbex-employees.Employees.Employee.updateEntity', data: {
 				entity: $scope.selectedEntity,
-				optionsGender: $scope.optionsGender,
 				optionsNationality: $scope.optionsNationality,
+				optionsGender: $scope.optionsGender,
 				optionsMartialStatus: $scope.optionsMartialStatus,
 			}});
 		};
@@ -202,33 +202,18 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 				id: 'Employee-filter',
 				params: {
 					entity: $scope.filterEntity,
-					optionsGender: $scope.optionsGender,
 					optionsNationality: $scope.optionsNationality,
+					optionsGender: $scope.optionsGender,
 					optionsMartialStatus: $scope.optionsMartialStatus,
 				},
 			});
 		};
 
 		//----------------Dropdowns-----------------//
-		$scope.optionsGender = [];
 		$scope.optionsNationality = [];
+		$scope.optionsGender = [];
 		$scope.optionsMartialStatus = [];
 
-
-		$http.get('/services/ts/codbex-employees/gen/codbex-employees/api/Settings/GenderController.ts').then((response) => {
-			$scope.optionsGender = response.data.map(e => ({
-				value: e.Id,
-				text: e.Name
-			}));
-		}, (error) => {
-			console.error(error);
-			const message = error.data ? error.data.message : '';
-			Dialogs.showAlert({
-				title: 'Gender',
-				message: LocaleService.t('codbex-employees:codbex-employees-model.messages.error.unableToLoad', { message: message }),
-				type: AlertTypes.Error
-			});
-		});
 
 		$http.get('/services/ts/codbex-countries/gen/codbex-countries/api/Settings/CountryController.ts').then((response) => {
 			$scope.optionsNationality = response.data.map(e => ({
@@ -240,6 +225,21 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 			const message = error.data ? error.data.message : '';
 			Dialogs.showAlert({
 				title: 'Nationality',
+				message: LocaleService.t('codbex-employees:codbex-employees-model.messages.error.unableToLoad', { message: message }),
+				type: AlertTypes.Error
+			});
+		});
+
+		$http.get('/services/ts/codbex-employees/gen/codbex-employees/api/Settings/GenderController.ts').then((response) => {
+			$scope.optionsGender = response.data.map(e => ({
+				value: e.Id,
+				text: e.Name
+			}));
+		}, (error) => {
+			console.error(error);
+			const message = error.data ? error.data.message : '';
+			Dialogs.showAlert({
+				title: 'Gender',
 				message: LocaleService.t('codbex-employees:codbex-employees-model.messages.error.unableToLoad', { message: message }),
 				type: AlertTypes.Error
 			});
@@ -260,18 +260,18 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 			});
 		});
 
-		$scope.optionsGenderValue = (optionKey) => {
-			for (let i = 0; i < $scope.optionsGender.length; i++) {
-				if ($scope.optionsGender[i].value === optionKey) {
-					return $scope.optionsGender[i].text;
-				}
-			}
-			return null;
-		};
 		$scope.optionsNationalityValue = (optionKey) => {
 			for (let i = 0; i < $scope.optionsNationality.length; i++) {
 				if ($scope.optionsNationality[i].value === optionKey) {
 					return $scope.optionsNationality[i].text;
+				}
+			}
+			return null;
+		};
+		$scope.optionsGenderValue = (optionKey) => {
+			for (let i = 0; i < $scope.optionsGender.length; i++) {
+				if ($scope.optionsGender[i].value === optionKey) {
+					return $scope.optionsGender[i].text;
 				}
 			}
 			return null;
