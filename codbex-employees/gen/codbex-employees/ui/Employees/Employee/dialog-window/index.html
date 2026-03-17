@@ -23,7 +23,9 @@
                         	<bk-form-label for="idFirstName" ng-required="true" colon="true">{{ 'codbex-employees:codbex-employees-model.t.EMPLOYEE_FIRSTNAME' | t }}</bk-form-label>
                         </div>
                         <div class="fd-col fd-col-md--4 fd-col--6">
-							<bk-form-input-message state="{{ forms.details['FirstName'].$valid ? '' : 'error' }}" text="{{ 'codbex-employees:codbex-employees-model.messages.error.pattern' | t:{'rule':''} }}">
+							<bk-form-input-message
+								state="{{ forms.details['FirstName'].$valid ? '' : 'error' }}"
+								text="{{ 'codbex-employees:codbex-employees-model.messages.error.lengthMax' | t:{'max':'50.0'} }}">
 								<bk-input id="idFirstName"
 	                                name="FirstName"
 	                                state="{{ forms.details['FirstName'].$valid ? '' : 'error' }}"
@@ -31,7 +33,6 @@
 	                                ng-model="entity.FirstName"
 	                                ng-readonly="action === 'select'"
 									ng-maxlength="50.0"
-	                                input-rules="{ patterns: [''] }"
 	                                type="text"
 	                                placeholder="{{ 'codbex-employees:codbex-employees-model.messages.inputEnter' | t:{'name':'$t(codbex-employees:codbex-employees-model.t.EMPLOYEE_FIRSTNAME)'} }}">
 	                            </bk-input>
@@ -43,7 +44,9 @@
                         	<bk-form-label for="idMiddleName" ng-required="false" colon="true">{{ 'codbex-employees:codbex-employees-model.t.EMPLOYEE_MIDDLENAME' | t }}</bk-form-label>
                         </div>
                         <div class="fd-col fd-col-md--4 fd-col--6">
-							<bk-form-input-message state="{{ forms.details['MiddleName'].$valid ? '' : 'error' }}" text="{{ 'codbex-employees:codbex-employees-model.messages.error.pattern' | t:{'rule':''} }}">
+							<bk-form-input-message
+								state="{{ forms.details['MiddleName'].$valid ? '' : 'error' }}"
+								text="{{ 'codbex-employees:codbex-employees-model.messages.error.lengthMax' | t:{'max':'50.0'} }}">
 								<bk-input id="idMiddleName"
 	                                name="MiddleName"
 	                                state="{{ forms.details['MiddleName'].$valid ? '' : 'error' }}"
@@ -51,7 +54,6 @@
 	                                ng-model="entity.MiddleName"
 	                                ng-readonly="action === 'select'"
 									ng-maxlength="50.0"
-	                                input-rules="{ patterns: [''] }"
 	                                type="text"
 	                                placeholder="{{ 'codbex-employees:codbex-employees-model.messages.inputEnter' | t:{'name':'$t(codbex-employees:codbex-employees-model.t.EMPLOYEE_MIDDLENAME)'} }}">
 	                            </bk-input>
@@ -63,7 +65,9 @@
                         	<bk-form-label for="idLastName" ng-required="true" colon="true">{{ 'codbex-employees:codbex-employees-model.t.EMPLOYEE_LASTNAME' | t }}</bk-form-label>
                         </div>
                         <div class="fd-col fd-col-md--4 fd-col--6">
-							<bk-form-input-message state="{{ forms.details['LastName'].$valid ? '' : 'error' }}" text="{{ 'codbex-employees:codbex-employees-model.messages.error.pattern' | t:{'rule':''} }}">
+							<bk-form-input-message
+								state="{{ forms.details['LastName'].$valid ? '' : 'error' }}"
+								text="{{ 'codbex-employees:codbex-employees-model.messages.error.lengthMax' | t:{'max':'50.0'} }}">
 								<bk-input id="idLastName"
 	                                name="LastName"
 	                                state="{{ forms.details['LastName'].$valid ? '' : 'error' }}"
@@ -71,7 +75,6 @@
 	                                ng-model="entity.LastName"
 	                                ng-readonly="action === 'select'"
 									ng-maxlength="50.0"
-	                                input-rules="{ patterns: [''] }"
 	                                type="text"
 	                                placeholder="{{ 'codbex-employees:codbex-employees-model.messages.inputEnter' | t:{'name':'$t(codbex-employees:codbex-employees-model.t.EMPLOYEE_LASTNAME)'} }}">
 	                            </bk-input>
@@ -100,7 +103,9 @@
 							<bk-link href="mailto:{{entity.Email}}">{{entity.Email}}</bk-link>
 						</div>
                         <div ng-show="action !== 'select'" class="fd-col fd-col-md--4 fd-col--6">
-							<bk-form-input-message state="{{ forms.details['Email'].$valid ? '' : 'error' }}" text="{{ 'codbex-employees:codbex-employees-model.messages.error.pattern' | t:{'rule':''} }}">
+							<bk-form-input-message
+								state="{{ forms.details['Email'].$valid ? '' : 'error' }}"
+								text="{{ 'codbex-employees:codbex-employees-model.messages.error.lengthMax' | t:{'max':'40.0'} }}">
 								<bk-input id="idEmail"
 	                                name="Email"
 	                                state="{{ forms.details['Email'].$valid ? '' : 'error' }}"
@@ -108,7 +113,6 @@
 	                                ng-model="entity.Email"
 	                                ng-readonly="action === 'select'"
 									ng-maxlength="40.0"
-	                                input-rules="{ patterns: [''] }"
 	                                type="email"
 	                                placeholder="{{ 'codbex-employees:codbex-employees-model.messages.inputEnter' | t:{'name':'$t(codbex-employees:codbex-employees-model.t.EMPLOYEE_EMAIL)'} }}">
 	                            </bk-input>
@@ -123,7 +127,7 @@
 							<bk-link href="tel:{{entity.PhoneNumber}}">{{entity.PhoneNumber}}</bk-link>
 						</div>
                         <div ng-show="action !== 'select'" class="fd-col fd-col-md--4 fd-col--6">
-							<bk-form-input-message state="{{ forms.details['PhoneNumber'].$valid ? '' : 'error' }}" text="{{ 'codbex-employees:codbex-employees-model.messages.error.pattern' | t:{'rule':''} }}">
+							<bk-form-input-message state="{{ forms.details['PhoneNumber'].$valid ? '' : 'error' }}" text="{{ 'codbex-employees:codbex-employees-model.messages.error.pattern' | t:{'rule':'^[0-9]{0,14}$'} }}">
 								<bk-input id="idPhoneNumber"
 	                                name="PhoneNumber"
 	                                state="{{ forms.details['PhoneNumber'].$valid ? '' : 'error' }}"
@@ -160,7 +164,9 @@
                         	<bk-form-label for="idPersonalNumber" ng-required="true" colon="true">{{ 'codbex-employees:codbex-employees-model.t.EMPLOYEE_PERSONALNUMBER' | t }}</bk-form-label>
                         </div>
                         <div class="fd-col fd-col-md--4 fd-col--6">
-							<bk-form-input-message state="{{ forms.details['PersonalNumber'].$valid ? '' : 'error' }}" text="{{ 'codbex-employees:codbex-employees-model.messages.error.pattern' | t:{'rule':''} }}">
+							<bk-form-input-message
+								state="{{ forms.details['PersonalNumber'].$valid ? '' : 'error' }}"
+								text="{{ 'codbex-employees:codbex-employees-model.messages.error.lengthMax' | t:{'max':'10.0'} }}">
 								<bk-input id="idPersonalNumber"
 	                                name="PersonalNumber"
 	                                state="{{ forms.details['PersonalNumber'].$valid ? '' : 'error' }}"
@@ -168,7 +174,6 @@
 	                                ng-model="entity.PersonalNumber"
 	                                ng-readonly="action === 'select'"
 									ng-maxlength="10.0"
-	                                input-rules="{ patterns: [''] }"
 	                                type="text"
 	                                placeholder="{{ 'codbex-employees:codbex-employees-model.messages.inputEnter' | t:{'name':'$t(codbex-employees:codbex-employees-model.t.EMPLOYEE_PERSONALNUMBER)'} }}">
 	                            </bk-input>
@@ -231,7 +236,9 @@
                         	<bk-form-label for="idIBAN" ng-required="true" colon="true">{{ 'codbex-employees:codbex-employees-model.t.EMPLOYEE_IBAN' | t }}</bk-form-label>
                         </div>
                         <div class="fd-col fd-col-md--4 fd-col--6">
-							<bk-form-input-message state="{{ forms.details['IBAN'].$valid ? '' : 'error' }}" text="{{ 'codbex-employees:codbex-employees-model.messages.error.pattern' | t:{'rule':''} }}">
+							<bk-form-input-message
+								state="{{ forms.details['IBAN'].$valid ? '' : 'error' }}"
+								text="{{ 'codbex-employees:codbex-employees-model.messages.error.lengthMax' | t:{'max':'34.0'} }}">
 								<bk-input id="idIBAN"
 	                                name="IBAN"
 	                                state="{{ forms.details['IBAN'].$valid ? '' : 'error' }}"
@@ -239,7 +246,6 @@
 	                                ng-model="entity.IBAN"
 	                                ng-readonly="action === 'select'"
 									ng-maxlength="34.0"
-	                                input-rules="{ patterns: [''] }"
 	                                type="text"
 	                                placeholder="{{ 'codbex-employees:codbex-employees-model.messages.inputEnter' | t:{'name':'$t(codbex-employees:codbex-employees-model.t.EMPLOYEE_IBAN)'} }}">
 	                            </bk-input>

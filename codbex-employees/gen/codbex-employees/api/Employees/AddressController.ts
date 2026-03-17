@@ -24,7 +24,7 @@ class AddressController {
             const options: Options = {
                 limit: ctx.queryParameters["$limit"] ? parseInt(ctx.queryParameters["$limit"]) : 20,
                 offset: ctx.queryParameters["$offset"] ? parseInt(ctx.queryParameters["$offset"]) : 0,
-                language: request.getLocale().slice(0, 2)
+                language: request.getLocale().split("_")[0]
             };
 
             let Employee = parseInt(ctx.queryParameters.Employee);
@@ -99,7 +99,7 @@ class AddressController {
         try {
             const id = parseInt(ctx.pathParameters.id);
             const options: Options = {
-                language: request.getLocale().slice(0, 2)
+                language: request.getLocale().split("_")[0]
             };
             const entity = this.repository.findById(id, options);
             if (entity) {
