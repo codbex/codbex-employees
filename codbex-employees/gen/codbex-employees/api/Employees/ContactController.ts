@@ -55,7 +55,7 @@ class ContactController {
             this.checkPermissions('write');
             this.validateEntity(entity);
             entity.Id = this.repository.create(entity) as any;
-            response.setHeader('Content-Location', '/services/ts/codbex-employees/gen/codbex-employees/api/Employees/ContactService.ts/' + entity.Id);
+            response.setHeader('Content-Location', '/services/ts/codbex-employees/gen/codbex-employees/api/Employees/ContactController.ts/' + entity.Id);
             response.setStatus(response.CREATED);
             return entity;
         } catch (error: any) {
