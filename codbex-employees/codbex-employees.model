@@ -185,7 +185,7 @@
                         "relationshipName": "Employee_Gender",
                         "relationshipEntityName": "Gender",
                         "relationshipEntityPerspectiveName": "Settings",
-                        "relationshipEntityPerspectiveLabel": "Entities"
+                        "relationshipEntityPerspectiveLabel": "Settings"
                     },
                     {
                         "auditType": "NONE",
@@ -205,7 +205,7 @@
                         "relationshipName": "Employee_MartialStatus",
                         "relationshipEntityName": "MartialStatus",
                         "relationshipEntityPerspectiveName": "Settings",
-                        "relationshipEntityPerspectiveLabel": "Entities"
+                        "relationshipEntityPerspectiveLabel": "Settings"
                     },
                     {
                         "auditType": "NONE",
@@ -486,7 +486,7 @@
                 "name": "Gender",
                 "perspectiveHeader": "",
                 "perspectiveIcon": "/services/web/resources/unicons/copy.svg",
-                "perspectiveLabel": "Entities",
+                "perspectiveLabel": "Settings",
                 "perspectiveName": "Settings",
                 "perspectiveNavId": "",
                 "perspectiveOrder": "100",
@@ -548,7 +548,7 @@
                 "name": "MartialStatus",
                 "perspectiveHeader": "",
                 "perspectiveIcon": "/services/web/resources/unicons/copy.svg",
-                "perspectiveLabel": "Entities",
+                "perspectiveLabel": "Settings",
                 "perspectiveName": "Settings",
                 "perspectiveNavId": "",
                 "perspectiveOrder": "100",
