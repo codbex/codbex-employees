@@ -187,6 +187,12 @@ class ContactController {
         if (entity.Email?.length > 255) {
             throw new ValidationError(`The 'Email' exceeds the maximum length of [255] characters`);
         }
+        if (entity.CreatedBy?.length > 20) {
+            throw new ValidationError(`The 'CreatedBy' exceeds the maximum length of [20] characters`);
+        }
+        if (entity.UpdatedBy?.length > 20) {
+            throw new ValidationError(`The 'UpdatedBy' exceeds the maximum length of [20] characters`);
+        }
         for (const next of validationModules) {
             next.validate(entity);
         }

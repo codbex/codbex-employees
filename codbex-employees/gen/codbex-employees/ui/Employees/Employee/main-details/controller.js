@@ -61,6 +61,12 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 				if (data.entity.BirthDate) {
 					data.entity.BirthDate = new Date(data.entity.BirthDate);
 				}
+				if (data.entity.CreatedAt) {
+					data.entity.CreatedAt = new Date(data.entity.CreatedAt);
+				}
+				if (data.entity.UpdatedAt) {
+					data.entity.UpdatedAt = new Date(data.entity.UpdatedAt);
+				}
 				$scope.entity = data.entity;
 				$scope.optionsNationality = data.optionsNationality;
 				$scope.optionsGender = data.optionsGender;
@@ -81,6 +87,12 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 			$scope.$evalAsync(() => {
 				if (data.entity.BirthDate) {
 					data.entity.BirthDate = new Date(data.entity.BirthDate);
+				}
+				if (data.entity.CreatedAt) {
+					data.entity.CreatedAt = new Date(data.entity.CreatedAt);
+				}
+				if (data.entity.UpdatedAt) {
+					data.entity.UpdatedAt = new Date(data.entity.UpdatedAt);
 				}
 				$scope.entity = data.entity;
 				$scope.optionsNationality = data.optionsNationality;

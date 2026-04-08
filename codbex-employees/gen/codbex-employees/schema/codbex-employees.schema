@@ -73,6 +73,28 @@
                         "length": 34,
                         "unique": true,
                         "name": "EMPLOYEE_IBAN"
+                    },
+                    {
+                        "type": "TIMESTAMP",
+                        "nullable": true,
+                        "name": "EMPLOYEE_CREATEDAT"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "EMPLOYEE_CREATEDBY"
+                    },
+                    {
+                        "type": "TIMESTAMP",
+                        "nullable": true,
+                        "name": "EMPLOYEE_UPDATEDAT"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "EMPLOYEE_UPDATEDBY"
                     }
                 ]
             },
@@ -92,6 +114,28 @@
                         "length": 7,
                         "nullable": true,
                         "name": "GENDER_NAME"
+                    },
+                    {
+                        "type": "TIMESTAMP",
+                        "nullable": true,
+                        "name": "GENDER_CREATEDAT"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "GENDER_CREATEDBY"
+                    },
+                    {
+                        "type": "TIMESTAMP",
+                        "nullable": true,
+                        "name": "GENDER_UPDATEDAT"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "GENDER_UPDATEDBY"
                     }
                 ]
             },
@@ -111,6 +155,28 @@
                         "length": 20,
                         "nullable": true,
                         "name": "MARTIALSTATUS_NAME"
+                    },
+                    {
+                        "type": "TIMESTAMP",
+                        "nullable": true,
+                        "name": "MARTIALSTATUS_CREATEDAT"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "MARTIALSTATUS_CREATEDBY"
+                    },
+                    {
+                        "type": "TIMESTAMP",
+                        "nullable": true,
+                        "name": "MARTIALSTATUS_UPDATEDAT"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "MARTIALSTATUS_UPDATEDBY"
                     }
                 ]
             },
@@ -140,6 +206,28 @@
                         "type": "INTEGER",
                         "nullable": true,
                         "name": "CONTACT_EMPLOYEE"
+                    },
+                    {
+                        "type": "TIMESTAMP",
+                        "nullable": true,
+                        "name": "CONTACT_CREATEDAT"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "CONTACT_CREATEDBY"
+                    },
+                    {
+                        "type": "TIMESTAMP",
+                        "nullable": true,
+                        "name": "CONTACT_UPDATEDAT"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "CONTACT_UPDATEDBY"
                     }
                 ]
             },
@@ -176,6 +264,28 @@
                         "type": "INTEGER",
                         "nullable": true,
                         "name": "ADDRESS_EMPLOYEE"
+                    },
+                    {
+                        "type": "TIMESTAMP",
+                        "nullable": true,
+                        "name": "ADDRESS_CREATEDAT"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "ADDRESS_CREATEDBY"
+                    },
+                    {
+                        "type": "TIMESTAMP",
+                        "nullable": true,
+                        "name": "ADDRESS_UPDATEDAT"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "ADDRESS_UPDATEDBY"
                     }
                 ]
             },

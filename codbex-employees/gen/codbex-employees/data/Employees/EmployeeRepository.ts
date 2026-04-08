@@ -15,6 +15,8 @@ export class EmployeeRepository extends Repository<EmployeeEntity> {
         const entity = super.findById(id, options);
         if (entity) {
             entity.BirthDate = entity.BirthDate ? new Date(entity.BirthDate) : undefined;
+            entity.CreatedAt = entity.CreatedAt ? new Date(entity.CreatedAt) : undefined;
+            entity.UpdatedAt = entity.UpdatedAt ? new Date(entity.UpdatedAt) : undefined;
         }
         return entity;
     }
@@ -23,6 +25,8 @@ export class EmployeeRepository extends Repository<EmployeeEntity> {
         const entities = super.findAll(options);
         entities.forEach(entity => {
             entity.BirthDate = entity.BirthDate ? new Date(entity.BirthDate) : undefined;
+            entity.CreatedAt = entity.CreatedAt ? new Date(entity.CreatedAt) : undefined;
+            entity.UpdatedAt = entity.UpdatedAt ? new Date(entity.UpdatedAt) : undefined;
         });
         return entities;
     }
