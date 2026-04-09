@@ -11,24 +11,6 @@ export class MartialStatusRepository extends Repository<MartialStatusEntity> {
         super((MartialStatusEntity as EntityConstructor));
     }
 
-    public override findById(id: string | number, options?: Options): MartialStatusEntity | undefined {
-        const entity = super.findById(id, options);
-        if (entity) {
-            entity.CreatedAt = entity.CreatedAt ? new Date(entity.CreatedAt) : undefined;
-            entity.UpdatedAt = entity.UpdatedAt ? new Date(entity.UpdatedAt) : undefined;
-        }
-        return entity;
-    }
-
-    public override findAll(options?: Options): MartialStatusEntity[] {
-        const entities = super.findAll(options);
-        entities.forEach(entity => {
-            entity.CreatedAt = entity.CreatedAt ? new Date(entity.CreatedAt) : undefined;
-            entity.UpdatedAt = entity.UpdatedAt ? new Date(entity.UpdatedAt) : undefined;
-        });
-        return entities;
-    }
-
     protected override async triggerEvent(data: EntityEvent<MartialStatusEntity>): Promise<void> {
         const triggerExtensions = await Extensions.loadExtensionModules('codbex-employees-Settings-MartialStatus', ['trigger']);
         triggerExtensions.forEach(triggerExtension => {

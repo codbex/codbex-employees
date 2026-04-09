@@ -1,39 +1,16 @@
 {
   "tablePrefix": "CODBEX_",
   "brand": "codbex",
-  "brandUrl": "https://www.codbex.com/",
-  "title": "Employees Management Module",
-  "description": "Managing Employees Data",
-  "fileName": "codbex-employees",
-  "genFolderName": "codbex-employees",
-  "dataSource": "DefaultDB",
-  "roles": [
-    {
-      "entityName": "Employee",
-      "roleRead": "codbex-employees.Employees.EmployeeReadOnly",
-      "roleWrite": "codbex-employees.Employees.EmployeeFullAccess"
-    },
-    {
-      "entityName": "Gender",
-      "roleRead": "codbex-employees.EmployeesSettings.GenderReadOnly",
-      "roleWrite": "codbex-employees.EmployeesSettings.GenderFullAccess"
-    },
-    {
-      "entityName": "MartialStatus",
-      "roleRead": "codbex-employees.EmployeesSettings.MartialStatusReadOnly",
-      "roleWrite": "codbex-employees.EmployeesSettings.MartialStatusFullAccess"
-    },
-    {
-      "entityName": "Contact",
-      "roleRead": "codbex-employees.Employees.ContactReadOnly",
-      "roleWrite": "codbex-employees.Employees.ContactFullAccess"
-    }
-  ],
-  "tprefix": "codbex-employees-model",
+  "brandUrl": "https://www.codbex.com",
+  "title": "Employee Management System",
+  "description": "Managing employee data",
   "projectName": "codbex-employees",
   "workspaceName": "workspace",
   "filePath": "codbex-employees.model",
   "templateId": "template-application-angular-v2/template/template.js",
+  "fileName": "codbex-employees",
+  "genFolderName": "codbex-employees",
+  "dataSource": "DefaultDB",
   "perspectives": {
     "Employees": {
       "views": [
@@ -84,6 +61,29 @@
       "role": ""
     }
   },
+  "roles": [
+    {
+      "entityName": "Employee",
+      "roleRead": "codbex-employees.Employees.EmployeeReadOnly",
+      "roleWrite": "codbex-employees.Employees.EmployeeFullAccess"
+    },
+    {
+      "entityName": "Gender",
+      "roleRead": "codbex-employees.EmployeesSettings.GenderReadOnly",
+      "roleWrite": "codbex-employees.EmployeesSettings.GenderFullAccess"
+    },
+    {
+      "entityName": "MartialStatus",
+      "roleRead": "codbex-employees.EmployeesSettings.MartialStatusReadOnly",
+      "roleWrite": "codbex-employees.EmployeesSettings.MartialStatusFullAccess"
+    },
+    {
+      "entityName": "Contact",
+      "roleRead": "codbex-employees.Employees.ContactReadOnly",
+      "roleWrite": "codbex-employees.Employees.ContactFullAccess"
+    }
+  ],
+  "tprefix": "codbex-employees-model",
   "models": [
     {
       "properties": [
@@ -1462,118 +1462,6 @@
           "minLength": 0,
           "maxLength": 7,
           "inputRule": ""
-        },
-        {
-          "auditType": "CREATED_AT",
-          "dataName": "GENDER_CREATEDAT",
-          "dataNullable": true,
-          "dataType": "TIMESTAMP",
-          "description": "",
-          "isReadOnlyProperty": true,
-          "name": "CreatedAt",
-          "tooltip": "",
-          "widgetIsMajor": true,
-          "widgetLength": "20",
-          "widgetSize": "",
-          "widgetType": "TEXTBOX",
-          "dataNotNull": false,
-          "dataAutoIncrement": false,
-          "dataPrimaryKey": false,
-          "dataUnique": false,
-          "isRequiredProperty": false,
-          "isCalculatedProperty": false,
-          "widgetLabel": "CreatedAt",
-          "widgetDropdownUrl": "",
-          "widgetDropdownControllerUrl": "",
-          "dataTypeJava": "timestamp",
-          "dataTypeTypescript": "Date",
-          "isDateType": true,
-          "inputRule": ""
-        },
-        {
-          "auditType": "CREATED_BY",
-          "dataLength": "20",
-          "dataName": "GENDER_CREATEDBY",
-          "dataNullable": true,
-          "dataType": "VARCHAR",
-          "description": "",
-          "isReadOnlyProperty": true,
-          "name": "CreatedBy",
-          "tooltip": "",
-          "widgetIsMajor": true,
-          "widgetLength": "20",
-          "widgetSize": "",
-          "widgetType": "TEXTBOX",
-          "dataNotNull": false,
-          "dataAutoIncrement": false,
-          "dataPrimaryKey": false,
-          "dataUnique": false,
-          "isRequiredProperty": false,
-          "isCalculatedProperty": false,
-          "widgetLabel": "CreatedBy",
-          "widgetDropdownUrl": "",
-          "widgetDropdownControllerUrl": "",
-          "dataTypeJava": "string",
-          "dataTypeTypescript": "string",
-          "minLength": 0,
-          "maxLength": 20,
-          "inputRule": ""
-        },
-        {
-          "auditType": "UPDATED_AT",
-          "dataName": "GENDER_UPDATEDAT",
-          "dataNullable": true,
-          "dataType": "TIMESTAMP",
-          "description": "",
-          "isReadOnlyProperty": true,
-          "name": "UpdatedAt",
-          "tooltip": "",
-          "widgetIsMajor": true,
-          "widgetLength": "20",
-          "widgetSize": "",
-          "widgetType": "TEXTBOX",
-          "dataNotNull": false,
-          "dataAutoIncrement": false,
-          "dataPrimaryKey": false,
-          "dataUnique": false,
-          "isRequiredProperty": false,
-          "isCalculatedProperty": false,
-          "widgetLabel": "UpdatedAt",
-          "widgetDropdownUrl": "",
-          "widgetDropdownControllerUrl": "",
-          "dataTypeJava": "timestamp",
-          "dataTypeTypescript": "Date",
-          "isDateType": true,
-          "inputRule": ""
-        },
-        {
-          "auditType": "UPDATED_BY",
-          "dataLength": "20",
-          "dataName": "GENDER_UPDATEDBY",
-          "dataNullable": true,
-          "dataType": "VARCHAR",
-          "description": "",
-          "isReadOnlyProperty": true,
-          "name": "UpdatedBy",
-          "tooltip": "",
-          "widgetIsMajor": true,
-          "widgetLength": "20",
-          "widgetSize": "",
-          "widgetType": "TEXTBOX",
-          "dataNotNull": false,
-          "dataAutoIncrement": false,
-          "dataPrimaryKey": false,
-          "dataUnique": false,
-          "isRequiredProperty": false,
-          "isCalculatedProperty": false,
-          "widgetLabel": "UpdatedBy",
-          "widgetDropdownUrl": "",
-          "widgetDropdownControllerUrl": "",
-          "dataTypeJava": "string",
-          "dataTypeTypescript": "string",
-          "minLength": 0,
-          "maxLength": 20,
-          "inputRule": ""
         }
       ],
       "caption": "Manage entity Gender",
@@ -1607,8 +1495,7 @@
       "primaryKeys": [
         "Id"
       ],
-      "primaryKeysString": "Id",
-      "hasDates": true
+      "primaryKeysString": "Id"
     },
     {
       "properties": [
@@ -1666,118 +1553,6 @@
           "minLength": 0,
           "maxLength": 20,
           "inputRule": ""
-        },
-        {
-          "auditType": "CREATED_AT",
-          "dataName": "MARTIALSTATUS_CREATEDAT",
-          "dataNullable": true,
-          "dataType": "TIMESTAMP",
-          "description": "",
-          "isReadOnlyProperty": true,
-          "name": "CreatedAt",
-          "tooltip": "",
-          "widgetIsMajor": true,
-          "widgetLength": "20",
-          "widgetSize": "",
-          "widgetType": "TEXTBOX",
-          "dataNotNull": false,
-          "dataAutoIncrement": false,
-          "dataPrimaryKey": false,
-          "dataUnique": false,
-          "isRequiredProperty": false,
-          "isCalculatedProperty": false,
-          "widgetLabel": "CreatedAt",
-          "widgetDropdownUrl": "",
-          "widgetDropdownControllerUrl": "",
-          "dataTypeJava": "timestamp",
-          "dataTypeTypescript": "Date",
-          "isDateType": true,
-          "inputRule": ""
-        },
-        {
-          "auditType": "CREATED_BY",
-          "dataLength": "20",
-          "dataName": "MARTIALSTATUS_CREATEDBY",
-          "dataNullable": true,
-          "dataType": "VARCHAR",
-          "description": "",
-          "isReadOnlyProperty": true,
-          "name": "CreatedBy",
-          "tooltip": "",
-          "widgetIsMajor": true,
-          "widgetLength": "20",
-          "widgetSize": "",
-          "widgetType": "TEXTBOX",
-          "dataNotNull": false,
-          "dataAutoIncrement": false,
-          "dataPrimaryKey": false,
-          "dataUnique": false,
-          "isRequiredProperty": false,
-          "isCalculatedProperty": false,
-          "widgetLabel": "CreatedBy",
-          "widgetDropdownUrl": "",
-          "widgetDropdownControllerUrl": "",
-          "dataTypeJava": "string",
-          "dataTypeTypescript": "string",
-          "minLength": 0,
-          "maxLength": 20,
-          "inputRule": ""
-        },
-        {
-          "auditType": "UPDATED_AT",
-          "dataName": "MARTIALSTATUS_UPDATEDAT",
-          "dataNullable": true,
-          "dataType": "TIMESTAMP",
-          "description": "",
-          "isReadOnlyProperty": true,
-          "name": "UpdatedAt",
-          "tooltip": "",
-          "widgetIsMajor": true,
-          "widgetLength": "20",
-          "widgetSize": "",
-          "widgetType": "TEXTBOX",
-          "dataNotNull": false,
-          "dataAutoIncrement": false,
-          "dataPrimaryKey": false,
-          "dataUnique": false,
-          "isRequiredProperty": false,
-          "isCalculatedProperty": false,
-          "widgetLabel": "UpdatedAt",
-          "widgetDropdownUrl": "",
-          "widgetDropdownControllerUrl": "",
-          "dataTypeJava": "timestamp",
-          "dataTypeTypescript": "Date",
-          "isDateType": true,
-          "inputRule": ""
-        },
-        {
-          "auditType": "UPDATED_BY",
-          "dataLength": "20",
-          "dataName": "MARTIALSTATUS_UPDATEDBY",
-          "dataNullable": true,
-          "dataType": "VARCHAR",
-          "description": "",
-          "isReadOnlyProperty": true,
-          "name": "UpdatedBy",
-          "tooltip": "",
-          "widgetIsMajor": true,
-          "widgetLength": "20",
-          "widgetSize": "",
-          "widgetType": "TEXTBOX",
-          "dataNotNull": false,
-          "dataAutoIncrement": false,
-          "dataPrimaryKey": false,
-          "dataUnique": false,
-          "isRequiredProperty": false,
-          "isCalculatedProperty": false,
-          "widgetLabel": "UpdatedBy",
-          "widgetDropdownUrl": "",
-          "widgetDropdownControllerUrl": "",
-          "dataTypeJava": "string",
-          "dataTypeTypescript": "string",
-          "minLength": 0,
-          "maxLength": 20,
-          "inputRule": ""
         }
       ],
       "caption": "Manage entity MartialStatus",
@@ -1811,8 +1586,7 @@
       "primaryKeys": [
         "Id"
       ],
-      "primaryKeysString": "Id",
-      "hasDates": true
+      "primaryKeysString": "Id"
     },
     {
       "properties": [

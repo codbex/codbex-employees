@@ -23,44 +23,6 @@ export class MartialStatusEntity {
     })
     public Name!: string;
 
-    @Documentation('CreatedAt')
-    @Column({
-        name: 'MARTIALSTATUS_CREATEDAT',
-        type: 'timestamp',
-        nullable: true,
-    })
-    @CreatedAt()
-    public CreatedAt?: Date;
-
-    @Documentation('CreatedBy')
-    @Column({
-        name: 'MARTIALSTATUS_CREATEDBY',
-        type: 'string',
-        length: 20,
-        nullable: true,
-    })
-    @CreatedBy()
-    public CreatedBy?: string;
-
-    @Documentation('UpdatedAt')
-    @Column({
-        name: 'MARTIALSTATUS_UPDATEDAT',
-        type: 'timestamp',
-        nullable: true,
-    })
-    @UpdatedAt()
-    public UpdatedAt?: Date;
-
-    @Documentation('UpdatedBy')
-    @Column({
-        name: 'MARTIALSTATUS_UPDATEDBY',
-        type: 'string',
-        length: 20,
-        nullable: true,
-    })
-    @UpdatedBy()
-    public UpdatedBy?: string;
-
 }
 
 (new MartialStatusEntity());

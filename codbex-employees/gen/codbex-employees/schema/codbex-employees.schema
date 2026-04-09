@@ -114,28 +114,6 @@
                         "length": 7,
                         "nullable": true,
                         "name": "GENDER_NAME"
-                    },
-                    {
-                        "type": "TIMESTAMP",
-                        "nullable": true,
-                        "name": "GENDER_CREATEDAT"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 20,
-                        "nullable": true,
-                        "name": "GENDER_CREATEDBY"
-                    },
-                    {
-                        "type": "TIMESTAMP",
-                        "nullable": true,
-                        "name": "GENDER_UPDATEDAT"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 20,
-                        "nullable": true,
-                        "name": "GENDER_UPDATEDBY"
                     }
                 ]
             },
@@ -155,28 +133,6 @@
                         "length": 20,
                         "nullable": true,
                         "name": "MARTIALSTATUS_NAME"
-                    },
-                    {
-                        "type": "TIMESTAMP",
-                        "nullable": true,
-                        "name": "MARTIALSTATUS_CREATEDAT"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 20,
-                        "nullable": true,
-                        "name": "MARTIALSTATUS_CREATEDBY"
-                    },
-                    {
-                        "type": "TIMESTAMP",
-                        "nullable": true,
-                        "name": "MARTIALSTATUS_UPDATEDAT"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 20,
-                        "nullable": true,
-                        "name": "MARTIALSTATUS_UPDATEDBY"
                     }
                 ]
             },
