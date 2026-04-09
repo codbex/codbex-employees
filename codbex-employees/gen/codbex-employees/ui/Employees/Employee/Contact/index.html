@@ -30,6 +30,10 @@
 					<tr bk-table-row>
 						<th bk-table-header-cell>{{ 'codbex-employees:codbex-employees-model.t.CONTACT_PHONENUMBER' | t:'PhoneNumber' }}</th>
 						<th bk-table-header-cell>{{ 'codbex-employees:codbex-employees-model.t.CONTACT_EMAIL' | t:'Email' }}</th>
+						<th bk-table-header-cell>{{ 'codbex-employees:codbex-employees-model.t.CONTACT_CREATEDAT' | t:'CreatedAt' }}</th>
+						<th bk-table-header-cell>{{ 'codbex-employees:codbex-employees-model.t.CONTACT_CREATEDBY' | t:'CreatedBy' }}</th>
+						<th bk-table-header-cell>{{ 'codbex-employees:codbex-employees-model.t.CONTACT_UPDATEDAT' | t:'UpdatedAt' }}</th>
+						<th bk-table-header-cell>{{ 'codbex-employees:codbex-employees-model.t.CONTACT_UPDATEDBY' | t:'UpdatedBy' }}</th>
 						<th bk-table-header-cell></th>
 					</tr>
 				</thead>
@@ -44,6 +48,10 @@
 						<td bk-table-cell>
 							<bk-link href="mailto:{{next.Email}}">{{next.Email}}</bk-link>
 						</td>
+						<td bk-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.CreatedAt}}</td>
+						<td bk-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.CreatedBy}}</td>
+						<td bk-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.UpdatedAt}}</td>
+						<td bk-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.UpdatedBy}}</td>
 						<td bk-table-cell fit-content="true">
 							<bk-popover>
 								<bk-popover-control>

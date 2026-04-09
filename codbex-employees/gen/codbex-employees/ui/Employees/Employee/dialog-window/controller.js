@@ -34,6 +34,12 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 			if (params.entity.BirthDate) {
 				params.entity.BirthDate = new Date(params.entity.BirthDate);
 			}
+			if (params.entity.CreatedAt) {
+				params.entity.CreatedAt = new Date(params.entity.CreatedAt);
+			}
+			if (params.entity.UpdatedAt) {
+				params.entity.UpdatedAt = new Date(params.entity.UpdatedAt);
+			}
 			$scope.entity = params.entity;
 			$scope.selectedMainEntityKey = params.selectedMainEntityKey;
 			$scope.selectedMainEntityId = params.selectedMainEntityId;
