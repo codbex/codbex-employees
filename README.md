@@ -21,7 +21,7 @@
 | FirstName      | VARCHAR   | Length: 50, Not Null       | First name of the employee         |
 | MiddleName     | VARCHAR   | Length: 50, Nullable       | Middle name of the employee        |
 | LastName       | VARCHAR   | Length: 50, Not Null       | Last name of the employee          |
-| Name           | VARCHAR   | Length: 70, Nullable       | Full name of the employee          |
+| Name           | VARCHAR   | Calculated, Length: 70, Nullable       | Full name of the employee          |
 | Email          | VARCHAR   | Length: 40, Unique, Not Null | Email address of the employee      |
 | PhoneNumber    | VARCHAR   | Length: 20, Unique, Not Null | Phone number of the employee       |
 | BirthDate      | DATE      | Not Null                   | Birthdate of the employee          |
