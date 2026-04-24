@@ -30,52 +30,52 @@
 | Gender         | INTEGER   | Not Null, FK               | References gender                  |
 | MaritalStatus  | INTEGER   | Not Null, FK               | References marital status          |
 | IBAN           | VARCHAR   | Length: 34, Unique, Not Null | IBAN of the employee               |
-| CreatedAt      | TIMESTAMP | Nullable                   | Creation timestamp                 |
-| CreatedBy      | VARCHAR   | Length: 20, Nullable       | Created by user                    |
-| UpdatedAt      | TIMESTAMP | Nullable                   | Last update timestamp              |
-| UpdatedBy      | VARCHAR   | Length: 20, Nullable       | Updated by user                    |
+| CreatedAt      | TIMESTAMP | Audit, Nullable                   | Creation timestamp                 |
+| CreatedBy      | VARCHAR   | Audit, Length: 20, Nullable       | Created by user                    |
+| UpdatedAt      | TIMESTAMP | Audit, Nullable                   | Last update timestamp              |
+| UpdatedBy      | VARCHAR   | Audit, Length: 20, Nullable       | Updated by user                    |
 
 ### Entity: `Gender`
 
 | Field | Type    | Details                | Description                  |
 | ----- | ------- | ---------------------- | ---------------------------- |
-| Id    | INTEGER | PK, Identity, Nullable | Unique identifier for gender |
+| Id    | INTEGER | PK, Identity | Unique identifier for gender |
 | Name  | VARCHAR | Length: 7, Nullable    | Name of the gender           |
 
 ### Entity: `MartialStatus`
 
 | Field | Type    | Details                | Description                          |
 | ----- | ------- | ---------------------- | ------------------------------------ |
-| Id    | INTEGER | PK, Identity, Nullable | Unique identifier for marital status |
+| Id    | INTEGER | PK, Identity | Unique identifier for marital status |
 | Name  | VARCHAR | Length: 20, Nullable   | Name of the marital status           |
 
 ### Entity: `Contact`
 
 | Field       | Type      | Details                       | Description                   |
 | ----------- | --------- | ----------------------------- | ----------------------------- |
-| Id          | INTEGER   | PK, Identity, Nullable        | Unique identifier for contact |
+| Id          | INTEGER   | PK, Identity        | Unique identifier for contact |
 | PhoneNumber | VARCHAR   | Length: 20, Not Null          | Contact phone number          |
 | Email       | VARCHAR   | Length: 255, Unique, Not Null | Contact email                 |
 | Employee    | INTEGER   | Nullable, FK                  | References employee           |
-| CreatedAt   | TIMESTAMP | Nullable                      | Creation timestamp            |
-| CreatedBy   | VARCHAR   | Length: 20, Nullable          | Created by user               |
-| UpdatedAt   | TIMESTAMP | Nullable                      | Last update timestamp         |
-| UpdatedBy   | VARCHAR   | Length: 20, Nullable          | Updated by user               |
+| CreatedAt   | TIMESTAMP | Audit, Nullable                      | Creation timestamp            |
+| CreatedBy   | VARCHAR   | Audit, Length: 20, Nullable          | Created by user               |
+| UpdatedAt   | TIMESTAMP | Audit, Nullable                      | Last update timestamp         |
+| UpdatedBy   | VARCHAR   | Audit, Length: 20, Nullable          | Updated by user               |
 
 ### Entity: `Address`
 
 | Field      | Type      | Details                | Description                   |
 | ---------- | --------- | ---------------------- | ----------------------------- |
-| Id         | INTEGER   | PK, Identity, Nullable | Unique identifier for address |
+| Id         | INTEGER   | PK, Identity | Unique identifier for address |
 | Country    | INTEGER   | Not Null, FK           | References country            |
 | City       | INTEGER   | Not Null, FK           | References city               |
 | Address    | VARCHAR   | Length: 255, Not Null  | Street address                |
 | PostalCode | VARCHAR   | Length: 12, Not Null   | Postal code                   |
 | Employee   | INTEGER   | Nullable, FK           | References employee           |
-| CreatedAt  | TIMESTAMP | Nullable               | Creation timestamp            |
-| CreatedBy  | VARCHAR   | Length: 20, Nullable   | Created by user               |
-| UpdatedAt  | TIMESTAMP | Nullable               | Last update timestamp         |
-| UpdatedBy  | VARCHAR   | Length: 20, Nullable   | Updated by user               |
+| CreatedAt  | TIMESTAMP | Audit, Nullable               | Creation timestamp            |
+| CreatedBy  | VARCHAR   | Audit, Length: 20, Nullable   | Created by user               |
+| UpdatedAt  | TIMESTAMP | Audit, Nullable               | Last update timestamp         |
+| UpdatedBy  | VARCHAR   | Audit, Length: 20, Nullable   | Updated by user               |
 
 
 
