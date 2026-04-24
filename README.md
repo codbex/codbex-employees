@@ -30,10 +30,10 @@
 | Gender         | INTEGER   | Not Null, FK               | References gender                  |
 | MaritalStatus  | INTEGER   | Not Null, FK               | References marital status          |
 | IBAN           | VARCHAR   | Length: 34, Unique, Not Null | IBAN of the employee               |
-| CreatedAt      | TIMESTAMP | Audit, Nullable                   | Creation timestamp                 |
-| CreatedBy      | VARCHAR   | Audit, Length: 20, Nullable       | Created by user                    |
-| UpdatedAt      | TIMESTAMP | Audit, Nullable                   | Last update timestamp              |
-| UpdatedBy      | VARCHAR   | Audit, Length: 20, Nullable       | Updated by user                    |
+| CreatedAt      | TIMESTAMP | Audit, Nullable                   | Timestamp when the entry was created.                 |
+| CreatedBy      | VARCHAR   | Audit, Length: 20, Nullable       | User who created the entry.                    |
+| UpdatedAt      | TIMESTAMP | Audit, Nullable                   | Timestamp when the entry was updated.             |
+| UpdatedBy      | VARCHAR   | Audit, Length: 20, Nullable       | User who updated the entry.                    |
 
 ### Entity: `Gender`
 
@@ -57,10 +57,10 @@
 | PhoneNumber | VARCHAR   | Length: 20, Not Null          | Contact phone number          |
 | Email       | VARCHAR   | Length: 255, Unique, Not Null | Contact email                 |
 | Employee    | INTEGER   | Nullable, FK                  | References employee           |
-| CreatedAt   | TIMESTAMP | Audit, Nullable                      | Creation timestamp            |
-| CreatedBy   | VARCHAR   | Audit, Length: 20, Nullable          | Created by user               |
-| UpdatedAt   | TIMESTAMP | Audit, Nullable                      | Last update timestamp         |
-| UpdatedBy   | VARCHAR   | Audit, Length: 20, Nullable          | Updated by user               |
+| CreatedAt   | TIMESTAMP | Audit, Nullable                      | Timestamp when the entry was created.           |
+| CreatedBy   | VARCHAR   | Audit, Length: 20, Nullable          | User who created the entry.               |
+| UpdatedAt   | TIMESTAMP | Audit, Nullable                      | Timestamp when the entry was updated.   |
+| UpdatedBy   | VARCHAR   | Audit, Length: 20, Nullable          | User who updated the entry.               |
 
 ### Entity: `Address`
 
@@ -69,13 +69,13 @@
 | Id         | INTEGER   | PK, Identity | Unique identifier for address |
 | Country    | INTEGER   | Not Null, FK           | References country            |
 | City       | INTEGER   | Not Null, FK           | References city               |
-| Address    | VARCHAR   | Length: 255, Not Null  | Street address                |
+| Address    | VARCHAR   | Length: 255, Not Null  | Address                |
 | PostalCode | VARCHAR   | Length: 12, Not Null   | Postal code                   |
 | Employee   | INTEGER   | Nullable, FK           | References employee           |
-| CreatedAt  | TIMESTAMP | Audit, Nullable               | Creation timestamp            |
-| CreatedBy  | VARCHAR   | Audit, Length: 20, Nullable   | Created by user               |
-| UpdatedAt  | TIMESTAMP | Audit, Nullable               | Last update timestamp         |
-| UpdatedBy  | VARCHAR   | Audit, Length: 20, Nullable   | Updated by user               |
+| CreatedAt  | TIMESTAMP | Audit, Nullable               | Timestamp when the entry was created.         |
+| CreatedBy  | VARCHAR   | Audit, Length: 20, Nullable   | User who created the entry.              |
+| UpdatedAt  | TIMESTAMP | Audit, Nullable               | Timestamp when the entry was updated.     |
+| UpdatedBy  | VARCHAR   | Audit, Length: 20, Nullable   | User who updated the entry.              |
 
 
 
