@@ -102,6 +102,75 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 						$scope.data = [];
 						$scope.dataReset = false;
 					}
+					if (optionsNationalityHasMore) {
+						const optionsNationalitySearchValues = Array.from(new Set(response.data.map(e => e.Nationality)));
+						if (optionsNationalitySearchValues.length > 0) {
+							$http.post('/services/ts/codbex-countries/gen/codbex-countries/api/Settings/CountryController.ts/search', {
+								conditions: [
+									{ propertyName: 'Id', operator: 'IN', value: optionsNationalitySearchValues }
+								]
+							}).then((response) => {
+								$scope.optionsNationality.push(...response.data.map(e => ({
+									value: e.Id,
+									text: e.Name
+								})));
+							}, (error) => {
+								console.error(error);
+								const message = error.data ? error.data.message : '';
+								Dialogs.showAlert({
+									title: 'Nationality',
+									message: LocaleService.t('codbex-employees:codbex-employees-model.messages.error.unableToLoad', { message: message }),
+									type: AlertTypes.Error
+								});
+							});
+						}
+					}
+					if (optionsGenderHasMore) {
+						const optionsGenderSearchValues = Array.from(new Set(response.data.map(e => e.Gender)));
+						if (optionsGenderSearchValues.length > 0) {
+							$http.post('/services/ts/codbex-employees/gen/codbex-employees/api/Settings/GenderController.ts/search', {
+								conditions: [
+									{ propertyName: 'Id', operator: 'IN', value: optionsGenderSearchValues }
+								]
+							}).then((response) => {
+								$scope.optionsGender.push(...response.data.map(e => ({
+									value: e.Id,
+									text: e.Name
+								})));
+							}, (error) => {
+								console.error(error);
+								const message = error.data ? error.data.message : '';
+								Dialogs.showAlert({
+									title: 'Gender',
+									message: LocaleService.t('codbex-employees:codbex-employees-model.messages.error.unableToLoad', { message: message }),
+									type: AlertTypes.Error
+								});
+							});
+						}
+					}
+					if (optionsMartialStatusHasMore) {
+						const optionsMartialStatusSearchValues = Array.from(new Set(response.data.map(e => e.MartialStatus)));
+						if (optionsMartialStatusSearchValues.length > 0) {
+							$http.post('/services/ts/codbex-employees/gen/codbex-employees/api/Settings/MartialStatusController.ts/search', {
+								conditions: [
+									{ propertyName: 'Id', operator: 'IN', value: optionsMartialStatusSearchValues }
+								]
+							}).then((response) => {
+								$scope.optionsMartialStatus.push(...response.data.map(e => ({
+									value: e.Id,
+									text: e.Name
+								})));
+							}, (error) => {
+								console.error(error);
+								const message = error.data ? error.data.message : '';
+								Dialogs.showAlert({
+									title: 'MartialStatus',
+									message: LocaleService.t('codbex-employees:codbex-employees-model.messages.error.unableToLoad', { message: message }),
+									type: AlertTypes.Error
+								});
+							});
+						}
+					}
 					response.data.forEach(e => {
 						if (e.BirthDate) {
 							e.BirthDate = new Date(e.BirthDate);
@@ -220,12 +289,25 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 		$scope.optionsGender = [];
 		$scope.optionsMartialStatus = [];
 
+		let optionsNationalityHasMore = true;
 
-		$http.get('/services/ts/codbex-countries/gen/codbex-countries/api/Settings/CountryController.ts').then((response) => {
-			$scope.optionsNationality = response.data.map(e => ({
-				value: e.Id,
-				text: e.Name
-			}));
+		$http.get('/services/ts/codbex-countries/gen/codbex-countries/api/Settings/CountryController.ts/count').then((response) => {
+			const optionsNationalityCount = response.data.count;
+			$http.get('/services/ts/codbex-countries/gen/codbex-countries/api/Settings/CountryController.ts').then((response) => {
+				$scope.optionsNationality = response.data.map(e => ({
+					value: e.Id,
+					text: e.Name
+				}));
+				optionsNationalityHasMore = optionsNationalityCount > $scope.optionsNationality.length;
+			}, (error) => {
+				console.error(error);
+				const message = error.data ? error.data.message : '';
+				Dialogs.showAlert({
+					title: 'Nationality',
+					message: LocaleService.t('codbex-employees:codbex-employees-model.messages.error.unableToLoad', { message: message }),
+					type: AlertTypes.Error
+				});
+			});
 		}, (error) => {
 			console.error(error);
 			const message = error.data ? error.data.message : '';
@@ -235,12 +317,25 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 				type: AlertTypes.Error
 			});
 		});
+		let optionsGenderHasMore = true;
 
-		$http.get('/services/ts/codbex-employees/gen/codbex-employees/api/Settings/GenderController.ts').then((response) => {
-			$scope.optionsGender = response.data.map(e => ({
-				value: e.Id,
-				text: e.Name
-			}));
+		$http.get('/services/ts/codbex-employees/gen/codbex-employees/api/Settings/GenderController.ts/count').then((response) => {
+			const optionsGenderCount = response.data.count;
+			$http.get('/services/ts/codbex-employees/gen/codbex-employees/api/Settings/GenderController.ts').then((response) => {
+				$scope.optionsGender = response.data.map(e => ({
+					value: e.Id,
+					text: e.Name
+				}));
+				optionsGenderHasMore = optionsGenderCount > $scope.optionsGender.length;
+			}, (error) => {
+				console.error(error);
+				const message = error.data ? error.data.message : '';
+				Dialogs.showAlert({
+					title: 'Gender',
+					message: LocaleService.t('codbex-employees:codbex-employees-model.messages.error.unableToLoad', { message: message }),
+					type: AlertTypes.Error
+				});
+			});
 		}, (error) => {
 			console.error(error);
 			const message = error.data ? error.data.message : '';
@@ -250,12 +345,25 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 				type: AlertTypes.Error
 			});
 		});
+		let optionsMartialStatusHasMore = true;
 
-		$http.get('/services/ts/codbex-employees/gen/codbex-employees/api/Settings/MartialStatusController.ts').then((response) => {
-			$scope.optionsMartialStatus = response.data.map(e => ({
-				value: e.Id,
-				text: e.Name
-			}));
+		$http.get('/services/ts/codbex-employees/gen/codbex-employees/api/Settings/MartialStatusController.ts/count').then((response) => {
+			const optionsMartialStatusCount = response.data.count;
+			$http.get('/services/ts/codbex-employees/gen/codbex-employees/api/Settings/MartialStatusController.ts').then((response) => {
+				$scope.optionsMartialStatus = response.data.map(e => ({
+					value: e.Id,
+					text: e.Name
+				}));
+				optionsMartialStatusHasMore = optionsMartialStatusCount > $scope.optionsMartialStatus.length;
+			}, (error) => {
+				console.error(error);
+				const message = error.data ? error.data.message : '';
+				Dialogs.showAlert({
+					title: 'MartialStatus',
+					message: LocaleService.t('codbex-employees:codbex-employees-model.messages.error.unableToLoad', { message: message }),
+					type: AlertTypes.Error
+				});
+			});
 		}, (error) => {
 			console.error(error);
 			const message = error.data ? error.data.message : '';

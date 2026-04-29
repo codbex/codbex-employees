@@ -114,6 +114,52 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 				filter.$filter.offset = (pageNumber - 1) * $scope.dataLimit;
 				filter.$filter.limit = $scope.dataLimit;
 				EntityService.search(filter).then((response) => {
+					if (optionsCountryHasMore) {
+						const optionsCountrySearchValues = Array.from(new Set(response.data.map(e => e.Country)));
+						if (optionsCountrySearchValues.length > 0) {
+							$http.post('/services/ts/codbex-countries/gen/codbex-countries/api/Settings/CountryController.ts/search', {
+								conditions: [
+									{ propertyName: 'Id', operator: 'IN', value: optionsCountrySearchValues }
+								]
+							}).then((response) => {
+								$scope.optionsCountry.push(...response.data.map(e => ({
+									value: e.Id,
+									text: e.Name
+								})));
+							}, (error) => {
+								console.error(error);
+								const message = error.data ? error.data.message : '';
+								Dialogs.showAlert({
+									title: 'Country',
+									message: LocaleService.t('codbex-employees:codbex-employees-model.messages.error.unableToLoad', { message: message }),
+									type: AlertTypes.Error
+								});
+							});
+						}
+					}
+					if (optionsCityHasMore) {
+						const optionsCitySearchValues = Array.from(new Set(response.data.map(e => e.City)));
+						if (optionsCitySearchValues.length > 0) {
+							$http.post('/services/ts/codbex-cities/gen/codbex-cities/api/Settings/CityController.ts/search', {
+								conditions: [
+									{ propertyName: 'Id', operator: 'IN', value: optionsCitySearchValues }
+								]
+							}).then((response) => {
+								$scope.optionsCity.push(...response.data.map(e => ({
+									value: e.Id,
+									text: e.Name
+								})));
+							}, (error) => {
+								console.error(error);
+								const message = error.data ? error.data.message : '';
+								Dialogs.showAlert({
+									title: 'City',
+									message: LocaleService.t('codbex-employees:codbex-employees-model.messages.error.unableToLoad', { message: message }),
+									type: AlertTypes.Error
+								});
+							});
+						}
+					}
 					response.data.forEach(e => {
 						if (e.CreatedAt) {
 							e.CreatedAt = new Date(e.CreatedAt);
@@ -241,12 +287,25 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 		$scope.optionsCountry = [];
 		$scope.optionsCity = [];
 
+		let optionsCountryHasMore = true;
 
-		$http.get('/services/ts/codbex-countries/gen/codbex-countries/api/Settings/CountryController.ts').then((response) => {
-			$scope.optionsCountry = response.data.map(e => ({
-				value: e.Id,
-				text: e.Name
-			}));
+		$http.get('/services/ts/codbex-countries/gen/codbex-countries/api/Settings/CountryController.ts/count').then((response) => {
+			const optionsCountryCount = response.data.count;
+			$http.get('/services/ts/codbex-countries/gen/codbex-countries/api/Settings/CountryController.ts').then((response) => {
+				$scope.optionsCountry = response.data.map(e => ({
+					value: e.Id,
+					text: e.Name
+				}));
+				optionsCountryHasMore = optionsCountryCount > $scope.optionsCountry.length;
+			}, (error) => {
+				console.error(error);
+				const message = error.data ? error.data.message : '';
+				Dialogs.showAlert({
+					title: 'Country',
+					message: LocaleService.t('codbex-employees:codbex-employees-model.messages.error.unableToLoad', { message: message }),
+					type: AlertTypes.Error
+				});
+			});
 		}, (error) => {
 			console.error(error);
 			const message = error.data ? error.data.message : '';
@@ -256,12 +315,25 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 				type: AlertTypes.Error
 			});
 		});
+		let optionsCityHasMore = true;
 
-		$http.get('/services/ts/codbex-cities/gen/codbex-cities/api/Settings/CityController.ts').then((response) => {
-			$scope.optionsCity = response.data.map(e => ({
-				value: e.Id,
-				text: e.Name
-			}));
+		$http.get('/services/ts/codbex-cities/gen/codbex-cities/api/Settings/CityController.ts/count').then((response) => {
+			const optionsCityCount = response.data.count;
+			$http.get('/services/ts/codbex-cities/gen/codbex-cities/api/Settings/CityController.ts').then((response) => {
+				$scope.optionsCity = response.data.map(e => ({
+					value: e.Id,
+					text: e.Name
+				}));
+				optionsCityHasMore = optionsCityCount > $scope.optionsCity.length;
+			}, (error) => {
+				console.error(error);
+				const message = error.data ? error.data.message : '';
+				Dialogs.showAlert({
+					title: 'City',
+					message: LocaleService.t('codbex-employees:codbex-employees-model.messages.error.unableToLoad', { message: message }),
+					type: AlertTypes.Error
+				});
+			});
 		}, (error) => {
 			console.error(error);
 			const message = error.data ? error.data.message : '';

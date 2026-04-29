@@ -190,8 +190,14 @@
 	                            ng-model="entity.Nationality"
 	                            is-readonly="action === 'select'"
 	                            dropdown-items="optionsNationality"
+								ng-keyup="onOptionsNationalityChange($event)"
 	                            placeholder="{{ 'codbex-employees:codbex-employees-model.messages.inputSearch' | t:{'name':'$t(codbex-employees:codbex-employees-model.t.EMPLOYEE_NATIONALITY)'} }}"
 								btn-aria-label="{{ 'codbex-employees:codbex-employees-model.aria.showHide' | t:{'name':'Nationality'} }}" list-aria-label="{{ 'codbex-employees:codbex-employees-model.aria.options' | t:{'name':'Nationality'} }}">
+								    <bk-list-action-item ng-if="optionsNationalityHasMore" ng-click="loadMoreOptionsNationality()">
+										<bk-busy-indicator ng-if="optionsNationalityLoading" size="m"></bk-busy-indicator>
+										<span ng-if="!optionsNationalityLoading" class="sap-icon sap-icon--navigation-down-arrow" role="presentation"></span>
+										<span ng-if="!optionsNationalityLoading">More Options</span>
+									</bk-list-action-item>
 	                        </bk-combobox-input>
 	                    </div>
 	                    <div class="fd-col fd-col--full">
@@ -211,8 +217,14 @@
 	                            ng-model="entity.Gender"
 	                            is-readonly="action === 'select'"
 	                            dropdown-items="optionsGender"
+								ng-keyup="onOptionsGenderChange($event)"
 	                            placeholder="{{ 'codbex-employees:codbex-employees-model.messages.inputSearch' | t:{'name':'$t(codbex-employees:codbex-employees-model.t.EMPLOYEE_GENDER)'} }}"
 								btn-aria-label="{{ 'codbex-employees:codbex-employees-model.aria.showHide' | t:{'name':'Gender'} }}" list-aria-label="{{ 'codbex-employees:codbex-employees-model.aria.options' | t:{'name':'Gender'} }}">
+								    <bk-list-action-item ng-if="optionsGenderHasMore" ng-click="loadMoreOptionsGender()">
+										<bk-busy-indicator ng-if="optionsGenderLoading" size="m"></bk-busy-indicator>
+										<span ng-if="!optionsGenderLoading" class="sap-icon sap-icon--navigation-down-arrow" role="presentation"></span>
+										<span ng-if="!optionsGenderLoading">More Options</span>
+									</bk-list-action-item>
 	                        </bk-combobox-input>
 	                    </div>
 	                    <div class="fd-col fd-col--full">
@@ -232,8 +244,14 @@
 	                            ng-model="entity.MartialStatus"
 	                            is-readonly="action === 'select'"
 	                            dropdown-items="optionsMartialStatus"
+								ng-keyup="onOptionsMartialStatusChange($event)"
 	                            placeholder="{{ 'codbex-employees:codbex-employees-model.messages.inputSearch' | t:{'name':'$t(codbex-employees:codbex-employees-model.t.EMPLOYEE_MARTIALSTATUS)'} }}"
 								btn-aria-label="{{ 'codbex-employees:codbex-employees-model.aria.showHide' | t:{'name':'MartialStatus'} }}" list-aria-label="{{ 'codbex-employees:codbex-employees-model.aria.options' | t:{'name':'MartialStatus'} }}">
+								    <bk-list-action-item ng-if="optionsMartialStatusHasMore" ng-click="loadMoreOptionsMartialStatus()">
+										<bk-busy-indicator ng-if="optionsMartialStatusLoading" size="m"></bk-busy-indicator>
+										<span ng-if="!optionsMartialStatusLoading" class="sap-icon sap-icon--navigation-down-arrow" role="presentation"></span>
+										<span ng-if="!optionsMartialStatusLoading">More Options</span>
+									</bk-list-action-item>
 	                        </bk-combobox-input>
 	                    </div>
 	                    <div class="fd-col fd-col--full">
