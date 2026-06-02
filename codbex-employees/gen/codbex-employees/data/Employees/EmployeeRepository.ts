@@ -36,6 +36,11 @@ export class EmployeeRepository extends Repository<EmployeeEntity> {
         return super.create(entity);
     }
 
+    public override update(entity: EmployeeEntity): void {
+        entity.Name = entity["FirstName"] + " " + entity["LastName"];
+        super.update(entity);
+    }
+
     public override upsert(entity: EmployeeEntity): string | number {
         entity.Name = entity["FirstName"] + " " + entity["LastName"];
         entity.Name = entity["FirstName"] + " " + entity["LastName"];
