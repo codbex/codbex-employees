@@ -1,15 +1,17 @@
 {
   "tablePrefix": "CODBEX_",
   "brand": "codbex",
-  "brandUrl": "codbex.com",
+  "brandUrl": "https://www.codbex.com/",
   "title": "Employees Management Module",
   "description": "Managing Employees Data",
   "projectName": "codbex-employees",
   "workspaceName": "workspace",
   "filePath": "codbex-employees.model",
-  "templateId": "template-application-angular-v2/template/template.js",
+  "templateId": "template-application-angular-java/template/template.js",
   "fileName": "codbex-employees",
   "genFolderName": "codbex-employees",
+  "javaRuntime": true,
+  "javaGenFolderName": "codbex_employees",
   "dataSource": "DefaultDB",
   "perspectives": {
     "Employees": {
@@ -111,6 +113,7 @@
           "widgetDropdownControllerUrl": "",
           "dataTypeJava": "int",
           "dataTypeTypescript": "number",
+          "dataTypeJavaClass": "Integer",
           "inputRule": ""
         },
         {
@@ -139,6 +142,7 @@
           "widgetDropdownControllerUrl": "",
           "dataTypeJava": "string",
           "dataTypeTypescript": "string",
+          "dataTypeJavaClass": "String",
           "minLength": 0,
           "maxLength": 50,
           "inputRule": ""
@@ -169,6 +173,7 @@
           "widgetDropdownControllerUrl": "",
           "dataTypeJava": "string",
           "dataTypeTypescript": "string",
+          "dataTypeJavaClass": "String",
           "minLength": 0,
           "maxLength": 50,
           "inputRule": ""
@@ -199,6 +204,7 @@
           "widgetDropdownControllerUrl": "",
           "dataTypeJava": "string",
           "dataTypeTypescript": "string",
+          "dataTypeJavaClass": "String",
           "minLength": 0,
           "maxLength": 50,
           "inputRule": ""
@@ -230,6 +236,7 @@
           "widgetDropdownControllerUrl": "",
           "dataTypeJava": "string",
           "dataTypeTypescript": "string",
+          "dataTypeJavaClass": "String",
           "minLength": 0,
           "maxLength": 70,
           "inputRule": ""
@@ -259,6 +266,7 @@
           "widgetDropdownControllerUrl": "",
           "dataTypeJava": "string",
           "dataTypeTypescript": "string",
+          "dataTypeJavaClass": "String",
           "minLength": 0,
           "maxLength": 40,
           "inputRule": ""
@@ -288,6 +296,7 @@
           "widgetDropdownControllerUrl": "",
           "dataTypeJava": "string",
           "dataTypeTypescript": "string",
+          "dataTypeJavaClass": "String",
           "minLength": 0,
           "maxLength": 20,
           "inputRule": ""
@@ -316,6 +325,7 @@
           "widgetDropdownControllerUrl": "",
           "dataTypeJava": "date",
           "dataTypeTypescript": "Date",
+          "dataTypeJavaClass": "java.time.LocalDate",
           "isDateType": true,
           "inputRule": ""
         },
@@ -344,6 +354,7 @@
           "widgetDropdownControllerUrl": "",
           "dataTypeJava": "string",
           "dataTypeTypescript": "string",
+          "dataTypeJavaClass": "String",
           "minLength": 0,
           "maxLength": 10,
           "inputRule": ""
@@ -374,10 +385,11 @@
           "isCalculatedProperty": false,
           "isReadOnlyProperty": false,
           "widgetLabel": "Nationality",
-          "widgetDropdownUrl": "/services/ts/codbex-countries/gen/codbex-countries/api/Settings/CountryService.ts",
-          "widgetDropdownControllerUrl": "/services/ts/codbex-countries/gen/codbex-countries/api/Settings/CountryController.ts",
+          "widgetDropdownUrl": "/services/java/codbex-countries/gen/codbex_countries/api/settings/CountryController",
+          "widgetDropdownControllerUrl": "/services/java/codbex-countries/gen/codbex_countries/api/settings/CountryController",
           "dataTypeJava": "int",
           "dataTypeTypescript": "number",
+          "dataTypeJavaClass": "Integer",
           "inputRule": ""
         },
         {
@@ -406,10 +418,11 @@
           "isCalculatedProperty": false,
           "isReadOnlyProperty": false,
           "widgetLabel": "Gender",
-          "widgetDropdownUrl": "/services/ts/codbex-employees/gen/codbex-employees/api/Settings/GenderService.ts",
-          "widgetDropdownControllerUrl": "/services/ts/codbex-employees/gen/codbex-employees/api/Settings/GenderController.ts",
+          "widgetDropdownUrl": "/services/java/codbex-employees/gen/codbex_employees/api/settings/GenderController",
+          "widgetDropdownControllerUrl": "/services/java/codbex-employees/gen/codbex_employees/api/settings/GenderController",
           "dataTypeJava": "int",
           "dataTypeTypescript": "number",
+          "dataTypeJavaClass": "Integer",
           "inputRule": ""
         },
         {
@@ -438,10 +451,11 @@
           "isCalculatedProperty": false,
           "isReadOnlyProperty": false,
           "widgetLabel": "MartialStatus",
-          "widgetDropdownUrl": "/services/ts/codbex-employees/gen/codbex-employees/api/Settings/MartialStatusService.ts",
-          "widgetDropdownControllerUrl": "/services/ts/codbex-employees/gen/codbex-employees/api/Settings/MartialStatusController.ts",
+          "widgetDropdownUrl": "/services/java/codbex-employees/gen/codbex_employees/api/settings/MartialStatusController",
+          "widgetDropdownControllerUrl": "/services/java/codbex-employees/gen/codbex_employees/api/settings/MartialStatusController",
           "dataTypeJava": "int",
           "dataTypeTypescript": "number",
+          "dataTypeJavaClass": "Integer",
           "inputRule": ""
         },
         {
@@ -470,6 +484,7 @@
           "widgetDropdownControllerUrl": "",
           "dataTypeJava": "string",
           "dataTypeTypescript": "string",
+          "dataTypeJavaClass": "String",
           "minLength": 0,
           "maxLength": 34,
           "inputRule": "^[A-Z]{2}[0-9]{2}[A-Z0-9]{11,30}$"
@@ -498,6 +513,7 @@
           "widgetDropdownControllerUrl": "",
           "dataTypeJava": "timestamp",
           "dataTypeTypescript": "Date",
+          "dataTypeJavaClass": "java.time.Instant",
           "isDateType": true,
           "inputRule": ""
         },
@@ -526,6 +542,7 @@
           "widgetDropdownControllerUrl": "",
           "dataTypeJava": "string",
           "dataTypeTypescript": "string",
+          "dataTypeJavaClass": "String",
           "minLength": 0,
           "maxLength": 20,
           "inputRule": ""
@@ -554,6 +571,7 @@
           "widgetDropdownControllerUrl": "",
           "dataTypeJava": "timestamp",
           "dataTypeTypescript": "Date",
+          "dataTypeJavaClass": "java.time.Instant",
           "isDateType": true,
           "inputRule": ""
         },
@@ -582,6 +600,7 @@
           "widgetDropdownControllerUrl": "",
           "dataTypeJava": "string",
           "dataTypeTypescript": "string",
+          "dataTypeJavaClass": "String",
           "minLength": 0,
           "maxLength": 20,
           "inputRule": ""
@@ -614,6 +633,7 @@
       "tooltip": "Employee",
       "type": "PRIMARY",
       "dataSource": "DefaultDB",
+      "javaPerspectiveName": "employees",
       "referencedProjections": [
         {
           "name": "Country",
@@ -652,6 +672,7 @@
           "widgetDropdownControllerUrl": "",
           "dataTypeJava": "string",
           "dataTypeTypescript": "string",
+          "dataTypeJavaClass": "String",
           "minLength": 0,
           "maxLength": 50,
           "inputRule": ""
@@ -683,6 +704,7 @@
             "widgetDropdownControllerUrl": "",
             "dataTypeJava": "string",
             "dataTypeTypescript": "string",
+            "dataTypeJavaClass": "String",
             "minLength": 0,
             "maxLength": 50,
             "inputRule": ""
@@ -713,6 +735,7 @@
             "widgetDropdownControllerUrl": "",
             "dataTypeJava": "string",
             "dataTypeTypescript": "string",
+            "dataTypeJavaClass": "String",
             "minLength": 0,
             "maxLength": 50,
             "inputRule": ""
@@ -744,6 +767,7 @@
             "widgetDropdownControllerUrl": "",
             "dataTypeJava": "string",
             "dataTypeTypescript": "string",
+            "dataTypeJavaClass": "String",
             "minLength": 0,
             "maxLength": 70,
             "inputRule": ""
@@ -773,6 +797,7 @@
             "widgetDropdownControllerUrl": "",
             "dataTypeJava": "string",
             "dataTypeTypescript": "string",
+            "dataTypeJavaClass": "String",
             "minLength": 0,
             "maxLength": 40,
             "inputRule": ""
@@ -802,6 +827,7 @@
             "widgetDropdownControllerUrl": "",
             "dataTypeJava": "string",
             "dataTypeTypescript": "string",
+            "dataTypeJavaClass": "String",
             "minLength": 0,
             "maxLength": 20,
             "inputRule": ""
@@ -830,6 +856,7 @@
             "widgetDropdownControllerUrl": "",
             "dataTypeJava": "date",
             "dataTypeTypescript": "Date",
+            "dataTypeJavaClass": "java.time.LocalDate",
             "isDateType": true,
             "inputRule": ""
           },
@@ -858,6 +885,7 @@
             "widgetDropdownControllerUrl": "",
             "dataTypeJava": "string",
             "dataTypeTypescript": "string",
+            "dataTypeJavaClass": "String",
             "minLength": 0,
             "maxLength": 10,
             "inputRule": ""
@@ -888,10 +916,11 @@
             "isCalculatedProperty": false,
             "isReadOnlyProperty": false,
             "widgetLabel": "Nationality",
-            "widgetDropdownUrl": "/services/ts/codbex-countries/gen/codbex-countries/api/Settings/CountryService.ts",
-            "widgetDropdownControllerUrl": "/services/ts/codbex-countries/gen/codbex-countries/api/Settings/CountryController.ts",
+            "widgetDropdownUrl": "/services/java/codbex-countries/gen/codbex_countries/api/settings/CountryController",
+            "widgetDropdownControllerUrl": "/services/java/codbex-countries/gen/codbex_countries/api/settings/CountryController",
             "dataTypeJava": "int",
             "dataTypeTypescript": "number",
+            "dataTypeJavaClass": "Integer",
             "inputRule": ""
           },
           {
@@ -920,10 +949,11 @@
             "isCalculatedProperty": false,
             "isReadOnlyProperty": false,
             "widgetLabel": "Gender",
-            "widgetDropdownUrl": "/services/ts/codbex-employees/gen/codbex-employees/api/Settings/GenderService.ts",
-            "widgetDropdownControllerUrl": "/services/ts/codbex-employees/gen/codbex-employees/api/Settings/GenderController.ts",
+            "widgetDropdownUrl": "/services/java/codbex-employees/gen/codbex_employees/api/settings/GenderController",
+            "widgetDropdownControllerUrl": "/services/java/codbex-employees/gen/codbex_employees/api/settings/GenderController",
             "dataTypeJava": "int",
             "dataTypeTypescript": "number",
+            "dataTypeJavaClass": "Integer",
             "inputRule": ""
           },
           {
@@ -952,10 +982,11 @@
             "isCalculatedProperty": false,
             "isReadOnlyProperty": false,
             "widgetLabel": "MartialStatus",
-            "widgetDropdownUrl": "/services/ts/codbex-employees/gen/codbex-employees/api/Settings/MartialStatusService.ts",
-            "widgetDropdownControllerUrl": "/services/ts/codbex-employees/gen/codbex-employees/api/Settings/MartialStatusController.ts",
+            "widgetDropdownUrl": "/services/java/codbex-employees/gen/codbex_employees/api/settings/MartialStatusController",
+            "widgetDropdownControllerUrl": "/services/java/codbex-employees/gen/codbex_employees/api/settings/MartialStatusController",
             "dataTypeJava": "int",
             "dataTypeTypescript": "number",
+            "dataTypeJavaClass": "Integer",
             "inputRule": ""
           },
           {
@@ -984,6 +1015,7 @@
             "widgetDropdownControllerUrl": "",
             "dataTypeJava": "string",
             "dataTypeTypescript": "string",
+            "dataTypeJavaClass": "String",
             "minLength": 0,
             "maxLength": 34,
             "inputRule": "^[A-Z]{2}[0-9]{2}[A-Z0-9]{11,30}$"
@@ -1012,6 +1044,7 @@
             "widgetDropdownControllerUrl": "",
             "dataTypeJava": "timestamp",
             "dataTypeTypescript": "Date",
+            "dataTypeJavaClass": "java.time.Instant",
             "isDateType": true,
             "inputRule": ""
           },
@@ -1040,6 +1073,7 @@
             "widgetDropdownControllerUrl": "",
             "dataTypeJava": "string",
             "dataTypeTypescript": "string",
+            "dataTypeJavaClass": "String",
             "minLength": 0,
             "maxLength": 20,
             "inputRule": ""
@@ -1068,6 +1102,7 @@
             "widgetDropdownControllerUrl": "",
             "dataTypeJava": "timestamp",
             "dataTypeTypescript": "Date",
+            "dataTypeJavaClass": "java.time.Instant",
             "isDateType": true,
             "inputRule": ""
           },
@@ -1096,6 +1131,7 @@
             "widgetDropdownControllerUrl": "",
             "dataTypeJava": "string",
             "dataTypeTypescript": "string",
+            "dataTypeJavaClass": "String",
             "minLength": 0,
             "maxLength": 20,
             "inputRule": ""
@@ -1131,6 +1167,7 @@
           "widgetDropdownControllerUrl": "",
           "dataTypeJava": "int",
           "dataTypeTypescript": "number",
+          "dataTypeJavaClass": "Integer",
           "inputRule": ""
         },
         {
@@ -1158,6 +1195,7 @@
           "widgetDropdownControllerUrl": "",
           "dataTypeJava": "string",
           "dataTypeTypescript": "string",
+          "dataTypeJavaClass": "String",
           "minLength": 0,
           "maxLength": 20,
           "inputRule": ""
@@ -1187,6 +1225,7 @@
           "widgetDropdownControllerUrl": "",
           "dataTypeJava": "string",
           "dataTypeTypescript": "string",
+          "dataTypeJavaClass": "String",
           "minLength": 0,
           "maxLength": 2,
           "inputRule": ""
@@ -1216,6 +1255,7 @@
           "widgetDropdownControllerUrl": "",
           "dataTypeJava": "string",
           "dataTypeTypescript": "string",
+          "dataTypeJavaClass": "String",
           "minLength": 0,
           "maxLength": 3,
           "inputRule": ""
@@ -1245,6 +1285,7 @@
           "widgetDropdownControllerUrl": "",
           "dataTypeJava": "string",
           "dataTypeTypescript": "string",
+          "dataTypeJavaClass": "String",
           "minLength": 0,
           "maxLength": 3,
           "inputRule": ""
@@ -1277,6 +1318,7 @@
       "tooltip": "Country",
       "type": "PROJECTION",
       "dataSource": "DefaultDB",
+      "javaPerspectiveName": "settings",
       "referencedProjections": [],
       "primaryKeys": [
         "Id"
@@ -1309,6 +1351,7 @@
           "widgetDropdownControllerUrl": "",
           "dataTypeJava": "int",
           "dataTypeTypescript": "number",
+          "dataTypeJavaClass": "Integer",
           "inputRule": ""
         },
         {
@@ -1336,6 +1379,7 @@
           "widgetDropdownControllerUrl": "",
           "dataTypeJava": "string",
           "dataTypeTypescript": "string",
+          "dataTypeJavaClass": "String",
           "minLength": 0,
           "maxLength": 100,
           "inputRule": ""
@@ -1365,10 +1409,11 @@
           "isCalculatedProperty": false,
           "isReadOnlyProperty": false,
           "widgetLabel": "Country",
-          "widgetDropdownUrl": "/services/ts/codbex-employees/gen/codbex-employees/api/Settings/undefinedService.ts",
-          "widgetDropdownControllerUrl": "/services/ts/codbex-employees/gen/codbex-employees/api/Settings/undefinedController.ts",
+          "widgetDropdownUrl": "/services/java/codbex-employees/gen/codbex_employees/api/settings/undefinedController",
+          "widgetDropdownControllerUrl": "/services/java/codbex-employees/gen/codbex_employees/api/settings/undefinedController",
           "dataTypeJava": "int",
           "dataTypeTypescript": "number",
+          "dataTypeJavaClass": "Integer",
           "inputRule": ""
         }
       ],
@@ -1399,6 +1444,7 @@
       "tooltip": "City",
       "type": "PROJECTION",
       "dataSource": "DefaultDB",
+      "javaPerspectiveName": "settings",
       "referencedProjections": [],
       "primaryKeys": [
         "Id"
@@ -1432,6 +1478,7 @@
           "widgetDropdownControllerUrl": "",
           "dataTypeJava": "int",
           "dataTypeTypescript": "number",
+          "dataTypeJavaClass": "Integer",
           "inputRule": ""
         },
         {
@@ -1459,6 +1506,7 @@
           "widgetDropdownControllerUrl": "",
           "dataTypeJava": "string",
           "dataTypeTypescript": "string",
+          "dataTypeJavaClass": "String",
           "minLength": 0,
           "maxLength": 7,
           "inputRule": ""
@@ -1491,6 +1539,7 @@
       "tooltip": "Gender",
       "type": "SETTING",
       "dataSource": "DefaultDB",
+      "javaPerspectiveName": "settings",
       "referencedProjections": [],
       "primaryKeys": [
         "Id"
@@ -1523,6 +1572,7 @@
           "widgetDropdownControllerUrl": "",
           "dataTypeJava": "int",
           "dataTypeTypescript": "number",
+          "dataTypeJavaClass": "Integer",
           "inputRule": ""
         },
         {
@@ -1550,6 +1600,7 @@
           "widgetDropdownControllerUrl": "",
           "dataTypeJava": "string",
           "dataTypeTypescript": "string",
+          "dataTypeJavaClass": "String",
           "minLength": 0,
           "maxLength": 20,
           "inputRule": ""
@@ -1582,6 +1633,7 @@
       "tooltip": "MartialStatus",
       "type": "SETTING",
       "dataSource": "DefaultDB",
+      "javaPerspectiveName": "settings",
       "referencedProjections": [],
       "primaryKeys": [
         "Id"
@@ -1614,6 +1666,7 @@
           "widgetDropdownControllerUrl": "",
           "dataTypeJava": "int",
           "dataTypeTypescript": "number",
+          "dataTypeJavaClass": "Integer",
           "inputRule": ""
         },
         {
@@ -1641,6 +1694,7 @@
           "widgetDropdownControllerUrl": "",
           "dataTypeJava": "string",
           "dataTypeTypescript": "string",
+          "dataTypeJavaClass": "String",
           "minLength": 0,
           "maxLength": 20,
           "inputRule": ""
@@ -1670,6 +1724,7 @@
           "widgetDropdownControllerUrl": "",
           "dataTypeJava": "string",
           "dataTypeTypescript": "string",
+          "dataTypeJavaClass": "String",
           "minLength": 0,
           "maxLength": 255,
           "inputRule": ""
@@ -1704,6 +1759,7 @@
           "widgetDropdownControllerUrl": "",
           "dataTypeJava": "int",
           "dataTypeTypescript": "number",
+          "dataTypeJavaClass": "Integer",
           "inputRule": ""
         },
         {
@@ -1730,6 +1786,7 @@
           "widgetDropdownControllerUrl": "",
           "dataTypeJava": "timestamp",
           "dataTypeTypescript": "Date",
+          "dataTypeJavaClass": "java.time.Instant",
           "isDateType": true,
           "inputRule": ""
         },
@@ -1758,6 +1815,7 @@
           "widgetDropdownControllerUrl": "",
           "dataTypeJava": "string",
           "dataTypeTypescript": "string",
+          "dataTypeJavaClass": "String",
           "minLength": 0,
           "maxLength": 20,
           "inputRule": ""
@@ -1786,6 +1844,7 @@
           "widgetDropdownControllerUrl": "",
           "dataTypeJava": "timestamp",
           "dataTypeTypescript": "Date",
+          "dataTypeJavaClass": "java.time.Instant",
           "isDateType": true,
           "inputRule": ""
         },
@@ -1814,6 +1873,7 @@
           "widgetDropdownControllerUrl": "",
           "dataTypeJava": "string",
           "dataTypeTypescript": "string",
+          "dataTypeJavaClass": "String",
           "minLength": 0,
           "maxLength": 20,
           "inputRule": ""
@@ -1846,6 +1906,7 @@
       "tooltip": "Contact",
       "type": "DEPENDENT",
       "dataSource": "DefaultDB",
+      "javaPerspectiveName": "employees",
       "referencedProjections": [],
       "primaryKeys": [
         "Id"
@@ -1881,6 +1942,7 @@
           "widgetDropdownControllerUrl": "",
           "dataTypeJava": "int",
           "dataTypeTypescript": "number",
+          "dataTypeJavaClass": "Integer",
           "inputRule": ""
         },
         {
@@ -1909,10 +1971,11 @@
           "isCalculatedProperty": false,
           "isReadOnlyProperty": false,
           "widgetLabel": "Country",
-          "widgetDropdownUrl": "/services/ts/codbex-countries/gen/codbex-countries/api/Settings/CountryService.ts",
-          "widgetDropdownControllerUrl": "/services/ts/codbex-countries/gen/codbex-countries/api/Settings/CountryController.ts",
+          "widgetDropdownUrl": "/services/java/codbex-countries/gen/codbex_countries/api/settings/CountryController",
+          "widgetDropdownControllerUrl": "/services/java/codbex-countries/gen/codbex_countries/api/settings/CountryController",
           "dataTypeJava": "int",
           "dataTypeTypescript": "number",
+          "dataTypeJavaClass": "Integer",
           "inputRule": ""
         },
         {
@@ -1945,10 +2008,11 @@
           "isCalculatedProperty": false,
           "isReadOnlyProperty": false,
           "widgetLabel": "City",
-          "widgetDropdownUrl": "/services/ts/codbex-cities/gen/codbex-cities/api/Settings/CityService.ts",
-          "widgetDropdownControllerUrl": "/services/ts/codbex-cities/gen/codbex-cities/api/Settings/CityController.ts",
+          "widgetDropdownUrl": "/services/java/codbex-cities/gen/codbex_cities/api/settings/CityController",
+          "widgetDropdownControllerUrl": "/services/java/codbex-cities/gen/codbex_cities/api/settings/CityController",
           "dataTypeJava": "int",
           "dataTypeTypescript": "number",
+          "dataTypeJavaClass": "Integer",
           "inputRule": ""
         },
         {
@@ -1976,6 +2040,7 @@
           "widgetDropdownControllerUrl": "",
           "dataTypeJava": "string",
           "dataTypeTypescript": "string",
+          "dataTypeJavaClass": "String",
           "minLength": 0,
           "maxLength": 255,
           "inputRule": ""
@@ -2005,6 +2070,7 @@
           "widgetDropdownControllerUrl": "",
           "dataTypeJava": "string",
           "dataTypeTypescript": "string",
+          "dataTypeJavaClass": "String",
           "minLength": 0,
           "maxLength": 12,
           "inputRule": ""
@@ -2039,6 +2105,7 @@
           "widgetDropdownControllerUrl": "",
           "dataTypeJava": "int",
           "dataTypeTypescript": "number",
+          "dataTypeJavaClass": "Integer",
           "inputRule": ""
         },
         {
@@ -2065,6 +2132,7 @@
           "widgetDropdownControllerUrl": "",
           "dataTypeJava": "timestamp",
           "dataTypeTypescript": "Date",
+          "dataTypeJavaClass": "java.time.Instant",
           "isDateType": true,
           "inputRule": ""
         },
@@ -2093,6 +2161,7 @@
           "widgetDropdownControllerUrl": "",
           "dataTypeJava": "string",
           "dataTypeTypescript": "string",
+          "dataTypeJavaClass": "String",
           "minLength": 0,
           "maxLength": 20,
           "inputRule": ""
@@ -2121,6 +2190,7 @@
           "widgetDropdownControllerUrl": "",
           "dataTypeJava": "timestamp",
           "dataTypeTypescript": "Date",
+          "dataTypeJavaClass": "java.time.Instant",
           "isDateType": true,
           "inputRule": ""
         },
@@ -2149,6 +2219,7 @@
           "widgetDropdownControllerUrl": "",
           "dataTypeJava": "string",
           "dataTypeTypescript": "string",
+          "dataTypeJavaClass": "String",
           "minLength": 0,
           "maxLength": 20,
           "inputRule": ""
@@ -2179,6 +2250,7 @@
       "tooltip": "Address",
       "type": "DEPENDENT",
       "dataSource": "DefaultDB",
+      "javaPerspectiveName": "employees",
       "referencedProjections": [
         {
           "name": "Country",

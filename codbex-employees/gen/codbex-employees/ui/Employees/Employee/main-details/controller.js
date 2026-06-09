@@ -1,6 +1,6 @@
 angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntityService'])
 	.config(["EntityServiceProvider", (EntityServiceProvider) => {
-		EntityServiceProvider.baseUrl = '/services/ts/codbex-employees/gen/codbex-employees/api/Employees/EmployeeController.ts';
+		EntityServiceProvider.baseUrl = '/services/java/codbex-employees/gen/codbex_employees/api/employees/EmployeeController';
 	}])
 	.controller('PageController', ($scope, $http, Extensions, LocaleService, EntityService) => {
 		const Dialogs = new DialogHub();
@@ -102,9 +102,9 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 			});
 		}});
 
-		$scope.serviceNationality = '/services/ts/codbex-countries/gen/codbex-countries/api/Settings/CountryController.ts';
-		$scope.serviceGender = '/services/ts/codbex-employees/gen/codbex-employees/api/Settings/GenderController.ts';
-		$scope.serviceMartialStatus = '/services/ts/codbex-employees/gen/codbex-employees/api/Settings/MartialStatusController.ts';
+		$scope.serviceNationality = '/services/java/codbex-countries/gen/codbex_countries/api/settings/CountryController';
+		$scope.serviceGender = '/services/java/codbex-employees/gen/codbex_employees/api/settings/GenderController';
+		$scope.serviceMartialStatus = '/services/java/codbex-employees/gen/codbex_employees/api/settings/MartialStatusController';
 
 		//-----------------Events-------------------//
 
@@ -208,7 +208,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 		$scope.loadMoreOptionsNationality = () => {
 			const limit = 20;
 			$scope.optionsNationalityLoading = true;
-			$http.get(`/services/ts/codbex-countries/gen/codbex-countries/api/Settings/CountryController.ts?$limit=${limit}&$offset=${++loadMoreOptionsNationalityCounter * limit}`)
+			$http.get(`/services/java/codbex-countries/gen/codbex_countries/api/settings/CountryController?$limit=${limit}&$offset=${++loadMoreOptionsNationalityCounter * limit}`)
 			.then((response) => {
 				const optionValues = allValuesNationality.map(e => e.value);
 				const resultValues = response.data.map(e => ({
@@ -258,7 +258,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 					}
 				})
 				if (!cacheHit) {
-					$http.post('/services/ts/codbex-countries/gen/codbex-countries/api/Settings/CountryController.ts/search', {
+					$http.post('/services/java/codbex-countries/gen/codbex_countries/api/settings/CountryController/search', {
 						conditions: [
 							{ propertyName: 'Name', operator: 'LIKE', value: `${event.originalEvent.target.value}%` }
 						]
@@ -290,7 +290,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 
 		$scope.refreshNationality = () => {
 			$scope.optionsNationality = [];
-			$http.get('/services/ts/codbex-countries/gen/codbex-countries/api/Settings/CountryController.ts').then((response) => {
+			$http.get('/services/java/codbex-countries/gen/codbex_countries/api/settings/CountryController').then((response) => {
 				$scope.optionsNationality = response.data.map(e => ({
 					value: e.Id,
 					text: e.Name
@@ -315,7 +315,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 		$scope.loadMoreOptionsGender = () => {
 			const limit = 20;
 			$scope.optionsGenderLoading = true;
-			$http.get(`/services/ts/codbex-employees/gen/codbex-employees/api/Settings/GenderController.ts?$limit=${limit}&$offset=${++loadMoreOptionsGenderCounter * limit}`)
+			$http.get(`/services/java/codbex-employees/gen/codbex_employees/api/settings/GenderController?$limit=${limit}&$offset=${++loadMoreOptionsGenderCounter * limit}`)
 			.then((response) => {
 				const optionValues = allValuesGender.map(e => e.value);
 				const resultValues = response.data.map(e => ({
@@ -365,7 +365,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 					}
 				})
 				if (!cacheHit) {
-					$http.post('/services/ts/codbex-employees/gen/codbex-employees/api/Settings/GenderController.ts/search', {
+					$http.post('/services/java/codbex-employees/gen/codbex_employees/api/settings/GenderController/search', {
 						conditions: [
 							{ propertyName: 'Name', operator: 'LIKE', value: `${event.originalEvent.target.value}%` }
 						]
@@ -397,7 +397,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 
 		$scope.refreshGender = () => {
 			$scope.optionsGender = [];
-			$http.get('/services/ts/codbex-employees/gen/codbex-employees/api/Settings/GenderController.ts').then((response) => {
+			$http.get('/services/java/codbex-employees/gen/codbex_employees/api/settings/GenderController').then((response) => {
 				$scope.optionsGender = response.data.map(e => ({
 					value: e.Id,
 					text: e.Name
@@ -422,7 +422,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 		$scope.loadMoreOptionsMartialStatus = () => {
 			const limit = 20;
 			$scope.optionsMartialStatusLoading = true;
-			$http.get(`/services/ts/codbex-employees/gen/codbex-employees/api/Settings/MartialStatusController.ts?$limit=${limit}&$offset=${++loadMoreOptionsMartialStatusCounter * limit}`)
+			$http.get(`/services/java/codbex-employees/gen/codbex_employees/api/settings/MartialStatusController?$limit=${limit}&$offset=${++loadMoreOptionsMartialStatusCounter * limit}`)
 			.then((response) => {
 				const optionValues = allValuesMartialStatus.map(e => e.value);
 				const resultValues = response.data.map(e => ({
@@ -472,7 +472,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 					}
 				})
 				if (!cacheHit) {
-					$http.post('/services/ts/codbex-employees/gen/codbex-employees/api/Settings/MartialStatusController.ts/search', {
+					$http.post('/services/java/codbex-employees/gen/codbex_employees/api/settings/MartialStatusController/search', {
 						conditions: [
 							{ propertyName: 'Name', operator: 'LIKE', value: `${event.originalEvent.target.value}%` }
 						]
@@ -504,7 +504,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 
 		$scope.refreshMartialStatus = () => {
 			$scope.optionsMartialStatus = [];
-			$http.get('/services/ts/codbex-employees/gen/codbex-employees/api/Settings/MartialStatusController.ts').then((response) => {
+			$http.get('/services/java/codbex-employees/gen/codbex_employees/api/settings/MartialStatusController').then((response) => {
 				$scope.optionsMartialStatus = response.data.map(e => ({
 					value: e.Id,
 					text: e.Name
