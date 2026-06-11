@@ -12,13 +12,13 @@ public class EmployeeRepository extends JavaRepository<EmployeeEntity> {
 
     @Override
     public EmployeeEntity save(EmployeeEntity entity) {
-        entity.Name = entity["FirstName"] + " " + entity["LastName"];
+        entity.Name = entity.FirstName + " " + entity.LastName;
         return super.save(entity);
     }
 
     @Override
     public EmployeeEntity update(EmployeeEntity entity) {
-        entity.Name = entity["FirstName"] + " " + entity["LastName"];
+        entity.Name = entity.FirstName + " " + entity.LastName;;
         return super.update(entity);
     }
 }

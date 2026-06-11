@@ -70,8 +70,8 @@
                     },
                     {
                         "auditType": "NONE",
-                        "calculatedPropertyExpressionCreate": "entity[\"FirstName\"] + \" \" + entity[\"LastName\"]",
-                        "calculatedPropertyExpressionUpdate": "entity[\"FirstName\"] + \" \" + entity[\"LastName\"]",
+                        "calculatedPropertyExpressionCreate": "entity.FirstName + \" \" + entity.LastName",
+                        "calculatedPropertyExpressionUpdate": "entity.FirstName + \" \" + entity.LastName;",
                         "dataLength": "70",
                         "dataName": "EMPLOYEE_NAME",
                         "dataNullable": "true",
