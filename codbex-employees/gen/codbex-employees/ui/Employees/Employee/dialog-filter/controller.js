@@ -165,7 +165,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale']).controlle
 	$scope.loadMoreOptionsNationality = () => {
 		const limit = 20;
 		$scope.optionsNationalityLoading = true;
-		$http.get(`/services/ts/codbex-countries/gen/codbex-countries/api/Settings/CountryController.ts?$limit=${limit}&$offset=${++loadMoreOptionsNationalityCounter * limit}`)
+		$http.get(`/services/java/codbex-countries/gen/codbex_countries/api/settings/CountryController?$limit=${limit}&$offset=${++loadMoreOptionsNationalityCounter * limit}`)
 		.then((response) => {
 			const optionValues = allValuesNationality.map(e => e.value);
 			const resultValues = response.data.map(e => ({
@@ -215,7 +215,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale']).controlle
 				}
 			})
 			if (!cacheHit) {
-				$http.post('/services/ts/codbex-countries/gen/codbex-countries/api/Settings/CountryController.ts/search', {
+				$http.post('/services/java/codbex-countries/gen/codbex_countries/api/settings/CountryController/search', {
 					conditions: [
 						{ propertyName: 'Name', operator: 'LIKE', value: `${event.originalEvent.target.value}%` }
 					]
@@ -254,7 +254,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale']).controlle
 	$scope.loadMoreOptionsGender = () => {
 		const limit = 20;
 		$scope.optionsGenderLoading = true;
-		$http.get(`/services/ts/codbex-employees/gen/codbex-employees/api/Settings/GenderController.ts?$limit=${limit}&$offset=${++loadMoreOptionsGenderCounter * limit}`)
+		$http.get(`/services/java/codbex-employees/gen/codbex_employees/api/settings/GenderController?$limit=${limit}&$offset=${++loadMoreOptionsGenderCounter * limit}`)
 		.then((response) => {
 			const optionValues = allValuesGender.map(e => e.value);
 			const resultValues = response.data.map(e => ({
@@ -304,7 +304,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale']).controlle
 				}
 			})
 			if (!cacheHit) {
-				$http.post('/services/ts/codbex-employees/gen/codbex-employees/api/Settings/GenderController.ts/search', {
+				$http.post('/services/java/codbex-employees/gen/codbex_employees/api/settings/GenderController/search', {
 					conditions: [
 						{ propertyName: 'Name', operator: 'LIKE', value: `${event.originalEvent.target.value}%` }
 					]
@@ -343,7 +343,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale']).controlle
 	$scope.loadMoreOptionsMartialStatus = () => {
 		const limit = 20;
 		$scope.optionsMartialStatusLoading = true;
-		$http.get(`/services/ts/codbex-employees/gen/codbex-employees/api/Settings/MartialStatusController.ts?$limit=${limit}&$offset=${++loadMoreOptionsMartialStatusCounter * limit}`)
+		$http.get(`/services/java/codbex-employees/gen/codbex_employees/api/settings/MartialStatusController?$limit=${limit}&$offset=${++loadMoreOptionsMartialStatusCounter * limit}`)
 		.then((response) => {
 			const optionValues = allValuesMartialStatus.map(e => e.value);
 			const resultValues = response.data.map(e => ({
@@ -393,7 +393,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale']).controlle
 				}
 			})
 			if (!cacheHit) {
-				$http.post('/services/ts/codbex-employees/gen/codbex-employees/api/Settings/MartialStatusController.ts/search', {
+				$http.post('/services/java/codbex-employees/gen/codbex_employees/api/settings/MartialStatusController/search', {
 					conditions: [
 						{ propertyName: 'Name', operator: 'LIKE', value: `${event.originalEvent.target.value}%` }
 					]

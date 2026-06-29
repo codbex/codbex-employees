@@ -1,6 +1,6 @@
 angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntityService'])
 	.config(['EntityServiceProvider', (EntityServiceProvider) => {
-		EntityServiceProvider.baseUrl = '/services/ts/codbex-employees/gen/codbex-employees/api/Settings/MartialStatusController.ts';
+		EntityServiceProvider.baseUrl = '/services/java/codbex-employees/gen/codbex_employees/api/settings/MartialStatusController';
 	}])
 	.controller('PageController', ($scope, EntityService, Extensions, LocaleService, ButtonStates) => {
 		const Dialogs = new DialogHub();
