@@ -5,7 +5,6 @@ import gen.codbex_employees.data.employees.AddressRepository;
 
 import org.eclipse.dirigible.components.api.security.UserFacade;
 import org.eclipse.dirigible.sdk.platform.Documentation;
-import org.eclipse.dirigible.sdk.component.Inject;
 import org.eclipse.dirigible.sdk.http.Body;
 import org.eclipse.dirigible.sdk.http.Controller;
 import org.eclipse.dirigible.sdk.http.Delete;
@@ -30,8 +29,11 @@ public class AddressController {
 
     private static final Set<String> FILTER_FIELDS = Set.of("Id", "Country", "City", "Address", "PostalCode", "Employee", "CreatedAt", "CreatedBy", "UpdatedAt", "UpdatedBy");
 
-    @Inject
-    private AddressRepository repository;
+    private final AddressRepository repository;
+
+    public AddressController(AddressRepository repository) {
+        this.repository = repository;
+    }
 
     @Get
     @Documentation("List Address")

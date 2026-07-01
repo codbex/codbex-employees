@@ -1,0 +1,314 @@
+{
+    "schema": {
+        "structures": [
+            {
+                "name": "CODBEX_EMPLOYEE",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "EMPLOYEE_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 50,
+                        "name": "EMPLOYEE_FIRSTNAME"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 50,
+                        "nullable": true,
+                        "name": "EMPLOYEE_MIDDLENAME"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 50,
+                        "name": "EMPLOYEE_LASTNAME"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 70,
+                        "nullable": true,
+                        "name": "EMPLOYEE_NAME"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 40,
+                        "unique": true,
+                        "name": "EMPLOYEE_EMAIL"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "unique": true,
+                        "name": "EMPLOYEE_PHONENUMBER"
+                    },
+                    {
+                        "type": "DATE",
+                        "name": "EMPLOYEE_BIRTHDATE"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 10,
+                        "unique": true,
+                        "name": "EMPLOYEE_PERSONALNUMBER"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "name": "EMPLOYEE_NATIONALITY"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "name": "EMPLOYEE_GENDER"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "name": "EMPLOYEE_MARTIALSTATUS"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 34,
+                        "unique": true,
+                        "name": "EMPLOYEE_IBAN"
+                    },
+                    {
+                        "type": "TIMESTAMP",
+                        "nullable": true,
+                        "name": "EMPLOYEE_CREATEDAT"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "EMPLOYEE_CREATEDBY"
+                    },
+                    {
+                        "type": "TIMESTAMP",
+                        "nullable": true,
+                        "name": "EMPLOYEE_UPDATEDAT"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "EMPLOYEE_UPDATEDBY"
+                    }
+                ]
+            },
+            {
+                "name": "CODBEX_GENDER",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "GENDER_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 7,
+                        "nullable": true,
+                        "name": "GENDER_NAME"
+                    }
+                ]
+            },
+            {
+                "name": "CODBEX_MARTIALSTATUS",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "MARTIALSTATUS_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "MARTIALSTATUS_NAME"
+                    }
+                ]
+            },
+            {
+                "name": "CODBEX_CONTACT",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "CONTACT_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "name": "CONTACT_PHONENUMBER"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 255,
+                        "unique": true,
+                        "name": "CONTACT_EMAIL"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "CONTACT_EMPLOYEE"
+                    },
+                    {
+                        "type": "TIMESTAMP",
+                        "nullable": true,
+                        "name": "CONTACT_CREATEDAT"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "CONTACT_CREATEDBY"
+                    },
+                    {
+                        "type": "TIMESTAMP",
+                        "nullable": true,
+                        "name": "CONTACT_UPDATEDAT"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "CONTACT_UPDATEDBY"
+                    }
+                ]
+            },
+            {
+                "name": "CODBEX_ADDRESS",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "ADDRESS_ID"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "name": "ADDRESS_COUNTRY"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "name": "ADDRESS_CITY"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 255,
+                        "name": "ADDRESS_ADDRESS"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 12,
+                        "name": "ADDRESS_POSTALCODE"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "ADDRESS_EMPLOYEE"
+                    },
+                    {
+                        "type": "TIMESTAMP",
+                        "nullable": true,
+                        "name": "ADDRESS_CREATEDAT"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "ADDRESS_CREATEDBY"
+                    },
+                    {
+                        "type": "TIMESTAMP",
+                        "nullable": true,
+                        "name": "ADDRESS_UPDATEDAT"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "ADDRESS_UPDATEDBY"
+                    }
+                ]
+            },
+            {
+                "name": "Employee_Country",
+                "type": "foreignKey",
+                "table": "CODBEX_EMPLOYEE",
+                "constraintName": "Employee_Country",
+                "columns": "EMPLOYEE_NATIONALITY",
+                "referencedTable": "CODBEX_COUNTRY",
+                "referencedColumns": "COUNTRY_ID"
+            },
+            {
+                "name": "Employee_Gender",
+                "type": "foreignKey",
+                "table": "CODBEX_EMPLOYEE",
+                "constraintName": "Employee_Gender",
+                "columns": "EMPLOYEE_GENDER",
+                "referencedTable": "CODBEX_GENDER",
+                "referencedColumns": "GENDER_ID"
+            },
+            {
+                "name": "Employee_MartialStatus",
+                "type": "foreignKey",
+                "table": "CODBEX_EMPLOYEE",
+                "constraintName": "Employee_MartialStatus",
+                "columns": "EMPLOYEE_MARTIALSTATUS",
+                "referencedTable": "CODBEX_MARTIALSTATUS",
+                "referencedColumns": "MARTIALSTATUS_ID"
+            },
+            {
+                "name": "Contact_Employee",
+                "type": "foreignKey",
+                "table": "CODBEX_CONTACT",
+                "constraintName": "Contact_Employee",
+                "columns": "CONTACT_EMPLOYEE",
+                "referencedTable": "CODBEX_EMPLOYEE",
+                "referencedColumns": "EMPLOYEE_ID"
+            },
+            {
+                "name": "Address_Country",
+                "type": "foreignKey",
+                "table": "CODBEX_ADDRESS",
+                "constraintName": "Address_Country",
+                "columns": "ADDRESS_COUNTRY",
+                "referencedTable": "CODBEX_COUNTRY",
+                "referencedColumns": "COUNTRY_ID"
+            },
+            {
+                "name": "Address_City",
+                "type": "foreignKey",
+                "table": "CODBEX_ADDRESS",
+                "constraintName": "Address_City",
+                "columns": "ADDRESS_CITY",
+                "referencedTable": "CODBEX_CITY",
+                "referencedColumns": "CITY_ID"
+            },
+            {
+                "name": "Address_Employee",
+                "type": "foreignKey",
+                "table": "CODBEX_ADDRESS",
+                "constraintName": "Address_Employee",
+                "columns": "ADDRESS_EMPLOYEE",
+                "referencedTable": "CODBEX_EMPLOYEE",
+                "referencedColumns": "EMPLOYEE_ID"
+            }
+        ]
+    },
+    "datasource": "DefaultDB"
+}

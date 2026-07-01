@@ -5,7 +5,6 @@ import gen.codbex_employees.data.employees.EmployeeRepository;
 
 import org.eclipse.dirigible.components.api.security.UserFacade;
 import org.eclipse.dirigible.sdk.platform.Documentation;
-import org.eclipse.dirigible.sdk.component.Inject;
 import org.eclipse.dirigible.sdk.http.Body;
 import org.eclipse.dirigible.sdk.http.Controller;
 import org.eclipse.dirigible.sdk.http.Delete;
@@ -30,8 +29,11 @@ public class EmployeeController {
 
     private static final Set<String> FILTER_FIELDS = Set.of("Id", "FirstName", "MiddleName", "LastName", "Name", "Email", "PhoneNumber", "BirthDate", "PersonalNumber", "Nationality", "Gender", "MartialStatus", "IBAN", "CreatedAt", "CreatedBy", "UpdatedAt", "UpdatedBy");
 
-    @Inject
-    private EmployeeRepository repository;
+    private final EmployeeRepository repository;
+
+    public EmployeeController(EmployeeRepository repository) {
+        this.repository = repository;
+    }
 
     @Get
     @Documentation("List Employee")

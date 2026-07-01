@@ -5,7 +5,6 @@ import gen.codbex_employees.data.settings.GenderRepository;
 
 import org.eclipse.dirigible.components.api.security.UserFacade;
 import org.eclipse.dirigible.sdk.platform.Documentation;
-import org.eclipse.dirigible.sdk.component.Inject;
 import org.eclipse.dirigible.sdk.http.Body;
 import org.eclipse.dirigible.sdk.http.Controller;
 import org.eclipse.dirigible.sdk.http.Delete;
@@ -30,8 +29,11 @@ public class GenderController {
 
     private static final Set<String> FILTER_FIELDS = Set.of("Id", "Name");
 
-    @Inject
-    private GenderRepository repository;
+    private final GenderRepository repository;
+
+    public GenderController(GenderRepository repository) {
+        this.repository = repository;
+    }
 
     @Get
     @Documentation("List Gender")
